@@ -5,7 +5,6 @@
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sms8o"]
 texture = ExtResource("1_rofuu")
 0:0/0 = 0
-0:0/0/terrain = 0
 0:1/0 = 0
 2:1/0 = 0
 3:1/0 = 0

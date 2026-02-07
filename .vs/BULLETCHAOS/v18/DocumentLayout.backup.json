@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\GodotGames\\bullet-chaos\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{574BFB95-A6D1-4928-B90F-B6AD82154B31}|BulletChaos.csproj|d:\\godotgames\\bullet-chaos\\scripts\\startgamebutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{574BFB95-A6D1-4928-B90F-B6AD82154B31}|BulletChaos.csproj|solutionrelative:scripts\\startgamebutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "StartGameButton.cs",
+              "DocumentMoniker": "D:\\GodotGames\\bullet-chaos\\Scripts\\StartGameButton.cs",
+              "RelativeDocumentMoniker": "Scripts\\StartGameButton.cs",
+              "ToolTip": "D:\\GodotGames\\bullet-chaos\\Scripts\\StartGameButton.cs",
+              "RelativeToolTip": "Scripts\\StartGameButton.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-07T16:45:50.501Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
