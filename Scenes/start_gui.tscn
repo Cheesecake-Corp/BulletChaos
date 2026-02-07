@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://hph7e7r80su6"]
 
-[ext_resource type="Script" uid="uid://cxkv7obwp6hby" path="res://Scripts/StartGameButton.cs" id="1_2j2xk"]
-
-[sub_resource type="Shortcut" id="Shortcut_2j2xk"]
+[ext_resource type="Script" uid="uid://b1q7dfosv57od" path="res://Scenes/StartGame.gd" id="1_2j2xk"]
 
 [node name="StartGui" type="Control" unique_id=1541630582]
 layout_mode = 3
@@ -12,13 +10,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="." unique_id=824045955 node_paths=PackedStringArray("shortcut_context")]
+[node name="Button" type="Button" parent="." unique_id=824045955]
 layout_mode = 0
 offset_left = 44.0
 offset_top = 102.0
 offset_right = 359.0
 offset_bottom = 184.0
-shortcut_context = NodePath(".")
-shortcut = SubResource("Shortcut_2j2xk")
 text = "Start"
 script = ExtResource("1_2j2xk")
