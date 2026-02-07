@@ -4,7 +4,7 @@ extends CharacterBody2D
 const SPEED = 100.0
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 var last_dir = "down"
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	
 
 	# Get the input direction and handle the movement/deceleration.
