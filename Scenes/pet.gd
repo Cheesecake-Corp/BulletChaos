@@ -1,0 +1,10 @@
+extends Sprite2D
+
+var PET_SPEED = 50
+@onready var camera_2d: Camera2D = $"../Player/Camera2D"
+@onready var player: CharacterBody2D = $"../Player"
+# Called when the node enters the scene tree for the first time.
+func _physics_process(delta: float) -> void:
+	global_position = camera_2d.get_screen_center_position() + (global_position-player.global_position)/3
+	
+	pass
