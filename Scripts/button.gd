@@ -11,7 +11,9 @@ func _ready() -> void:
 
 func _on_body_entered(_body: Node2D) -> void:
 	animated_sprite_2d.play("pressing")
+	animated_sprite_2d.modulate = Color.PINK
 
 
 func _on_body_exited(_body: Node2D) -> void:
 	animated_sprite_2d.play("leaving")
+	animated_sprite_2d.modulate = Color.WHITE

@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://g1ci3j3i82kq" path="res://Assets/Main Character/Sprites/RUN/run_left.png" id="6_ukyrk"]
 [ext_resource type="Texture2D" uid="uid://dj0x0kd4mipet" path="res://Assets/Main Character/Sprites/RUN/run_right.png" id="7_7dp3o"]
 [ext_resource type="Texture2D" uid="uid://cys2wr2gfsy7i" path="res://Assets/Main Character/Sprites/RUN/run_up.png" id="8_h4iuc"]
+[ext_resource type="Texture2D" uid="uid://dwh4jbx2u41ed" path="res://Assets/Micro Icon Pack/Paint/3. Color Picker.png" id="9_f1ek2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_51mtp"]
 atlas = ExtResource("1_8erm5")
@@ -505,6 +506,7 @@ radius = 5.0
 height = 28.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8erm5"]
+radius = 3.1622777
 
 [node name="Player" type="CharacterBody2D" unique_id=1039559475]
 safe_margin = 0.001
@@ -526,6 +528,13 @@ gravity_scale = 0.0
 
 [node name="CameraCollision" type="CollisionShape2D" parent="CameraBody" unique_id=391073997]
 shape = SubResource("CircleShape2D_8erm5")
+
+[node name="Sprite2D" type="Sprite2D" parent="CameraBody/CameraCollision" unique_id=1227348450]
+visible = false
+z_index = 7
+position = Vector2(4, 4)
+texture = ExtResource("9_f1ek2")
+flip_v = true
 
 [node name="Camera2D" type="Camera2D" parent="CameraBody" unique_id=2045531074]
 zoom = Vector2(3, 3)

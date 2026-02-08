@@ -1,6 +1,21 @@
 [gd_scene format=3 uid="uid://hph7e7r80su6"]
 
 [ext_resource type="Script" uid="uid://b1q7dfosv57od" path="res://Scripts/StartGame.gd" id="1_2j2xk"]
+[ext_resource type="Texture2D" uid="uid://dwh4jbx2u41ed" path="res://Assets/Micro Icon Pack/Paint/3. Color Picker.png" id="2_1ream"]
+[ext_resource type="Script" uid="uid://1vi1lcbcln6" path="res://Scripts/cursor.gd" id="3_3pgwi"]
+[ext_resource type="Texture2D" uid="uid://bveyunjmybx77" path="res://Assets/Dungeon Gathering Free Version/Button.png" id="3_u7l71"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3rf1"]
+atlas = ExtResource("3_u7l71")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j43un"]
+atlas = ExtResource("3_u7l71")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7l71"]
+atlas = ExtResource("3_u7l71")
+region = Rect2(16, 0, 16, 16.5)
 
 [node name="StartGui" type="Control" unique_id=1541630582]
 layout_mode = 3
@@ -10,11 +25,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="." unique_id=824045955]
-layout_mode = 0
-offset_left = 44.0
-offset_top = 102.0
-offset_right = 359.0
-offset_bottom = 184.0
-text = "Start"
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=456404264]
+z_index = 100
+position = Vector2(311.99997, 174.99998)
+scale = Vector2(7.4166665, 7.4166665)
+texture = ExtResource("2_1ream")
+flip_v = true
+script = ExtResource("3_3pgwi")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=873207185]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -58.0
+offset_right = 66.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = SubResource("AtlasTexture_l3rf1")
+texture_pressed = SubResource("AtlasTexture_j43un")
+texture_hover = SubResource("AtlasTexture_u7l71")
+stretch_mode = 5
 script = ExtResource("1_2j2xk")
