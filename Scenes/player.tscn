@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://g1ci3j3i82kq" path="res://Assets/Main Character/Sprites/RUN/run_left.png" id="6_ukyrk"]
 [ext_resource type="Texture2D" uid="uid://dj0x0kd4mipet" path="res://Assets/Main Character/Sprites/RUN/run_right.png" id="7_7dp3o"]
 [ext_resource type="Texture2D" uid="uid://cys2wr2gfsy7i" path="res://Assets/Main Character/Sprites/RUN/run_up.png" id="8_h4iuc"]
+[ext_resource type="Script" uid="uid://dl73hcbg0tfsg" path="res://Scripts/camera.gd" id="9_f1ek2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_51mtp"]
 atlas = ExtResource("1_8erm5")
@@ -502,17 +503,38 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5grkg"]
 radius = 5.0
-height = 26.0
+height = 28.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8erm5"]
 
 [node name="Player" type="CharacterBody2D" unique_id=1039559475]
 safe_margin = 0.001
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1157698555]
-position = Vector2(0, -17)
+position = Vector2(0, -22)
 sprite_frames = SubResource("SpriteFrames_vpu3l")
-animation = &"run_up"
+animation = &"idle_up"
 autoplay = "idle_down"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=122341662]
-position = Vector2(0, -15)
+[node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=122341662]
+position = Vector2(0, -16)
 shape = SubResource("CapsuleShape2D_5grkg")
+
+[node name="CameraBody" type="RigidBody2D" parent="." unique_id=1063492642]
+collision_layer = 2
+collision_mask = 2
+gravity_scale = 0.0
+script = ExtResource("9_f1ek2")
+
+[node name="CameraCollision" type="CollisionShape2D" parent="CameraBody" unique_id=391073997]
+shape = SubResource("CircleShape2D_8erm5")
+
+[node name="Camera2D" type="Camera2D" parent="CameraBody" unique_id=2045531074]
+zoom = Vector2(3, 3)
+limit_enabled = false
+position_smoothing_enabled = true
+position_smoothing_speed = 2.5
+drag_left_margin = 0.06
+drag_top_margin = 0.06
+drag_right_margin = 0.06
+drag_bottom_margin = 0.06
