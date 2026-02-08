@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://g1ci3j3i82kq" path="res://Assets/Main Character/Sprites/RUN/run_left.png" id="6_ukyrk"]
 [ext_resource type="Texture2D" uid="uid://dj0x0kd4mipet" path="res://Assets/Main Character/Sprites/RUN/run_right.png" id="7_7dp3o"]
 [ext_resource type="Texture2D" uid="uid://cys2wr2gfsy7i" path="res://Assets/Main Character/Sprites/RUN/run_up.png" id="8_h4iuc"]
-[ext_resource type="Script" uid="uid://dl73hcbg0tfsg" path="res://Scripts/camera.gd" id="9_f1ek2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_51mtp"]
 atlas = ExtResource("1_8erm5")
@@ -524,7 +523,6 @@ shape = SubResource("CapsuleShape2D_5grkg")
 collision_layer = 2
 collision_mask = 2
 gravity_scale = 0.0
-script = ExtResource("9_f1ek2")
 
 [node name="CameraCollision" type="CollisionShape2D" parent="CameraBody" unique_id=391073997]
 shape = SubResource("CircleShape2D_8erm5")

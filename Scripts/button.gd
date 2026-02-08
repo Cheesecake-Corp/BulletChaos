@@ -9,9 +9,9 @@ func _ready() -> void:
 
 
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	animated_sprite_2d.play("pressing")
 
 
-func _on_body_exited(body: Node2D) -> void:
+func _on_body_exited(_body: Node2D) -> void:
 	animated_sprite_2d.play("leaving")
