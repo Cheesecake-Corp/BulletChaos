@@ -1,19 +1,20 @@
 extends CharacterBody2D
 
 
-const SPEED = 100.0
-const CAMERA_SPEED = SPEED*3
+@export var SPEED = 100.0
+@export var CAMERA_SPEED_MULTIPLIER = 3
+var CAMERA_SPEED = SPEED*CAMERA_SPEED_MULTIPLIER
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 var last_dir = "down"
 @onready var camera_body: RigidBody2D = $CameraBody
 @onready var cursor: Sprite2D = $CameraBody/CameraCollision/Sprite2D
+@onready var camera_collision: CollisionShape2D = $CameraBody/CameraCollision
 var map_mode = false
 
 func camera_movement(horizontal, vertical):
 
 	if horizontal or vertical:
-		camera_body.linear_velocity.y = vertical * CAMERA_SPEED * (0.3 if Input.is_action_pressed("shift") else 1)
-		camera_body.linear_velocity.x = horizontal * CAMERA_SPEED * (0.3 if Input.is_action_pressed("shift") else 1)
+		camera_body.linear_velocity = Vector2( horizontal, vertical).normalized() * (SPEED if Input.is_action_pressed("shift") else CAMERA_SPEED)
 	else:
 		camera_body.linear_velocity.y = move_toward(velocity.y, 0, SPEED)
 		camera_body.linear_velocity.x = move_toward(velocity.x, 0, SPEED)
@@ -21,8 +22,9 @@ func camera_movement(horizontal, vertical):
 func character_movement(horizontal, vertical):
 
 	camera_body.linear_velocity = -camera_body.position*5
-	velocity.y = vertical * SPEED
-	velocity.x = horizontal * SPEED
+	
+	velocity = Vector2(horizontal, vertical).normalized() * SPEED
+	
 
 	if horizontal:
 		animated_sprite.play("run_left" if horizontal < 0 else "run_right")
@@ -39,9 +41,11 @@ func _physics_process(_delta: float) -> void:
 	if(Input.is_action_just_pressed("map")):
 		map_mode = true
 		cursor.visible = true
+		camera_collision.disabled = false
 	elif(Input.is_action_just_released("map")):
 		map_mode = false
 		cursor.visible = false
+		camera_collision.disabled = true
 
 	if(map_mode):
 		camera_movement(horizontal,vertical)
@@ -54,6 +58,6 @@ func _physics_process(_delta: float) -> void:
 		animated_sprite.play("idle_" + last_dir)
 	move_and_slide()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if (Input.is_action_just_pressed("pause")):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

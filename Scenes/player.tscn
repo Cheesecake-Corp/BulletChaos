@@ -510,6 +510,7 @@ radius = 3.1622777
 
 [node name="Player" type="CharacterBody2D" unique_id=1039559475]
 safe_margin = 0.001
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1157698555]
 position = Vector2(0, -22)

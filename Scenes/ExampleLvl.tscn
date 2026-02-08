@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ulxao8ra8xss" path="res://Scenes/player.tscn" id="2_28lcp"]
 [ext_resource type="Script" uid="uid://cemunisuw3ouh" path="res://Scripts/player.gd" id="3_7nuyn"]
 [ext_resource type="PackedScene" uid="uid://bm2f7np22yr5a" path="res://Scenes/button.tscn" id="4_7nuyn"]
-[ext_resource type="Script" uid="uid://c4105eekw8ioe" path="res://Scripts/button.gd" id="5_injnm"]
+[ext_resource type="PackedScene" uid="uid://cxwolhwplhf3m" path="res://Scenes/bat.tscn" id="6_ytwd4"]
 
 [node name="ExampleLvl" type="Node2D" unique_id=1892850804]
 
@@ -15,14 +15,17 @@ tile_map_data = PackedByteArray("AAARAAgABQAPAAMAAAARAAcABQAPAAIAAAARAAYABQAPAAI
 tile_set = ExtResource("1_28lcp")
 
 [node name="Player" parent="." unique_id=1039559475 instance=ExtResource("2_28lcp")]
-position = Vector2(125, 86)
+position = Vector2(130, 86)
 script = ExtResource("3_7nuyn")
+SPEED = 200.0
+CAMERA_SPEED_MULTIPLIER = 10
+
+[node name="Bat" parent="." unique_id=430312043 instance=ExtResource("6_ytwd4")]
+position = Vector2(239, 96)
+scale = Vector2(0.7, 0.7)
 
 [node name="Button" parent="." unique_id=1762650745 instance=ExtResource("4_7nuyn")]
-position = Vector2(382, -59)
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("5_injnm")
+position = Vector2(257, 184)
 
-[connection signal="body_entered" from="Button" to="Button" method="_on_body_entered"]
-[connection signal="body_exited" from="Button" to="Button" method="_on_body_exited"]
+[node name="Button2" parent="." unique_id=183017478 instance=ExtResource("4_7nuyn")]
+position = Vector2(413, -95)
