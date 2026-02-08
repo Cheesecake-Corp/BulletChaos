@@ -73,21 +73,28 @@ tile_map_data = PackedByteArray("AAACAAQAAAAGAAYAAAADAAQAAAAGAAYAAAAEAAQAAAAGAAY
 tile_set = SubResource("TileSet_injnm")
 
 [node name="Player" parent="." unique_id=1039559475 instance=ExtResource("2_28lcp")]
-position = Vector2(-5, 29)
+position = Vector2(-4, 28)
 script = ExtResource("3_7nuyn")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=29295537]
 position = Vector2(-1, -14)
 zoom = Vector2(2.5, 2.5)
+limit_enabled = false
 limit_smoothed = true
 position_smoothing_enabled = true
-position_smoothing_speed = 3.0
+position_smoothing_speed = 2.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.06
+drag_top_margin = 0.06
+drag_right_margin = 0.06
+drag_bottom_margin = 0.06
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1469750058]
+[node name="Sprite2D" type="Sprite2D" parent="Player/Camera2D" unique_id=1469750058]
 physics_interpolation_mode = 2
 auto_translate_mode = 2
 z_index = -1
-position = Vector2(-5, 24)
+position = Vector2(-5, -3.999999)
 scale = Vector2(0.34375, 0.34375)
 texture = ExtResource("4_7nuyn")
 offset = Vector2(0, 10)
