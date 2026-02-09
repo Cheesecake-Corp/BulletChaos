@@ -509,6 +509,7 @@ height = 28.0
 radius = 3.1622777
 
 [node name="Player" type="CharacterBody2D" unique_id=1039559475]
+collision_layer = 32
 safe_margin = 0.001
 metadata/_edit_group_ = true
 

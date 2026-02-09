@@ -21,11 +21,10 @@ SPEED = 200.0
 CAMERA_SPEED_MULTIPLIER = 10
 
 [node name="Bat" parent="." unique_id=430312043 instance=ExtResource("6_ytwd4")]
-position = Vector2(239, 96)
-scale = Vector2(0.7, 0.7)
+position = Vector2(40, 110)
 
 [node name="Button" parent="." unique_id=1762650745 instance=ExtResource("4_7nuyn")]
-position = Vector2(257, 184)
+position = Vector2(262, 132)
 
 [node name="Button2" parent="." unique_id=183017478 instance=ExtResource("4_7nuyn")]
 position = Vector2(413, -95)

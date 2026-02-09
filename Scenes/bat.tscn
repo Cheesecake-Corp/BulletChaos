@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cxwolhwplhf3m"]
 
+[ext_resource type="Script" uid="uid://ctpxghrac4de6" path="res://Scenes/bat.gd" id="1_c4xfn"]
 [ext_resource type="Texture2D" uid="uid://bb203qo5dqeuj" path="res://Assets/Bat with VFX/Bat-Attack1.png" id="1_fk7gk"]
 [ext_resource type="Texture2D" uid="uid://cihbch52p63hp" path="res://Assets/Bat with VFX/Bat-Attack2.png" id="2_c4xfn"]
 [ext_resource type="Texture2D" uid="uid://drqhq0acwn6ci" path="res://Assets/Bat with VFX/Bat-Die.png" id="3_h8o1q"]
@@ -560,19 +561,26 @@ animations = [{
 radius = 15.0
 
 [node name="Enemy" type="RigidBody2D" unique_id=430312043]
+collision_layer = 32
 collision_mask = 0
 gravity_scale = 0.0
+script = ExtResource("1_c4xfn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1784310671]
 position = Vector2(-2, -9)
+scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_v2yot")
-animation = &"bat_attack1"
-frame = 7
-frame_progress = 1.0
+animation = &"bat_sleep"
+frame_progress = 0.7972124
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1094640475]
-position = Vector2(0, -4)
+position = Vector2(-1.9999999, -7)
+scale = Vector2(0.7, 0.7)
 shape = SubResource("CircleShape2D_s3t6j")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1190140237]
-position = Vector2(0, -4)
+position = Vector2(-2, -12)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
