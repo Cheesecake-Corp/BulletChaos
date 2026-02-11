@@ -16,7 +16,7 @@ func camera_movement(horizontal, vertical):
 
 	# adds velocity to camera in map_mode (same in every direction)
 	if horizontal or vertical:
-		camera_body.linear_velocity = Vector2( horizontal, vertical).normalized() * CAMERA_SPEED
+		camera_body.linear_velocity = Vector2(horizontal, vertical).normalized() * CAMERA_SPEED
 	
 	# slows down camera when no movements keys pressed
 	else:
