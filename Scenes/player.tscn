@@ -530,6 +530,7 @@ gravity_scale = 0.0
 
 [node name="CameraCollision" type="CollisionShape2D" parent="CameraBody" unique_id=391073997]
 shape = SubResource("CircleShape2D_8erm5")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CameraBody/CameraCollision" unique_id=1227348450]
 visible = false

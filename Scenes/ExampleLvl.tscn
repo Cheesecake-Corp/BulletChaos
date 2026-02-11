@@ -4,7 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://ulxao8ra8xss" path="res://Scenes/player.tscn" id="2_28lcp"]
 [ext_resource type="Script" uid="uid://cemunisuw3ouh" path="res://Scripts/player.gd" id="3_7nuyn"]
 [ext_resource type="PackedScene" uid="uid://bm2f7np22yr5a" path="res://Scenes/button.tscn" id="4_7nuyn"]
+[ext_resource type="Script" uid="uid://dpoxe3nq2go6" path="res://Scripts/movement.gd" id="5_ytwd4"]
 [ext_resource type="PackedScene" uid="uid://cxwolhwplhf3m" path="res://Scenes/bat.tscn" id="6_ytwd4"]
+
+[sub_resource type="Curve2D" id="Curve2D_injnm"]
+_data = {
+"points": PackedVector2Array(9.8138275, 7.7108645, -9.8138275, -7.7108645, 183, 48, 8.762346, -14.370248, -8.762346, 14.370248, 139, 69, -6.6593833, -10.514815, 6.6593833, 10.514815, 142, 111, -39.25531, 1.0514815, 39.25531, -1.0514815, 192, 129, 30.142471, -6.3088894, -30.142471, 6.3088894, 199, 81, 17.174198, 14.370248, -17.174198, -14.370248, 173, 72, 16.122717, 23.132593, -16.122717, -23.132593, 183, 48)
+}
+point_count = 7
 
 [node name="ExampleLvl" type="Node2D" unique_id=1892850804]
 
@@ -15,16 +22,26 @@ tile_map_data = PackedByteArray("AAARAAgABQAPAAMAAAARAAcABQAPAAIAAAARAAYABQAPAAI
 tile_set = ExtResource("1_28lcp")
 
 [node name="Player" parent="." unique_id=1039559475 instance=ExtResource("2_28lcp")]
-position = Vector2(130, 86)
+position = Vector2(129, 85)
 script = ExtResource("3_7nuyn")
 SPEED = 200.0
 CAMERA_SPEED_MULTIPLIER = 10
-
-[node name="Bat" parent="." unique_id=430312043 instance=ExtResource("6_ytwd4")]
-position = Vector2(40, 110)
 
 [node name="Button" parent="." unique_id=1762650745 instance=ExtResource("4_7nuyn")]
 position = Vector2(262, 132)
 
 [node name="Button2" parent="." unique_id=183017478 instance=ExtResource("4_7nuyn")]
 position = Vector2(413, -95)
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1402615315]
+curve = SubResource("Curve2D_injnm")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1772249049]
+position = Vector2(183, 48)
+rotation = -2.4756234
+rotates = false
+script = ExtResource("5_ytwd4")
+
+[node name="Bat" parent="Path2D/PathFollow2D" unique_id=430312043 instance=ExtResource("6_ytwd4")]
+position = Vector2(1.5258789e-05, -1)
+rotation = 2.4756234
