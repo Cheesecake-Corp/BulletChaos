@@ -540,7 +540,7 @@ texture = ExtResource("9_f1ek2")
 flip_v = true
 
 [node name="Camera2D" type="Camera2D" parent="CameraBody" unique_id=2045531074]
-zoom = Vector2(3, 3)
+zoom = Vector2(1.5, 1.5)
 limit_enabled = false
 position_smoothing_enabled = true
 position_smoothing_speed = 2.5
