@@ -22,7 +22,8 @@ SPEED = 200.0
 CAMERA_SPEED_MULTIPLIER = 10
 
 [node name="Button" parent="." unique_id=1762650745 instance=ExtResource("4_7nuyn")]
-position = Vector2(262, 132)
+z_index = 1
+position = Vector2(224, 125)
 
 [node name="Button2" parent="." unique_id=183017478 instance=ExtResource("4_7nuyn")]
 position = Vector2(413, -95)
@@ -30,6 +31,7 @@ position = Vector2(413, -95)
 [node name="Bat" parent="." unique_id=430312043 node_paths=PackedStringArray("player") instance=ExtResource("6_ytwd4")]
 position = Vector2(182.38217, 48.78631)
 scale = Vector2(0.99999994, 0.99999994)
+collision_mask = 1
 player = NodePath("../Player")
 speed = 150.0
 dmg_att1 = 5.0

@@ -175,7 +175,7 @@ func Roomgen(lastplant: int, plant: Array, rooms: Dictionary, exits: Dictionary,
 		roomcordy.clear()
 	
 	var roomnumb := 0
-	roomnumb = (plant[lastplant] + 1) * (goodsize.size() / 10) #Number of room type in goodsize
+	roomnumb = (plant[lastplant] + 1) * (goodsize.size() / 10.0) #Number of room type in goodsize
 	while roomnumb > goodsize.size():
 		roomnumb /= 2
 	Roomwrite(pixel, rooms, exits, roomstart, goodsize[roomnumb]) #Writes the room, selects roomnumb from goodsize

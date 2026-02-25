@@ -458,7 +458,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"bat_idlefly",
-"speed": 8.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -560,29 +560,143 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_s3t6j"]
 radius = 15.0
 
+[sub_resource type="Animation" id="Animation_do1l7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [&"bat_sleep"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BatCollision:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.3999995, 0.39999866)]
+}
+
+[sub_resource type="Animation" id="Animation_hpvq7"]
+resource_name = "idle_fly"
+length = 0.9
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [&"bat_idlefly"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BatCollision:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.3999995, 0.39999866), Vector2(2.9802322e-08, 2.9999998), Vector2(1.7763568e-15, 4), Vector2(0, 2.3841858e-07), Vector2(0, -0.9999999), Vector2(0, -2.9999998)]
+}
+
+[sub_resource type="Animation" id="Animation_swikw"]
+resource_name = "sleep"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.14, 0.36666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [&"bat_sleep"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mrbmq"]
+_data = {
+&"RESET": SubResource("Animation_do1l7"),
+&"idle_fly": SubResource("Animation_hpvq7"),
+&"sleep": SubResource("Animation_swikw")
+}
+
 [node name="Enemy" type="CharacterBody2D" unique_id=1376439252]
 collision_layer = 32
 collision_mask = 0
 script = ExtResource("1_c4xfn")
-speed = null
-dmg_att1 = null
-dmg_att2 = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1784310671]
-position = Vector2(-2, -9)
+position = Vector2(0.39999938, -0.60000134)
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_v2yot")
-animation = &"bat_sleep"
-frame_progress = 0.7972124
+animation = &"bat_idlefly"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1094640475]
-position = Vector2(-1.9999999, -7)
+[node name="BatCollision" type="CollisionShape2D" parent="." unique_id=1094640475]
+position = Vector2(0.3999995, 0.39999866)
 scale = Vector2(0.7, 0.7)
 shape = SubResource("CircleShape2D_s3t6j")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1190140237]
-position = Vector2(-2, -12)
+position = Vector2(-1, -3)
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2088431015]
+libraries/bat = SubResource("AnimationLibrary_mrbmq")
+autoplay = &"bat/sleep"
+
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
