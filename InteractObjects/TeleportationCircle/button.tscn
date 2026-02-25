@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bm2f7np22yr5a"]
 
-[ext_resource type="Script" uid="uid://c4105eekw8ioe" path="res://Scripts/button.gd" id="1_0kpiu"]
+[ext_resource type="Script" uid="uid://c4105eekw8ioe" path="res://InteractObjects/TeleportationCircle/button.gd" id="1_0kpiu"]
 [ext_resource type="Texture2D" uid="uid://bhb5pikuvl5v5" path="res://Assets/Summoning circles/Tree_of_Glory-Sheet.png" id="2_0kpiu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_smycg"]

@@ -26,7 +26,7 @@ func _physics_process(_delta: float) -> void:
 	if state == SLEEP:
 		return
 	if state == SURROUND:
-		#move(player,_delta)
+		move(player,_delta)
 		if animation_playing == false and animation_looping == false:
 			animated_sprite_2d.play("bat_idlefly")
 	
@@ -36,7 +36,7 @@ func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	if not state == SLEEP:
 		return
 	state = SURROUND
-	#animated_sprite_2d.play("bat_wakeup")
+	animated_sprite_2d.play("bat_wakeup")
 	animation_playing = true
 
 
