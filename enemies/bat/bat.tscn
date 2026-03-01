@@ -705,10 +705,10 @@ script = ExtResource("1_c4xfn")
 position = Vector2(0.39999938, -0.60000134)
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_v2yot")
-animation = &"bat_idlefly"
+animation = &"bat_sleep"
 
 [node name="BatCollision" type="CollisionShape2D" parent="." unique_id=1094640475]
-position = Vector2(0.251446, -0.86270714)
+position = Vector2(0.14360209, -1.779381)
 scale = Vector2(0.7, 0.7)
 shape = SubResource("CircleShape2D_s3t6j")
 

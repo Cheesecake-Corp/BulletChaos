@@ -514,6 +514,7 @@ safe_margin = 0.001
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1157698555]
+z_index = 25
 position = Vector2(0, -22)
 sprite_frames = SubResource("SpriteFrames_vpu3l")
 animation = &"idle_up"
@@ -540,7 +541,7 @@ texture = ExtResource("9_f1ek2")
 flip_v = true
 
 [node name="Camera2D" type="Camera2D" parent="CameraBody" unique_id=2045531074]
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(2.5, 2.5)
 limit_enabled = false
 position_smoothing_enabled = true
 position_smoothing_speed = 2.5
