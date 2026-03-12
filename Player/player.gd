@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var SPEED = 100.0
+@export var SPEED = 150.0
 @export var CAMERA_SPEED_MULTIPLIER = 3
 var CAMERA_SPEED = SPEED*CAMERA_SPEED_MULTIPLIER
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D

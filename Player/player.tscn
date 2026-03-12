@@ -1152,8 +1152,9 @@ metadata/_edit_group_ = true
 z_index = 25
 position = Vector2(0, -22)
 sprite_frames = SubResource("SpriteFrames_vpu3l")
-animation = &"attack_right"
+animation = &"attack_rd"
 autoplay = "idle_down"
+frame_progress = 0.49101666
 
 [node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=122341662]
 z_index = 120
