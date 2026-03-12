@@ -7,6 +7,6 @@ func _ready() -> void:
 
 
 func _pressed() -> void:
-	get_tree().change_scene_to_file("res://World/ExampleLvl.tscn")
+	get_tree().change_scene_to_file("res://World/FirstDungeon.tscn")
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 # Called every frame. 'delta' is the elapsed time since the previous frame.

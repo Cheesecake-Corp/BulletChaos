@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var CAMERA_SPEED_MULTIPLIER = 3
 var CAMERA_SPEED = SPEED*CAMERA_SPEED_MULTIPLIER
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-var last_dir = "down"
+var last = "down"
 @onready var camera_body: RigidBody2D = $CameraBody
 @onready var cursor: Sprite2D = $CameraBody/CameraCollision/Sprite2D
 @onready var camera_collision: CollisionShape2D = $CameraBody/CameraCollision
@@ -35,14 +35,28 @@ func character_movement(horizontal, vertical):
 	# ANIMATION HANDELING
 	# horizontal animations
 	# prioritizes horizontal animation
-	if horizontal:
-		animated_sprite.play("run_left" if horizontal < 0 else "run_right")
-		last_dir = "right" if horizontal > 0 else "left"
-
-	# vertical animations
-	elif vertical:
-		animated_sprite.play("run_up" if vertical < 0 else "run_down")
-		last_dir = "down" if vertical > 0 else "up"
+	if horizontal or vertical:
+		if horizontal > 0:
+			if vertical > 0:
+				last = "rd"
+			if vertical == 0:
+				last = "right"
+			if vertical < 0:
+				last = "ru"
+		elif horizontal < 0:
+			if vertical > 0:
+				last = "ld"
+			if vertical == 0:
+				last = "left"
+			if vertical < 0:
+				last = "lu"
+		elif horizontal == 0:
+			if vertical > 0:
+				last = "down"
+			if vertical < 0:
+				last = "up"
+		
+	
 
 # toggle map mode
 func map_mode_handeling(horizontal, vertical):
@@ -79,7 +93,9 @@ func _physics_process(_delta: float) -> void:
 	
 	# plays idle animation
 	if velocity == Vector2.ZERO:
-		animated_sprite.play("idle_" + last_dir)
+		animated_sprite.play("idle_" + last)
+	else:
+		animated_sprite.play("run_" + last)
 	move_and_slide()
 
 func _process(_delta: float) -> void:
