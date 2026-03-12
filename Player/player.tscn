@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cjd61f1awnjv" path="res://Assets/Mage-Sheet.png" id="1_4ntmi"]
 [ext_resource type="Script" uid="uid://cemunisuw3ouh" path="res://Player/player.gd" id="1_btcbx"]
+[ext_resource type="PackedScene" uid="uid://0sqspss4rude" path="res://Player/HUD.tscn" id="4_gwnis"]
 [ext_resource type="Texture2D" uid="uid://dwh4jbx2u41ed" path="res://Assets/Micro Icon Pack/Paint/3. Color Picker.png" id="9_f1ek2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_btcbx"]
@@ -1186,3 +1187,7 @@ drag_left_margin = 0.06
 drag_top_margin = 0.06
 drag_right_margin = 0.06
 drag_bottom_margin = 0.06
+
+[node name="Hud" parent="." unique_id=1135840636 instance=ExtResource("4_gwnis")]
+
+[connection signal="health_change" from="." to="Hud" method="_on_player_health_change"]

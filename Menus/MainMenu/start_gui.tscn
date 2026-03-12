@@ -2,20 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://dwh4jbx2u41ed" path="res://Assets/Micro Icon Pack/Paint/3. Color Picker.png" id="1_gujj0"]
 [ext_resource type="Script" uid="uid://1vi1lcbcln6" path="res://Menus/MainMenu/cursor.gd" id="2_b2d4t"]
-[ext_resource type="Texture2D" uid="uid://bveyunjmybx77" path="res://Assets/Dungeon Gathering Free Version/Button.png" id="3_hdl0b"]
+[ext_resource type="Texture2D" uid="uid://dm5rtkc7osw4" path="res://Assets/Borders/Default/Transparent center/panel-transparent-center-000.png" id="3_b2d4t"]
 [ext_resource type="Script" uid="uid://b1q7dfosv57od" path="res://Menus/MainMenu/StartGame.gd" id="4_f7tbs"]
+[ext_resource type="Texture2D" uid="uid://dh6vror533ec8" path="res://Assets/Borders/Default/Transparent border/panel-transparent-border-002.png" id="4_hdl0b"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l3rf1"]
-atlas = ExtResource("3_hdl0b")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j43un"]
-atlas = ExtResource("3_hdl0b")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u7l71"]
-atlas = ExtResource("3_hdl0b")
-region = Rect2(16, 0, 16, 16.5)
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7tbs"]
+atlas = ExtResource("3_b2d4t")
 
 [node name="StartGui" type="Control" unique_id=1541630582]
 layout_mode = 3
@@ -46,8 +38,7 @@ offset_right = 66.0
 offset_bottom = 76.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = SubResource("AtlasTexture_l3rf1")
-texture_pressed = SubResource("AtlasTexture_j43un")
-texture_hover = SubResource("AtlasTexture_u7l71")
+texture_normal = SubResource("AtlasTexture_f7tbs")
+texture_pressed = ExtResource("4_hdl0b")
 stretch_mode = 5
 script = ExtResource("4_f7tbs")

@@ -6,10 +6,17 @@ extends CharacterBody2D
 var CAMERA_SPEED = SPEED*CAMERA_SPEED_MULTIPLIER
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 var last = "down"
+@onready var health = 100
+var last_health = health
+@onready var max_health = 100
+var last_damage = 100
+@onready var regen_delay = 20
+@onready var natural_regen_per_second = 2
 @onready var camera_body: RigidBody2D = $CameraBody
 @onready var cursor: Sprite2D = $CameraBody/CameraCollision/Sprite2D
 @onready var camera_collision: CollisionShape2D = $CameraBody/CameraCollision
 var map_mode = false
+signal health_change(health)
 
 # movement in camera mode
 func camera_movement(horizontal, vertical):
@@ -55,8 +62,6 @@ func character_movement(horizontal, vertical):
 				last = "down"
 			if vertical < 0:
 				last = "up"
-		
-	
 
 # toggle map mode
 func map_mode_handeling(horizontal, vertical):
@@ -83,6 +88,20 @@ func _physics_process(_delta: float) -> void:
 	var horizontal := Input.get_axis("go_left","go_right")
 	var vertical := Input.get_axis("go_up","go_down")
 	
+	if(Input.is_action_pressed("attack")):
+		health -= 1
+
+	if(last_damage == regen_delay):
+		health = move_toward(health, max_health, natural_regen_per_second*_delta)
+	
+	# last damage timer
+	last_damage = min(last_damage + 1, regen_delay)
+	
+	if(health != last_health):
+		health_change.emit(health)
+		last_health = health
+	
+	
 	# handles switching between map mode
 	map_mode_handeling(horizontal, vertical)
 
@@ -96,6 +115,7 @@ func _physics_process(_delta: float) -> void:
 		animated_sprite.play("idle_" + last)
 	else:
 		animated_sprite.play("run_" + last)
+	
 	move_and_slide()
 
 func _process(_delta: float) -> void:

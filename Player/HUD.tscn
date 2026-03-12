@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://0sqspss4rude"]
+
+[ext_resource type="Texture2D" uid="uid://cueppda3h3u4h" path="res://Assets/Borders/Default/Transparent center/panel-transparent-center-021.png" id="1_11qr4"]
+[ext_resource type="Script" uid="uid://c0836eipbqs3v" path="res://Player/hud.gd" id="1_ewb01"]
+[ext_resource type="Texture2D" uid="uid://3bis3pxislay" path="res://Assets/Borders/Default/Panel/panel-021.png" id="2_ewb01"]
+[ext_resource type="Script" uid="uid://bmplpujapxk2f" path="res://Player/health_bar.gd" id="3_11qr4"]
+
+[node name="Hud" type="CanvasLayer" unique_id=1135840636]
+script = ExtResource("1_ewb01")
+
+[node name="HealthBar" type="TextureProgressBar" parent="." unique_id=58213123]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 210.0
+offset_bottom = 56.0
+step = 0.01
+value = 21.0
+nine_patch_stretch = true
+stretch_margin_left = 23
+stretch_margin_top = 23
+stretch_margin_right = 23
+stretch_margin_bottom = 23
+texture_under = ExtResource("1_11qr4")
+texture_progress = ExtResource("2_ewb01")
+script = ExtResource("3_11qr4")
