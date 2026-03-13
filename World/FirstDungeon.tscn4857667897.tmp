@@ -18,10 +18,12 @@ tile_set = ExtResource("1_dem3o")
 metadata/_edit_group_ = true
 
 [node name="Player" parent="." unique_id=1039559475 node_paths=PackedStringArray("current_weapon") instance=ExtResource("2_db620")]
-position = Vector2(44, -129)
+position = Vector2(45, -126)
 current_weapon = NodePath("Revolver")
 
 [node name="Revolver" parent="Player" unique_id=722960404 node_paths=PackedStringArray("player") instance=ExtResource("3_db620")]
-z_index = 26
-position = Vector2(15, -17)
+use_rate = null
+base_damage = null
+base_magazine_capacity = null
+bullet_speed = null
 player = NodePath("..")

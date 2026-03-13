@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cvtnmk7p54p7j"]
+
+[ext_resource type="Texture2D" uid="uid://dkfec8rroda2" path="res://Assets/1.png" id="1_a33xn"]
+[ext_resource type="Script" uid="uid://bbb0othewovgj" path="res://Weapons/weapon.gd" id="2_iagck"]
+[ext_resource type="PackedScene" uid="uid://j2pke86wgcxx" path="res://Weapons/basic_ammo.tscn" id="3_rmbtm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iagck"]
+atlas = ExtResource("1_a33xn")
+region = Rect2(80, 118, 15, 10)
+
+[node name="Revolver" type="Sprite2D" unique_id=722960404]
+texture = SubResource("AtlasTexture_iagck")
+script = ExtResource("2_iagck")
+bullet_scene = ExtResource("3_rmbtm")
+
+[node name="RigidBody2D" parent="." unique_id=1331438151 instance=ExtResource("3_rmbtm")]
+position = Vector2(-9.536743e-07, 0)
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=811114549]
+
+[connection signal="body_entered" from="RigidBody2D" to="." method="_on_body_entered" flags=18]

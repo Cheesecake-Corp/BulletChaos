@@ -15,6 +15,7 @@ var last_damage = 100
 @onready var camera_body: RigidBody2D = $CameraBody
 @onready var cursor: Sprite2D = $CameraBody/CameraCollision/Sprite2D
 @onready var camera_collision: CollisionShape2D = $CameraBody/CameraCollision
+@export var current_weapon : Weapon
 var map_mode = false
 signal health_change(health)
 
@@ -87,9 +88,9 @@ func _physics_process(_delta: float) -> void:
 	# gets movement input
 	var horizontal := Input.get_axis("go_left","go_right")
 	var vertical := Input.get_axis("go_up","go_down")
-	
+
 	if(Input.is_action_pressed("attack")):
-		health -= 1
+		current_weapon._try_use()
 
 	if(last_damage == regen_delay):
 		health = move_toward(health, max_health, natural_regen_per_second*_delta)
