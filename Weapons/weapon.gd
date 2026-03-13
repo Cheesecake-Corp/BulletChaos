@@ -40,7 +40,8 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	set_aim_direction(-player.global_position + get_global_mouse_position())
-	global_rotation = lerp_angle(global_rotation, aim_angle, 40 * delta)
+	rotation = lerp_angle(rotation, aim_angle, 40 * delta)
+	
 	if(Input.is_action_just_pressed("reload")):
 		is_reloading = true
 		
@@ -49,9 +50,17 @@ func _process(delta: float) -> void:
 	if reloading_time >= final_reload_time:
 		loaded_ammo = final_magazine_capacity
 		is_reloading = false
+		reloading_time = 0
 	
 func set_aim_direction (aim_dir : Vector2):
 	aim_angle = aim_dir.angle()
+	var offset = Vector2(30,0).rotated(aim_angle)
+	global_position = player.global_position + Vector2(0, -20) + offset
+	if get_global_mouse_position().x < player.global_position.x:
+		scale.y = -1
+	else:
+		scale.y = 1
+
 
 func _try_use() -> bool:
 	
