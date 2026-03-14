@@ -1,11 +1,13 @@
 class_name Weapon
 extends Node2D
 
-@export var use_rate : float = 100
+@export var use_rate : float = 100 # ms
 @export var base_damage : float = 1
 @export var base_magazine_capacity : int = 20
 @export var bullet_speed : float = .1
-@export var base_reload_time : float = 1.5
+@export var base_reload_time : float = 1.5 # s
+@export var rotation_distance := 30.0
+@onready var ray: RayCast2D = $RayCast2D
 var reloading_time : float = 0
 var final_reload_time : float
 var is_reloading : bool = false
@@ -16,16 +18,17 @@ var aim_angle : float
 @export var player : CharacterBody2D
 var can_use : bool = true
 
-var used_bullets: Array[RigidBody2D] = []
-var available_bullets: Array[RigidBody2D] = []
+var used_bullets: Array[Projectile] = []
+var available_bullets: Array[Projectile] = []
 @export var bullet_scene: PackedScene
 func _ready() -> void:
 	loaded_ammo = base_magazine_capacity
 	final_magazine_capacity = base_magazine_capacity
 	final_reload_time = base_reload_time
-	
-	for i in range(final_magazine_capacity):
-		var b : RigidBody2D = bullet_scene.instantiate()
+	var time = bullet_scene.instantiate().get_meta("max_time") # s
+	print(time)
+	for i in range((time-base_reload_time)*1000/use_rate + 1):
+		var b : Projectile = bullet_scene.instantiate()
 		b.visible = false
 		b.global_position = global_position
 		b.freeze = true
@@ -34,6 +37,7 @@ func _ready() -> void:
 
 		var a2 : Area2D = b.get_node("./Area2D")
 		a2.body_entered.connect(_on_body_entered.bind(b))
+		b.timeout.connect(_on_bullet_timeout)
 
 		available_bullets.append(b)
 		get_tree().current_scene.call_deferred("add_child", b)
@@ -54,8 +58,22 @@ func _process(delta: float) -> void:
 	
 func set_aim_direction (aim_dir : Vector2):
 	aim_angle = aim_dir.angle()
-	var offset = Vector2(30,0).rotated(aim_angle)
-	global_position = player.global_position + Vector2(0, -20) + offset
+	var dir = aim_dir.normalized()
+
+	# Raycast forward from player
+	ray.global_position = player.global_position
+	ray.target_position = ray.to_local(player.global_position + dir * rotation_distance)
+	ray.force_raycast_update()
+
+	var distance = rotation_distance
+
+	if ray.is_colliding():
+		var hit_point = ray.get_collision_point()
+		distance = player.global_position.distance_to(hit_point) - 2
+		distance = max(distance, 5) # prevent weapon collapsing into player
+
+	var offset = dir * distance
+	global_position = player.global_position + offset
 	if get_global_mouse_position().x < player.global_position.x:
 		scale.y = -1
 	else:
@@ -80,7 +98,7 @@ func _try_use() -> bool:
 func _use():
 	loaded_ammo -= 1
 	var b = available_bullets.pop_back()
-	
+	b.start()
 	b.freeze=false
 	b.global_position = global_position
 
@@ -90,12 +108,15 @@ func _use():
 	b.linear_velocity = dir * bullet_speed * 1500
 	used_bullets.append(b)
 
-func _on_body_entered(_body: Node, bullet: RigidBody2D) -> void:
+func _on_body_entered(_body: Node, bullet: Projectile) -> void:
 	if not bullet.visible:
 		return
 	call_deferred("_recycle_bullet", bullet)
 
-func _recycle_bullet(bullet: RigidBody2D) -> void:
+func _on_bullet_timeout(bullet : Projectile) -> void:
+	call_deferred("_recycle_bullet", bullet)
+
+func _recycle_bullet(bullet: Projectile) -> void:
 	bullet.freeze = true
 	bullet.visible = false
 	bullet.linear_velocity = Vector2.ZERO

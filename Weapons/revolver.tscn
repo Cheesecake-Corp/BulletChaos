@@ -10,6 +10,7 @@ region = Rect2(80, 118, 15, 10)
 
 [node name="Revolver" type="Sprite2D" unique_id=722960404]
 texture = SubResource("AtlasTexture_iagck")
+offset = Vector2(-7.5, 3.5)
 script = ExtResource("2_iagck")
 bullet_scene = ExtResource("3_rmbtm")
 
@@ -17,5 +18,9 @@ bullet_scene = ExtResource("3_rmbtm")
 position = Vector2(-9.536743e-07, 0)
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=811114549]
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=2077104488]
+position = Vector2(-8, 0)
+target_position = Vector2(25, 0.035)
 
 [connection signal="body_entered" from="RigidBody2D" to="." method="_on_body_entered" flags=18]

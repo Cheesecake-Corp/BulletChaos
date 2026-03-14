@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://j2pke86wgcxx"]
 
 [ext_resource type="Texture2D" uid="uid://dkfec8rroda2" path="res://Assets/1.png" id="1_hv0nb"]
+[ext_resource type="Script" uid="uid://ct1n0qympvnlm" path="res://Weapons/projectile.gd" id="1_yelam"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rmbtm"]
 atlas = ExtResource("1_hv0nb")
@@ -12,7 +13,9 @@ size = Vector2(5.017355, 3.0629902)
 [node name="RigidBody2D" type="RigidBody2D" unique_id=1331438151]
 visible = false
 collision_layer = 4
+script = ExtResource("1_yelam")
 metadata/_edit_group_ = true
+metadata/max_time = 5
 
 [node name="Bullet" type="Sprite2D" parent="." unique_id=780199171]
 z_index = 27
@@ -27,3 +30,7 @@ shape = SubResource("RectangleShape2D_rmbtm")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1825280224]
 position = Vector2(0.007417679, 0.017515182)
 shape = SubResource("RectangleShape2D_rmbtm")
+
+[node name="Timer" type="Timer" parent="." unique_id=1173091418]
+
+[connection signal="timeout" from="Timer" to="." method="on_timeout"]
