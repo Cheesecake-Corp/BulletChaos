@@ -19,4 +19,4 @@ func start():
 
 
 func on_timeout() -> void:
-	timeout.emit(bullet)
+	timeout.emit(self)

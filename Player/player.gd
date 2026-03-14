@@ -118,8 +118,3 @@ func _physics_process(_delta: float) -> void:
 		animated_sprite.play("run_" + last)
 	
 	move_and_slide()
-
-func _process(_delta: float) -> void:
-	# enables mouse when esc pressed
-	if (Input.is_action_just_pressed("pause")):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

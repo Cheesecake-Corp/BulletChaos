@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://c0836eipbqs3v" path="res://Player/hud.gd" id="1_ewb01"]
 [ext_resource type="Texture2D" uid="uid://3bis3pxislay" path="res://Assets/Borders/Default/Panel/panel-021.png" id="2_ewb01"]
 [ext_resource type="Script" uid="uid://bmplpujapxk2f" path="res://Player/health_bar.gd" id="3_11qr4"]
+[ext_resource type="Script" uid="uid://cqsc7551txqpp" path="res://Player/crosshair.gd" id="5_lwd00"]
+[ext_resource type="Texture2D" uid="uid://7ihui1eeqfpr" path="res://Assets/UI/crosshair.png" id="6_71t6b"]
 
 [node name="Hud" type="CanvasLayer" unique_id=1135840636]
 script = ExtResource("1_ewb01")
@@ -23,3 +25,10 @@ stretch_margin_bottom = 23
 texture_under = ExtResource("1_11qr4")
 texture_progress = ExtResource("2_ewb01")
 script = ExtResource("3_11qr4")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1379767273]
+script = ExtResource("5_lwd00")
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D" unique_id=1829014393]
+scale = Vector2(2, 2)
+texture = ExtResource("6_71t6b")
