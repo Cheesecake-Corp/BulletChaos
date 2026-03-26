@@ -100,10 +100,6 @@ func dash(horizontal, vertical):
 	dash_timer = dash_duration
 	cooldown_timer = dash_cooldown
 
-
-
-
-
 func spawn_afterimage():
 	var ghost : Sprite2D = afterimage_scene.instantiate()
 	ghost.texture = animated_sprite.sprite_frames.get_frame_texture(animated_sprite.animation, animated_sprite.frame)

@@ -1180,6 +1180,7 @@ flip_v = true
 
 [node name="Camera2D" type="Camera2D" parent="CameraBody" unique_id=2045531074]
 zoom = Vector2(2.5, 2.5)
+process_callback = 0
 limit_enabled = false
 position_smoothing_enabled = true
 position_smoothing_speed = 2.5
