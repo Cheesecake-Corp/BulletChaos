@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dtgctae7ugoyd"]
+
+[ext_resource type="Script" uid="uid://ciwhy0jq36glf" path="res://Player/DashAfterImage/after_image.gd" id="1_6cmd2"]
+
+[node name="AfterImage" type="Sprite2D" unique_id=208865990]
+script = ExtResource("1_6cmd2")

@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://0sqspss4rude"]
 
 [ext_resource type="Texture2D" uid="uid://cueppda3h3u4h" path="res://Assets/Borders/Default/Transparent center/panel-transparent-center-021.png" id="1_11qr4"]
-[ext_resource type="Script" uid="uid://c0836eipbqs3v" path="res://Player/hud.gd" id="1_ewb01"]
+[ext_resource type="Script" uid="uid://c0836eipbqs3v" path="res://Player/HUD/hud.gd" id="1_ewb01"]
 [ext_resource type="Texture2D" uid="uid://3bis3pxislay" path="res://Assets/Borders/Default/Panel/panel-021.png" id="2_ewb01"]
-[ext_resource type="Script" uid="uid://bmplpujapxk2f" path="res://Player/health_bar.gd" id="3_11qr4"]
-[ext_resource type="Script" uid="uid://cqsc7551txqpp" path="res://Player/crosshair.gd" id="5_lwd00"]
+[ext_resource type="Script" uid="uid://bmplpujapxk2f" path="res://Player/HUD/health_bar.gd" id="3_11qr4"]
+[ext_resource type="Script" uid="uid://cqsc7551txqpp" path="res://Player/HUD/crosshair.gd" id="5_lwd00"]
 [ext_resource type="Texture2D" uid="uid://7ihui1eeqfpr" path="res://Assets/UI/crosshair.png" id="6_71t6b"]
 
 [node name="Hud" type="CanvasLayer" unique_id=1135840636]

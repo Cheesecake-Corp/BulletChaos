@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://ulxao8ra8xss"]
 
 [ext_resource type="Texture2D" uid="uid://cjd61f1awnjv" path="res://Assets/Mage-Sheet.png" id="1_4ntmi"]
-[ext_resource type="Script" uid="uid://cemunisuw3ouh" path="res://Player/player.gd" id="1_btcbx"]
-[ext_resource type="PackedScene" uid="uid://0sqspss4rude" path="res://Player/HUD.tscn" id="4_gwnis"]
+[ext_resource type="Script" uid="uid://cemunisuw3ouh" path="res://Player/Player/player.gd" id="1_btcbx"]
+[ext_resource type="PackedScene" uid="uid://0sqspss4rude" path="res://Player/HUD/HUD.tscn" id="4_gwnis"]
 [ext_resource type="Texture2D" uid="uid://dwh4jbx2u41ed" path="res://Assets/Micro Icon Pack/Paint/3. Color Picker.png" id="9_f1ek2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_btcbx"]

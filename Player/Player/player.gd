@@ -6,6 +6,7 @@ extends CharacterBody2D
 var CAMERA_SPEED = SPEED*CAMERA_SPEED_MULTIPLIER
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 var last = "down"
+var last_dir : Vector2 = Vector2(0,1)
 @onready var health = 100
 var last_health = health
 @onready var max_health = 100
@@ -16,6 +17,19 @@ var last_damage = 100
 @onready var cursor: Sprite2D = $CameraBody/CameraCollision/Sprite2D
 @onready var camera_collision: CollisionShape2D = $CameraBody/CameraCollision
 @export var current_weapon : Weapon
+@export var dash_speed := 400.0
+@export var dash_duration := 0.15
+@export var dash_cooldown := 1.5
+
+var dash_timer := 0.0
+var cooldown_timer := 0.0
+var is_dashing := false
+
+var afterimage_cooldown := 0.0
+@export var afterimage_interval := 0.05
+@export var afterimage_scene := preload("res://Player/DashAfterImage/AfterImage.tscn")
+
+
 var map_mode = false
 signal health_change(health)
 
@@ -32,7 +46,7 @@ func camera_movement(horizontal, vertical):
 		camera_body.linear_velocity.x = move_toward(velocity.x, 0, SPEED)
 
 # normal character movement
-func character_movement(horizontal, vertical):
+func character_movement(horizontal, vertical, delta):
 
 	# makes camera follow player smoothly
 	camera_body.linear_velocity = -camera_body.position*5
@@ -44,9 +58,11 @@ func character_movement(horizontal, vertical):
 	# horizontal animations
 	# prioritizes horizontal animation
 	if horizontal or vertical:
+		last_dir = Vector2(horizontal, vertical)
 		if horizontal > 0:
 			if vertical > 0:
 				last = "rd"
+				
 			if vertical == 0:
 				last = "right"
 			if vertical < 0:
@@ -63,9 +79,43 @@ func character_movement(horizontal, vertical):
 				last = "down"
 			if vertical < 0:
 				last = "up"
+	
+	if is_dashing:
+		dash_timer -= delta
+		afterimage_cooldown -= delta
+		if afterimage_cooldown <= 0.0:
+			spawn_afterimage()
+			afterimage_cooldown = afterimage_interval
+		
+		velocity = last_dir*dash_speed
+
+		if dash_timer <= 0.0:
+			is_dashing = false
+	
+	if (Input.is_action_just_pressed("dash") and not is_dashing and cooldown_timer <= 0):
+		dash(horizontal, vertical)
+
+func dash(horizontal, vertical):
+	is_dashing = true
+	dash_timer = dash_duration
+	cooldown_timer = dash_cooldown
+
+
+
+
+
+func spawn_afterimage():
+	var ghost : Sprite2D = afterimage_scene.instantiate()
+	ghost.texture = animated_sprite.sprite_frames.get_frame_texture(animated_sprite.animation, animated_sprite.frame)
+	ghost.global_position = animated_sprite.global_position
+	ghost.global_rotation = global_rotation
+	ghost.flip_h = animated_sprite.flip_h
+	ghost.offset = animated_sprite.offset
+
+	get_tree().current_scene.add_child(ghost)
 
 # toggle map mode
-func map_mode_handeling(horizontal, vertical):
+func map_mode_handeling(horizontal, vertical, delta):
 	# handles enabling map mode
 	if(Input.is_action_just_pressed("map")):
 		map_mode = true
@@ -81,10 +131,9 @@ func map_mode_handeling(horizontal, vertical):
 	if(map_mode):
 		camera_movement(horizontal,vertical)
 	else:
-		character_movement(horizontal, vertical)
+		character_movement(horizontal, vertical, delta)
 	
 func _physics_process(_delta: float) -> void:
-	
 	# gets movement input
 	var horizontal := Input.get_axis("go_left","go_right")
 	var vertical := Input.get_axis("go_up","go_down")
@@ -97,6 +146,7 @@ func _physics_process(_delta: float) -> void:
 	
 	# last damage timer
 	last_damage = min(last_damage + 1, regen_delay)
+	cooldown_timer = move_toward(cooldown_timer, 0, _delta)
 	
 	if(health != last_health):
 		health_change.emit(health)
@@ -104,7 +154,7 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	# handles switching between map mode
-	map_mode_handeling(horizontal, vertical)
+	map_mode_handeling(horizontal, vertical, _delta)
 
 	# slows character down even if in map mode
 	if (not (horizontal or vertical)) or map_mode:
