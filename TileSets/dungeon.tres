@@ -1,10 +1,6 @@
 [gd_resource type="TileSet" format=3 uid="uid://dpfbdeytivjmx"]
 
-[ext_resource type="Texture2D" uid="uid://dwvi40l8f6hmj" path="res://Assets/Dungeon Gathering Free Version/Set 1.2.png" id="2_gabhw"]
-[ext_resource type="Texture2D" uid="uid://duairgfho5bgp" path="res://Assets/Dungeon Gathering Free Version/Set 1.0.png" id="4_ep1rk"]
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tq0mk"]
-texture = ExtResource("4_ep1rk")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0
@@ -386,7 +382,6 @@ texture = ExtResource("4_ep1rk")
 11:3/0/terrains_peering_bit/top_side = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s67fh"]
-texture = ExtResource("2_gabhw")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
