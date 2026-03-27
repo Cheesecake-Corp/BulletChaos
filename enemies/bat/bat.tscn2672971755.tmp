@@ -765,6 +765,10 @@ _data = {
 collision_layer = 32
 collision_mask = 0
 script = ExtResource("1_c4xfn")
+dmg_att1 = null
+dmg_att2 = null
+speed = null
+max_health = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1784310671]
 position = Vector2(0.39999938, -0.60000134)

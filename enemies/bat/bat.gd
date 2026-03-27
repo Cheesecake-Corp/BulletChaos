@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Enemy
 
 @export var player : CharacterBody2D
 enum{
@@ -10,7 +10,7 @@ enum{
 
 var state = SLEEP
 
-@export var speed : float = 150
+
 @export var dmg_att1 : float = 5
 @export var dmg_att2 : float = 5
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -39,6 +39,12 @@ func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 		return
 	state = SURROUND
 	animated_sprite_2d.play("bat_wakeup")
+
+func take_damage(damage : float):
+	animation_player.play("bat/hurt")
+	health -= damage
+	# if not (animation_player.is_playing() and animation_player.current_animation == "bat/hurt"):
+		
 
 func move(target : CharacterBody2D, delta):
 	var dir = (target.global_position - global_position).normalized()

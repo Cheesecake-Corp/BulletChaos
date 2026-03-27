@@ -2,12 +2,13 @@ class_name Weapon
 extends Node2D
 
 @export var use_rate : float = 100 # ms
-@export var base_damage : float = 1
+@export var base_damage : float = 12
 @export var base_magazine_capacity : int = 20
 @export var bullet_speed : float = .1
 @export var base_reload_time : float = 1.5 # s
 @export var rotation_distance := 30.0
 @onready var ray: RayCast2D = $RayCast2D
+var final_damage : float
 var reloading_time : float = 0
 var final_reload_time : float
 var is_reloading : bool = false
@@ -25,6 +26,7 @@ func _ready() -> void:
 	loaded_ammo = base_magazine_capacity
 	final_magazine_capacity = base_magazine_capacity
 	final_reload_time = base_reload_time
+	final_damage = base_damage
 	var time = bullet_scene.instantiate().get_meta("max_time") # s
 	print(time)
 	for i in range((time-base_reload_time)*1000/use_rate + 1):
@@ -111,6 +113,9 @@ func _use():
 func _on_body_entered(_body: Node, bullet: Projectile) -> void:
 	if not bullet.visible:
 		return
+	if _body is Enemy:
+		_body = _body as Enemy
+		_body.take_damage(final_damage)
 	call_deferred("_recycle_bullet", bullet)
 
 func _on_bullet_timeout(bullet : Projectile) -> void:

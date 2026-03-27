@@ -26,6 +26,7 @@ position = Vector2(0.0037088394, 0.008757591)
 shape = SubResource("RectangleShape2D_rmbtm")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1162551173]
+collision_mask = 33
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1825280224]
 position = Vector2(0.007417679, 0.017515182)
