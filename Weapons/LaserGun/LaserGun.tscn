@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cip53qji4b7bd"]
+
+[ext_resource type="Texture2D" uid="uid://b87fglxx4icxt" path="res://Assets/laserguns.png" id="1_ve7qe"]
+[ext_resource type="Script" uid="uid://cvo280ipweew0" path="res://Weapons/LaserGun/laser_gun.gd" id="2_kcoak"]
+[ext_resource type="PackedScene" uid="uid://uj2xyitbe8oi" path="res://Weapons/Ammo/Laser/laser.tscn" id="3_h637u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0tih"]
+atlas = ExtResource("1_ve7qe")
+region = Rect2(45, 3, 55, 16)
+
+[node name="LaserGun" type="Sprite2D" unique_id=644262661]
+texture = SubResource("AtlasTexture_m0tih")
+offset = Vector2(-24.5, 1)
+script = ExtResource("2_kcoak")
+use_rate = null
+base_damage = null
+base_magazine_capacity = null
+bullet_speed = 0.0
+base_reload_time = null
+rotation_distance = null
+bullet_scene = ExtResource("3_h637u")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=699976992]
+position = Vector2(-26, 0)
+target_position = Vector2(50, 0)

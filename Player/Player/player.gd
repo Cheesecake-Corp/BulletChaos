@@ -93,9 +93,9 @@ func character_movement(horizontal, vertical, delta):
 			is_dashing = false
 	
 	if (Input.is_action_just_pressed("dash") and not is_dashing and cooldown_timer <= 0):
-		dash(horizontal, vertical)
+		dash()
 
-func dash(horizontal, vertical):
+func dash():
 	is_dashing = true
 	dash_timer = dash_duration
 	cooldown_timer = dash_cooldown

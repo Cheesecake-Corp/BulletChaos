@@ -22,13 +22,9 @@ var can_use : bool = true
 var used_bullets: Array[Projectile] = []
 var available_bullets: Array[Projectile] = []
 @export var bullet_scene: PackedScene
-func _ready() -> void:
-	loaded_ammo = base_magazine_capacity
-	final_magazine_capacity = base_magazine_capacity
-	final_reload_time = base_reload_time
-	final_damage = base_damage
-	var time = bullet_scene.instantiate().get_meta("max_time") # s
-	
+
+func create_bullets():
+	var time = bullet_scene.instantiate().get_meta("max_time")
 	for i in range((time-base_reload_time)*1000/use_rate + 1):
 		var b : Projectile = bullet_scene.instantiate()
 		b.visible = false
@@ -43,11 +39,15 @@ func _ready() -> void:
 
 		available_bullets.append(b)
 		get_tree().current_scene.call_deferred("add_child", b)
-	
-func _process(delta: float) -> void:
-	set_aim_direction(-player.global_position + get_global_mouse_position())
-	rotation = lerp_angle(rotation, aim_angle, 40 * delta)
-	
+
+func _ready() -> void:
+	loaded_ammo = base_magazine_capacity
+	final_magazine_capacity = base_magazine_capacity
+	final_reload_time = base_reload_time
+	final_damage = base_damage
+	create_bullets()
+
+func reload(delta):
 	if(Input.is_action_just_pressed("reload")):
 		is_reloading = true
 		
@@ -57,7 +57,12 @@ func _process(delta: float) -> void:
 		loaded_ammo = final_magazine_capacity
 		is_reloading = false
 		reloading_time = 0
-	
+
+func _process(delta: float) -> void:
+	set_aim_direction(-player.global_position + get_global_mouse_position())
+	rotation = lerp_angle(rotation, aim_angle, 40 * delta)
+	reload(delta)
+
 func set_aim_direction (aim_dir : Vector2):
 	aim_angle = aim_dir.angle()
 	var dir = aim_dir.normalized()
@@ -81,7 +86,6 @@ func set_aim_direction (aim_dir : Vector2):
 	else:
 		scale.y = 1
 
-
 func _try_use() -> bool:
 	
 	if not can_use:
@@ -94,12 +98,11 @@ func _try_use() -> bool:
 		return false
 	last_use_time = Time.get_ticks_msec()
 
-	_use()
+	_use(available_bullets.pop_back())
 	return true
 
-func _use():
+func _use(b):
 	loaded_ammo -= 1
-	var b = available_bullets.pop_back()
 	b.start()
 	b.freeze=false
 	b.global_position = global_position

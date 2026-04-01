@@ -9,8 +9,8 @@ func _ready() -> void:
 	RANDOM_GENERATION = RandomNumberGenerator.new()
 	RANDOM_LOOT = RandomNumberGenerator.new()
 
-func change_seed(seed):
-	SEED = str(seed)
+func change_seed(_seed):
+	SEED = str(_seed)
 	RANDOM_GENERATION.seed = hash(SEED + "_GEN")
 	RANDOM_LOOT.seed = hash(SEED + "_LOOT")
 

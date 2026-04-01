@@ -38,12 +38,10 @@ func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	if not state == SLEEP:
 		return
 	state = SURROUND
-	animated_sprite_2d.play("bat_wakeup")
 
 func take_damage(damage : float):
 	animation_player.play("bat/hurt")
-	health -= damage
-	# if not (animation_player.is_playing() and animation_player.current_animation == "bat/hurt"):
+	super(damage)
 		
 
 func move(target : CharacterBody2D, delta):

@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://uj2xyitbe8oi"]
+
+[ext_resource type="Script" uid="uid://c6x1vq72efmsm" path="res://Weapons/Ammo/Laser/laser.gd" id="1_cb0qw"]
+[ext_resource type="Texture2D" uid="uid://bpovk6n1ji467" path="res://Assets/Ammo/laser.png" id="2_cgyn8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sn8b1"]
+size = Vector2(97, 3)
+
+[node name="RigidBody2D" type="RigidBody2D" unique_id=1331438151]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_cb0qw")
+metadata/max_time = 120
+
+[node name="Timer" type="Timer" parent="." unique_id=1173091418]
+
+[node name="Node2D" type="Node2D" parent="." unique_id=914022054]
+metadata/_edit_group_ = true
+
+[node name="Bullet" type="NinePatchRect" parent="Node2D" unique_id=1868091552]
+offset_right = 97.0
+offset_bottom = 3.0
+texture = ExtResource("2_cgyn8")
+patch_margin_left = 2
+patch_margin_top = 1
+patch_margin_right = 2
+patch_margin_bottom = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=96652953]
+position = Vector2(48.5, 1.5)
+shape = SubResource("RectangleShape2D_sn8b1")
+
+[node name="Timer2" type="Timer" parent="." unique_id=1910755871]
+wait_time = 0.5
+
+[connection signal="timeout" from="Timer" to="." method="on_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
