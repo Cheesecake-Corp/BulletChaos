@@ -28,7 +28,7 @@ func _ready() -> void:
 	final_reload_time = base_reload_time
 	final_damage = base_damage
 	var time = bullet_scene.instantiate().get_meta("max_time") # s
-	print(time)
+	
 	for i in range((time-base_reload_time)*1000/use_rate + 1):
 		var b : Projectile = bullet_scene.instantiate()
 		b.visible = false
