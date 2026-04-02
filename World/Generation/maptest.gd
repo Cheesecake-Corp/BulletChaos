@@ -18,6 +18,7 @@ func _ready() -> void:
 	pass
 
 func start(maxcount: int):
+	GAME.change_seed("Chocolate")
 	var spawn: Room = Spawn_scene[GAME.RANDOM_GENERATION.randi_range(0,Spawn_scene.size()-1)].instantiate()
 	add_child(spawn)
 	#get_tree().current_scene.call_deferred("add_child", spawn)
