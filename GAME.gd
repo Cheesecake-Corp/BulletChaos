@@ -1,7 +1,7 @@
 extends Node
 
 
-@export var SEED : String
+@export var SEED : String = "Chocolate"
 var RANDOM_LOOT : RandomNumberGenerator
 var RANDOM_GENERATION : RandomNumberGenerator
 

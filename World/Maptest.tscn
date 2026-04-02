@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://bpmeoyikylkwr"]
 
-[ext_resource type="Script" uid="uid://dkhpswcawbbga" path="res://World/maptest.gd" id="1_iqkay"]
+[ext_resource type="Script" uid="uid://dkhpswcawbbga" path="res://World/Generation/maptest.gd" id="1_iqkay"]
+[ext_resource type="PackedScene" uid="uid://biqlm4sf7p768" path="res://World/Room1/Room1.tscn" id="2_iqkay"]
+[ext_resource type="PackedScene" uid="uid://dj0h88ur32gk0" path="res://World/ChallangeRoom/ChallangeRoom.tscn" id="3_r34r4"]
 
 [node name="Node2D" type="Node2D" unique_id=1741890309]
 script = ExtResource("1_iqkay")
-Spawn_scene = null
-Challenge_scene = null
-Boss_scene = null
-Checkpoint_scene = null
-Other_scene = null
+Spawn_scene = Array[PackedScene]([ExtResource("2_iqkay")])
+Challenge_scene = Array[PackedScene]([ExtResource("3_r34r4")])
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=393500180]
+zoom = Vector2(0.1, 0.1)

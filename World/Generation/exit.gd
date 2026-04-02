@@ -4,6 +4,7 @@ var location = Vector2i()
 var direction
 var id := 0
 var global_position = Vector2i()
+var room : Room
 
 func set_location(l: Vector2i) -> Exit:
 	location = l
@@ -15,6 +16,10 @@ func set_direction(d) -> Exit:
 	
 func set_id(i: int) -> Exit:
 	id = i
+	return self
+	
+func set_room(r : Room) -> Exit:
+	room = r
 	return self
 	
 func set_global_position(g: Vector2i) -> Exit:
