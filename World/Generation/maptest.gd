@@ -18,7 +18,7 @@ func _ready() -> void:
 	pass
 
 func start(maxcount: int):
-	GAME.change_seed("911")
+	GAME.change_seed("LdddddddddddddggadadggggddgO")
 	var spawn: Room = Spawn_scene[GAME.RANDOM_GENERATION.randi_range(0,Spawn_scene.size()-1)].instantiate()
 	add_child(spawn)
 	#get_tree().current_scene.call_deferred("add_child", spawn)
@@ -111,7 +111,7 @@ func tryplace(e: Exit, room: Room) -> Exit:
 			var height = room.size[n]["size"].y
 			var width = room.size[n]["size"].x
 			var m = 0
-			while pos.x + m <= width and possible:
+			while m <= width and possible:
 				var check1 := Vector2i(pos.x + m + coordinates.x, pos.y + coordinates.y)
 				if walls.get(check1,0) != 0: #Top wall
 					ex.erase(exi)
@@ -123,7 +123,7 @@ func tryplace(e: Exit, room: Room) -> Exit:
 					possible = false
 				m+=1
 			m = 0
-			while pos.y + m <= height and possible:
+			while m <= height and possible:
 				if walls.get(Vector2i(pos.x + coordinates.x, pos.y + m + coordinates.y),0) != 0: #Left wall
 					ex.erase(exi)
 					possible = false
@@ -142,12 +142,12 @@ func write(room: Room, coordinates: Vector2i, exit_entry: Exit, exit_exit: Exit)
 		var height = room.size[n]["size"].y
 		var width = room.size[n]["size"].x
 		var m = 0
-		while pos.x + m <= width:
+		while m <= width:
 			walls[Vector2i(pos.x + m + coordinates.x, pos.y + coordinates.y)] = 1 #Top wall
 			walls[Vector2i(pos.x + m + coordinates.x, pos.y + coordinates.y + height)] = 1 #Bottom wall
 			m+=1
 		m = 0
-		while pos.y + m <= height:
+		while m <= height:
 			walls[Vector2i(pos.x + coordinates.x, pos.y + m + coordinates.y)] = 1 #Left wall
 			walls[Vector2i(pos.x + coordinates.x + width, pos.y + m + coordinates.y)] = 1 #Right wall
 			m+=1
@@ -163,4 +163,4 @@ func write(room: Room, coordinates: Vector2i, exit_entry: Exit, exit_exit: Exit)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if(Input.is_action_just_pressed("generate")):
-		start(15000)
+		start(250)
