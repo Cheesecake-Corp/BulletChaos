@@ -18,7 +18,6 @@ func _ready() -> void:
 	pass
 
 func start(maxcount: int):
-	GAME.change_seed("Schokolate")
 	var spawn: Room = Spawn_scene[GAME.RANDOM_GENERATION.randi_range(0,Spawn_scene.size()-1)].instantiate()
 	add_child(spawn)
 	#get_tree().current_scene.call_deferred("add_child", spawn)
@@ -163,4 +162,4 @@ func write(room: Room, coordinates: Vector2i, exit_entry: Exit, exit_exit: Exit)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if(Input.is_action_just_pressed("generate")):
-		start(50)
+		start(150)
