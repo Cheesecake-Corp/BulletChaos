@@ -14,4 +14,4 @@ Checkpoint_scene = Array[PackedScene]([ExtResource("4_jhnkp")])
 Other_scene = Array[PackedScene]([ExtResource("5_1lsrq")])
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=393500180]
-zoom = Vector2(3, 3)
+zoom = Vector2(0.5, 0.5)
