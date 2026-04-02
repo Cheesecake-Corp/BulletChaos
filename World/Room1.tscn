@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://biqlm4sf7p768"]
 
-[ext_resource type="Script" path="res://World/room_1.gd" id="1_jx6li"]
+[ext_resource type="Script" uid="uid://c8ncbwlf5wrxr" path="res://World/room_1.gd" id="1_jx6li"]
 [ext_resource type="TileSet" uid="uid://cg5q7oaxgfn6j" path="res://TileSets/dungeonf.tres" id="2_gyuu0"]
 
 [node name="Room1" type="Node2D" unique_id=272341162]
