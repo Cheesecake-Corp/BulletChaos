@@ -1,10 +1,10 @@
 extends Node2D
 
-@export var Spawn_scene: Array[PackedScene]
-@export var Challenge_scene: Array[PackedScene]
-@export var Boss_scene: Array[PackedScene]
-@export var Checkpoint_scene: Array[PackedScene]
-@export var Other_scene: Array[PackedScene]
+@export var spawn_scene: Array[PackedScene]
+@export var challenge_scene: Array[PackedScene]
+@export var boss_scene: Array[PackedScene]
+@export var checkpoint_scene: Array[PackedScene]
+@export var other_scene: Array[PackedScene]
 
 var exits: Array[Exit] = [] #Exits
 var walls: = {} #All walls
@@ -13,12 +13,8 @@ var count: = 0 #Total number of rooms
 var min_rooms: = {}
 var scenes : Dictionary 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
-
 func start(maxcount: int):
-	var spawn: Room = Spawn_scene[GAME.RANDOM_GENERATION.randi_range(0,Spawn_scene.size()-1)].instantiate()
+	var spawn: Room = spawn_scene[GAME.RANDOM_GENERATION.randi_range(0,spawn_scene.size()-1)].instantiate()
 	add_child(spawn)
 	#get_tree().current_scene.call_deferred("add_child", spawn)
 	spawn.global_position = Vector2i(0,0)
@@ -27,9 +23,9 @@ func start(maxcount: int):
 	min_rooms["Checkpoint"] = 2
 	min_rooms["Other"] = 5
 	scenes = {
-		"Challenge": Challenge_scene.duplicate(),
-		"Checkpoint": Checkpoint_scene.duplicate(),
-		"Other": Other_scene.duplicate()
+		"Challenge": challenge_scene.duplicate(),
+		"Checkpoint": checkpoint_scene.duplicate(),
+		"Other": other_scene.duplicate()
 	}
 	while maxcount > 0:
 		gen()
@@ -38,6 +34,8 @@ func start(maxcount: int):
 	
 
 func gen():
+	if exits.is_empty():
+		return
 	var exit_entry : Exit = null
 	var exit_exit : Exit = null
 	while exit_entry == null:
@@ -57,16 +55,15 @@ func get_room() -> Array[Exit]:
 		var type = types[GAME.RANDOM_GENERATION.randi_range(0,types.size()-1)]
 		if(min_rooms[type] <= 0 and types.size() != 1): 
 			continue
-		var load_type_scenes : Array[PackedScene] = scenes[type]
-		var type_scenes : Array[PackedScene] = load_type_scenes.duplicate()
+		var type_scenes : Array[PackedScene] = scenes[type].duplicate()
 		while type_scenes:
 			var scene = type_scenes[GAME.RANDOM_GENERATION.randi_range(0,type_scenes.size()-1)]
 			var room = scene.instantiate()
 			exit_entry = tryplace(e, room)
 			type_scenes.erase(scene)
 			if(exit_entry != null):
-				
 				break
+			room.queue_free()
 		types.erase(type)
 		if(exit_entry != null):
 				break
@@ -115,20 +112,24 @@ func tryplace(e: Exit, room: Room) -> Exit:
 				if walls.get(check1,0) != 0: #Top wall
 					ex.erase(exi)
 					possible = false
+					break
 					
 				var check2:=Vector2i(pos.x + m + coordinates.x, pos.y + coordinates.y + height)
 				if walls.get(check2,0) != 0: #Bottom wall
 					ex.erase(exi)
 					possible = false
+					break
 				m+=1
 			m = 0
 			while m <= height and possible:
 				if walls.get(Vector2i(pos.x + coordinates.x, pos.y + m + coordinates.y),0) != 0: #Left wall
 					ex.erase(exi)
 					possible = false
+					break
 				if walls.get(Vector2i(pos.x + coordinates.x + width, pos.y + m + coordinates.y),0) != 0: #Right wall
 					ex.erase(exi)
 					possible = false
+					break
 				m+=1
 		if possible == true:
 			return exi
@@ -162,4 +163,4 @@ func write(room: Room, coordinates: Vector2i, exit_entry: Exit, exit_exit: Exit)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if(Input.is_action_just_pressed("generate")):
-		start(150)
+		start(300)

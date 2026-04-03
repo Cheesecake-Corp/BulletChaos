@@ -6,8 +6,8 @@
 
 [node name="Node2D" type="Node2D" unique_id=1741890309]
 script = ExtResource("1_iqkay")
-Spawn_scene = Array[PackedScene]([ExtResource("2_iqkay")])
-Challenge_scene = Array[PackedScene]([ExtResource("3_r34r4")])
+spawn_scene = Array[PackedScene]([ExtResource("2_iqkay")])
+challenge_scene = Array[PackedScene]([ExtResource("3_r34r4")])
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=393500180]
 zoom = Vector2(0.3, 0.3)
