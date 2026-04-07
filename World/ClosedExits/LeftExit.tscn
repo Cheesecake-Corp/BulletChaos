@@ -7,7 +7,7 @@ z_index = 1
 z_as_relative = false
 
 [node name="Wall" type="TileMapLayer" parent="." unique_id=356245779]
-z_index = 1
+z_index = 121
 z_as_relative = false
 tile_map_data = PackedByteArray("AAAAAAAAAAAOAAEAAAAAAAEAAAAPAAQAAAAAAAIAAAAPAAUAAAAAAAMAAAAPAAYAAAAAAAQAAAAPAAQAAAAAAAkAAAAIAAEAAAAAAAUAAAAPAAUAAAAAAAYAAAAPAAQAAAAAAAcAAAAPAAUAAAAAAAgAAAAPAAYAAAA=")
 tile_set = ExtResource("1_weewt")
