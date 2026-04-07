@@ -20,7 +20,7 @@ var top_exit : PackedScene = preload("res://World/ClosedExits/TopExit.tscn")
 var bottom_exit : PackedScene = preload("res://World/ClosedExits/BottomExit.tscn")
 
 func start(maxcount: int):
-	
+	reset()
 	start_gen(maxcount)
 	var br : Array[PackedScene] = boss_scene.duplicate()
 	var ex : Exit = null
@@ -238,7 +238,5 @@ func write(room: Room, coordinates: Vector2i, exit_entry: Exit, exit_exit: Exit)
 			continue
 		exits.append(e)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	if(Input.is_action_just_pressed("generate")):
-		start(120)
+func _ready() -> void:
+	start(120)
