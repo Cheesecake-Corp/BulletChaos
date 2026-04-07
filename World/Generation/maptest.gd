@@ -12,6 +12,7 @@ var roomtypes: Array[String] = ["Challenge", "Checkpoint", "Other"]
 var count: = 0 #Total number of rooms
 var min_rooms: = {}
 var scenes : Dictionary 
+var rooms : Array[Room] = []
 
 var left_exit : PackedScene = preload("res://World/ClosedExits/LeftExit.tscn")
 var right_exit : PackedScene = preload("res://World/ClosedExits/RightExit.tscn")
@@ -37,6 +38,7 @@ func start(maxcount: int):
 				ex = tryplace(e[exi],s)
 				if ex == null:
 					e.remove_at(exi)
+					s.queue_free()
 				else:
 					boss_room = s
 					exit_exit = e[exi]
@@ -82,6 +84,9 @@ func reset():
 	roomtypes = ["Challenge", "Checkpoint", "Other"] 
 	count = 0 #Total number of rooms
 	min_rooms = {}
+	for room in rooms:
+		room.queue_free()
+	rooms = []
 
 func finish_exits():
 	for e in exits:
@@ -115,6 +120,7 @@ func gen():
 	write(exit_entry.room,exit_entry.global_position-exit_entry.location,exit_entry,exit_exit)
 	get_tree().current_scene.call_deferred("add_child",exit_entry.room)
 	exit_entry.room.global_position = (exit_entry.global_position-exit_entry.location)*16
+	rooms.append(exit_entry.room)
 	
 
 func get_room() -> Array[Exit]:
@@ -166,10 +172,11 @@ func tryplace(e: Exit, room: Room) -> Exit:
 	
 	var ex = []
 	for x in room.exits:
-		if x.direction == d:
+		if x.direction == d and e.id == x.id:
 			ex.append(x)
 	while ex:
 		var exi : Exit = ex[GAME.RANDOM_GENERATION.randi_range(0,ex.size()-1)]
+		
 		var possible = true
 		var coordinates = e.global_position-exi.location + coordinates_coeficient
 		exi.global_position = e.global_position + coordinates_coeficient
@@ -234,4 +241,4 @@ func write(room: Room, coordinates: Vector2i, exit_entry: Exit, exit_exit: Exit)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if(Input.is_action_just_pressed("generate")):
-		start(50)
+		start(120)
