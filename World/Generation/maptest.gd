@@ -13,12 +13,56 @@ var count: = 0 #Total number of rooms
 var min_rooms: = {}
 var scenes : Dictionary 
 
+var left_exit : PackedScene = preload("res://World/ClosedExits/LeftExit.tscn")
+var right_exit : PackedScene = preload("res://World/ClosedExits/RightExit.tscn")
+var top_exit : PackedScene = preload("res://World/ClosedExits/TopExit.tscn")
+var bottom_exit : PackedScene = preload("res://World/ClosedExits/BottomExit.tscn")
+
 func start(maxcount: int):
+	
+	start_gen(maxcount)
+	var br : Array[PackedScene] = boss_scene.duplicate()
+	var ex : Exit = null
+	var boss_room : Room = null
+	var exit_exit : Exit = null
+	while ex == null:
+		while br:
+			if ex != null:
+					break
+			var b = GAME.RANDOM_GENERATION.randi_range(0,br.size()-1)
+			var e = exits.duplicate()
+			while e:
+				var exi = GAME.RANDOM_GENERATION.randi_range(0,exits.size()-1)
+				var s : Room = br[b].instantiate()
+				ex = tryplace(e[exi],s)
+				if ex == null:
+					e.remove_at(exi)
+				else:
+					boss_room = s
+					exit_exit = e[exi]
+					break
+			if ex == null:
+				br.remove_at(b)
+		if ex == null:
+			reset()
+			start_gen(maxcount)
+	get_tree().current_scene.call_deferred("add_child",boss_room)
+	boss_room.global_position = (ex.global_position-ex.location)*16
+	write(boss_room,ex.global_position-ex.location,ex,exit_exit)
+	finish_exits()
+
+func start_gen(maxcount: int):
 	var spawn: Room = spawn_scene[GAME.RANDOM_GENERATION.randi_range(0,spawn_scene.size()-1)].instantiate()
 	add_child(spawn)
 	#get_tree().current_scene.call_deferred("add_child", spawn)
 	spawn.global_position = Vector2i(0,0)
 	write(spawn, spawn.global_position, null, null)
+	
+	var p : PackedScene = load("res://Player/Player/player.tscn")
+	var player : Player = p.instantiate()
+	get_parent().add_child(player)
+	player.global_position = Vector2(spawn.size[0]["size"].x,spawn.size[0]["size"].y+2)*8
+	
 	min_rooms["Challenge"] = 5
 	min_rooms["Checkpoint"] = 2
 	min_rooms["Other"] = 5
@@ -30,9 +74,35 @@ func start(maxcount: int):
 	while maxcount > 0:
 		gen()
 		maxcount -= 1
-	
-	
 
+
+func reset():
+	exits = [] #Exits
+	walls = {} #All walls
+	roomtypes = ["Challenge", "Checkpoint", "Other"] 
+	count = 0 #Total number of rooms
+	min_rooms = {}
+
+func finish_exits():
+	for e in exits:
+		e as Exit
+		spawn_exit(e)
+		
+		
+func spawn_exit(e : Exit):
+	var scene : PackedScene = null
+	match e.direction:
+		Room.direction.LEFT:
+			scene = left_exit
+		Room.direction.RIGHT:
+			scene = right_exit
+		Room.direction.TOP:
+			scene = top_exit
+		Room.direction.DOWN:
+			scene = bottom_exit
+	var s = scene.instantiate()
+	add_child(s)
+	s.global_position = Vector2(e.global_position.x,e.global_position.y)*16
 func gen():
 	if exits.is_empty():
 		return
@@ -69,6 +139,7 @@ func get_room() -> Array[Exit]:
 				break
 	if exit_entry == null:
 		exits.erase(e)
+		spawn_exit(e)
 	return [exit_entry,e]
 
 func tryplace(e: Exit, room: Room) -> Exit:
@@ -163,4 +234,4 @@ func write(room: Room, coordinates: Vector2i, exit_entry: Exit, exit_exit: Exit)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if(Input.is_action_just_pressed("generate")):
-		start(300)
+		start(50)

@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Player
 
 @export var SPEED = 150.0
 @export var CAMERA_SPEED_MULTIPLIER = 3
@@ -33,6 +33,14 @@ var afterimage_cooldown := 0.0
 var map_mode = false
 signal health_change(health)
 
+func _ready() -> void:
+	GAME.register_player(self)
+	change_weapon(GAME.current_weapon)
+
+func change_weapon(weapon : PackedScene):
+	var w = weapon.instantiate()
+	add_child(w)
+	current_weapon = w
 # movement in camera mode
 func camera_movement(horizontal, vertical):
 

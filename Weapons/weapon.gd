@@ -45,6 +45,7 @@ func _ready() -> void:
 	final_magazine_capacity = base_magazine_capacity
 	final_reload_time = base_reload_time
 	final_damage = base_damage
+	player = GAME.player
 	create_bullets()
 
 func reload(delta):

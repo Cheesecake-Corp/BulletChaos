@@ -1,0 +1,13 @@
+[gd_scene format=4 uid="uid://cohf1j1r2pjpd"]
+
+[ext_resource type="TileSet" uid="uid://cg5q7oaxgfn6j" path="res://TileSets/dungeonf.tres" id="1_weewt"]
+
+[node name="LeftExit" type="Node2D" unique_id=1382141338]
+z_index = 1
+z_as_relative = false
+
+[node name="Wall" type="TileMapLayer" parent="." unique_id=356245779]
+z_index = 1
+z_as_relative = false
+tile_map_data = PackedByteArray("AAAAAAAAAAAOAAEAAAAAAAEAAAAPAAQAAAAAAAIAAAAPAAUAAAAAAAMAAAAPAAYAAAAAAAQAAAAPAAQAAAAAAAkAAAAIAAEAAAAAAAUAAAAPAAUAAAAAAAYAAAAPAAQAAAAAAAcAAAAPAAUAAAAAAAgAAAAPAAYAAAA=")
+tile_set = ExtResource("1_weewt")
