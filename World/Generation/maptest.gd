@@ -6,6 +6,11 @@ extends Node2D
 @export var checkpoint_scene: Array[PackedScene]
 @export var other_scene: Array[PackedScene]
 
+var minx = 0
+var maxx = 0
+var miny = 0
+var maxy = 0
+
 var exits: Array[Exit] = [] #Exits
 var walls: = {} #All walls
 var roomtypes: Array[String] = ["Challenge", "Checkpoint", "Other"] 
@@ -53,6 +58,7 @@ func start(maxcount: int):
 	write(boss_room,ex.global_position-ex.location,ex,exit_exit)
 	connect_exits()
 	finish_exits()
+	GAME.boss_room_pos = boss_room.global_position + Vector2(boss_room.size[0]["size"]/2)
 
 func start_gen(maxcount: int):
 	var spawn: Room = spawn_scene[GAME.RANDOM_GENERATION.randi_range(0,spawn_scene.size()-1)].instantiate()
@@ -65,6 +71,8 @@ func start_gen(maxcount: int):
 	var player : Player = p.instantiate()
 	get_parent().add_child(player)
 	player.global_position = Vector2(spawn.size[0]["size"].x,spawn.size[0]["size"].y+2)*8
+	maxx = spawn.navsq.x
+	maxy = spawn.navsq.y
 	
 	min_rooms["Challenge"] = 5
 	min_rooms["Checkpoint"] = 2
@@ -139,6 +147,7 @@ func spawn_exit(e : Exit):
 	var s = scene.instantiate()
 	add_child(s)
 	s.global_position = Vector2(e.global_position.x,e.global_position.y)*16
+
 func gen():
 	if exits.is_empty():
 		return
@@ -153,6 +162,10 @@ func gen():
 	get_tree().current_scene.call_deferred("add_child",exit_entry.room)
 	exit_entry.room.global_position = (exit_entry.global_position-exit_entry.location)*16
 	rooms.append(exit_entry.room)
+	maxx = max(maxx, exit_entry.room.global_position.x + exit_entry.room.navsq.x)
+	maxy = max(maxy, exit_entry.room.global_position.y + exit_entry.room.navsq.y)
+	minx = min(minx, exit_entry.room.global_position.x)
+	miny = min(miny, exit_entry.room.global_position.y)
 	
 
 func get_room() -> Array[Exit]:

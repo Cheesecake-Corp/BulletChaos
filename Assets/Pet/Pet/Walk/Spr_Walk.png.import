@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6gbk1mq63tpg"
-path="res://.godot/imported/Spr_Idle.png-f73675ff695b9e423d24bf96f1f14150.ctex"
+uid="uid://spcty24yp5s0"
+path="res://.godot/imported/Spr_Walk.png-63c1f1d2ba7a03fe98b1ecf88be26871.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Ramses Free Package/Ramses Free Package/Idle/Spr_Idle.png"
-dest_files=["res://.godot/imported/Spr_Idle.png-f73675ff695b9e423d24bf96f1f14150.ctex"]
+source_file="res://Assets/Pet/Pet/Walk/Spr_Walk.png"
+dest_files=["res://.godot/imported/Spr_Walk.png-63c1f1d2ba7a03fe98b1ecf88be26871.ctex"]
 
 [params]
 
