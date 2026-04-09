@@ -6,6 +6,8 @@ var RANDOM_LOOT : RandomNumberGenerator
 var RANDOM_GENERATION : RandomNumberGenerator
 var player : Player = null
 @export var current_weapon : PackedScene = load("res://Weapons/BasicGuns/revolver.tscn")
+var boss_room_pos : Vector2
+
 
 func register_player(p):
 	player = p

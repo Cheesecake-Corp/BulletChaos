@@ -51,6 +51,7 @@ func start(maxcount: int):
 	get_tree().current_scene.call_deferred("add_child",boss_room)
 	boss_room.global_position = (ex.global_position-ex.location)*16
 	write(boss_room,ex.global_position-ex.location,ex,exit_exit)
+	connect_exits()
 	finish_exits()
 
 func start_gen(maxcount: int):
@@ -90,10 +91,40 @@ func reset():
 
 func finish_exits():
 	for e in exits:
-		e as Exit
 		spawn_exit(e)
 		
-		
+
+func connect_exits():
+	var ex = exits.duplicate()
+	while ex:
+		var e : Exit = ex.pop_front()
+		if not exits.has(e):
+			continue
+		var coordinates_coeficient : Vector2i
+		var d
+		match e.direction:
+			Room.direction.RIGHT:
+				d = Room.direction.LEFT
+				coordinates_coeficient = Vector2i(1, 0)
+
+			Room.direction.LEFT:
+				d = Room.direction.RIGHT
+				coordinates_coeficient = Vector2i(-1, 0)
+
+			Room.direction.TOP:
+				d = Room.direction.DOWN
+				coordinates_coeficient = Vector2i(0, -1)
+
+			Room.direction.DOWN:
+				d = Room.direction.TOP
+				coordinates_coeficient = Vector2i(0, 1)
+		for other in ex:
+			if other.global_position == e.global_position + coordinates_coeficient and other.direction == d:
+				exits.erase(e)
+				exits.erase(other)
+				ex.erase(other)
+				break
+			
 func spawn_exit(e : Exit):
 	var scene : PackedScene = null
 	match e.direction:
@@ -118,6 +149,7 @@ func gen():
 		exit_entry = result[0]
 		exit_exit = result[1]
 	write(exit_entry.room,exit_entry.global_position-exit_entry.location,exit_entry,exit_exit)
+	connect_exits()
 	get_tree().current_scene.call_deferred("add_child",exit_entry.room)
 	exit_entry.room.global_position = (exit_entry.global_position-exit_entry.location)*16
 	rooms.append(exit_entry.room)
@@ -145,6 +177,7 @@ func get_room() -> Array[Exit]:
 				break
 	if exit_entry == null:
 		exits.erase(e)
+		
 		spawn_exit(e)
 	return [exit_entry,e]
 
@@ -234,9 +267,9 @@ func write(room: Room, coordinates: Vector2i, exit_entry: Exit, exit_exit: Exit)
 	for e in room.exits:
 		e.global_position.x = coordinates.x + e.location.x
 		e.global_position.y = coordinates.y + e.location.y
-		if e == exit_entry: 
+		if e == exit_entry:
 			continue
 		exits.append(e)
 
 func _ready() -> void:
-	start(120)
+	start(20)
