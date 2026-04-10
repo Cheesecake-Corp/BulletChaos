@@ -7,6 +7,7 @@ var RANDOM_GENERATION : RandomNumberGenerator
 var player : Player = null
 @export var current_weapon : Weapon 
 var boss_room_pos : Vector2
+var outline: PackedVector2Array
 
 signal weapon_changed
 

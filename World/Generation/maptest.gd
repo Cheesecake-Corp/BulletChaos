@@ -59,6 +59,11 @@ func start(maxcount: int):
 	connect_exits()
 	finish_exits()
 	GAME.boss_room_pos = boss_room.global_position + Vector2(boss_room.size[0]["size"]*8)
+	GAME.outline = [Vector2(minx,miny),Vector2(maxx,miny),Vector2(maxx,maxy),Vector2(minx,maxy)]
+	var pe : PackedScene = load("res://Player/Pet/Pet.tscn")
+	var pet : Pet = pe.instantiate() #Creates pet
+	get_parent().add_child(pet)
+	pet.global_position = GAME.player.global_position
 	
 
 func start_gen(maxcount: int):
@@ -69,7 +74,7 @@ func start_gen(maxcount: int):
 	write(spawn, spawn.global_position, null, null)
 	
 	var p : PackedScene = load("res://Player/Player/player.tscn")
-	var player : Player = p.instantiate()
+	var player : Player = p.instantiate() #Creates player
 	get_parent().add_child(player)
 	player.global_position = Vector2(spawn.size[0]["size"].x,spawn.size[0]["size"].y+2)*8
 	maxx = spawn.navsq.x
@@ -167,6 +172,7 @@ func gen():
 	maxy = max(maxy, exit_entry.room.global_position.y + exit_entry.room.navsq.y*16)
 	minx = min(minx, exit_entry.room.global_position.x)
 	miny = min(miny, exit_entry.room.global_position.y)
+	exit_entry.room.add_to_group("Rooms")
 	
 
 func get_room() -> Array[Exit]:
