@@ -16,12 +16,14 @@ var final_magazine_capacity : int
 var loaded_ammo : int = 20
 var last_use_time : float
 var aim_angle : float
-@export var player : CharacterBody2D
+@export var player : Player
 var can_use : bool = true
 
 var used_bullets: Array[Projectile] = []
 var available_bullets: Array[Projectile] = []
 @export var bullet_scene: PackedScene
+
+signal change_bullets(bullets : int)
 
 func create_bullets():
 	var time = bullet_scene.instantiate().get_meta("max_time")
@@ -54,10 +56,12 @@ func reload(delta):
 		
 	if(is_reloading):
 		reloading_time += delta
+		player.reload_bar.value = reloading_time/final_reload_time*player.reload_bar.max_value
 	if reloading_time >= final_reload_time:
 		loaded_ammo = final_magazine_capacity
 		is_reloading = false
 		reloading_time = 0
+		change_bullets.emit(loaded_ammo)
 
 func _process(delta: float) -> void:
 	set_aim_direction(-player.global_position + get_global_mouse_position())
@@ -113,6 +117,7 @@ func _use(b):
 	var dir = (get_global_mouse_position() - global_position).normalized()
 	b.linear_velocity = dir * bullet_speed * 1500
 	used_bullets.append(b)
+	change_bullets.emit(loaded_ammo)
 
 func _on_body_entered(_body: Node, bullet: Projectile) -> void:
 	if not bullet.visible:

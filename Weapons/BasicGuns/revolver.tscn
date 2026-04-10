@@ -12,6 +12,7 @@ region = Rect2(80, 118, 15, 10)
 texture = SubResource("AtlasTexture_iagck")
 offset = Vector2(-7.5, 3.5)
 script = ExtResource("2_6ccds")
+bullet_speed = 0.2
 bullet_scene = ExtResource("3_r5b1y")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=2077104488]

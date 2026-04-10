@@ -3,6 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://cjd61f1awnjv" path="res://Assets/Mage-Sheet.png" id="1_4ntmi"]
 [ext_resource type="Script" uid="uid://cemunisuw3ouh" path="res://Player/Player/player.gd" id="1_btcbx"]
 [ext_resource type="PackedScene" uid="uid://0sqspss4rude" path="res://Player/HUD/HUD.tscn" id="4_gwnis"]
+[ext_resource type="Texture2D" uid="uid://b7jvr10uu1sej" path="res://Assets/PmWWq1.png" id="5_23422"]
+[ext_resource type="Script" uid="uid://ds0hcusy4ca27" path="res://Player/Player/dash_bar.gd" id="6_l1x3h"]
+[ext_resource type="Texture2D" uid="uid://kv1ptkycsotc" path="res://Assets/HUD/Reload bar/under.png" id="7_6w6st"]
+[ext_resource type="Texture2D" uid="uid://c6h0wk65p465y" path="res://Assets/HUD/Reload bar/progress.png" id="8_piis0"]
 [ext_resource type="Texture2D" uid="uid://dwh4jbx2u41ed" path="res://Assets/Micro Icon Pack/Paint/3. Color Picker.png" id="9_f1ek2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_btcbx"]
@@ -1143,11 +1147,18 @@ height = 32.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_8erm5"]
 radius = 3.1622777
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1x3h"]
+atlas = ExtResource("5_23422")
+region = Rect2(272, 495, 61, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_any7c"]
+atlas = ExtResource("5_23422")
+region = Rect2(176, 495, 61, 7)
+
 [node name="Player" type="CharacterBody2D" unique_id=1039559475]
 collision_layer = 32
 safe_margin = 0.001
 script = ExtResource("1_btcbx")
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1157698555]
 z_index = 25
@@ -1190,5 +1201,38 @@ drag_right_margin = 0.06
 drag_bottom_margin = 0.06
 
 [node name="Hud" parent="." unique_id=1135840636 instance=ExtResource("4_gwnis")]
+
+[node name="DashProgressBar" type="TextureProgressBar" parent="." unique_id=1933854427]
+z_index = 500
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = 19.0
+offset_right = 34.71427
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.01
+value = 20.0
+nine_patch_stretch = true
+texture_under = SubResource("AtlasTexture_l1x3h")
+texture_progress = SubResource("AtlasTexture_any7c")
+script = ExtResource("6_l1x3h")
+
+[node name="ReloadBar" type="TextureProgressBar" parent="." unique_id=2018439355]
+offset_left = 12.0
+offset_top = -47.0
+offset_right = 52.0
+offset_bottom = -7.0
+step = 0.1
+value = 100.0
+fill_mode = 4
+radial_initial_angle = 345.5
+texture_under = ExtResource("7_6w6st")
+texture_progress = ExtResource("8_piis0")
+script = ExtResource("6_l1x3h")
 
 [connection signal="health_change" from="." to="Hud" method="_on_player_health_change"]

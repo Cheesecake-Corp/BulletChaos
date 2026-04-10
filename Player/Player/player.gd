@@ -16,6 +16,8 @@ var last_damage = 100
 @onready var camera_body: RigidBody2D = $CameraBody
 @onready var cursor: Sprite2D = $CameraBody/CameraCollision/Sprite2D
 @onready var camera_collision: CollisionShape2D = $CameraBody/CameraCollision
+@onready var dash_progress_bar: TextureProgressBar = $DashProgressBar
+@onready var reload_bar: TextureProgressBar = $ReloadBar
 @export var current_weapon : Weapon
 @export var dash_speed := 400.0
 @export var dash_duration := 0.15
@@ -35,12 +37,7 @@ signal health_change(health)
 
 func _ready() -> void:
 	GAME.register_player(self)
-	change_weapon(GAME.current_weapon)
 
-func change_weapon(weapon : PackedScene):
-	var w = weapon.instantiate()
-	add_child(w)
-	current_weapon = w
 # movement in camera mode
 func camera_movement(horizontal, vertical):
 
@@ -90,19 +87,19 @@ func character_movement(horizontal, vertical, delta):
 	
 	if is_dashing:
 		dash_timer -= delta
+		
 		afterimage_cooldown -= delta
 		if afterimage_cooldown <= 0.0:
 			spawn_afterimage()
 			afterimage_cooldown = afterimage_interval
 		
 		velocity = last_dir*dash_speed
-
 		if dash_timer <= 0.0:
 			is_dashing = false
 	
 	if (Input.is_action_just_pressed("dash") and not is_dashing and cooldown_timer <= 0):
 		dash()
-
+	
 func dash():
 	is_dashing = true
 	dash_timer = dash_duration
@@ -139,6 +136,7 @@ func map_mode_handeling(horizontal, vertical, delta):
 	
 func _physics_process(_delta: float) -> void:
 	# gets movement input
+	dash_progress_bar.value = (dash_cooldown-cooldown_timer)/dash_cooldown*dash_progress_bar.max_value
 	var horizontal := Input.get_axis("go_left","go_right")
 	var vertical := Input.get_axis("go_up","go_down")
 

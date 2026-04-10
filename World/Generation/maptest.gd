@@ -58,7 +58,8 @@ func start(maxcount: int):
 	write(boss_room,ex.global_position-ex.location,ex,exit_exit)
 	connect_exits()
 	finish_exits()
-	GAME.boss_room_pos = boss_room.global_position + Vector2(boss_room.size[0]["size"]/2)
+	GAME.boss_room_pos = boss_room.global_position + Vector2(boss_room.size[0]["size"]*8)
+	
 
 func start_gen(maxcount: int):
 	var spawn: Room = spawn_scene[GAME.RANDOM_GENERATION.randi_range(0,spawn_scene.size()-1)].instantiate()
@@ -162,8 +163,8 @@ func gen():
 	get_tree().current_scene.call_deferred("add_child",exit_entry.room)
 	exit_entry.room.global_position = (exit_entry.global_position-exit_entry.location)*16
 	rooms.append(exit_entry.room)
-	maxx = max(maxx, exit_entry.room.global_position.x + exit_entry.room.navsq.x)
-	maxy = max(maxy, exit_entry.room.global_position.y + exit_entry.room.navsq.y)
+	maxx = max(maxx, exit_entry.room.global_position.x + exit_entry.room.navsq.x*16)
+	maxy = max(maxy, exit_entry.room.global_position.y + exit_entry.room.navsq.y*16)
 	minx = min(minx, exit_entry.room.global_position.x)
 	miny = min(miny, exit_entry.room.global_position.y)
 	
