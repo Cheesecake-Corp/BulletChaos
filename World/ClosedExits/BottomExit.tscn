@@ -6,7 +6,7 @@
 z_index = 1
 z_as_relative = false
 
-[node name="Wall" type="TileMapLayer" parent="." unique_id=356245779]
+[node name="Wall" type="TileMapLayer" parent="." unique_id=356245779 groups=["Rooms"]]
 z_index = 1
 z_as_relative = false
 position = Vector2(0, 8)

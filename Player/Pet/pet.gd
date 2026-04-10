@@ -7,43 +7,37 @@ class_name Pet
 
 var boss_room := GAME.boss_room_pos
 const SPEED = 10
+var moving := false
 
 func _ready() -> void:
-	var nav_poly := NavigationPolygon.new()
-	nav_poly.agent_radius = 4
-
-	# Set source BEFORE parsing
-	nav_poly.source_geometry_mode = NavigationPolygon.SOURCE_GEOMETRY_GROUPS_EXPLICIT
-	nav_poly.source_geometry_group_name = "Rooms"
-
-	# Add outline AFTER config, BEFORE parse
-	nav_poly.add_outline(GAME.outline)
-
-	# Assign polygon to region before parsing (parse needs the region's transform)
-	region.navigation_polygon = nav_poly
 	region.top_level = true
 	region.global_position = Vector2.ZERO
+	call_deferred("bake_nav")
 
-	# Collect geometry from the scene
-	var source := NavigationMeshSourceGeometryData2D.new()
-	NavigationServer2D.parse_source_geometry_data(nav_poly, source, region)
+func bake_nav() -> void:
+	var nav_poly := NavigationPolygon.new()
+	nav_poly.agent_radius = 4
+	nav_poly.source_geometry_mode = NavigationPolygon.SOURCE_GEOMETRY_GROUPS_EXPLICIT 
+	nav_poly.source_geometry_group_name = "Rooms"
+	nav_poly.add_outline(GAME.outline)
+	region.navigation_polygon = nav_poly
+	region.bake_navigation_polygon()
 
-	# Bake async — callback fires when done
-	NavigationServer2D.bake_from_source_geometry_data_async(nav_poly, source, _on_bake_done)
-	
-	
-func _on_bake_done() -> void:
-	print("Navigation baked!")
-	region.navigation_polygon = region.navigation_polygon  
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("pet",false) == true:
+	if Input.is_action_just_pressed("pet", false):
 		sprite.play("search")
 		nav.target_position = boss_room
-		
-		
-	elif sprite.is_playing() == false:
+		moving = true
+
+	if moving:
+		if nav.is_navigation_finished():
+			moving = false
+			sprite.play("idle")
+		else:
+			var next := nav.get_next_path_position()
+			var direction := (next - global_position).normalized()
+			global_position += direction * SPEED * delta
+
+	elif not sprite.is_playing():
 		sprite.play("idle")
-
-
-	

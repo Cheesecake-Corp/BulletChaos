@@ -6,8 +6,9 @@
 z_index = 1
 z_as_relative = false
 
-[node name="Wall" type="TileMapLayer" parent="." unique_id=356245779]
+[node name="Wall" type="TileMapLayer" parent="." unique_id=356245779 groups=["Rooms"]]
 z_index = 121
 z_as_relative = false
+rotation = 0.016599115
 tile_map_data = PackedByteArray("AAAAAAAAAAAOAAEAAAAAAAEAAAAPAAQAAAAAAAIAAAAPAAUAAAAAAAMAAAAPAAYAAAAAAAQAAAAPAAQAAAAAAAkAAAAIAAEAAAAAAAUAAAAPAAUAAAAAAAYAAAAPAAQAAAAAAAcAAAAPAAUAAAAAAAgAAAAPAAYAAAA=")
 tile_set = ExtResource("1_weewt")
