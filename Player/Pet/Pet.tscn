@@ -124,7 +124,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"search",
-"speed": 5.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -153,7 +153,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [node name="Pet" type="Node2D" unique_id=701331462]
@@ -161,9 +161,11 @@ script = ExtResource("1_pludq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1329040660]
 sprite_frames = SubResource("SpriteFrames_7v8nf")
-animation = &"idle"
+animation = &"search"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=312507793]
 debug_enabled = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1851156230]
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
