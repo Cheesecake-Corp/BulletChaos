@@ -49,7 +49,7 @@ func _process(delta: float) -> void:
 				sprite.flip_h = false
 			global_position += direction * SPEED * delta
 			
-	elif abs(global_position.x - GAME.player.global_position.x) > 50 or abs(global_position.y - GAME.player.global_position.y) > 50: #Follows player
+	elif (global_position - GAME.player.global_position).abs() > Vector2(50,50): #Follows player
 		nav.target_position = GAME.player.global_position
 		var direction := (nav.get_next_path_position() - global_position).normalized()
 		sprite.play("walk")

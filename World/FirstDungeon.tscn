@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://cg5q7oaxgfn6j" path="res://TileSets/dungeonf.tres" id="1_dem3o"]
 [ext_resource type="PackedScene" uid="uid://ulxao8ra8xss" path="res://Player/Player/player.tscn" id="2_db620"]
 [ext_resource type="PackedScene" uid="uid://cip53qji4b7bd" path="res://Weapons/LaserGun/LaserGun.tscn" id="3_a6ule"]
-[ext_resource type="PackedScene" uid="uid://cxwolhwplhf3m" path="res://enemies/bat/bat.tscn" id="4_a6ule"]
+[ext_resource type="PackedScene" uid="uid://cxwolhwplhf3m" path="res://Enemies/bat/bat.tscn" id="4_a6ule"]
 
 [node name="FirstDungeon" type="Node2D" unique_id=149579715]
 

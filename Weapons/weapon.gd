@@ -51,7 +51,7 @@ func _ready() -> void:
 	create_bullets()
 
 func reload(delta):
-	if(Input.is_action_just_pressed("reload")):
+	if Input.is_action_just_pressed("reload") and not is_reloading and not loaded_ammo >= final_magazine_capacity:
 		is_reloading = true
 		
 	if(is_reloading):
