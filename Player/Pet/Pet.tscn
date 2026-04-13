@@ -164,7 +164,6 @@ sprite_frames = SubResource("SpriteFrames_7v8nf")
 animation = &"search"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=312507793]
-debug_enabled = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1851156230]
 
