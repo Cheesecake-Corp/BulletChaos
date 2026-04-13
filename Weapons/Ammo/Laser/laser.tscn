@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://uj2xyitbe8oi"]
 
 [ext_resource type="Script" uid="uid://c6x1vq72efmsm" path="res://Weapons/Ammo/Laser/laser.gd" id="1_cb0qw"]
-[ext_resource type="Texture2D" uid="uid://bpovk6n1ji467" path="res://Assets/Ammo/laser.png" id="2_cgyn8"]
+[ext_resource type="Texture2D" uid="uid://bpovk6n1ji467" path="res://Weapons/Ammo/Assets/laser.png" id="2_cgyn8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sn8b1"]
 size = Vector2(97, 3)

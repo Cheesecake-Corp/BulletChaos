@@ -89,6 +89,10 @@ pet={
 ]
 }
 
+[navigation]
+
+2d/warnings/navmesh_edge_merge_errors=false
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

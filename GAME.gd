@@ -13,7 +13,7 @@ signal weapon_changed
 
 func register_player(p):
 	player = p
-	var weap = load("res://Weapons/BasicGuns/revolver.tscn").instantiate()
+	var weap = load("res://Weapons/Guns/BasicGuns/revolver.tscn").instantiate()
 	change_weapon(weap)
 
 func _ready() -> void:

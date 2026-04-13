@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://0sqspss4rude"]
+
+[ext_resource type="Script" uid="uid://c0836eipbqs3v" path="res://HUD/hud.gd" id="1_ewb01"]
+[ext_resource type="Texture2D" uid="uid://b7jvr10uu1sej" path="res://HUD/Assets/PmWWq1.png" id="2_ec5lv"]
+[ext_resource type="Script" uid="uid://bmplpujapxk2f" path="res://HUD/health_bar.gd" id="3_11qr4"]
+[ext_resource type="Script" uid="uid://cqsc7551txqpp" path="res://HUD/crosshair.gd" id="5_lwd00"]
+[ext_resource type="Texture2D" uid="uid://7ihui1eeqfpr" path="res://Assets/UI/crosshair.png" id="6_71t6b"]
+[ext_resource type="Texture2D" uid="uid://dkfec8rroda2" path="res://Weapons/Guns/Assets/1.png" id="6_haav5"]
+[ext_resource type="FontFile" uid="uid://b3fdd81q33fui" path="res://Assets/ByteBounce.ttf" id="7_riwve"]
+[ext_resource type="Script" uid="uid://ca2pbp00lxfn6" path="res://HUD/ammo_label.gd" id="8_riwve"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqhao"]
+atlas = ExtResource("2_ec5lv")
+region = Rect2(193, 124, 61, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_haav5"]
+atlas = ExtResource("2_ec5lv")
+region = Rect2(1, 116, 61, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xap6c"]
+atlas = ExtResource("2_ec5lv")
+region = Rect2(256, 415, 53, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mnv5"]
+atlas = ExtResource("6_haav5")
+region = Rect2(178, 2, 3, 6)
+
+[sub_resource type="LabelSettings" id="LabelSettings_oc7wu"]
+font = ExtResource("7_riwve")
+font_size = 100
+
+[node name="Hud" type="CanvasLayer" unique_id=1135840636]
+script = ExtResource("1_ewb01")
+
+[node name="HealthBar" type="TextureProgressBar" parent="." unique_id=58213123]
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 637.25006
+offset_bottom = 94.0
+step = 10.0
+value = 40.0
+nine_patch_stretch = true
+texture_under = SubResource("AtlasTexture_bqhao")
+texture_progress = SubResource("AtlasTexture_haav5")
+script = ExtResource("3_11qr4")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1379767273]
+script = ExtResource("5_lwd00")
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D" unique_id=1829014393]
+scale = Vector2(2, 2)
+texture = ExtResource("6_71t6b")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=303073046]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -293.0
+offset_top = 12.0
+offset_right = -12.099976
+offset_bottom = 118.0
+grow_horizontal = 0
+texture = SubResource("AtlasTexture_xap6c")
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect" unique_id=1543659035]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 20.0
+offset_right = 66.0
+offset_bottom = 80.0
+texture = SubResource("AtlasTexture_2mnv5")
+
+[node name="Label" type="Label" parent="NinePatchRect" unique_id=1791673915]
+layout_mode = 0
+offset_left = 77.0
+offset_top = 15.0
+offset_right = 249.0
+offset_bottom = 84.0
+label_settings = SubResource("LabelSettings_oc7wu")
+horizontal_alignment = 2
+script = ExtResource("8_riwve")

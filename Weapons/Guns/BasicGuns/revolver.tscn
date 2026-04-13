@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cvtnmk7p54p7j"]
+
+[ext_resource type="Texture2D" uid="uid://dkfec8rroda2" path="res://Weapons/Guns/Assets/1.png" id="1_25grs"]
+[ext_resource type="Script" uid="uid://bbb0othewovgj" path="res://Weapons/Guns/weapon.gd" id="2_6ccds"]
+[ext_resource type="PackedScene" uid="uid://j2pke86wgcxx" path="res://Weapons/Ammo/basic_ammo.tscn" id="3_r5b1y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iagck"]
+atlas = ExtResource("1_25grs")
+region = Rect2(80, 118, 15, 10)
+
+[node name="Revolver" type="Sprite2D" unique_id=722960404]
+texture = SubResource("AtlasTexture_iagck")
+offset = Vector2(-7.5, 3.5)
+script = ExtResource("2_6ccds")
+bullet_speed = 0.2
+bullet_scene = ExtResource("3_r5b1y")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=2077104488]
+position = Vector2(-8, 0)
+target_position = Vector2(25, 0.035)

@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" format=3 uid="uid://cg5q7oaxgfn6j"]
 
-[ext_resource type="Texture2D" uid="uid://df63gbc6opkut" path="res://Assets/Catacombs/mainlevbuild.png" id="1_186l4"]
+[ext_resource type="Texture2D" uid="uid://df63gbc6opkut" path="res://World/Assets/Catacombs/mainlevbuild.png" id="1_186l4"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_186l4"]
 
