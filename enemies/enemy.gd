@@ -2,7 +2,7 @@ class_name Enemy
 
 extends CharacterBody2D
 @export var speed : float = 150
-var health : float = 150
+var health : float = 100.0
 @export var max_health := 100.0
 
 # Called when the node enters the scene tree for the first time.
