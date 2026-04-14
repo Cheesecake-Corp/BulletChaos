@@ -4,7 +4,7 @@ class_name Player
 @export var SPEED = 150.0
 @export var CAMERA_SPEED_MULTIPLIER = 3
 var CAMERA_SPEED = SPEED*CAMERA_SPEED_MULTIPLIER
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sprite_2d: Sprite2D = $Sprite2D
 var last = "down"
 var last_dir : Vector2 = Vector2(0,1)
 @onready var health = 100
@@ -59,31 +59,9 @@ func character_movement(horizontal, vertical, delta):
 	# adds velocity to player (same in every direction)
 	velocity = Vector2(horizontal, vertical).normalized() * SPEED
 	
-	# ANIMATION HANDELING
-	# horizontal animations
-	# prioritizes horizontal animation
 	if horizontal or vertical:
 		last_dir = Vector2(horizontal, vertical)
-		if horizontal > 0:
-			if vertical > 0:
-				last = "rd"
-				
-			if vertical == 0:
-				last = "right"
-			if vertical < 0:
-				last = "ru"
-		elif horizontal < 0:
-			if vertical > 0:
-				last = "ld"
-			if vertical == 0:
-				last = "left"
-			if vertical < 0:
-				last = "lu"
-		elif horizontal == 0:
-			if vertical > 0:
-				last = "down"
-			if vertical < 0:
-				last = "up"
+		
 	
 	if is_dashing:
 		dash_timer -= delta
@@ -107,11 +85,21 @@ func dash():
 
 func spawn_afterimage():
 	var ghost : Sprite2D = afterimage_scene.instantiate()
-	ghost.texture = animated_sprite.sprite_frames.get_frame_texture(animated_sprite.animation, animated_sprite.frame)
-	ghost.global_position = animated_sprite.global_position
+	
+	var atlas = AtlasTexture.new()
+	atlas.atlas = sprite_2d.texture
+	
+	var frame_width = sprite_2d.texture.get_width() / sprite_2d.hframes
+	var frame_height = sprite_2d.texture.get_height() / sprite_2d.vframes
+	var col = sprite_2d.frame % sprite_2d.hframes
+	var row = sprite_2d.frame / sprite_2d.hframes
+	atlas.region = Rect2(col * frame_width, row * frame_height, frame_width, frame_height)
+	
+	ghost.texture = atlas
+	ghost.global_position = sprite_2d.global_position
 	ghost.global_rotation = global_rotation
-	ghost.flip_h = animated_sprite.flip_h
-	ghost.offset = animated_sprite.offset
+	ghost.flip_h = sprite_2d.flip_h
+	ghost.offset = sprite_2d.offset
 
 	get_tree().current_scene.add_child(ghost)
 
@@ -163,10 +151,5 @@ func _physics_process(_delta: float) -> void:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
-	# plays idle animation
-	if velocity == Vector2.ZERO:
-		animated_sprite.play("idle_" + last)
-	else:
-		animated_sprite.play("run_" + last)
 	
 	move_and_slide()

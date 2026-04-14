@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c6ol38wehuog1"]
+
+[ext_resource type="PackedScene" uid="uid://bpmeoyikylkwr" path="res://World/GenerationNode.tscn" id="1_ntj1k"]
+
+[node name="MainWorld" type="Node2D" unique_id=1574148702]
+y_sort_enabled = true
+
+[node name="Generation" parent="." unique_id=1741890309 instance=ExtResource("1_ntj1k")]

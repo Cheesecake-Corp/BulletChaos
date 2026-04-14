@@ -18,6 +18,7 @@ var last_use_time : float
 var aim_angle : float
 @export var player : Player
 var can_use : bool = true
+var player_offset := Vector2(0,-20)
 
 var used_bullets: Array[Projectile] = []
 var available_bullets: Array[Projectile] = []
@@ -64,7 +65,7 @@ func reload(delta):
 		change_bullets.emit(loaded_ammo)
 
 func _process(delta: float) -> void:
-	set_aim_direction(-player.global_position + get_global_mouse_position())
+	set_aim_direction(-(player.global_position + player_offset) + get_global_mouse_position())
 	rotation = lerp_angle(rotation, aim_angle, 40 * delta)
 	reload(delta)
 
@@ -72,21 +73,23 @@ func set_aim_direction (aim_dir : Vector2):
 	aim_angle = aim_dir.angle()
 	var dir = aim_dir.normalized()
 
+	var player_mid := player.global_position + player_offset
+
 	# Raycast forward from player
-	ray.global_position = player.global_position
-	ray.target_position = ray.to_local(player.global_position + dir * rotation_distance)
+	ray.global_position = player_mid
+	ray.target_position = ray.to_local(player_mid + dir * rotation_distance)
 	ray.force_raycast_update()
 
 	var distance = rotation_distance
 
 	if ray.is_colliding():
 		var hit_point = ray.get_collision_point()
-		distance = player.global_position.distance_to(hit_point) - 2
+		distance = player_mid.distance_to(hit_point) - 2
 		distance = max(distance, 5) # prevent weapon collapsing into player
 
 	var offset = dir * distance
-	global_position = player.global_position + offset
-	if get_global_mouse_position().x < player.global_position.x:
+	global_position = player_mid + offset
+	if get_global_mouse_position().x < player_mid.x:
 		scale.y = -1
 	else:
 		scale.y = 1

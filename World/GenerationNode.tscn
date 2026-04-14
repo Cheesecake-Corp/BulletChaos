@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bpmeoyikylkwr"]
+
+[ext_resource type="Script" uid="uid://dkhpswcawbbga" path="res://World/Generation/generation.gd" id="1_iqkay"]
+[ext_resource type="PackedScene" uid="uid://biqlm4sf7p768" path="res://World/Room1/Room1.tscn" id="2_iqkay"]
+[ext_resource type="PackedScene" uid="uid://dj0h88ur32gk0" path="res://World/ChallangeRoom/ChallangeRoom.tscn" id="3_r34r4"]
+[ext_resource type="PackedScene" uid="uid://cc4xkjbpc6p6g" path="res://World/Boss/Boss1/Boss1.tscn" id="4_jhnkp"]
+
+[node name="Generation" type="Node2D" unique_id=1741890309]
+y_sort_enabled = true
+script = ExtResource("1_iqkay")
+spawn_scene = Array[PackedScene]([ExtResource("2_iqkay")])
+challenge_scene = Array[PackedScene]([ExtResource("3_r34r4")])
+boss_scene = Array[PackedScene]([ExtResource("4_jhnkp")])

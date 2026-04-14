@@ -160,6 +160,7 @@ animations = [{
 script = ExtResource("1_pludq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1329040660]
+position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_7v8nf")
 animation = &"search"
 
