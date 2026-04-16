@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://dj0h88ur32gk0"]
 
 [ext_resource type="Script" uid="uid://5olhx2xcrken" path="res://World/ChallangeRoom/challange_room.gd" id="1_yacpy"]
-[ext_resource type="TileSet" uid="uid://cg5q7oaxgfn6j" path="res://TileSets/dungeonf.tres" id="2_vexwn"]
+[ext_resource type="TileSet" uid="uid://cg5q7oaxgfn6j" path="res://TileSets/dungeon.tres" id="2_vexwn"]
 
 [node name="ChallangeRoom" type="Node2D" unique_id=147366051 groups=["Rooms"]]
 script = ExtResource("1_yacpy")

@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://bq03txpk6kdkq"]
 
-[ext_resource type="TileSet" uid="uid://cg5q7oaxgfn6j" path="res://TileSets/dungeonf.tres" id="1_4p7ae"]
+[ext_resource type="TileSet" uid="uid://cg5q7oaxgfn6j" path="res://TileSets/dungeon.tres" id="1_4p7ae"]
 
 [node name="LeftExit" type="Node2D" unique_id=1382141338]
 

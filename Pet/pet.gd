@@ -82,7 +82,7 @@ func _move_along_path(delta: float) -> void:
 	var next := nav.get_next_path_position()
 	var direction := (next - global_position).normalized()
 	sprite.flip_h = direction.x < 0
-	global_position += direction * SPEED * delta * global_position.distance_to(GAME.player.global_position)/100
+	global_position += direction * SPEED * delta * (global_position.distance_to(GAME.player.global_position)/100 if not moving else 1)
 
 
 func _on_animated_sprite_2d_animation_finished() -> void: #Search animation finished

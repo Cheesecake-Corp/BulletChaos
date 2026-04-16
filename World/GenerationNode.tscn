@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cc4xkjbpc6p6g" path="res://World/Boss/Boss1/Boss1.tscn" id="4_jhnkp"]
 
 [node name="Generation" type="Node2D" unique_id=1741890309]
-y_sort_enabled = true
 script = ExtResource("1_iqkay")
 spawn_scene = Array[PackedScene]([ExtResource("2_iqkay")])
 challenge_scene = Array[PackedScene]([ExtResource("3_r34r4")])
