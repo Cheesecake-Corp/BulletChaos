@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://exbfalaqrg6v"
-path="res://.godot/imported/idle.png-14561dbf4daab164491dea0f8842cee8.ctex"
+path="res://.godot/imported/idle.png-dde2e59eb16700ccf167af6539a9b93f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Normal/Toaster Bot/Assets/idle.png"
-dest_files=["res://.godot/imported/idle.png-14561dbf4daab164491dea0f8842cee8.ctex"]
+source_file="res://enemies/Normal/Toaster Bot/Assets/idle.png"
+dest_files=["res://.godot/imported/idle.png-dde2e59eb16700ccf167af6539a9b93f.ctex"]
 
 [params]
 

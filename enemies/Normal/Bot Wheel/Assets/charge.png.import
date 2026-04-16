@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dhxa7gus41aem"
-path="res://.godot/imported/charge.png-ccc304a188f77c8c7a94a37abe821251.ctex"
+path="res://.godot/imported/charge.png-89617c887535208bd78c825413569be7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Normal/Bot Wheel/Assets/charge.png"
-dest_files=["res://.godot/imported/charge.png-ccc304a188f77c8c7a94a37abe821251.ctex"]
+source_file="res://enemies/Normal/Bot Wheel/Assets/charge.png"
+dest_files=["res://.godot/imported/charge.png-89617c887535208bd78c825413569be7.ctex"]
 
 [params]
 

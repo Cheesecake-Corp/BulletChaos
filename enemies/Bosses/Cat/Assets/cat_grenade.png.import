@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d2rc6bjjgirre"
-path="res://.godot/imported/cat_grenade.png-abe8eb64837e63bd0fdad745475c0316.ctex"
+path="res://.godot/imported/cat_grenade.png-3b0e9e247e186dfbf14ddbf92c7e6b2d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Bosses/Cat/Assets/cat_grenade.png"
-dest_files=["res://.godot/imported/cat_grenade.png-abe8eb64837e63bd0fdad745475c0316.ctex"]
+source_file="res://enemies/Bosses/Cat/Assets/cat_grenade.png"
+dest_files=["res://.godot/imported/cat_grenade.png-3b0e9e247e186dfbf14ddbf92c7e6b2d.ctex"]
 
 [params]
 

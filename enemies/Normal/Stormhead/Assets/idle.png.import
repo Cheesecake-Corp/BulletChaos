@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bnd5xtx35nay3"
-path="res://.godot/imported/idle.png-8c8fd41d4076751d59f6aa95e53512d8.ctex"
+path="res://.godot/imported/idle.png-8506ba91d277b1250638d4c645144080.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Normal/Stormhead/Assets/idle.png"
-dest_files=["res://.godot/imported/idle.png-8c8fd41d4076751d59f6aa95e53512d8.ctex"]
+source_file="res://enemies/Normal/Stormhead/Assets/idle.png"
+dest_files=["res://.godot/imported/idle.png-8506ba91d277b1250638d4c645144080.ctex"]
 
 [params]
 

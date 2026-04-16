@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ibosk2p8hwgq"
-path="res://.godot/imported/attack.png-0cafe6646c0a26540b24d887b5247868.ctex"
+path="res://.godot/imported/attack.png-c01afc2b997e3598e2d2a809e6385cc4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Normal/Stormhead/Assets/attack.png"
-dest_files=["res://.godot/imported/attack.png-0cafe6646c0a26540b24d887b5247868.ctex"]
+source_file="res://enemies/Normal/Stormhead/Assets/attack.png"
+dest_files=["res://.godot/imported/attack.png-c01afc2b997e3598e2d2a809e6385cc4.ctex"]
 
 [params]
 

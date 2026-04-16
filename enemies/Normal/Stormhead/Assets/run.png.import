@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d2g636lepft2h"
-path="res://.godot/imported/run.png-683adfd8e5f3daad5d8dc08d92c87f33.ctex"
+path="res://.godot/imported/run.png-cf0daaedf322ae63bddcb8b72cd3c798.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Normal/Stormhead/Assets/run.png"
-dest_files=["res://.godot/imported/run.png-683adfd8e5f3daad5d8dc08d92c87f33.ctex"]
+source_file="res://enemies/Normal/Stormhead/Assets/run.png"
+dest_files=["res://.godot/imported/run.png-cf0daaedf322ae63bddcb8b72cd3c798.ctex"]
 
 [params]
 

@@ -8,6 +8,7 @@ var player : Player = null
 @export var current_weapon : Weapon 
 var boss_room_pos : Vector2
 var outline: PackedVector2Array
+var difficulty := 1
 
 signal weapon_changed
 

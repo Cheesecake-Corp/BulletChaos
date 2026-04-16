@@ -602,7 +602,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" unique_id=1039559475]
 y_sort_enabled = true
-collision_layer = 32
+collision_layer = 2
 safe_margin = 0.001
 script = ExtResource("1_btcbx")
 
@@ -626,7 +626,7 @@ texture = ExtResource("9_f1ek2")
 flip_v = true
 
 [node name="Camera2D" type="Camera2D" parent="CameraBody" unique_id=2045531074]
-zoom = Vector2(2, 2)
+visible = false
 process_callback = 0
 limit_enabled = false
 position_smoothing_enabled = true

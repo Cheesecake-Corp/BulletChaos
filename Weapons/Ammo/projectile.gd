@@ -20,3 +20,4 @@ func start():
 
 func on_timeout() -> void:
 	timeout.emit(self)
+	

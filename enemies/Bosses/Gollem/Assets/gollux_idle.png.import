@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ctt3ne054cqfa"
-path="res://.godot/imported/gollux_idle.png-34fc7cb968cf885ae6ca97bfe5fcc3ec.ctex"
+path="res://.godot/imported/gollux_idle.png-e1dd49044a45bf17b3d3d5f84b7e1966.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Bosses/Gollem/Assets/gollux_idle.png"
-dest_files=["res://.godot/imported/gollux_idle.png-34fc7cb968cf885ae6ca97bfe5fcc3ec.ctex"]
+source_file="res://enemies/Bosses/Gollem/Assets/gollux_idle.png"
+dest_files=["res://.godot/imported/gollux_idle.png-e1dd49044a45bf17b3d3d5f84b7e1966.ctex"]
 
 [params]
 
