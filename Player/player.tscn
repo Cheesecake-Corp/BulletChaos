@@ -658,6 +658,7 @@ texture_progress = SubResource("AtlasTexture_any7c")
 script = ExtResource("6_l1x3h")
 
 [node name="ReloadBar" type="TextureProgressBar" parent="." unique_id=2018439355]
+z_index = 500
 offset_left = 6.0
 offset_top = -48.0
 offset_right = 46.0

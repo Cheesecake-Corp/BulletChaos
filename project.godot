@@ -31,6 +31,10 @@ project/assembly_name="BulletChaos"
 
 Rooms="All rooms existing in game"
 
+[gui]
+
+theme/custom_font="uid://b3fdd81q33fui"
+
 [input]
 
 go_left={
