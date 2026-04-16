@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://cavmxdcevoi3j"]
 
 [ext_resource type="Script" uid="uid://bdf5tgg3f4hpf" path="res://World/checkpoint_1.gd" id="1_cj2ap"]
-[ext_resource type="TileSet" uid="uid://cg5q7oaxgfn6j" path="res://TileSets/dungeonf.tres" id="2_oe68e"]
+[ext_resource type="TileSet" uid="uid://cg5q7oaxgfn6j" path="res://TileSets/dungeon.tres" id="2_oe68e"]
 
 [node name="Checkpoint1" type="Node2D" unique_id=1597018845]
 script = ExtResource("1_cj2ap")

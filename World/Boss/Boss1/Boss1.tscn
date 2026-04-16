@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://cc4xkjbpc6p6g"]
 
 [ext_resource type="Script" uid="uid://dwv1ijflhx60u" path="res://World/Boss/Boss1/boss_1.gd" id="1_pc3d6"]
-[ext_resource type="TileSet" uid="uid://cg5q7oaxgfn6j" path="res://TileSets/dungeonf.tres" id="2_1rdi5"]
+[ext_resource type="TileSet" uid="uid://cg5q7oaxgfn6j" path="res://TileSets/dungeon.tres" id="2_1rdi5"]
 
 [node name="Boss1" type="Node2D" unique_id=594196798]
 script = ExtResource("1_pc3d6")

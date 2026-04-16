@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://dtlyuflbsfi8h"]
 
-[ext_resource type="TileSet" uid="uid://cg5q7oaxgfn6j" path="res://TileSets/dungeonf.tres" id="1_dem3o"]
+[ext_resource type="TileSet" uid="uid://cg5q7oaxgfn6j" path="res://TileSets/dungeon.tres" id="1_dem3o"]
 [ext_resource type="PackedScene" uid="uid://ulxao8ra8xss" path="res://Player/player.tscn" id="2_db620"]
 [ext_resource type="PackedScene" uid="uid://cip53qji4b7bd" path="res://Weapons/Guns/LaserGun/LaserGun.tscn" id="3_a6ule"]
 [ext_resource type="PackedScene" path="res://Enemies/bat/bat.tscn" id="4_a6ule"]

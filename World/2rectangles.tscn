@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://beh38hdj26etm"]
 
 [ext_resource type="Script" uid="uid://cdjdtmx2r2o70" path="res://World/2_rectangles.gd" id="1_tec63"]
-[ext_resource type="TileSet" uid="uid://cg5q7oaxgfn6j" path="res://TileSets/dungeonf.tres" id="2_mfdb7"]
+[ext_resource type="TileSet" uid="uid://cg5q7oaxgfn6j" path="res://TileSets/dungeon.tres" id="2_mfdb7"]
 
 [node name="2Rectangles" type="Node2D" unique_id=1928010585]
 script = ExtResource("1_tec63")
