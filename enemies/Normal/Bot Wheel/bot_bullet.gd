@@ -44,11 +44,9 @@ func disable() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void: #Collisions
-	if active == true and body != bot:
-		if body is Bot_bullet:
-			body.disable()
-		elif body is Player:
+	if active == true:
+		if body is Player:
 			body.health = body.health - damage
-		elif body is Enemy:
-			body.take_damage(damage)
-		disable()
+			disable()
+		elif body is TileMapLayer:
+			disable()

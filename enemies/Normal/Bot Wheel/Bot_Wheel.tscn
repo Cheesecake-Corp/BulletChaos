@@ -8,7 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://bvqnwsn4br7q6" path="res://enemies/Normal/Bot Wheel/Assets/move with FX.png" id="5_6h4ro"]
 [ext_resource type="Texture2D" uid="uid://bnhfohdqbqy74" path="res://enemies/Normal/Bot Wheel/Assets/shoot with FX.png" id="6_0cbxn"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bgosp"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e67qf"]
+radius = 6.0
+height = 23.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_04cex"]
 atlas = ExtResource("3_wdsan")
@@ -74,37 +76,37 @@ region = Rect2(0, 156, 117, 26)
 atlas = ExtResource("5_6h4ro")
 region = Rect2(0, 182, 117, 26)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e67qf"]
-atlas = ExtResource("2_e67qf")
-region = Rect2(0, 0, 117, 26)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_wdsan"]
 atlas = ExtResource("2_e67qf")
-region = Rect2(0, 26, 117, 26)
+region = Rect2(13, 0, 104, 26)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ec22"]
 atlas = ExtResource("2_e67qf")
-region = Rect2(0, 52, 117, 26)
+region = Rect2(13, 26, 104, 26)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6h4ro"]
 atlas = ExtResource("2_e67qf")
-region = Rect2(0, 78, 117, 26)
+region = Rect2(13, 52, 104, 26)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_io65h"]
-atlas = ExtResource("6_0cbxn")
-region = Rect2(0, 0, 117, 26)
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cbxn"]
+atlas = ExtResource("2_e67qf")
+region = Rect2(13, 78, 104, 26)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_h1iug"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgosp"]
 atlas = ExtResource("6_0cbxn")
-region = Rect2(0, 26, 117, 26)
+region = Rect2(13, 0, 104, 26)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_supxy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_buxyl"]
 atlas = ExtResource("6_0cbxn")
-region = Rect2(0, 52, 117, 26)
+region = Rect2(13, 26, 104, 26)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3pnak"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_txhcb"]
 atlas = ExtResource("6_0cbxn")
-region = Rect2(0, 78, 117, 26)
+region = Rect2(13, 52, 104, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqwaf"]
+atlas = ExtResource("6_0cbxn")
+region = Rect2(13, 78, 104, 26)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ttpii"]
 animations = [{
@@ -173,9 +175,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_e67qf")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_wdsan")
 }, {
 "duration": 1.0,
@@ -185,16 +184,19 @@ animations = [{
 "texture": SubResource("AtlasTexture_6h4ro")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_io65h")
+"texture": SubResource("AtlasTexture_0cbxn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_h1iug")
+"texture": SubResource("AtlasTexture_bgosp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_supxy")
+"texture": SubResource("AtlasTexture_buxyl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3pnak")
+"texture": SubResource("AtlasTexture_txhcb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqwaf")
 }],
 "loop": false,
 "name": &"shoot",
@@ -202,19 +204,22 @@ animations = [{
 }]
 
 [node name="Bot_wheel" type="RigidBody2D" unique_id=1028476161]
+collision_layer = 4
+mass = 10.0
+gravity_scale = 0.0
+freeze = true
 script = ExtResource("1_bkjx6")
 bullet_scene = ExtResource("2_wdsan")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=796893509]
-shape = SubResource("CircleShape2D_bgosp")
+position = Vector2(0, -11)
+shape = SubResource("CapsuleShape2D_e67qf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1411636527]
-position = Vector2(38, -13)
-scale = Vector2(1.0470085, 1)
+position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_ttpii")
-animation = &"death"
-frame = 5
-frame_progress = 1.0
+animation = &"shoot"
+offset = Vector2(42.5, 0)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=913639559]
 navigation_layers = 2

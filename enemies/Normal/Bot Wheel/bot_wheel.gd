@@ -73,11 +73,10 @@ func move(delta: float) -> void:
 	global_position += dir * SPEED * delta
 	if sprite.is_playing() == false:
 		sprite.play("move")
-	#TASK - fix sprite size - reenable flipping
-	#if dir.x < 0:
-		sprite.flip_h = true
-	#else:
-		sprite.flip_h = false
+	if dir.x < 0:
+		sprite.scale.x = -1
+	else:
+		sprite.scale.x = 1
 
 func shoot() -> void:
 	var direction = (GAME.player.global_position - global_position).normalized()
@@ -100,8 +99,7 @@ func take_damage(damage: float) -> void:
 	movement = false
 	damage_timer = 0
 	health = health - damage
-	print(health)
-	if health <= 0:
+	if alive == true and health <= 0:
 		death()
 
 func death() -> void:

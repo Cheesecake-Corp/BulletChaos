@@ -18,8 +18,11 @@ func _init() -> void:
 	exits.append(Exit.new().set_location(Vector2i(33,4)).set_direction(direction.RIGHT).set_room(self))
 
 
-func _on_enemies_room_complete() -> void:
+func _on_enemies_room_complete() -> void: #Room finished clearing nodes managing enemies
 	enemies.queue_free()
-	timer.queue_free()
 	area_2d.queue_free()
 	print("Room complete")
+
+
+func _on_timer_timeout() -> void: #Timer runs only once
+	timer.queue_free()
