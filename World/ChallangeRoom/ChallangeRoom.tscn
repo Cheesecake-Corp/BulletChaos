@@ -48,3 +48,4 @@ bot = ExtResource("5_2plmm")
 [connection signal="body_entered" from="Area2D" to="Timer" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="Timer" method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="Timer" to="Enemies" method="_on_timer_timeout"]
+[connection signal="room_complete" from="Enemies" to="." method="_on_enemies_room_complete"]
