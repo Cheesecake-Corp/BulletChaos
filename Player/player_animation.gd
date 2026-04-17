@@ -5,7 +5,7 @@ extends Node
 
 var last_facing_direction := Vector2(2,-1)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var idle = !player.velocity
 	
 	if not idle:

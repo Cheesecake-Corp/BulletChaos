@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://cg5q7oaxgfn6j" path="res://TileSets/dungeon.tres" id="2_vexwn"]
 [ext_resource type="Script" uid="uid://bo2t72xccj1ua" path="res://World/ChallangeRoom/timer.gd" id="3_faqkn"]
 [ext_resource type="Script" uid="uid://ctn43f2bucgp3" path="res://World/ChallangeRoom/enemies.gd" id="4_ruxwn"]
-[ext_resource type="PackedScene" uid="uid://bsjirrkmwhv8m" path="res://enemies/Normal/Bot Wheel/Bot_Wheel.tscn" id="5_2plmm"]
+[ext_resource type="PackedScene" uid="uid://bsjirrkmwhv8m" path="res://Enemies/Normal/Bot Wheel/Bot_Wheel.tscn" id="5_2plmm"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_33qho"]
 vertices = PackedVector2Array(492, 188, 492, 196.21875, 487.9297, 195.85156, 300, 268, 300, 276.21875, 295.9297, 275.85156, 244, 268, 248.07031, 275.85156, 244, 276.21875, 485.75, 148, 56.070313, 195.85156, 52, 196.21875, 52, 188, 58.71875, 139.88281, 485.75, 132, 485.9297, 132, 31.648438, 139.10156, 31.648438, 139.09375, 58.117188, 116, 58.25, 116, 28, 188, 28, 139.03125, 485.75, 116, 485.9297, 116, 483.85938, 244, 485.9297, 244, 485.75, 260, 58.25, 260, 58.070313, 244, 60.140625, 244, 485.9297, 260, 485.84375, 268, 58.15625, 268, 58.070313, 260, 516, 148, 516, 188, 58.023438, 95.67969, 58.023438, 84, 485.97656, 84, 485.97656, 95.67969, 293.21094, 308, 250.78906, 308)

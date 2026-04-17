@@ -28,7 +28,7 @@ signal change_bullets(bullets : int)
 
 func create_bullets():
 	var time = bullet_scene.instantiate().get_meta("max_time")
-	for i in range((time-base_reload_time)*1000/use_rate + 1):
+	for i in range((time-floor((time)/(final_magazine_capacity*(use_rate/1000)+final_reload_time))*final_reload_time)/(use_rate/1000)+1):
 		var b : Projectile = bullet_scene.instantiate()
 		b.visible = false
 		b.global_position = global_position
@@ -131,11 +131,9 @@ func _on_body_entered(_body: Node, bullet: Projectile) -> void:
 	call_deferred("_recycle_bullet", bullet)
 
 func _on_bullet_timeout(bullet : Projectile) -> void:
-	print("A")
 	call_deferred("_recycle_bullet", bullet)
 
 func _recycle_bullet(bullet: Projectile) -> void:
-	print("a")
 	bullet.freeze = true
 	bullet.visible = false
 	bullet.linear_velocity = Vector2.ZERO

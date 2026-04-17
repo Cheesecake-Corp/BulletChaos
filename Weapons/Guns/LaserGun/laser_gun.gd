@@ -1,5 +1,8 @@
 extends Weapon
 
+func _init() -> void:
+	base_magazine_capacity = 5
+
 func _on_body_entered(_body: Node, bullet: Projectile) -> void:
 	if not bullet.visible:
 		return
@@ -11,11 +14,12 @@ func _on_body_entered(_body: Node, bullet: Projectile) -> void:
 func _use(b : Laser):
 	super(b)
 	b.timer_2.start()
+	b.modulate.a = 1
 	
 
 func create_bullets():
 	var time = bullet_scene.instantiate().get_meta("max_time")
-	for i in range((time-base_reload_time)*1000/use_rate + 1):
+	for i in range((time-floor((time)/(final_magazine_capacity*(use_rate/1000)+final_reload_time))*final_reload_time)/(use_rate/1000) + 1):
 		var b : Laser = bullet_scene.instantiate()
 		b.visible = false
 		b.global_position = global_position

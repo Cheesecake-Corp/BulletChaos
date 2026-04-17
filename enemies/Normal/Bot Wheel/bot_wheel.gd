@@ -55,10 +55,9 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 
 
-func move(delta: float) -> void:
+func move(_delta: float) -> void:
 	if timer == TIMER_MAX:
 		var player_distance = GAME.player.global_position - global_position
-		var player_direction = (GAME.player.global_position - global_position).normalized()
 		var target := Vector2()
 		if player_distance.length() < 100:
 			target = global_position + -1 * player_distance.normalized() * 50

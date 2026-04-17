@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 GAME="*uid://vt5d0tee0nvq"
 
+[debug]
+
+gdscript/warnings/integer_division=0
+
 [display]
 
 mouse_cursor/custom_image="uid://7ihui1eeqfpr"

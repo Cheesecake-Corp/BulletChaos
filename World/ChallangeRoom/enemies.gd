@@ -2,7 +2,7 @@ extends Node
 
 @export var bot : PackedScene
 @export var enemy_count = 3
-signal room_complete
+signal room_complete(enemies_killed : int)
 var enemies : Array[Enemy] = []
 @onready var challange_room: Node2D = $".."
 var enemy_dead := 0
@@ -13,9 +13,9 @@ func _ready() -> void:
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if enemy_dead == enemy_count:
-		room_complete.emit()
+		room_complete.emit(enemy_dead)
 
 
 func _on_timer_timeout() -> void:

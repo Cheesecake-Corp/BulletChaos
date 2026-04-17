@@ -18,9 +18,10 @@ func _init() -> void:
 	exits.append(Exit.new().set_location(Vector2i(33,4)).set_direction(direction.RIGHT).set_room(self))
 
 
-func _on_enemies_room_complete() -> void: #Room finished clearing nodes managing enemies
+func _on_enemies_room_complete(enemies_killed : int) -> void: #Room finished clearing nodes managing enemies
 	enemies.queue_free()
 	area_2d.queue_free()
+	GAME.player.health += 15 * enemies_killed
 	print("Room complete")
 
 
