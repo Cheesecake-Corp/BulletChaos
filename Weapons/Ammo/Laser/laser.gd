@@ -10,8 +10,9 @@ signal damage(collider : Enemy)
 func _physics_process(_delta: float) -> void:
 	if not visible:
 		return
-	modulate.a = move_toward(modulate.a,.5,1/timer.wait_time)
-	print(modulate.a)
+	modulate.a = move_toward(modulate.a,0,1/timer.wait_time/100)
+	if modulate.a != 0:
+		print(modulate.a)
 
 
 func _on_timer_2_timeout() -> void:

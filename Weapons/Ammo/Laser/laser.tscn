@@ -9,7 +9,7 @@ size = Vector2(97, 3)
 [node name="RigidBody2D" type="RigidBody2D" unique_id=1331438151]
 collision_layer = 8
 script = ExtResource("1_cb0qw")
-metadata/max_time = 100
+metadata/max_time = 15
 
 [node name="Timer" type="Timer" parent="." unique_id=1173091418]
 one_shot = true
@@ -34,6 +34,7 @@ shape = SubResource("RectangleShape2D_sn8b1")
 
 [node name="Timer2" type="Timer" parent="." unique_id=1910755871]
 wait_time = 0.1
+one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="on_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

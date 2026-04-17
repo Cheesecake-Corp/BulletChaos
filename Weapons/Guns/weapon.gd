@@ -131,6 +131,7 @@ func _on_body_entered(_body: Node, bullet: Projectile) -> void:
 	call_deferred("_recycle_bullet", bullet)
 
 func _on_bullet_timeout(bullet : Projectile) -> void:
+	print("A")
 	call_deferred("_recycle_bullet", bullet)
 
 func _recycle_bullet(bullet: Projectile) -> void:
