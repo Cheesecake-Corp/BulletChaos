@@ -20,7 +20,7 @@ one_shot = true
 metadata/_edit_group_ = true
 
 [node name="Bullet" type="NinePatchRect" parent="Node2D" unique_id=1868091552]
-modulate = Color(0.5005904, 2.828778, 3.2944162, 1)
+modulate = Color(0.9349494, 5.0833087, 5.912981, 1)
 offset_right = 97.0
 offset_bottom = 3.0
 texture = ExtResource("2_cgyn8")
