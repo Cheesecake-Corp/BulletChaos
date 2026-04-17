@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://s4eu3an1ps61"
-path="res://.godot/imported/transition to charge.png-4e29b8218cfa232f20453d265af80ff6.ctex"
+path="res://.godot/imported/transition to charge.png-1dfe092c6d72843f3375d25f1b799838.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/Normal/RedDeerThing/Assets/transition to charge.png"
-dest_files=["res://.godot/imported/transition to charge.png-4e29b8218cfa232f20453d265af80ff6.ctex"]
+source_file="res://Enemies/Normal/RedDeerThing/Assets/transition to charge.png"
+dest_files=["res://.godot/imported/transition to charge.png-1dfe092c6d72843f3375d25f1b799838.ctex"]
 
 [params]
 

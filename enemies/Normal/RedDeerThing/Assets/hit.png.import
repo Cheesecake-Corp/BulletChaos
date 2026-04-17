@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://diush6uxb6h86"
-path="res://.godot/imported/hit.png-b0f44bf3f8203a39b574932c68541b79.ctex"
+path="res://.godot/imported/hit.png-421161c1f033e8b11f7ced487879ee49.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/Normal/RedDeerThing/Assets/hit.png"
-dest_files=["res://.godot/imported/hit.png-b0f44bf3f8203a39b574932c68541b79.ctex"]
+source_file="res://Enemies/Normal/RedDeerThing/Assets/hit.png"
+dest_files=["res://.godot/imported/hit.png-421161c1f033e8b11f7ced487879ee49.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://drvmf4qu1p1ne"
-path="res://.godot/imported/death.png-c560bd11b7328c891ccb8914979c97f6.ctex"
+path="res://.godot/imported/death.png-92c921fcd799ddaf08e00d5b87f306ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/Normal/Bot Wheel/Assets/death.png"
-dest_files=["res://.godot/imported/death.png-c560bd11b7328c891ccb8914979c97f6.ctex"]
+source_file="res://Enemies/Normal/Bot Wheel/Assets/death.png"
+dest_files=["res://.godot/imported/death.png-92c921fcd799ddaf08e00d5b87f306ef.ctex"]
 
 [params]
 

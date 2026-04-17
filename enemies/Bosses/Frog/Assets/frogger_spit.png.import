@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cddtxbgfywfjd"
-path="res://.godot/imported/frogger_spit.png-27c12df7ab619b4a9f41b64aba55e9b8.ctex"
+path="res://.godot/imported/frogger_spit.png-a88474d255109d17362027984623c86d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/Bosses/Frog/Assets/frogger_spit.png"
-dest_files=["res://.godot/imported/frogger_spit.png-27c12df7ab619b4a9f41b64aba55e9b8.ctex"]
+source_file="res://Enemies/Bosses/Frog/Assets/frogger_spit.png"
+dest_files=["res://.godot/imported/frogger_spit.png-a88474d255109d17362027984623c86d.ctex"]
 
 [params]
 

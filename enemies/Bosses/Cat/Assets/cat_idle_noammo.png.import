@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cy034tcmbcrum"
-path="res://.godot/imported/cat_idle_noammo.png-7b896272612b1e37c1094be086fa6932.ctex"
+path="res://.godot/imported/cat_idle_noammo.png-8957892fe4684af99caa9db5ba19063b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/Bosses/Cat/Assets/cat_idle_noammo.png"
-dest_files=["res://.godot/imported/cat_idle_noammo.png-7b896272612b1e37c1094be086fa6932.ctex"]
+source_file="res://Enemies/Bosses/Cat/Assets/cat_idle_noammo.png"
+dest_files=["res://.godot/imported/cat_idle_noammo.png-8957892fe4684af99caa9db5ba19063b.ctex"]
 
 [params]
 
