@@ -607,7 +607,6 @@ safe_margin = 0.001
 script = ExtResource("1_btcbx")
 
 [node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=122341662]
-position = Vector2(0, -16)
 shape = SubResource("CapsuleShape2D_5grkg")
 
 [node name="CameraBody" type="RigidBody2D" parent="." unique_id=1063492642]
@@ -688,6 +687,7 @@ libraries/PlayerIdle = SubResource("AnimationLibrary_76lrf")
 libraries/PlayerRun = SubResource("AnimationLibrary_qs4pp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2127200663]
+position = Vector2(1, 16)
 texture = ExtResource("1_4ntmi")
 offset = Vector2(0, -22)
 hframes = 6

@@ -18,7 +18,7 @@ var last_use_time : float
 var aim_angle : float
 @export var player : Player
 var can_use : bool = true
-var player_offset := Vector2(0,-20)
+var player_offset := Vector2(0,0)
 
 var used_bullets: Array[Projectile] = []
 var available_bullets: Array[Projectile] = []
