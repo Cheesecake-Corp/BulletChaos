@@ -1,7 +1,6 @@
 extends Enemy
 
 @export var bullet_scene : PackedScene
-@export var hitpoints = 100
 @export var SPEED : float = 100
 @export var SHOOTING_SPEED : float = 10
 @export var DAMAGE_MULT : float = 10
@@ -24,12 +23,13 @@ var movement = true
 
 
 func _ready() -> void:
-	health = hitpoints
+	max_health = 100.0
 	timer = TIMER_MAX
 	var parent = get_parent()
 	for n in 20:
 		bullets.append(bullet_scene.instantiate())
 		parent.add_child(bullets[n])
+	super()
 
 
 func _physics_process(delta: float) -> void:
@@ -70,7 +70,7 @@ func move(delta: float) -> void:
 		timer = 0
 	var nav_next = nav.get_next_path_position()
 	var dir = (nav_next - global_position).normalized()
-	global_position += dir * SPEED * delta
+	linear_velocity = dir * SPEED
 	if sprite.is_playing() == false:
 		sprite.play("move")
 	if dir.x < 0:

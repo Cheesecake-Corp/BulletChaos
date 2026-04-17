@@ -134,6 +134,7 @@ func _on_bullet_timeout(bullet : Projectile) -> void:
 	call_deferred("_recycle_bullet", bullet)
 
 func _recycle_bullet(bullet: Projectile) -> void:
+	print("a")
 	bullet.freeze = true
 	bullet.visible = false
 	bullet.linear_velocity = Vector2.ZERO

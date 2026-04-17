@@ -18,6 +18,7 @@ var last_damage = 100
 @onready var camera_collision: CollisionShape2D = $CameraBody/CameraCollision
 @onready var dash_progress_bar: TextureProgressBar = $DashProgressBar
 @onready var reload_bar: TextureProgressBar = $ReloadBar
+@onready var camera_2d: Camera2D = $CameraBody/Camera2D
 @export var current_weapon : Weapon
 @export var dash_speed := 400.0
 @export var dash_duration := 0.15
@@ -74,6 +75,7 @@ func character_movement(horizontal, vertical, delta):
 		velocity = last_dir*dash_speed
 		if dash_timer <= 0.0:
 			is_dashing = false
+			set_collision_layer_value(2, true)
 	
 	if (Input.is_action_just_pressed("dash") and not is_dashing and cooldown_timer <= 0):
 		dash()
@@ -82,6 +84,7 @@ func dash():
 	is_dashing = true
 	dash_timer = dash_duration
 	cooldown_timer = dash_cooldown
+	set_collision_layer_value(2, false)
 
 func spawn_afterimage():
 	var ghost : Sprite2D = afterimage_scene.instantiate()
@@ -121,7 +124,16 @@ func map_mode_handeling(horizontal, vertical, delta):
 		camera_movement(horizontal,vertical)
 	else:
 		character_movement(horizontal, vertical, delta)
-	
+
+func handle_zoom():
+	if Input.is_action_just_pressed("scroll_down"):
+		camera_2d.zoom -= Vector2(.1,.1)
+	if Input.is_action_just_pressed("scroll_up"):
+		camera_2d.zoom += Vector2(.1,.1)
+
+func take_damage(damage : float):
+	health -= damage
+
 func _physics_process(_delta: float) -> void:
 	# gets movement input
 	dash_progress_bar.value = (dash_cooldown-cooldown_timer)/dash_cooldown*dash_progress_bar.max_value
@@ -145,11 +157,12 @@ func _physics_process(_delta: float) -> void:
 	
 	# handles switching between map mode
 	map_mode_handeling(horizontal, vertical, _delta)
-
+	
 	# slows character down even if in map mode
 	if (not (horizontal or vertical)) or map_mode:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
+	handle_zoom()
 	
 	move_and_slide()

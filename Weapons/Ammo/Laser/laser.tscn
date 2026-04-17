@@ -7,17 +7,18 @@
 size = Vector2(97, 3)
 
 [node name="RigidBody2D" type="RigidBody2D" unique_id=1331438151]
-collision_layer = 4
-collision_mask = 0
+collision_layer = 8
 script = ExtResource("1_cb0qw")
-metadata/max_time = 120
+metadata/max_time = 100
 
 [node name="Timer" type="Timer" parent="." unique_id=1173091418]
+one_shot = true
 
 [node name="Node2D" type="Node2D" parent="." unique_id=914022054]
 metadata/_edit_group_ = true
 
 [node name="Bullet" type="NinePatchRect" parent="Node2D" unique_id=1868091552]
+modulate = Color(1.5, 2, 2, 1)
 offset_right = 97.0
 offset_bottom = 3.0
 texture = ExtResource("2_cgyn8")
@@ -32,7 +33,7 @@ position = Vector2(48.5, 1.5)
 shape = SubResource("RectangleShape2D_sn8b1")
 
 [node name="Timer2" type="Timer" parent="." unique_id=1910755871]
-wait_time = 0.5
+wait_time = 0.1
 
 [connection signal="timeout" from="Timer" to="." method="on_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

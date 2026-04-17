@@ -2,7 +2,17 @@
 
 [ext_resource type="PackedScene" uid="uid://bpmeoyikylkwr" path="res://World/GenerationNode.tscn" id="1_ntj1k"]
 
+[sub_resource type="Environment" id="Environment_xme8o"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 2.0
+glow_strength = 1.5
+glow_hdr_threshold = 1.5
+
 [node name="MainWorld" type="Node2D" unique_id=1574148702]
 y_sort_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1557316253]
+environment = SubResource("Environment_xme8o")
 
 [node name="Generation" parent="." unique_id=1741890309 instance=ExtResource("1_ntj1k")]

@@ -1,4 +1,4 @@
-extends Node2D
+extends RigidBody2D
 class_name Enemy
 
 @export var speed : float = 150

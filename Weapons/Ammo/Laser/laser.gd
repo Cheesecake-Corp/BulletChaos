@@ -10,19 +10,20 @@ signal damage(collider : Enemy)
 func _physics_process(_delta: float) -> void:
 	if not visible:
 		return
-	modulate.a = move_toward(modulate.a,0,1/timer.wait_time)
+	modulate.a = move_toward(modulate.a,.5,1/timer.wait_time)
+	print(modulate.a)
 
 
 func _on_timer_2_timeout() -> void:
 	var space := get_world_2d().direct_space_state
 
 	var shape := RectangleShape2D.new()
-	shape.size = Vector2(collision_shape_2d.shape.get_rect().size[1], 2) # thin beam
+	shape.size = Vector2(collision_shape_2d.shape.get_rect().size.x, 2) # thin beam
 
 	var params := PhysicsShapeQueryParameters2D.new()
 	params.shape = shape
 	params.transform = Transform2D(rotation, global_position)
-	params.collision_mask = 1 << 5
+	params.collision_mask = 1 << 2
 	params.exclude = [self]
 
 	var hits := space.intersect_shape(params, 32)

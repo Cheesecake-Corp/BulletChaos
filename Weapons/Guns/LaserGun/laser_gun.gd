@@ -24,6 +24,7 @@ func create_bullets():
 		b.max_contacts_reported = 1
 		
 		b.damage.connect(_on_body_entered.bind(b))
+		b.timeout.connect(_on_bullet_timeout)
 		
 		available_bullets.append(b)
 		get_tree().current_scene.call_deferred("add_child", b)
