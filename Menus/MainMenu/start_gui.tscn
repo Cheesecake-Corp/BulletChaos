@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dh6vror533ec8" path="res://Assets/Borders/Default/Transparent border/panel-transparent-border-002.png" id="4_hdl0b"]
 [ext_resource type="FontFile" uid="uid://b3fdd81q33fui" path="res://Assets/ByteBounce.ttf" id="6_hdl0b"]
 [ext_resource type="Texture2D" uid="uid://dl3qw5yb1aaya" path="res://Menus/MainMenu/Menu.png" id="7_frnrg"]
+[ext_resource type="Script" uid="uid://bwvq77053cyqu" path="res://Menus/MainMenu/item_list.gd" id="8_xy4xq"]
+[ext_resource type="Script" uid="uid://boqst8a7fkjk0" path="res://Menus/MainMenu/item_list_2.gd" id="9_bg3c7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f7tbs"]
 atlas = ExtResource("3_b2d4t")
@@ -35,9 +37,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -72.0
-offset_top = 156.0
+offset_top = 52.0
 offset_right = 72.0
-offset_bottom = 300.0
+offset_bottom = 196.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = SubResource("AtlasTexture_f7tbs")
@@ -52,10 +54,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -256.0
-offset_top = -132.0
-offset_right = 256.0
-offset_bottom = -20.0
+offset_left = -160.0
+offset_top = -116.0
+offset_right = 160.0
+offset_bottom = -36.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_hdl0b")
@@ -78,9 +80,9 @@ vertical_alignment = 1
 [node name="Label2" type="Label" parent="." unique_id=281039873]
 layout_mode = 0
 offset_left = 376.0
-offset_top = 416.0
+offset_top = 536.0
 offset_right = 776.0
-offset_bottom = 488.0
+offset_bottom = 608.0
 theme_override_fonts/font = ExtResource("6_hdl0b")
 theme_override_font_sizes/font_size = 100
 text = "Start game"
@@ -88,5 +90,36 @@ text = "Start game"
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=54437926]
 modulate = Color(0.5529556, 0.55295557, 0.55295557, 1)
 z_index = -100
-position = Vector2(576, 328)
+position = Vector2(576, 323.99997)
+scale = Vector2(0.9974027, 0.993865)
 texture = ExtResource("7_frnrg")
+
+[node name="ItemList" type="ItemList" parent="." unique_id=2135696342]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 208.0
+offset_right = 400.0
+offset_bottom = 312.0
+theme_override_font_sizes/font_size = 60
+allow_reselect = true
+max_text_lines = 2
+item_count = 2
+item_0/text = "Revolver"
+item_1/text = "Laser"
+script = ExtResource("8_xy4xq")
+
+[node name="ItemList2" type="ItemList" parent="." unique_id=132913110]
+layout_mode = 0
+offset_left = 752.0
+offset_top = 208.0
+offset_right = 1024.0
+offset_bottom = 312.0
+theme_override_fonts/font = ExtResource("6_hdl0b")
+theme_override_font_sizes/font_size = 60
+item_count = 2
+item_0/text = "Normal"
+item_1/text = "Hard"
+script = ExtResource("9_bg3c7")
+
+[connection signal="activated" from="TextureButton" to="ItemList" method="_on_texture_button_activated"]
+[connection signal="activated" from="TextureButton" to="ItemList2" method="_on_texture_button_activated"]

@@ -18,14 +18,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if enemy_dead == enemy_count:
+	if enemy_dead == enemy_count * GAME.difficulty:
 		room_complete.emit(enemy_dead)
 
 
 func _on_timer_timeout() -> void:
 	var n = 0
 	var parent = get_parent()
-	while n < enemy_count:
+	while n < enemy_count * GAME.difficulty:
 		if randf() < chance_bot:
 			enemies.append(bot.instantiate())
 		else:
