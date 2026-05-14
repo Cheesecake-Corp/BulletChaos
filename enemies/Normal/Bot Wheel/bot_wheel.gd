@@ -106,3 +106,7 @@ func death() -> void:
 	sprite.play("death")
 	alive = false
 	get_parent().enemy_dead += 1
+	if randf() > 0.5:
+		var canister : Node2D = load("res://InteractObjects/HealthContainer/Health_container.tscn").instantiate()
+		get_parent().room.add_child(canister)
+		canister.global_position = global_position

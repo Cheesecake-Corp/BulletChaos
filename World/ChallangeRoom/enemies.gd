@@ -4,15 +4,17 @@ extends Node
 @export var deer : PackedScene
 @export var enemy_count = 4
 @export var chance_bot := 0.5 #Value between 0 and 1
-signal room_complete(enemies_killed : int)
-var enemies : Array[Enemy] = []
+
 @onready var challange_room: Node2D = $".."
+
+signal room_complete(enemies_killed : int)
+
+var enemies : Array[Enemy] = []
 var enemy_dead := 0
+var room 
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	room = get_parent()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

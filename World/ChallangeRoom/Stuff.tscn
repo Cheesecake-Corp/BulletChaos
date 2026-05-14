@@ -45,6 +45,7 @@ script = ExtResource("2_4tu7b")
 script = ExtResource("3_a0a5e")
 bot = ExtResource("4_u7t8g")
 deer = ExtResource("6_a0a5e")
+enemy_count = 10
 
 [connection signal="body_entered" from="Area2D" to="Timer" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="Timer" method="_on_area_2d_body_exited"]

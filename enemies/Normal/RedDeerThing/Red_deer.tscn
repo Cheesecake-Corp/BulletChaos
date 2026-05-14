@@ -268,7 +268,6 @@ frame_progress = 0.7115988
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1938394312]
 navigation_layers = 2
-debug_enabled = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=269734842]
 collision_layer = 0
