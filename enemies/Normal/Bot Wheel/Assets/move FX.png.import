@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bnyi37yaphr4r"
-path="res://.godot/imported/move FX.png-56364edbdfba19b3591274a1a4702b93.ctex"
+path="res://.godot/imported/move FX.png-f2ff789438fc43ef44010f0109a12fdb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Normal/Bot Wheel/Assets/move FX.png"
-dest_files=["res://.godot/imported/move FX.png-56364edbdfba19b3591274a1a4702b93.ctex"]
+source_file="res://enemies/Normal/Bot Wheel/Assets/move FX.png"
+dest_files=["res://.godot/imported/move FX.png-f2ff789438fc43ef44010f0109a12fdb.ctex"]
 
 [params]
 

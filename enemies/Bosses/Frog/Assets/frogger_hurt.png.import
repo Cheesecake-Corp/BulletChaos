@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dx255w3wf2spl"
-path="res://.godot/imported/frogger_hurt.png-7694eacee025510748c0661fbcab74af.ctex"
+path="res://.godot/imported/frogger_hurt.png-8c96b09a82deed04dc13552dc0208953.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Bosses/Frog/Assets/frogger_hurt.png"
-dest_files=["res://.godot/imported/frogger_hurt.png-7694eacee025510748c0661fbcab74af.ctex"]
+source_file="res://enemies/Bosses/Frog/Assets/frogger_hurt.png"
+dest_files=["res://.godot/imported/frogger_hurt.png-8c96b09a82deed04dc13552dc0208953.ctex"]
 
 [params]
 

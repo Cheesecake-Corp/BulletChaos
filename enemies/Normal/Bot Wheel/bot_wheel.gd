@@ -1,7 +1,7 @@
 extends Enemy
 
 @export var bullet_scene : PackedScene
-@export var SPEED : float = 100
+@export var BULLET_SPEED : float = 100
 @export var SHOOTING_SPEED : float = 10
 @export var DAMAGE_MULT : float = 10
 @export var SPEED_MULT : float = 10 #Speed of bullet multiplier
@@ -23,7 +23,8 @@ var movement = true
 
 
 func _ready() -> void:
-	max_health = 100.0
+	MAX_HEALTH = 100.0
+	SPEED = 100
 	timer = TIMER_MAX
 	var parent = get_parent()
 	for n in 20:

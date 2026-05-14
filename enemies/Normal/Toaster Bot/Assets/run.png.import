@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d3kxapoydaeqs"
-path="res://.godot/imported/run.png-dfe086407ad9cbf7b724320c7ff9a164.ctex"
+path="res://.godot/imported/run.png-1c6d1f13a19e7b77624c36bd9c2ea8cb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Normal/Toaster Bot/Assets/run.png"
-dest_files=["res://.godot/imported/run.png-dfe086407ad9cbf7b724320c7ff9a164.ctex"]
+source_file="res://enemies/Normal/Toaster Bot/Assets/run.png"
+dest_files=["res://.godot/imported/run.png-1c6d1f13a19e7b77624c36bd9c2ea8cb.ctex"]
 
 [params]
 

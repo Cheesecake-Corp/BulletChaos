@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://jksg01qpyk6i"
-path="res://.godot/imported/Sprite.png-dd02c6ad87fc1e3ecf2988f984b23819.ctex"
+path="res://.godot/imported/Sprite.png-fd3cf0bf09764653c6e7e2ff63fdd1e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Normal/Robot/Assets/Sprite.png"
-dest_files=["res://.godot/imported/Sprite.png-dd02c6ad87fc1e3ecf2988f984b23819.ctex"]
+source_file="res://enemies/Normal/Robot/Assets/Sprite.png"
+dest_files=["res://.godot/imported/Sprite.png-fd3cf0bf09764653c6e7e2ff63fdd1e3.ctex"]
 
 [params]
 

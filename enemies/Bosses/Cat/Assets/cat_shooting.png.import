@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bytrjmoymg8c1"
-path="res://.godot/imported/cat_shooting.png-b1049581e7f5990e6c34a46eaa041348.ctex"
+path="res://.godot/imported/cat_shooting.png-4b5554b2ca53bf996a91e303a87964a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Bosses/Cat/Assets/cat_shooting.png"
-dest_files=["res://.godot/imported/cat_shooting.png-b1049581e7f5990e6c34a46eaa041348.ctex"]
+source_file="res://enemies/Bosses/Cat/Assets/cat_shooting.png"
+dest_files=["res://.godot/imported/cat_shooting.png-4b5554b2ca53bf996a91e303a87964a4.ctex"]
 
 [params]
 

@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://bsjirrkmwhv8m"]
 
-[ext_resource type="Script" uid="uid://c6jvx3boopgoy" path="res://Enemies/Normal/Bot Wheel/bot_wheel.gd" id="1_bkjx6"]
-[ext_resource type="Texture2D" uid="uid://dhxa7gus41aem" path="res://Enemies/Normal/Bot Wheel/Assets/charge.png" id="2_e67qf"]
-[ext_resource type="PackedScene" uid="uid://dduadop1dj2o6" path="res://Enemies/Normal/Bot Wheel/Bot_bullet.tscn" id="2_wdsan"]
-[ext_resource type="Texture2D" uid="uid://bl0xy6kdocw" path="res://Enemies/Normal/Bot Wheel/Assets/damaged.png" id="3_wdsan"]
-[ext_resource type="Texture2D" uid="uid://drvmf4qu1p1ne" path="res://Enemies/Normal/Bot Wheel/Assets/death.png" id="4_8ec22"]
-[ext_resource type="Texture2D" uid="uid://bvqnwsn4br7q6" path="res://Enemies/Normal/Bot Wheel/Assets/move with FX.png" id="5_6h4ro"]
-[ext_resource type="Texture2D" uid="uid://bnhfohdqbqy74" path="res://Enemies/Normal/Bot Wheel/Assets/shoot with FX.png" id="6_0cbxn"]
+[ext_resource type="Script" uid="uid://c6jvx3boopgoy" path="res://enemies/Normal/Bot Wheel/bot_wheel.gd" id="1_bkjx6"]
+[ext_resource type="Texture2D" uid="uid://dhxa7gus41aem" path="res://enemies/Normal/Bot Wheel/Assets/charge.png" id="2_e67qf"]
+[ext_resource type="PackedScene" uid="uid://dduadop1dj2o6" path="res://enemies/Normal/Bot Wheel/Bot_bullet.tscn" id="2_wdsan"]
+[ext_resource type="Texture2D" uid="uid://bl0xy6kdocw" path="res://enemies/Normal/Bot Wheel/Assets/damaged.png" id="3_wdsan"]
+[ext_resource type="Texture2D" uid="uid://drvmf4qu1p1ne" path="res://enemies/Normal/Bot Wheel/Assets/death.png" id="4_8ec22"]
+[ext_resource type="Texture2D" uid="uid://bvqnwsn4br7q6" path="res://enemies/Normal/Bot Wheel/Assets/move with FX.png" id="5_6h4ro"]
+[ext_resource type="Texture2D" uid="uid://bnhfohdqbqy74" path="res://enemies/Normal/Bot Wheel/Assets/shoot with FX.png" id="6_0cbxn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e67qf"]
 radius = 6.0
@@ -210,6 +210,12 @@ gravity_scale = 0.0
 lock_rotation = true
 script = ExtResource("1_bkjx6")
 bullet_scene = ExtResource("2_wdsan")
+SPEED = 150.0
+SHOOTING_SPEED = null
+DAMAGE_MULT = null
+SPEED_MULT = null
+SPEED = 150.0
+MAX_HEALTH = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=796893509]
 position = Vector2(0, -11)
@@ -219,6 +225,8 @@ shape = SubResource("CapsuleShape2D_e67qf")
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_ttpii")
 animation = &"shoot"
+frame = 7
+frame_progress = 1.0
 offset = Vector2(42.5, 0)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=913639559]

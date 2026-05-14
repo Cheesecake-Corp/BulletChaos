@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dduadop1dj2o6"]
 
-[ext_resource type="Script" uid="uid://dvitmn26ttwk0" path="res://Enemies/Normal/Bot Wheel/bot_bullet.gd" id="1_u0osj"]
+[ext_resource type="Script" uid="uid://dvitmn26ttwk0" path="res://enemies/Normal/Bot Wheel/bot_bullet.gd" id="1_u0osj"]
 [ext_resource type="Texture2D" uid="uid://bpovk6n1ji467" path="res://Weapons/Ammo/Assets/laser.png" id="2_5vkuo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5al18"]
@@ -9,6 +9,7 @@ size = Vector2(12, 2)
 [node name="Bot_bullet" type="RigidBody2D" unique_id=620607248]
 collision_layer = 16
 collision_mask = 3
+lock_rotation = true
 script = ExtResource("1_u0osj")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1855763724]

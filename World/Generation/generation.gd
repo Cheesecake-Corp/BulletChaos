@@ -173,6 +173,7 @@ func gen():
 	minx = min(minx, exit_entry.room.global_position.x)
 	miny = min(miny, exit_entry.room.global_position.y)
 	exit_entry.room.add_to_group("Rooms")
+	exit_entry.room.spawn()
 	
 
 func get_room() -> Array[Exit]:

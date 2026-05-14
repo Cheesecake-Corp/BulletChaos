@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bxymotdkdk4y3"
-path="res://.godot/imported/gollux_healing.png-a8248c568af12cf93ce3eb3187b95792.ctex"
+path="res://.godot/imported/gollux_healing.png-966af4eade68c6b77b3eb15dd3578713.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Bosses/Gollem/Assets/gollux_healing.png"
-dest_files=["res://.godot/imported/gollux_healing.png-a8248c568af12cf93ce3eb3187b95792.ctex"]
+source_file="res://enemies/Bosses/Gollem/Assets/gollux_healing.png"
+dest_files=["res://.godot/imported/gollux_healing.png-966af4eade68c6b77b3eb15dd3578713.ctex"]
 
 [params]
 
