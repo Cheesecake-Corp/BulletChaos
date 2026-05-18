@@ -1,4 +1,5 @@
 extends Node
+class_name EnemySpawner
 
 @export var bot : PackedScene
 @export var deer : PackedScene
@@ -11,7 +12,7 @@ signal room_complete(enemies_killed : int)
 
 var enemies : Array[Enemy] = []
 var enemy_dead := 0
-var room 
+var room : Node2D
 
 func _ready() -> void:
 	room = get_parent()
@@ -23,15 +24,20 @@ func _process(_delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
+	if enemies:
+		return
+	print(1)
 	var n = 0
 	var parent = get_parent()
 	while n < enemy_count * GAME.difficulty:
+		var enemy : Enemy
 		if randf() < chance_bot:
-			enemies.append(bot.instantiate())
+			enemy = bot.instantiate()
 		else:
-			enemies.append(deer.instantiate())
-		add_child(enemies[n])
-		enemies[n].global_position = parent.global_position + parent.navsq*8 + Vector2(GAME.RANDOM_GENERATION.randf_range(-5,5),GAME.RANDOM_GENERATION.randf_range(-5,5))*16
-		enemies[n].visible = true
-		enemies[n].nav.target_position = enemies[n].global_position
+			enemy = deer.instantiate()
+		enemies.append(enemy)
+		add_child(enemy)
+		enemy.global_position = parent.global_position + parent.navsq*8 + Vector2(GAME.RANDOM_GENERATION.randf_range(-5,5),GAME.RANDOM_GENERATION.randf_range(-5,5))*16
+		enemy.visible = true
+		enemy.nav.target_position = enemies[n].global_position
 		n += 1

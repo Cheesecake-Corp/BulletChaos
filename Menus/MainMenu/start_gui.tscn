@@ -21,6 +21,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1766278293]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_frnrg")
+expand_mode = 2
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=456404264]
 z_index = 100
 position = Vector2(576, 352)
@@ -54,12 +64,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -160.0
-offset_top = -116.0
-offset_right = 160.0
-offset_bottom = -36.0
+offset_left = -150.0
+offset_top = -112.0
+offset_right = 150.0
+offset_bottom = -42.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(150, 35)
 theme_override_fonts/font = ExtResource("6_hdl0b")
 theme_override_font_sizes/font_size = 64
 placeholder_text = "Enter seed"
@@ -78,28 +89,37 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="." unique_id=281039873]
-layout_mode = 0
-offset_left = 376.0
-offset_top = 536.0
-offset_right = 776.0
-offset_bottom = 608.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -197.0
+offset_top = 218.0
+offset_right = 203.0
+offset_bottom = 290.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(200, 36)
 theme_override_fonts/font = ExtResource("6_hdl0b")
 theme_override_font_sizes/font_size = 100
 text = "Start game"
 
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=54437926]
-modulate = Color(0.5529556, 0.55295557, 0.55295557, 1)
-z_index = -100
-position = Vector2(576, 323.99997)
-scale = Vector2(0.9974027, 0.993865)
-texture = ExtResource("7_frnrg")
-
 [node name="ItemList" type="ItemList" parent="." unique_id=2135696342]
-layout_mode = 0
-offset_left = 192.0
-offset_top = 208.0
-offset_right = 400.0
-offset_bottom = 312.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -365.0
+offset_top = -116.0
+offset_right = -155.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(105, 50)
 theme_override_font_sizes/font_size = 60
 allow_reselect = true
 max_text_lines = 2
@@ -109,11 +129,19 @@ item_1/text = "Laser"
 script = ExtResource("8_xy4xq")
 
 [node name="ItemList2" type="ItemList" parent="." unique_id=132913110]
-layout_mode = 0
-offset_left = 752.0
-offset_top = 208.0
-offset_right = 1024.0
-offset_bottom = 312.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 165.0
+offset_top = -112.0
+offset_right = 375.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(105, 50)
 theme_override_fonts/font = ExtResource("6_hdl0b")
 theme_override_font_sizes/font_size = 60
 item_count = 2

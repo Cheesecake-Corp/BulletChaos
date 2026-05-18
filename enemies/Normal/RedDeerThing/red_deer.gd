@@ -2,22 +2,21 @@ extends Enemy
 
 @export var DAMAGE : float = 20
 
-@onready var nav: NavigationAgent2D = $NavigationAgent2D
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var area: Area2D = $Area2D
 @onready var area_shape: CollisionShape2D = $Area2D/CollisionShape2D
 
-var alive := true
+
 var attack_cooldown : float = 0.0
 var ATTACK_COOLDOWN_MAX : float = 0.5
 var timer : float = 0.0
 var TIMER_MAX : float= 0.3
-var movement := true
+
 var sprite_name := ""
+var enemies_node : EnemySpawner
 
 func _on_ready() -> void:
 	attack_cooldown = ATTACK_COOLDOWN_MAX
-
 
 func _physics_process(delta: float) -> void:
 	attack_cooldown = move_toward(attack_cooldown, 0.0, delta)
@@ -57,25 +56,16 @@ func attack():
 
 
 func take_damage(damage : float):
-	health -= damage
 	if alive == true:
 		sprite.play("damaged")
 		sprite_name = "damaged"
-	movement = false
-	if alive == true and health < 0:
-		death()
+	super(damage)
 
 
 func death():
 	sprite.play("death")
 	sprite_name = "death"
-	movement = false
-	alive = false
-	get_parent().enemy_dead += 1
-	if randf() > 0.5:
-		var canister : Node2D = load("res://InteractObjects/HealthContainer/Health_container.tscn").instantiate()
-		get_parent().room.add_child(canister)
-		canister.global_position = global_position
+	super()
 
 
 func flip_sprite(dir: Vector2):

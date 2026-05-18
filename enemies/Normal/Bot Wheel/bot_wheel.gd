@@ -6,7 +6,7 @@ extends Enemy
 @export var DAMAGE_MULT : float = 10
 @export var SPEED_MULT : float = 10 #Speed of bullet multiplier
 
-@onready var nav: NavigationAgent2D = $NavigationAgent2D
+
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var bullets: Array[Bot_bullet] = []
@@ -18,8 +18,6 @@ var animation_timer : float = 0.75
 var ANIMATION_TIMER_MAX : float = 0.75 #Time it takes to play shooting animation
 var damage_timer : float = 0
 var DAMAGE_TIMER_MAX : float = 0.2
-var alive := true
-var movement = true
 
 
 func _ready() -> void:
@@ -95,18 +93,10 @@ func shoot() -> void:
 	
 
 func take_damage(damage: float) -> void:
-	sprite.play("damaged")
-	movement = false
-	damage_timer = 0
-	health = health - damage
-	if alive == true and health <= 0:
-		death()
+	if alive:
+		sprite.play("damaged")
+	super(damage)
 
 func death() -> void:
 	sprite.play("death")
-	alive = false
-	get_parent().enemy_dead += 1
-	if randf() > 0.5:
-		var canister : Node2D = load("res://InteractObjects/HealthContainer/Health_container.tscn").instantiate()
-		get_parent().room.add_child(canister)
-		canister.global_position = global_position
+	super()

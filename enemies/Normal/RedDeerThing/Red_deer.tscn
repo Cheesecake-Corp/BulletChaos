@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://cbkx1sxjuefk7"]
 
-[ext_resource type="Script" uid="uid://b73dkva12va5y" path="res://red_deer.gd" id="1_au7vq"]
-[ext_resource type="Texture2D" uid="uid://dpasf14v6b0lu" path="res://enemies/Normal/RedDeerThing/Assets/attack.png" id="2_1m2wk"]
-[ext_resource type="Texture2D" uid="uid://s4eu3an1ps61" path="res://enemies/Normal/RedDeerThing/Assets/transition to charge.png" id="3_hf74w"]
-[ext_resource type="Texture2D" uid="uid://s0ljoflfjgk0" path="res://enemies/Normal/RedDeerThing/Assets/charge.png" id="4_fbo78"]
-[ext_resource type="Texture2D" uid="uid://diush6uxb6h86" path="res://enemies/Normal/RedDeerThing/Assets/hit.png" id="5_p3rnc"]
-[ext_resource type="Texture2D" uid="uid://df3sn1h34suj6" path="res://enemies/Normal/RedDeerThing/Assets/death.png" id="6_mw076"]
-[ext_resource type="Texture2D" uid="uid://ww2s4nwwg1cn" path="res://enemies/Normal/RedDeerThing/Assets/run.png" id="7_onl67"]
+[ext_resource type="Script" uid="uid://b73dkva12va5y" path="res://Enemies/Normal/RedDeerThing/red_deer.gd" id="1_au7vq"]
+[ext_resource type="Texture2D" uid="uid://dpasf14v6b0lu" path="res://Enemies/Normal/RedDeerThing/Assets/attack.png" id="2_1m2wk"]
+[ext_resource type="Texture2D" uid="uid://s4eu3an1ps61" path="res://Enemies/Normal/RedDeerThing/Assets/transition to charge.png" id="3_hf74w"]
+[ext_resource type="Texture2D" uid="uid://s0ljoflfjgk0" path="res://Enemies/Normal/RedDeerThing/Assets/charge.png" id="4_fbo78"]
+[ext_resource type="Texture2D" uid="uid://diush6uxb6h86" path="res://Enemies/Normal/RedDeerThing/Assets/hit.png" id="5_p3rnc"]
+[ext_resource type="Texture2D" uid="uid://df3sn1h34suj6" path="res://Enemies/Normal/RedDeerThing/Assets/death.png" id="6_mw076"]
+[ext_resource type="Texture2D" uid="uid://ww2s4nwwg1cn" path="res://Enemies/Normal/RedDeerThing/Assets/run.png" id="7_onl67"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uimo1"]
 radius = 7.0
