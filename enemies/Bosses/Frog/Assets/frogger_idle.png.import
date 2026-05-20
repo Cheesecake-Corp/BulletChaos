@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bx6e6dcgphugt"
-path="res://.godot/imported/frogger_idle.png-b70a33a90df06d804c0fc800d89c8a60.ctex"
+path="res://.godot/imported/frogger_idle.png-6a08d2bbca51c804771424e1a28c2739.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/Bosses/Frog/Assets/frogger_idle.png"
-dest_files=["res://.godot/imported/frogger_idle.png-b70a33a90df06d804c0fc800d89c8a60.ctex"]
+source_file="res://Enemies/Bosses/Frog/Assets/frogger_idle.png"
+dest_files=["res://.godot/imported/frogger_idle.png-6a08d2bbca51c804771424e1a28c2739.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d4j1t203lflkf"
-path="res://.godot/imported/frogger_tongue.png-782d05cc598a75fc1af439eff984f5b9.ctex"
+path="res://.godot/imported/frogger_tongue.png-295eab74d03d3079c4e175c3ec7ccbae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/Bosses/Frog/Assets/frogger_tongue.png"
-dest_files=["res://.godot/imported/frogger_tongue.png-782d05cc598a75fc1af439eff984f5b9.ctex"]
+source_file="res://Enemies/Bosses/Frog/Assets/frogger_tongue.png"
+dest_files=["res://.godot/imported/frogger_tongue.png-295eab74d03d3079c4e175c3ec7ccbae.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d273rsu0i0ud7"
-path="res://.godot/imported/cat_reload.png-889ce7f25cf772933fa1efaa4066adc5.ctex"
+path="res://.godot/imported/cat_reload.png-45a15adde0d7543776d278bf560fd759.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/Bosses/Cat/Assets/cat_reload.png"
-dest_files=["res://.godot/imported/cat_reload.png-889ce7f25cf772933fa1efaa4066adc5.ctex"]
+source_file="res://Enemies/Bosses/Cat/Assets/cat_reload.png"
+dest_files=["res://.godot/imported/cat_reload.png-45a15adde0d7543776d278bf560fd759.ctex"]
 
 [params]
 

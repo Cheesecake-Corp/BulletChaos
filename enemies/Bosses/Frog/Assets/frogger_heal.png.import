@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ev5qff3g48a6"
-path="res://.godot/imported/frogger_heal.png-821deb1a5af771d25a5fe9560b684b9f.ctex"
+path="res://.godot/imported/frogger_heal.png-07004c2dcbb2dcdce52664b83042b5df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/Bosses/Frog/Assets/frogger_heal.png"
-dest_files=["res://.godot/imported/frogger_heal.png-821deb1a5af771d25a5fe9560b684b9f.ctex"]
+source_file="res://Enemies/Bosses/Frog/Assets/frogger_heal.png"
+dest_files=["res://.godot/imported/frogger_heal.png-07004c2dcbb2dcdce52664b83042b5df.ctex"]
 
 [params]
 
