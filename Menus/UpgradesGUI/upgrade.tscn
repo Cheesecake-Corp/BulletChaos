@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b33xc4skqictj"]
 
 [ext_resource type="Texture2D" uid="uid://cpq05libleskg" path="res://Assets/GUI/gdp_styles.png" id="1_1bviq"]
-[ext_resource type="Script" uid="uid://7gmcbsvftq8r" path="res://Menus/UpgradesGUI/upgrade.gd" id="2_ql6tt"]
+[ext_resource type="Script" uid="uid://7gmcbsvftq8r" path="res://Menus/UpgradesGUI/upgrade_box.gd" id="2_ql6tt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ql6tt"]
 atlas = ExtResource("1_1bviq")
@@ -61,16 +61,6 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_m4cqr")
 toggle_mode = true
 script = ExtResource("2_ql6tt")
 
-[node name="Name" type="Label" parent="." unique_id=707045077]
-layout_mode = 0
-offset_left = 3.0833335
-offset_top = 4.666667
-offset_right = 63.083332
-offset_bottom = 15.666667
-scale = Vector2(0.5, 0.5)
-theme_override_font_sizes/font_size = 16
-text = "NAMENAME"
-
 [node name="LVL Label" type="Label" parent="." unique_id=1581341676]
 layout_mode = 0
 offset_left = 3.0833333
@@ -110,12 +100,22 @@ offset_top = 16.75
 offset_right = 48.0
 offset_bottom = 56.75
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control" unique_id=327132658]
+[node name="Description" type="Label" parent="Control" unique_id=1037831604]
 layout_mode = 0
 offset_right = 153.05554
 offset_bottom = 133.33333
 scale = Vector2(0.3, 0.3)
 text = "CRIT DMG +20 %"
+
+[node name="Name" type="Label" parent="." unique_id=1189361341]
+layout_mode = 0
+offset_left = 3.0833335
+offset_top = 4.666667
+offset_right = 63.083332
+offset_bottom = 15.666667
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 16
+text = "NAMENAME"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

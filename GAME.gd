@@ -12,6 +12,7 @@ var difficulty := 1
 var weapon_menu := "Revolver"
 
 signal weapon_changed
+signal player_registered
 
 func register_player(p):
 	player = p
@@ -21,6 +22,8 @@ func register_player(p):
 	else:
 		weap = load("res://Weapons/Guns/BasicGuns/revolver.tscn").instantiate()
 	change_weapon(weap)
+	player_registered.emit()
+
 
 func _ready() -> void:
 	RANDOM_GENERATION = RandomNumberGenerator.new()

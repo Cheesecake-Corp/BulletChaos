@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PlayerUpgrade" format=3 uid="uid://bmill31gm8oke"]
+
+[ext_resource type="Script" uid="uid://c5ovvmf05xpaw" path="res://Upgrades/player_upgrade.gd" id="1_mwcb3"]
+
+[resource]
+script = ExtResource("1_mwcb3")
+health = 10
+speed = 2
+name = "Vitality"
+description = "Má deskripšn"
+energy = 2
+metadata/_custom_type_script = "uid://c5ovvmf05xpaw"

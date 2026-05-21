@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dyg3qvnifbtg5"]
+
+[ext_resource type="Script" uid="uid://fd6k4c1ejpym" path="res://Upgrades/upgrade_item.gd" id="1_6ntor"]
+[ext_resource type="Texture2D" uid="uid://0ap1cfy4uws0" path="res://Assets/GUI/gdp_icons.png" id="2_xu5r6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nik7l"]
+atlas = ExtResource("2_xu5r6")
+region = Rect2(37, 73, 10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqkwr"]
+size = Vector2(13.5, 13.5)
+
+[node name="Node2D" type="Node2D" unique_id=333890846]
+script = ExtResource("1_6ntor")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=42218308]
+position = Vector2(1.1920929e-07, 1.1920929e-07)
+scale = Vector2(1.3, 1.3)
+texture = SubResource("AtlasTexture_nik7l")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1191958171]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1741322648]
+shape = SubResource("RectangleShape2D_nqkwr")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

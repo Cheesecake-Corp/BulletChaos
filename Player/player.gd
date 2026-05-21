@@ -23,6 +23,7 @@ var last_damage = 100
 @export var dash_duration := 0.15
 @export var dash_cooldown := 1.5
 @onready var upgrade: CanvasLayer = $Upgrade
+@onready var upgrade_script = $Upgrade/UpgradeGUI/Window
 
 var dash_timer := 0.0
 var cooldown_timer := 0.0
@@ -35,6 +36,21 @@ var afterimage_cooldown := 0.0
 
 var map_mode = false
 signal health_change(health)
+
+var upgrade_resources : Array = []
+var weapon_upgrades : Array = []
+var upgrades : Array = []
+var energy_max : int = 10
+var player_stats: Dictionary = {
+	"health": {"name": "Health", "value": 100},
+	"healing_bonus": {"name": "Heal bonus", "value": 20}, 
+	"shield": {"name": "Shield", "value": 10}, 
+	"shield_regen": {"name": "Shield regen", "value": 10}, 
+	"shield_delay": {"name": "Shield delay", "value": 10},
+	"speed": {"name": "Speed", "value": 100}, 
+	"dash_delay": {"name": "Dash delay", "value": 1}, 
+	"dash_speed": {"name": "Dash speed", "value": 2},
+	}
 
 func _ready() -> void:
 	GAME.register_player(self)
@@ -111,7 +127,10 @@ func take_damage(damage : float):
 func _physics_process(_delta: float) -> void:
 	if(Input.is_action_just_pressed("inventory")):
 		upgrade.visible = !upgrade.visible
+		if upgrade.visible:
+			upgrade_script.inventory_start()
 	if upgrade.visible:
+		camera_body.linear_velocity = -camera_body.position*5 #Camera stops when inventory is active
 		return
 	# gets movement input
 	dash_progress_bar.value = (dash_cooldown-cooldown_timer)/dash_cooldown*dash_progress_bar.max_value

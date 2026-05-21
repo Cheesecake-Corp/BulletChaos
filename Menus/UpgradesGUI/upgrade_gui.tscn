@@ -1,13 +1,38 @@
 [gd_scene format=3 uid="uid://i0o0ku0gbxsd"]
 
 [ext_resource type="Texture2D" uid="uid://cpq05libleskg" path="res://Assets/GUI/gdp_styles.png" id="1_4vjet"]
-[ext_resource type="PackedScene" uid="uid://b33xc4skqictj" path="res://Menus/UpgradesGUI/upgrade.tscn" id="2_d54w8"]
+[ext_resource type="Script" uid="uid://bkbolrt3u8ju4" path="res://Menus/UpgradesGUI/upgradesGUI.gd" id="2_tranw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4vjet"]
 atlas = ExtResource("1_4vjet")
 region = Rect2(44, 44, 11, 11)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d54w8"]
+atlas = ExtResource("1_4vjet")
+region = Rect2(87, 149, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tranw"]
+atlas = ExtResource("1_4vjet")
+region = Rect2(86, 148, 16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d54w8"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+draw_center = false
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tranw"]
+corner_detail = 1
+expand_margin_right = 2.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acnka"]
 atlas = ExtResource("1_4vjet")
 region = Rect2(87, 149, 14, 14)
 
@@ -27,10 +52,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -44.920105
-offset_top = -25.267578
-offset_right = 55.079895
-offset_bottom = 30.732422
+offset_left = -88.75
+offset_top = -51.140015
+offset_right = 18.462646
+offset_bottom = 9.167114
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(10.745, 10.745)
@@ -40,21 +65,22 @@ patch_margin_left = 5
 patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
-metadata/_edit_lock_ = true
+script = ExtResource("2_tranw")
 
-[node name="NinePatchRect2" type="NinePatchRect" parent="Window" unique_id=470673353]
+[node name="StatTable" type="NinePatchRect" parent="Window" unique_id=470673353]
 layout_mode = 1
-offset_left = 2.1563616
-offset_top = 13.878786
-offset_right = 41.244305
-offset_bottom = 53.245934
+offset_left = 2.233597
+offset_top = 11.167985
+offset_right = 41.32154
+offset_bottom = 50.535126
+scale = Vector2(0.75, 0.75)
 texture = SubResource("AtlasTexture_d54w8")
 patch_margin_left = 5
 patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="StatNames" type="VBoxContainer" parent="Window/NinePatchRect2" unique_id=1204064026]
+[node name="StatNames" type="VBoxContainer" parent="Window/StatTable" unique_id=1204064026]
 layout_mode = 0
 offset_left = 4.094928
 offset_top = 4.9325275
@@ -62,108 +88,109 @@ offset_right = 380.09494
 offset_bottom = 823.9183
 scale = Vector2(0.04, 0.04)
 
-[node name="Stat1" type="Label" parent="Window/NinePatchRect2/StatNames" unique_id=294632027]
+[node name="Stat1" type="Label" parent="Window/StatTable/StatNames" unique_id=294632027]
 layout_mode = 2
 theme_override_font_sizes/font_size = 128
 text = "Damage:"
 
-[node name="Stat2" type="Label" parent="Window/NinePatchRect2/StatNames" unique_id=377072619]
+[node name="Stat2" type="Label" parent="Window/StatTable/StatNames" unique_id=377072619]
 layout_mode = 2
 theme_override_font_sizes/font_size = 128
 text = "Damage:"
 
-[node name="Stat3" type="Label" parent="Window/NinePatchRect2/StatNames" unique_id=581370805]
+[node name="Stat3" type="Label" parent="Window/StatTable/StatNames" unique_id=581370805]
 layout_mode = 2
 theme_override_font_sizes/font_size = 128
 text = "Damage:"
 
-[node name="Stat4" type="Label" parent="Window/NinePatchRect2/StatNames" unique_id=1062229645]
+[node name="Stat4" type="Label" parent="Window/StatTable/StatNames" unique_id=1062229645]
 layout_mode = 2
 theme_override_font_sizes/font_size = 128
 text = "Damage:"
 
-[node name="Stat5" type="Label" parent="Window/NinePatchRect2/StatNames" unique_id=521965095]
+[node name="Stat5" type="Label" parent="Window/StatTable/StatNames" unique_id=521965095]
 layout_mode = 2
 theme_override_font_sizes/font_size = 128
 text = "Damage:"
 
-[node name="Stat6" type="Label" parent="Window/NinePatchRect2/StatNames" unique_id=444221296]
+[node name="Stat6" type="Label" parent="Window/StatTable/StatNames" unique_id=444221296]
 layout_mode = 2
 theme_override_font_sizes/font_size = 128
 text = "Damage:"
 
-[node name="Stat7" type="Label" parent="Window/NinePatchRect2/StatNames" unique_id=247624229]
+[node name="Stat7" type="Label" parent="Window/StatTable/StatNames" unique_id=247624229]
 layout_mode = 2
 theme_override_font_sizes/font_size = 128
 text = "Damage:"
 
-[node name="Stat8" type="Label" parent="Window/NinePatchRect2/StatNames" unique_id=942893813]
+[node name="Stat8" type="Label" parent="Window/StatTable/StatNames" unique_id=942893813]
 layout_mode = 2
 theme_override_font_sizes/font_size = 128
 text = "Damage:"
 
-[node name="StatValues" type="VBoxContainer" parent="Window/NinePatchRect2" unique_id=1308768360]
+[node name="StatValues" type="VBoxContainer" parent="Window/StatTable" unique_id=1308768360]
 layout_mode = 0
-offset_left = 19.171711
-offset_top = 4.9325275
-offset_right = 395.17172
-offset_bottom = 823.9183
+offset_left = 19.854193
+offset_top = 4.9635496
+offset_right = 395.8542
+offset_bottom = 823.9493
 scale = Vector2(0.04, 0.04)
 
-[node name="StatVal1" type="Label" parent="Window/NinePatchRect2/StatValues" unique_id=367747984]
+[node name="StatVal1" type="Label" parent="Window/StatTable/StatValues" unique_id=367747984]
 layout_mode = 2
 theme_override_font_sizes/font_size = 128
 text = "26"
 horizontal_alignment = 2
 
-[node name="StatVal2" type="Label" parent="Window/NinePatchRect2/StatValues" unique_id=442949606]
+[node name="StatVal2" type="Label" parent="Window/StatTable/StatValues" unique_id=442949606]
 layout_mode = 2
 theme_override_font_sizes/font_size = 128
 text = "26"
 horizontal_alignment = 2
 
-[node name="StatVal3" type="Label" parent="Window/NinePatchRect2/StatValues" unique_id=385461856]
+[node name="StatVal3" type="Label" parent="Window/StatTable/StatValues" unique_id=385461856]
 layout_mode = 2
 theme_override_font_sizes/font_size = 128
 text = "26"
 horizontal_alignment = 2
 
-[node name="StatVal4" type="Label" parent="Window/NinePatchRect2/StatValues" unique_id=117005598]
+[node name="StatVal4" type="Label" parent="Window/StatTable/StatValues" unique_id=117005598]
 layout_mode = 2
 theme_override_font_sizes/font_size = 128
 text = "26"
 horizontal_alignment = 2
 
-[node name="StatVal5" type="Label" parent="Window/NinePatchRect2/StatValues" unique_id=331898820]
+[node name="StatVal5" type="Label" parent="Window/StatTable/StatValues" unique_id=331898820]
 layout_mode = 2
 theme_override_font_sizes/font_size = 128
 text = "26"
 horizontal_alignment = 2
 
-[node name="StatVal6" type="Label" parent="Window/NinePatchRect2/StatValues" unique_id=1608990290]
+[node name="StatVal6" type="Label" parent="Window/StatTable/StatValues" unique_id=1608990290]
 layout_mode = 2
 theme_override_font_sizes/font_size = 128
 text = "26"
 horizontal_alignment = 2
 
-[node name="StatVal7" type="Label" parent="Window/NinePatchRect2/StatValues" unique_id=1836938628]
+[node name="StatVal7" type="Label" parent="Window/StatTable/StatValues" unique_id=1836938628]
 layout_mode = 2
 theme_override_font_sizes/font_size = 128
 text = "26"
 horizontal_alignment = 2
 
-[node name="StatVal8" type="Label" parent="Window/NinePatchRect2/StatValues" unique_id=838090553]
+[node name="StatVal8" type="Label" parent="Window/StatTable/StatValues" unique_id=838090553]
 layout_mode = 2
 theme_override_font_sizes/font_size = 128
 text = "26"
 horizontal_alignment = 2
 
-[node name="NinePatchRect3" type="NinePatchRect" parent="Window" unique_id=1503089242]
+[node name="EnergyTable" type="NinePatchRect" parent="Window" unique_id=1503089242]
 layout_mode = 1
 offset_left = 2.1563616
 offset_top = 2.3385353
 offset_right = 41.244305
 offset_bottom = 13.878784
+scale = Vector2(0.75, 0.75)
 texture = SubResource("AtlasTexture_d54w8")
 region_rect = Rect2(0, 0, 14, 14)
 patch_margin_left = 5
@@ -171,7 +198,7 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="Energy_" type="Label" parent="Window/NinePatchRect3" unique_id=190326150]
+[node name="Energy" type="Label" parent="Window/EnergyTable" unique_id=190326150]
 layout_mode = 0
 offset_left = 3.071196
 offset_top = 4.0018625
@@ -181,7 +208,7 @@ scale = Vector2(0.04, 0.04)
 theme_override_font_sizes/font_size = 128
 text = "Energy left:"
 
-[node name="EnergyVal" type="Label" parent="Window/NinePatchRect3" unique_id=321293041]
+[node name="EnergyVal" type="Label" parent="Window/EnergyTable" unique_id=321293041]
 layout_mode = 0
 offset_left = 24.104239
 offset_top = 4.0018625
@@ -192,53 +219,256 @@ theme_override_font_sizes/font_size = 128
 text = "0/26"
 horizontal_alignment = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Window" unique_id=1275189584]
+[node name="UpgradesScroll" type="ScrollContainer" parent="Window" unique_id=1275189584]
 layout_mode = 0
-offset_left = 43.105644
-offset_top = 2.3385353
-offset_right = 155.10565
-offset_bottom = 107.131454
-scale = Vector2(0.5, 0.5)
+offset_left = 32.759426
+offset_top = 9.678922
+offset_right = 192.75943
+offset_bottom = 109.678925
+scale = Vector2(0.45, 0.45)
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="Window/ScrollContainer" unique_id=1197142515]
+[node name="MarginContainer" type="MarginContainer" parent="Window/UpgradesScroll" unique_id=1197142515]
 layout_mode = 2
-theme_override_constants/margin_bottom = 50
+theme_override_constants/margin_bottom = 30
 
-[node name="GridContainer" type="GridContainer" parent="Window/ScrollContainer/MarginContainer" unique_id=1146348510]
+[node name="GridContainer" type="GridContainer" parent="Window/UpgradesScroll/MarginContainer" unique_id=1146348510]
 layout_mode = 2
-columns = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+columns = 3
 
-[node name="NinePatchRect" parent="Window/ScrollContainer/MarginContainer/GridContainer" unique_id=12419887 instance=ExtResource("2_d54w8")]
-layout_mode = 2
+[node name="Filter" type="NinePatchRect" parent="Window" unique_id=697650026]
+visible = false
+layout_mode = 0
+offset_left = 32.759422
+offset_top = 2.047464
+offset_right = 62.65942
+offset_bottom = 16.047464
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_tranw")
+region_rect = Rect2(1, 1, 14, 14)
+patch_margin_left = 3
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 3
 
-[node name="NinePatchRect2" parent="Window/ScrollContainer/MarginContainer/GridContainer" unique_id=1490309363 instance=ExtResource("2_d54w8")]
-layout_mode = 2
+[node name="Label" type="Label" parent="Window/Filter" unique_id=1128303314]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.649597
+offset_top = -3.6496043
+offset_right = 28.350403
+offset_bottom = 7.350395
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.585712, 0.585712)
+text = "Filter:"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="NinePatchRect3" parent="Window/ScrollContainer/MarginContainer/GridContainer" unique_id=190416239 instance=ExtResource("2_d54w8")]
-layout_mode = 2
+[node name="Button" type="Button" parent="Window/Filter" unique_id=715795002]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 29.0
+offset_bottom = 19.0
+scale = Vector2(0.9994422, 0.6597304)
 
-[node name="NinePatchRect4" parent="Window/ScrollContainer/MarginContainer/GridContainer" unique_id=254137505 instance=ExtResource("2_d54w8")]
-layout_mode = 2
+[node name="ScrollContainer" type="VBoxContainer" parent="Window/Filter" unique_id=1808121516]
+z_index = 1
+layout_mode = 0
+offset_left = 1.4
+offset_top = 1.4
+offset_right = 61.4
+offset_bottom = 153.4
+scale = Vector2(0.45, 0.45)
+theme_override_constants/separation = 0
 
-[node name="NinePatchRect5" parent="Window/ScrollContainer/MarginContainer/GridContainer" unique_id=267698596 instance=ExtResource("2_d54w8")]
+[node name="Button" type="Button" parent="Window/Filter/ScrollContainer" unique_id=18750695]
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_d54w8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tranw")
+text = "Damage"
+icon_alignment = 1
 
-[node name="NinePatchRect6" parent="Window/ScrollContainer/MarginContainer/GridContainer" unique_id=1919324755 instance=ExtResource("2_d54w8")]
+[node name="Button2" type="Button" parent="Window/Filter/ScrollContainer" unique_id=1561288553]
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_d54w8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tranw")
+text = "Damage"
+icon_alignment = 1
 
-[node name="NinePatchRect7" parent="Window/ScrollContainer/MarginContainer/GridContainer" unique_id=636178958 instance=ExtResource("2_d54w8")]
+[node name="Button3" type="Button" parent="Window/Filter/ScrollContainer" unique_id=1391430059]
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_d54w8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tranw")
+text = "Damage"
+icon_alignment = 1
 
-[node name="NinePatchRect8" parent="Window/ScrollContainer/MarginContainer/GridContainer" unique_id=953071493 instance=ExtResource("2_d54w8")]
+[node name="Button4" type="Button" parent="Window/Filter/ScrollContainer" unique_id=1528030756]
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_d54w8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tranw")
+text = "Damage"
+icon_alignment = 1
 
-[node name="NinePatchRect9" parent="Window/ScrollContainer/MarginContainer/GridContainer" unique_id=1995462522 instance=ExtResource("2_d54w8")]
+[node name="Button5" type="Button" parent="Window/Filter/ScrollContainer" unique_id=1240653976]
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_d54w8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tranw")
+text = "Damage"
+icon_alignment = 1
 
-[node name="NinePatchRect10" parent="Window/ScrollContainer/MarginContainer/GridContainer" unique_id=642401920 instance=ExtResource("2_d54w8")]
+[node name="Button6" type="Button" parent="Window/Filter/ScrollContainer" unique_id=1848103844]
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_d54w8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tranw")
+text = "Damage"
+icon_alignment = 1
 
-[node name="NinePatchRect11" parent="Window/ScrollContainer/MarginContainer/GridContainer" unique_id=864030215 instance=ExtResource("2_d54w8")]
+[node name="Button7" type="Button" parent="Window/Filter/ScrollContainer" unique_id=301900430]
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_d54w8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tranw")
+text = "Damage"
+icon_alignment = 1
+
+[node name="Button8" type="Button" parent="Window/Filter/ScrollContainer" unique_id=618799096]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_d54w8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tranw")
+text = "Damage"
+icon_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Window/Filter" unique_id=226135667]
+layout_mode = 0
+offset_right = 29.899998
+offset_bottom = 70.0
+texture = SubResource("AtlasTexture_acnka")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Sort1" type="NinePatchRect" parent="Window" unique_id=1466634633]
+visible = false
+layout_mode = 0
+offset_left = 49.883667
+offset_top = 2.047464
+offset_right = 79.783676
+offset_bottom = 16.047464
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_tranw")
+region_rect = Rect2(1, 1, 14, 14)
+patch_margin_left = 3
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 3
+
+[node name="Label" type="Label" parent="Window/Sort1" unique_id=380569324]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.649597
+offset_top = -3.6496043
+offset_right = 28.350403
+offset_bottom = 7.350395
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.585712, 0.585712)
+text = "Sort:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Window/Sort1" unique_id=1193661040]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 29.0
+offset_bottom = 19.0
+scale = Vector2(0.9994422, 0.6597304)
+
+[node name="ScrollContainer" type="VBoxContainer" parent="Window/Sort1" unique_id=1464738090]
+z_index = 1
+layout_mode = 0
+offset_left = 1.4
+offset_top = 1.4
+offset_right = 61.4
+offset_bottom = 153.4
+scale = Vector2(0.45, 0.45)
+theme_override_constants/separation = 0
+
+[node name="Button" type="Button" parent="Window/Sort1/ScrollContainer" unique_id=540253945]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_d54w8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tranw")
+text = "Damage"
+icon_alignment = 1
+
+[node name="Button2" type="Button" parent="Window/Sort1/ScrollContainer" unique_id=1590012258]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_d54w8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tranw")
+text = "Damage"
+icon_alignment = 1
+
+[node name="Button3" type="Button" parent="Window/Sort1/ScrollContainer" unique_id=365312627]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_d54w8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tranw")
+text = "Damage"
+icon_alignment = 1
+
+[node name="Button4" type="Button" parent="Window/Sort1/ScrollContainer" unique_id=1381824654]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_d54w8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tranw")
+text = "Damage"
+icon_alignment = 1
+
+[node name="Button5" type="Button" parent="Window/Sort1/ScrollContainer" unique_id=1127754612]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_d54w8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tranw")
+text = "Damage"
+icon_alignment = 1
+
+[node name="Button6" type="Button" parent="Window/Sort1/ScrollContainer" unique_id=1488535870]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_d54w8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tranw")
+text = "Damage"
+icon_alignment = 1
+
+[node name="Button7" type="Button" parent="Window/Sort1/ScrollContainer" unique_id=282102521]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_d54w8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tranw")
+text = "Damage"
+icon_alignment = 1
+
+[node name="Button8" type="Button" parent="Window/Sort1/ScrollContainer" unique_id=1076963672]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_d54w8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tranw")
+text = "Damage"
+icon_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Window/Sort1" unique_id=899514479]
+layout_mode = 0
+offset_right = 29.899998
+offset_bottom = 70.0
+texture = SubResource("AtlasTexture_acnka")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5

@@ -26,7 +26,6 @@ func _process(_delta: float) -> void:
 func _on_timer_timeout() -> void:
 	if enemies:
 		return
-	print(1)
 	var n = 0
 	var parent = get_parent()
 	while n < enemy_count * GAME.difficulty:
