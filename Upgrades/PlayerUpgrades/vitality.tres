@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource("1_mwcb3")
-health = 10
-speed = 2
+health = 40
+health_change = 20
 name = "Vitality"
-description = "Má deskripšn"
+description = "Increases your health by {health}"
 energy = 2
 metadata/_custom_type_script = "uid://c5ovvmf05xpaw"

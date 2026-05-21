@@ -115,12 +115,10 @@ offset_bottom = 56.75
 
 [node name="Description" type="Label" parent="Control" unique_id=1037831604]
 layout_mode = 0
-offset_left = 0.99999976
-offset_right = 154.05554
+offset_right = 153.05554
 offset_bottom = 133.33333
 scale = Vector2(0.3, 0.3)
 text = "CRIT DMG +20 %"
-autowrap_mode = 2
 
 [node name="Name" type="Label" parent="." unique_id=1189361341]
 layout_mode = 0

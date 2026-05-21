@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PlayerUpgrade" format=3 uid="uid://tpwog7wqsmmj"]
+
+[ext_resource type="Script" uid="uid://c5ovvmf05xpaw" path="res://Upgrades/player_upgrade.gd" id="1_o37f4"]
+
+[resource]
+script = ExtResource("1_o37f4")
+shield = 20
+shield_recharge = 2
+name = "Overcharge"
+description = "Increases shield by {shield}"
+energy = 6
+metadata/_custom_type_script = "uid://c5ovvmf05xpaw"
