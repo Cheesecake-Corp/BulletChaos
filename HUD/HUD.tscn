@@ -3,8 +3,6 @@
 [ext_resource type="Script" uid="uid://c0836eipbqs3v" path="res://HUD/hud.gd" id="1_ewb01"]
 [ext_resource type="Texture2D" uid="uid://b7jvr10uu1sej" path="res://HUD/Assets/PmWWq1.png" id="2_ec5lv"]
 [ext_resource type="Script" uid="uid://bmplpujapxk2f" path="res://HUD/health_bar.gd" id="3_11qr4"]
-[ext_resource type="Script" uid="uid://cqsc7551txqpp" path="res://HUD/crosshair.gd" id="5_lwd00"]
-[ext_resource type="Texture2D" uid="uid://7ihui1eeqfpr" path="res://Assets/UI/crosshair.png" id="6_71t6b"]
 [ext_resource type="Texture2D" uid="uid://dkfec8rroda2" path="res://Weapons/Guns/Assets/1.png" id="6_haav5"]
 [ext_resource type="FontFile" uid="uid://b3fdd81q33fui" path="res://Assets/ByteBounce.ttf" id="7_riwve"]
 [ext_resource type="Script" uid="uid://ca2pbp00lxfn6" path="res://HUD/ammo_label.gd" id="8_riwve"]
@@ -35,21 +33,14 @@ script = ExtResource("1_ewb01")
 [node name="HealthBar" type="TextureProgressBar" parent="." unique_id=58213123]
 offset_left = 12.0
 offset_top = 12.0
-offset_right = 637.25006
-offset_bottom = 94.0
+offset_right = 362.75003
+offset_bottom = 58.0
 step = 10.0
 value = 40.0
 nine_patch_stretch = true
 texture_under = SubResource("AtlasTexture_bqhao")
 texture_progress = SubResource("AtlasTexture_haav5")
 script = ExtResource("3_11qr4")
-
-[node name="Marker2D" type="Marker2D" parent="." unique_id=1379767273]
-script = ExtResource("5_lwd00")
-
-[node name="Sprite2D" type="Sprite2D" parent="Marker2D" unique_id=1829014393]
-scale = Vector2(2, 2)
-texture = ExtResource("6_71t6b")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=303073046]
 anchors_preset = 1
@@ -94,4 +85,4 @@ Shift - Dash
 LMB - Shoot
 R - Reload
 B - Toggle pet follow/boss mode
-LALT - MapMode"
+X - Upgrade menu"

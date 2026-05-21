@@ -8,7 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://kv1ptkycsotc" path="res://HUD/Assets/under.png" id="7_6w6st"]
 [ext_resource type="Script" uid="uid://02s1g4ocytrg" path="res://Player/player_animation.gd" id="8_00tjw"]
 [ext_resource type="Texture2D" uid="uid://c6h0wk65p465y" path="res://HUD/Assets/progress.png" id="8_piis0"]
+[ext_resource type="Script" uid="uid://cqsc7551txqpp" path="res://HUD/crosshair.gd" id="10_apopc"]
 [ext_resource type="PackedScene" uid="uid://i0o0ku0gbxsd" path="res://Menus/UpgradesGUI/upgrade_gui.tscn" id="10_x3vf3"]
+[ext_resource type="Texture2D" uid="uid://7ihui1eeqfpr" path="res://Assets/UI/crosshair.png" id="11_5htga"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5grkg"]
 radius = 5.0
@@ -632,6 +634,11 @@ drag_bottom_margin = 0.06
 
 [node name="Hud" parent="." unique_id=1135840636 instance=ExtResource("4_gwnis")]
 
+[node name="Upgrade" type="CanvasLayer" parent="." unique_id=947555591]
+visible = false
+
+[node name="UpgradeGUI" parent="Upgrade" unique_id=1652952288 instance=ExtResource("10_x3vf3")]
+
 [node name="DashProgressBar" type="TextureProgressBar" parent="." unique_id=1933854427]
 z_index = 500
 anchors_preset = 8
@@ -689,9 +696,14 @@ hframes = 6
 vframes = 24
 frame = 1
 
-[node name="Upgrade" type="CanvasLayer" parent="." unique_id=947555591]
-visible = false
+[node name="Mouse" type="CanvasLayer" parent="." unique_id=1896553742]
 
-[node name="UpgradeGUI" parent="Upgrade" unique_id=1652952288 instance=ExtResource("10_x3vf3")]
+[node name="Marker2D" type="Marker2D" parent="Mouse" unique_id=1729976512]
+script = ExtResource("10_apopc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Mouse/Marker2D" unique_id=1214861508]
+z_index = 1
+scale = Vector2(2, 2)
+texture = ExtResource("11_5htga")
 
 [connection signal="health_change" from="." to="Hud" method="_on_player_health_change"]

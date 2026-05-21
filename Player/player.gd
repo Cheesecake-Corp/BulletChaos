@@ -109,6 +109,10 @@ func take_damage(damage : float):
 	health -= damage
 
 func _physics_process(_delta: float) -> void:
+	if(Input.is_action_just_pressed("inventory")):
+		upgrade.visible = !upgrade.visible
+	if upgrade.visible:
+		return
 	# gets movement input
 	dash_progress_bar.value = (dash_cooldown-cooldown_timer)/dash_cooldown*dash_progress_bar.max_value
 	var horizontal := Input.get_axis("go_left","go_right")
@@ -117,11 +121,10 @@ func _physics_process(_delta: float) -> void:
 	if(Input.is_action_pressed("attack")):
 		current_weapon._try_use()
 
-	if(Input.is_action_just_pressed("inventory")):
-		upgrade.visible = !upgrade.visible
+	
+		
 
-	if(last_damage == regen_delay):
-		health = move_toward(health, max_health, natural_regen_per_second*_delta)
+	
 	
 	# last damage timer
 	last_damage = min(last_damage + 1, regen_delay)
