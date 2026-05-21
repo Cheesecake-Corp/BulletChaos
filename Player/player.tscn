@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://kv1ptkycsotc" path="res://HUD/Assets/under.png" id="7_6w6st"]
 [ext_resource type="Script" uid="uid://02s1g4ocytrg" path="res://Player/player_animation.gd" id="8_00tjw"]
 [ext_resource type="Texture2D" uid="uid://c6h0wk65p465y" path="res://HUD/Assets/progress.png" id="8_piis0"]
-[ext_resource type="Texture2D" uid="uid://dwh4jbx2u41ed" path="res://Assets/Micro Icon Pack/Paint/3. Color Picker.png" id="9_f1ek2"]
+[ext_resource type="PackedScene" uid="uid://i0o0ku0gbxsd" path="res://Menus/UpgradesGUI/upgrade_gui.tscn" id="10_x3vf3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5grkg"]
 radius = 5.0
@@ -618,12 +618,6 @@ gravity_scale = 0.0
 shape = SubResource("CircleShape2D_8erm5")
 disabled = true
 
-[node name="Sprite2D" type="Sprite2D" parent="CameraBody/CameraCollision" unique_id=1227348450]
-visible = false
-position = Vector2(4, 4)
-texture = ExtResource("9_f1ek2")
-flip_v = true
-
 [node name="Camera2D" type="Camera2D" parent="CameraBody" unique_id=2045531074]
 visible = false
 zoom = Vector2(2, 2)
@@ -694,5 +688,10 @@ offset = Vector2(0, -22)
 hframes = 6
 vframes = 24
 frame = 1
+
+[node name="Upgrade" type="CanvasLayer" parent="." unique_id=947555591]
+visible = false
+
+[node name="UpgradeGUI" parent="Upgrade" unique_id=1652952288 instance=ExtResource("10_x3vf3")]
 
 [connection signal="health_change" from="." to="Hud" method="_on_player_health_change"]

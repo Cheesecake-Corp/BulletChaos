@@ -94,6 +94,7 @@ func shoot() -> void:
 
 func take_damage(damage: float) -> void:
 	if alive:
+		sprite.stop()
 		sprite.play("damaged")
 	super(damage)
 

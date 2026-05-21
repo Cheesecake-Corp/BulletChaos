@@ -57,6 +57,7 @@ func attack():
 
 func take_damage(damage : float):
 	if alive == true:
+		sprite.stop()
 		sprite.play("damaged")
 		sprite_name = "damaged"
 	super(damage)

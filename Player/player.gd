@@ -14,7 +14,6 @@ var last_damage = 100
 @onready var regen_delay = 20
 @onready var natural_regen_per_second = 2
 @onready var camera_body: RigidBody2D = $CameraBody
-@onready var cursor: Sprite2D = $CameraBody/CameraCollision/Sprite2D
 @onready var camera_collision: CollisionShape2D = $CameraBody/CameraCollision
 @onready var dash_progress_bar: TextureProgressBar = $DashProgressBar
 @onready var reload_bar: TextureProgressBar = $ReloadBar
@@ -23,6 +22,7 @@ var last_damage = 100
 @export var dash_speed := 400.0
 @export var dash_duration := 0.15
 @export var dash_cooldown := 1.5
+@onready var upgrade: CanvasLayer = $Upgrade
 
 var dash_timer := 0.0
 var cooldown_timer := 0.0
@@ -38,18 +38,6 @@ signal health_change(health)
 
 func _ready() -> void:
 	GAME.register_player(self)
-
-# movement in camera mode
-func camera_movement(horizontal, vertical):
-
-	# adds velocity to camera in map_mode (same in every direction)
-	if horizontal or vertical:
-		camera_body.linear_velocity = Vector2(horizontal, vertical).normalized() * CAMERA_SPEED
-	
-	# slows down camera when no movements keys pressed
-	else:
-		camera_body.linear_velocity.y = move_toward(velocity.y, 0, SPEED)
-		camera_body.linear_velocity.x = move_toward(velocity.x, 0, SPEED)
 
 # normal character movement
 func character_movement(horizontal, vertical, delta):
@@ -107,23 +95,9 @@ func spawn_afterimage():
 	get_tree().current_scene.add_child(ghost)
 
 # toggle map mode
-func map_mode_handeling(horizontal, vertical, delta):
-	# handles enabling map mode
-	if(Input.is_action_just_pressed("map")):
-		map_mode = true
-		cursor.visible = true
-		camera_collision.disabled = false
-	# handles disabling map mode
-	elif(Input.is_action_just_released("map")):
-		map_mode = false
-		cursor.visible = false
-		camera_collision.disabled = true
+
 	
-	# handles movement depending if map mode is enabled
-	if(map_mode):
-		camera_movement(horizontal,vertical)
-	else:
-		character_movement(horizontal, vertical, delta)
+	
 
 func handle_zoom():
 	if Input.is_action_just_pressed("scroll_down"):
@@ -143,6 +117,9 @@ func _physics_process(_delta: float) -> void:
 	if(Input.is_action_pressed("attack")):
 		current_weapon._try_use()
 
+	if(Input.is_action_just_pressed("inventory")):
+		upgrade.visible = !upgrade.visible
+
 	if(last_damage == regen_delay):
 		health = move_toward(health, max_health, natural_regen_per_second*_delta)
 	
@@ -156,7 +133,7 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	# handles switching between map mode
-	map_mode_handeling(horizontal, vertical, _delta)
+	character_movement(horizontal, vertical, _delta)
 	
 	# slows character down even if in map mode
 	if (not (horizontal or vertical)) or map_mode:
