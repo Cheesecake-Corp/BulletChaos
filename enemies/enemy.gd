@@ -4,6 +4,7 @@ class_name Enemy
 @export var SPEED : float = 150
 @export var MAX_HEALTH := 100.0
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
+var upgrade_resources = preload("res://Upgrades/ALLUPGRADES.tres")
 var health : float
 var alive := true
 var movement := true
@@ -34,14 +35,9 @@ func death():
 		call_deferred("set_canister_pos", canister)
 		
 	if GAME.RANDOM_LOOT.randf() > 0.5:
-		var dir := DirAccess.open("res://Upgrades/PlayerUpgrades")
-		if dir == null: printerr("Could not open folder"); return
-		dir.list_dir_begin()
-		var files : Array = dir.get_files()
-		var file = files[GAME.RANDOM_LOOT.randi_range(0,files.size()-1)] #Chooses file
-		var upgrade := load(dir.get_current_dir() + "/" + file) #Loaded resource
+		var file = upgrade_resources.upgrades[GAME.RANDOM_LOOT.randi_range(0,upgrade_resources.upgrades.size()-1)] 
 		var upgrade_item : Node2D = load("res://Upgrades/Upgrade_item.tscn").instantiate() #Creates instance of upgrade_item
-		upgrade_item.upgrade = upgrade #Upgrade item is on ground it is a scene
+		upgrade_item.upgrade = file #Upgrade item is on ground it is a scene
 		get_parent().room.call_deferred("add_child", upgrade_item)
 		call_deferred("set_canister_pos", upgrade_item)
 		
