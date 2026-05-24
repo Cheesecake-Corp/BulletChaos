@@ -30,11 +30,13 @@ func create_bullets():
 	var time = bullet_scene.instantiate().get_meta("max_time")
 	for i in range((time-floor((time)/(final_magazine_capacity*(use_rate/1000)+final_reload_time))*final_reload_time)/(use_rate/1000)+1):
 		var b : Projectile = bullet_scene.instantiate()
+		b.add_collision_exception_with(player)
 		b.visible = false
 		b.global_position = global_position
 		b.freeze = true
 		b.contact_monitor = true
 		b.max_contacts_reported = 1
+		
 
 		var a2 : Area2D = b.get_node("./Area2D")
 		a2.body_entered.connect(_on_body_entered.bind(b))
