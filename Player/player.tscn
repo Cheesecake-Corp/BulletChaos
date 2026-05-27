@@ -707,3 +707,4 @@ scale = Vector2(2, 2)
 texture = ExtResource("11_5htga")
 
 [connection signal="health_change" from="." to="Hud" method="_on_player_health_change"]
+[connection signal="shield_change" from="." to="Hud" method="_on_player_shield_change"]

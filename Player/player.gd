@@ -1,31 +1,33 @@
 extends CharacterBody2D
 class_name Player
 
-### BASE HODNOTY
+### BASE VALUES
 @export var BASE_SPEED = 150
 @export var BASE_MAX_HEALTH = 100
 @export var BASE_DASH_SPEED := 4
 @export var BASE_DASH_COOLDOWN := 1.5
-@export var BASE_SHIELD := 10
+@export var BASE_MAX_SHIELD := 100
 @export var BASE_SHIELD_DELAY := 10
 @export var BASE_SHIELD_REGEN := 1
 @export var BASE_HEAL_BONUS := 0
 
-var speed = 150
-var max_health = 100
-var dash_speed := 4
-var dash_cooldown := 1.5
-var shield := 10
-var shield_delay := 10
-var shield_regen := 1
-var heal_bonus := 0
+var speed = BASE_SPEED
+var max_health: int = BASE_MAX_HEALTH
+var dash_speed := BASE_DASH_SPEED
+var dash_cooldown := BASE_DASH_COOLDOWN
+var max_shield: int = BASE_MAX_SHIELD 
+var shield: float = BASE_MAX_SHIELD
+var shield_delay := BASE_SHIELD_DELAY
+var shield_regen := BASE_SHIELD_REGEN
+var heal_bonus := BASE_HEAL_BONUS
 
 @export var dash_duration := 0.15
-@onready var health = 100
+var health : float = max_health
 var last = "down"
 var last_dir : Vector2 = Vector2(0,1)
-var last_health = health
-var last_damage = 100
+var last_health: float = 0.0
+var last_damage: float = 0.0 #Time in seconds from last damage
+var last_shield: float = 0.0
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var camera_body: RigidBody2D = $CameraBody
@@ -49,6 +51,7 @@ var afterimage_cooldown := 0.0
 
 var map_mode = false
 signal health_change(health)
+signal shield_change(shield)
 
 var upgrade_resources : Array = []
 var weapon_upgrades : Array = []
@@ -56,14 +59,15 @@ var upgrades : Array[PlayerModInstance] = []
 var energy_max : int = 20
 var player_stats: Dictionary
 var used_energy := 0
-var temp_energy := 0
+var used_energy_temp := 0
+var player_stats_temp: Dictionary
 
 func _ready() -> void:
 	GAME.register_player(self)
 	player_stats = {
 		"health": {"name": "Health", "value": max_health},
 		"healing_bonus": {"name": "Heal bonus", "value": heal_bonus}, 
-		"shield": {"name": "Shield", "value": shield}, 
+		"shield": {"name": "Shield", "value": max_shield}, 
 		"shield_regen": {"name": "Shield regen", "value": shield_regen}, 
 		"shield_delay": {"name": "Shield delay", "value": shield_delay},
 		"speed": {"name": "Speed", "value": speed}, 
@@ -83,7 +87,6 @@ func character_movement(horizontal, vertical, delta):
 	
 	if horizontal or vertical:
 		last_dir = Vector2(horizontal, vertical)
-		
 	
 	if is_dashing:
 		dash_timer -= delta
@@ -100,12 +103,14 @@ func character_movement(horizontal, vertical, delta):
 	
 	if (Input.is_action_just_pressed("dash") and not is_dashing and cooldown_timer <= 0):
 		dash()
-	
+
+
 func dash():
 	is_dashing = true
 	dash_timer = dash_duration
 	cooldown_timer = dash_cooldown
 	set_collision_layer_value(2, false)
+
 
 func spawn_afterimage():
 	var ghost : Sprite2D = afterimage_scene.instantiate()
@@ -124,13 +129,9 @@ func spawn_afterimage():
 	ghost.global_rotation = global_rotation
 	ghost.flip_h = sprite_2d.flip_h
 	ghost.offset = sprite_2d.offset
-
+	
 	get_tree().current_scene.add_child(ghost)
 
-# toggle map mode
-
-	
-	
 
 func handle_zoom():
 	if Input.is_action_just_pressed("scroll_down"):
@@ -138,16 +139,33 @@ func handle_zoom():
 	if Input.is_action_just_pressed("scroll_up"):
 		camera_2d.zoom += Vector2(.1,.1)
 
+
 func take_damage(damage : float):
-	health -= damage
+	last_damage = 0
+	shield -= damage
+	if shield < 0:
+		shield = 0
+		health = health - (damage - shield)
+	if health < 0:
+		health = 0
+		death()
+
+
+func heal(heal_amount: float):
+	health = move_toward(health, max_health, heal_amount + heal_amount * heal_bonus)
+
 
 func hide_upgrade():
 	upgrade.visible = !upgrade.visible
 	Engine.time_scale = 1
+
+
 func show_upgrade():
 	upgrade.visible = !upgrade.visible
 	Engine.time_scale = 0
 	upgrade_script.inventory_start()
+
+
 func _physics_process(_delta: float) -> void:
 	if(Input.is_action_just_pressed("inventory")):
 		if upgrade.visible:
@@ -161,23 +179,23 @@ func _physics_process(_delta: float) -> void:
 	dash_progress_bar.value = (dash_cooldown-cooldown_timer)/dash_cooldown*dash_progress_bar.max_value
 	var horizontal := Input.get_axis("go_left","go_right")
 	var vertical := Input.get_axis("go_up","go_down")
-
+	
 	if(Input.is_action_pressed("attack")):
 		current_weapon._try_use()
-
 	
-		
-
+	last_damage = move_toward(last_damage, 1/shield_delay*5 , _delta) # Last damage timer
+	cooldown_timer = move_toward(cooldown_timer, 0, _delta) # Dash timer
 	
+	if last_damage == 1/shield_delay*5: #Shield regeneration
+		shield = move_toward(shield, max_shield, _delta * shield_regen)
 	
-	# last damage timer
-	last_damage = min(last_damage + 1, shield_delay)
-	cooldown_timer = move_toward(cooldown_timer, 0, _delta)
-	
-	if(health != last_health):
+	if(health != last_health): #Changes HUD bars
 		health_change.emit(health)
 		last_health = health
 	
+	if(shield != last_shield): #Changes HUD bars
+		shield_change.emit(shield)
+		last_shield = shield
 	
 	# handles switching between map mode
 	character_movement(horizontal, vertical, _delta)
@@ -191,19 +209,11 @@ func _physics_process(_delta: float) -> void:
 	
 	move_and_slide()
 
-#@export var health := 0
-#@export var healing_bonus := 0
-#@export var shield := 0
-#@export var shield_recharge := 0
-#@export var shield_delay := 0
-#@export var speed := 0
-#@export var dash_delay := 0
-#@export var dash_speed := 0
 
-func recalculate():
+func recalculate_stats():
 	var c_max_health = BASE_MAX_HEALTH
 	var c_heal_bonus = BASE_HEAL_BONUS
-	var c_shield = BASE_SHIELD
+	var c_shield = BASE_MAX_SHIELD
 	var c_shield_delay = BASE_SHIELD_DELAY
 	var c_shield_regen = BASE_SHIELD_REGEN
 	var c_speed = BASE_SPEED
@@ -213,7 +223,7 @@ func recalculate():
 	
 	for u in upgrade_grid.get_children():
 		if !u.changed_enabled: continue
-		c_used_energy += u.upgrade.energy + u.changed_lvl
+		c_used_energy += u.upgrade.energy + u.changed_lvl - 1
 		c_max_health += u.upgrade.health + u.changed_lvl * u.upgrade.health_change
 		c_heal_bonus += u.upgrade.healing_bonus + u.changed_lvl * u.upgrade.healing_bonus_change
 		c_shield += u.upgrade.shield + u.changed_lvl * u.upgrade.shield_change
@@ -222,7 +232,7 @@ func recalculate():
 		c_speed += u.upgrade.speed + u.changed_lvl * u.upgrade.speed_change
 		c_dash_cooldown += u.upgrade.dash_delay + u.changed_lvl * u.upgrade.dash_delay_change
 		c_dash_speed += u.upgrade.dash_speed + u.changed_lvl * u.upgrade.dash_speed_change
-	var calculation = {
+	player_stats_temp = {
 		"health": {"name": "Health", "value": c_max_health},
 		"healing_bonus": {"name": "Heal bonus", "value": c_heal_bonus}, 
 		"shield": {"name": "Shield", "value": c_shield}, 
@@ -232,13 +242,14 @@ func recalculate():
 		"dash_delay": {"name": "Dash delay", "value": c_dash_cooldown}, 
 		"dash_speed": {"name": "Dash speed", "value": c_dash_speed},
 	}
-	upgrade_script.change_labels(calculation, energy_max, c_used_energy)
+	used_energy_temp = c_used_energy
+	upgrade_script.change_new_labels(player_stats_temp, player_stats, energy_max, c_used_energy, used_energy)
 	
 
-func calculate_changes():
+func apply_changes(): #Applying changes
 	max_health = BASE_MAX_HEALTH
 	heal_bonus = BASE_HEAL_BONUS
-	shield = BASE_SHIELD
+	max_shield = BASE_MAX_SHIELD
 	shield_delay = BASE_SHIELD_DELAY
 	shield_regen = BASE_SHIELD_REGEN
 	speed = BASE_SPEED
@@ -247,8 +258,9 @@ func calculate_changes():
 	
 	used_energy = 0
 	for u in upgrades:
+		
 		if !u.enabled: continue
-		used_energy += u.data.energy + u.level
+		used_energy += u.data.energy + u.level - 1
 		max_health += u.data.health + u.level * u.data.health_change
 		heal_bonus += u.data.healing_bonus + u.level * u.data.healing_bonus_change
 		shield += u.data.shield + u.level * u.data.shield_change
@@ -261,11 +273,16 @@ func calculate_changes():
 	player_stats = {
 		"health": {"name": "Health", "value": max_health},
 		"healing_bonus": {"name": "Heal bonus", "value": heal_bonus}, 
-		"shield": {"name": "Shield", "value": shield}, 
+		"shield": {"name": "Shield", "value": max_shield}, 
 		"shield_regen": {"name": "Shield regen", "value": shield_regen}, 
 		"shield_delay": {"name": "Shield delay", "value": shield_delay},
 		"speed": {"name": "Speed", "value": speed}, 
 		"dash_delay": {"name": "Dash delay", "value": dash_cooldown}, 
 		"dash_speed": {"name": "Dash speed", "value": dash_speed},
 	}
-		
+	health_change.emit(health)
+	shield_change.emit(shield)
+
+
+func death() -> void:
+	pass

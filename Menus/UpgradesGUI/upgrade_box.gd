@@ -16,13 +16,13 @@ var changed_lvl : int = TYPE_NIL
 func _ready() -> void:
 	if upgrade:
 		name_.text = upgrade.name
-		energy.text = str(upgrade.energy)
+		energy.text = str(upgrade.energy + instance.level - 1)
 		lvl.text = str(instance.level)
 		description.text = use_placeholders(upgrade.description)
 		set_pressed_no_signal(instance.enabled)
 		changed_lvl = instance.level
-		
-		
+
+
 func use_placeholders(t : String) -> String:
 	if upgrade is PlayerUpgrade:
 		return t.replace("{health}" ,str(upgrade.health + instance.level * upgrade.health_change)) \
@@ -46,14 +46,19 @@ func _process(_delta: float) -> void:
 func apply():
 	instance.level = changed_lvl
 	instance.enabled = changed_enabled
+
+func reset_changes():
+	changed_lvl = instance.level
+	changed_enabled = instance.enabled
+	if changed_enabled:
+		set_pressed_no_signal(true)
+	else:
+		set_pressed_no_signal(false)
+
 func _toggled(toggled_on: bool) -> void:
 	if toggled_on:
-		if GAME.player.temp_energy + instance.level + upgrade.energy > GAME.player.energy_max:
-			set_pressed_no_signal(false)
-			return
-		
 		changed_enabled = true
-		GAME.player.recalculate()
+		GAME.player.recalculate_stats()
 	else:
 		changed_enabled = false
-		GAME.player.recalculate()
+		GAME.player.recalculate_stats()

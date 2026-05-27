@@ -96,7 +96,7 @@ func set_aim_direction (aim_dir : Vector2):
 	else:
 		scale.y = 1
 
-func _try_use() -> bool:
+func _try_use() -> bool: #Called in player when shoot action pressed
 	
 	if not can_use:
 		return false
@@ -119,7 +119,7 @@ func _use(b):
 
 	b.visible = true
 	b.global_rotation = aim_angle
-	var dir = (get_global_mouse_position() - global_position).normalized()
+	var dir = (get_global_mouse_position() - player.global_position).normalized()
 	b.linear_velocity = dir * bullet_speed * 1500
 	used_bullets.append(b)
 	change_bullets.emit(loaded_ammo)

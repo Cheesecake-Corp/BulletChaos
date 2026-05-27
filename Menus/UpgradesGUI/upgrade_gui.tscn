@@ -2,7 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://cpq05libleskg" path="res://Assets/GUI/gdp_styles.png" id="1_4vjet"]
 [ext_resource type="Script" uid="uid://bkbolrt3u8ju4" path="res://Menus/UpgradesGUI/upgradesGUI.gd" id="2_tranw"]
+[ext_resource type="PackedScene" uid="uid://b33xc4skqictj" path="res://Menus/UpgradesGUI/Upgrade_box.tscn" id="3_acnka"]
 [ext_resource type="Texture2D" uid="uid://caqhp2b88srwd" path="res://Assets/SimpleKeys/SimpleKeys/Classic/Light/Spritesheets/A.png" id="3_tranw"]
+[ext_resource type="Script" uid="uid://c3dl15i8a5k5s" path="res://Menus/UpgradesGUI/warning_message.gd" id="5_sv7w8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4vjet"]
 atlas = ExtResource("1_4vjet")
@@ -37,6 +39,10 @@ expand_margin_right = 2.0
 atlas = ExtResource("1_4vjet")
 region = Rect2(87, 149, 14, 14)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gidn"]
+atlas = ExtResource("1_4vjet")
+region = Rect2(87, 149, 14, 14)
+
 [sub_resource type="InputEventKey" id="InputEventKey_tranw"]
 device = -1
 keycode = 65
@@ -48,6 +54,10 @@ events = [SubResource("InputEventKey_tranw")]
 [sub_resource type="AtlasTexture" id="AtlasTexture_sv7w8"]
 atlas = ExtResource("3_tranw")
 region = Rect2(0, 0, 17, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45ui6"]
+atlas = ExtResource("1_4vjet")
+region = Rect2(87, 149, 14, 14)
 
 [node name="UpgradeGUI" type="Control" unique_id=1652952288]
 layout_mode = 3
@@ -84,8 +94,8 @@ script = ExtResource("2_tranw")
 layout_mode = 1
 offset_left = 2.233597
 offset_top = 11.167985
-offset_right = 41.32154
-offset_bottom = 50.535126
+offset_right = 51.233597
+offset_bottom = 50.667984
 scale = Vector2(0.75, 0.75)
 texture = SubResource("AtlasTexture_d54w8")
 patch_margin_left = 5
@@ -197,12 +207,68 @@ theme_override_font_sizes/font_size = 128
 text = "26"
 horizontal_alignment = 2
 
+[node name="StatNewValues" type="VBoxContainer" parent="Window/StatTable" unique_id=2047289686]
+layout_mode = 0
+offset_left = 28.788586
+offset_top = 4.9635496
+offset_right = 404.78857
+offset_bottom = 823.9493
+scale = Vector2(0.04, 0.04)
+
+[node name="StatVal1" type="Label" parent="Window/StatTable/StatNewValues" unique_id=687698287]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "26"
+horizontal_alignment = 2
+
+[node name="StatVal2" type="Label" parent="Window/StatTable/StatNewValues" unique_id=517614015]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "26"
+horizontal_alignment = 2
+
+[node name="StatVal3" type="Label" parent="Window/StatTable/StatNewValues" unique_id=1892515224]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "26"
+horizontal_alignment = 2
+
+[node name="StatVal4" type="Label" parent="Window/StatTable/StatNewValues" unique_id=426165263]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "26"
+horizontal_alignment = 2
+
+[node name="StatVal5" type="Label" parent="Window/StatTable/StatNewValues" unique_id=119923933]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "26"
+horizontal_alignment = 2
+
+[node name="StatVal6" type="Label" parent="Window/StatTable/StatNewValues" unique_id=102851001]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "26"
+horizontal_alignment = 2
+
+[node name="StatVal7" type="Label" parent="Window/StatTable/StatNewValues" unique_id=460833692]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "26"
+horizontal_alignment = 2
+
+[node name="StatVal8" type="Label" parent="Window/StatTable/StatNewValues" unique_id=923445284]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "26"
+horizontal_alignment = 2
+
 [node name="EnergyTable" type="NinePatchRect" parent="Window" unique_id=1503089242]
 layout_mode = 1
 offset_left = 2.1563616
 offset_top = 2.3385353
-offset_right = 41.244305
-offset_bottom = 13.878784
+offset_right = 51.15636
+offset_bottom = 13.878535
 scale = Vector2(0.75, 0.75)
 texture = SubResource("AtlasTexture_d54w8")
 region_rect = Rect2(0, 0, 14, 14)
@@ -219,14 +285,25 @@ offset_right = 555.07117
 offset_bottom = 92.00186
 scale = Vector2(0.04, 0.04)
 theme_override_font_sizes/font_size = 128
-text = "Energy left:"
+text = "Energy:"
 
 [node name="EnergyVal" type="Label" parent="Window/EnergyTable" unique_id=321293041]
 layout_mode = 0
-offset_left = 24.104239
-offset_top = 4.0018625
-offset_right = 321.2508
-offset_bottom = 92.00186
+offset_left = 15.986338
+offset_top = 3.8309212
+offset_right = 313.13287
+offset_bottom = 91.83092
+scale = Vector2(0.04, 0.04)
+theme_override_font_sizes/font_size = 128
+text = "0"
+horizontal_alignment = 2
+
+[node name="EnergyNewVal" type="Label" parent="Window/EnergyTable" unique_id=1352474715]
+layout_mode = 0
+offset_left = 32.794716
+offset_top = 3.8309212
+offset_right = 329.94125
+offset_bottom = 91.83092
 scale = Vector2(0.04, 0.04)
 theme_override_font_sizes/font_size = 128
 text = "0/26"
@@ -234,11 +311,11 @@ horizontal_alignment = 2
 
 [node name="UpgradesScroll" type="ScrollContainer" parent="Window" unique_id=1275189584]
 layout_mode = 0
-offset_left = 32.759426
-offset_top = 9.678922
-offset_right = 192.75943
-offset_bottom = 109.678925
-scale = Vector2(0.45, 0.45)
+offset_left = 40.75
+offset_top = 9.679
+offset_right = 200.75
+offset_bottom = 130.679
+scale = Vector2(0.4, 0.4)
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 3
 
@@ -251,6 +328,60 @@ layout_mode = 2
 theme_override_constants/h_separation = 4
 theme_override_constants/v_separation = 4
 columns = 3
+
+[node name="NinePatchRect" parent="Window/UpgradesScroll/MarginContainer/GridContainer" unique_id=2016635121 instance=ExtResource("3_acnka")]
+layout_mode = 2
+
+[node name="NinePatchRect2" parent="Window/UpgradesScroll/MarginContainer/GridContainer" unique_id=1858288218 instance=ExtResource("3_acnka")]
+layout_mode = 2
+
+[node name="NinePatchRect3" parent="Window/UpgradesScroll/MarginContainer/GridContainer" unique_id=2085043410 instance=ExtResource("3_acnka")]
+layout_mode = 2
+
+[node name="NinePatchRect4" parent="Window/UpgradesScroll/MarginContainer/GridContainer" unique_id=1258823229 instance=ExtResource("3_acnka")]
+layout_mode = 2
+
+[node name="NinePatchRect5" parent="Window/UpgradesScroll/MarginContainer/GridContainer" unique_id=1083527393 instance=ExtResource("3_acnka")]
+layout_mode = 2
+
+[node name="NinePatchRect6" parent="Window/UpgradesScroll/MarginContainer/GridContainer" unique_id=1827021991 instance=ExtResource("3_acnka")]
+layout_mode = 2
+
+[node name="NinePatchRect7" parent="Window/UpgradesScroll/MarginContainer/GridContainer" unique_id=1944440956 instance=ExtResource("3_acnka")]
+layout_mode = 2
+
+[node name="NinePatchRect8" parent="Window/UpgradesScroll/MarginContainer/GridContainer" unique_id=496614368 instance=ExtResource("3_acnka")]
+layout_mode = 2
+
+[node name="NinePatchRect9" parent="Window/UpgradesScroll/MarginContainer/GridContainer" unique_id=33948734 instance=ExtResource("3_acnka")]
+layout_mode = 2
+
+[node name="NinePatchRect10" parent="Window/UpgradesScroll/MarginContainer/GridContainer" unique_id=1577173663 instance=ExtResource("3_acnka")]
+layout_mode = 2
+
+[node name="NinePatchRect11" parent="Window/UpgradesScroll/MarginContainer/GridContainer" unique_id=80533878 instance=ExtResource("3_acnka")]
+layout_mode = 2
+
+[node name="NinePatchRect12" parent="Window/UpgradesScroll/MarginContainer/GridContainer" unique_id=2031951891 instance=ExtResource("3_acnka")]
+layout_mode = 2
+
+[node name="NinePatchRect13" parent="Window/UpgradesScroll/MarginContainer/GridContainer" unique_id=331896613 instance=ExtResource("3_acnka")]
+layout_mode = 2
+
+[node name="NinePatchRect14" parent="Window/UpgradesScroll/MarginContainer/GridContainer" unique_id=363794534 instance=ExtResource("3_acnka")]
+layout_mode = 2
+
+[node name="NinePatchRect15" parent="Window/UpgradesScroll/MarginContainer/GridContainer" unique_id=1686354415 instance=ExtResource("3_acnka")]
+layout_mode = 2
+
+[node name="NinePatchRect16" parent="Window/UpgradesScroll/MarginContainer/GridContainer" unique_id=886294494 instance=ExtResource("3_acnka")]
+layout_mode = 2
+
+[node name="NinePatchRect17" parent="Window/UpgradesScroll/MarginContainer/GridContainer" unique_id=1372978207 instance=ExtResource("3_acnka")]
+layout_mode = 2
+
+[node name="NinePatchRect18" parent="Window/UpgradesScroll/MarginContainer/GridContainer" unique_id=929750671 instance=ExtResource("3_acnka")]
+layout_mode = 2
 
 [node name="Filter" type="NinePatchRect" parent="Window" unique_id=697650026]
 visible = false
@@ -486,18 +617,176 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="Keys" type="VBoxContainer" parent="Window" unique_id=1534586926]
+[node name="Keys" type="NinePatchRect" parent="Window" unique_id=897027405]
+layout_mode = 0
+offset_left = 2.234
+offset_top = 40.5
+offset_right = 51.234
+offset_bottom = 63.5
+scale = Vector2(0.75, 0.75)
+texture = SubResource("AtlasTexture_3gidn")
+region_rect = Rect2(0, 0, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Label1" type="Label" parent="Window/Keys" unique_id=1607982004]
+layout_mode = 0
+offset_left = 3.6971264
+offset_top = 4.396709
+offset_right = 971.69714
+offset_bottom = 92.396706
+scale = Vector2(0.04, 0.04)
+theme_override_font_sizes/font_size = 128
+text = "A - Confirm changes"
+
+[node name="Label2" type="Label" parent="Window/Keys" unique_id=2077309207]
+layout_mode = 0
+offset_left = 3.8187933
+offset_top = 7.670734
+offset_right = 1403.8188
+offset_bottom = 186.67073
+scale = Vector2(0.04, 0.04)
+theme_override_font_sizes/font_size = 128
+text = "T - Revert changes
+"
+
+[node name="Label3" type="Label" parent="Window/Keys" unique_id=112357391]
+layout_mode = 0
+offset_left = 3.8238454
+offset_top = 11.690235
+offset_right = 1259.8239
+offset_bottom = 99.69023
+scale = Vector2(0.04, 0.04)
+theme_override_font_sizes/font_size = 128
+text = "Y - Weapon upgrades"
+
+[node name="Label4" type="Label" parent="Window/Keys" unique_id=554097548]
+layout_mode = 0
+offset_left = 3.882841
+offset_top = 15.7632065
+offset_right = 715.8828
+offset_bottom = 103.76321
+scale = Vector2(0.04, 0.04)
+theme_override_font_sizes/font_size = 128
+text = "X - Exit"
+
+[node name="Keys2" type="VBoxContainer" parent="Window" unique_id=1534586926]
+visible = false
 layout_mode = 0
 offset_left = 2.2335968
-offset_top = 40.670074
-offset_right = 31.45649
-offset_bottom = 59.00419
+offset_top = 40.67007
+offset_right = 63.233597
+offset_bottom = 64.670074
 scale = Vector2(0.48, 0.48)
 
-[node name="TextureButton" type="Button" parent="Window/Keys" unique_id=2086432635]
+[node name="TextureButton" type="Button" parent="Window/Keys2" unique_id=2086432635]
 layout_mode = 2
 shortcut = SubResource("Shortcut_acnka")
 text = "Apply"
 icon = SubResource("AtlasTexture_sv7w8")
 
-[connection signal="pressed" from="Window/Keys/TextureButton" to="Window" method="_on_mod_changes_apply"]
+[node name="WarningEnergy" type="NinePatchRect" parent="Window" unique_id=535678671]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 27.547697
+offset_top = 23.825033
+offset_right = 97.5477
+offset_bottom = 38.825035
+scale = Vector2(0.75, 0.75)
+texture = SubResource("AtlasTexture_45ui6")
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 4
+patch_margin_bottom = 4
+script = ExtResource("5_sv7w8")
+
+[node name="Label" type="Label" parent="Window/WarningEnergy" unique_id=499311812]
+layout_mode = 0
+offset_left = 6.9489684
+offset_top = 3.9708393
+offset_right = 120.94897
+offset_bottom = 14.9708395
+scale = Vector2(0.5, 0.5)
+text = "Not enough energy!"
+
+[node name="Label2" type="Label" parent="Window/WarningEnergy" unique_id=2103586131]
+layout_mode = 0
+offset_left = 20.846907
+offset_top = 9.927098
+offset_right = 137.84691
+offset_bottom = 20.927097
+scale = Vector2(0.25, 0.25)
+text = "Press D to continue"
+
+[node name="WarningConfirm" type="NinePatchRect" parent="Window" unique_id=1728319984]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 27.547697
+offset_top = 23.825033
+offset_right = 97.5477
+offset_bottom = 38.825035
+scale = Vector2(0.75, 0.75)
+texture = SubResource("AtlasTexture_45ui6")
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 4
+patch_margin_bottom = 4
+script = ExtResource("5_sv7w8")
+
+[node name="Label" type="Label" parent="Window/WarningConfirm" unique_id=910879700]
+layout_mode = 0
+offset_left = 8.934388
+offset_top = 3.9708393
+offset_right = 122.93439
+offset_bottom = 14.9708395
+scale = Vector2(0.5, 0.5)
+text = "Changes applied!"
+
+[node name="Label2" type="Label" parent="Window/WarningConfirm" unique_id=153857762]
+layout_mode = 0
+offset_left = 20.846907
+offset_top = 9.927098
+offset_right = 137.84691
+offset_bottom = 20.927097
+scale = Vector2(0.25, 0.25)
+text = "Press D to continue"
+
+[node name="WarningReset" type="NinePatchRect" parent="Window" unique_id=552908524]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 27.547697
+offset_top = 23.825033
+offset_right = 97.5477
+offset_bottom = 38.825035
+scale = Vector2(0.75, 0.75)
+texture = SubResource("AtlasTexture_45ui6")
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 4
+patch_margin_bottom = 4
+script = ExtResource("5_sv7w8")
+
+[node name="Label" type="Label" parent="Window/WarningReset" unique_id=151429240]
+layout_mode = 0
+offset_left = 11.912518
+offset_top = 3.9708393
+offset_right = 125.91252
+offset_bottom = 14.9708395
+scale = Vector2(0.5, 0.5)
+text = "Changes reset!"
+
+[node name="Label2" type="Label" parent="Window/WarningReset" unique_id=1204166165]
+layout_mode = 0
+offset_left = 20.846905
+offset_top = 9.927098
+offset_right = 137.84691
+offset_bottom = 20.927097
+scale = Vector2(0.25, 0.25)
+text = "Press D to continue"
+
+[connection signal="pressed" from="Window/Keys2/TextureButton" to="Window" method="_on_mod_changes_apply"]

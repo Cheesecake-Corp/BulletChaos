@@ -1,6 +1,6 @@
 extends Upgrade
 class_name PlayerUpgrade
-
+#All stats player upgrade can have, only used in player_upgrade_instance
 @export var health := 0
 @export var healing_bonus := 0
 @export var shield := 0
