@@ -5,7 +5,7 @@ func _ready() -> void:
 	
 func weapon_changed():
 	GAME.current_weapon.change_bullets.connect(changed_bullets.bind())
-	text = str(GAME.current_weapon.loaded_ammo) + "/" + str(GAME.current_weapon.final_magazine_capacity)
+	text = str(GAME.current_weapon.loaded_ammo) + "/" + str(GAME.current_weapon.magazine_size)
 
 func changed_bullets(bullets : int):
-	text = str(bullets) + "/" + str(GAME.current_weapon.final_magazine_capacity)
+	text = str(bullets) + "/" + str(GAME.current_weapon.magazine_size)

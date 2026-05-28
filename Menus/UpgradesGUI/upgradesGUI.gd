@@ -13,7 +13,6 @@ class_name Inventory
 @onready var warning_reset: NinePatchRect = $WarningReset
 
 const UPGRADE = preload("uid://b33xc4skqictj") #Scene Upgrade_box
-var energy_used : float = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,10 +20,10 @@ func _ready() -> void:
 
 
 func inventory_start() -> void:
-	if type == "player":
-		inv_load(GAME.player.player_stats, GAME.player.energy_max, GAME.player.used_energy)
+	if type == "weapon":
+		inv_load(GAME.player.weapon_stats, GAME.player.weapon_energy_max, GAME.player.weapon_used_energy)
 	else:
-		pass #TODO Add weapon inventory
+		inv_load(GAME.player.player_stats, GAME.player.energy_max, GAME.player.used_energy)
 
 
 func inv_load(dict : Dictionary, energy_max: int, used_energy: int) -> void:
@@ -39,10 +38,10 @@ func inv_load(dict : Dictionary, energy_max: int, used_energy: int) -> void:
 		upgrade_box.instance = n
 		grid_container.call_deferred("add_child",upgrade_box)
 
+
 func change_labels(dict, energy_max, used_energy): #Changes all labels
-	energy_used = used_energy
-	energy_val.text = str(int(energy_max - energy_used))
-	energy_new_val.text = str(int(energy_max - energy_used)) + "/" + str(energy_max)
+	energy_val.text = str(int(energy_max - used_energy))
+	energy_new_val.text = str(int(energy_max - used_energy)) + "/" + str(energy_max)
 	energy_new_val.remove_theme_color_override("font_color")
 	var stat_names_labels = stat_names.get_children()
 	var stat_values_labels = stat_values.get_children()
@@ -50,8 +49,12 @@ func change_labels(dict, energy_max, used_energy): #Changes all labels
 	var m = 0
 	for n in dict:
 		stat_names_labels[m].text = dict[n]["name"]
-		stat_values_labels[m].text = str(dict[n]["value"])
-		stat_values_new_labels[m].text = str(dict[n]["value"])
+		if dict[n]["value"] >= 100:
+			stat_values_labels[m].text = str(int(dict[n]["value"]))
+			stat_values_new_labels[m].text = str(int(dict[n]["value"]))
+		else:
+			stat_values_labels[m].text = str(dict[n]["value"])
+			stat_values_new_labels[m].text = str(dict[n]["value"])
 		stat_values_new_labels[m].remove_theme_color_override("font_color")
 		m += 1
 
@@ -68,7 +71,10 @@ func change_new_labels(dict_temp, dict, energy_max, used_energy_temp, used_energ
 	var stat_values_new_labels = stat_new_values.get_children()
 	var m = 0
 	for n in dict_temp:
-		stat_values_new_labels[m].text = str(dict_temp[n]["value"])
+		if dict_temp[n]["value"] >= 100:
+			stat_values_new_labels[m].text = str(int(dict_temp[n]["value"]))
+		else:
+			stat_values_new_labels[m].text = str(dict_temp[n]["value"])
 		if dict_temp[n]["value"] > dict[n]["value"]:
 			stat_values_new_labels[m].add_theme_color_override("font_color", Color(0.214, 0.786, 0.228, 1.0))
 		elif dict_temp[n]["value"] < dict[n]["value"]:
@@ -77,23 +83,40 @@ func change_new_labels(dict_temp, dict, energy_max, used_energy_temp, used_energ
 			stat_values_new_labels[m].remove_theme_color_override("font_color")
 		m += 1
 
+
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("go_left") and GAME.player.upgrade.visible == true:
-		if GAME.player.used_energy_temp <= GAME.player.energy_max:
+	if GAME.player.upgrade.visible == true:
+		if type == "weapon":
+			inputs(GAME.player.weapon_stats, GAME.player.weapon_energy_max, GAME.player.weapon_used_energy, GAME.player.weapon_used_energy_temp)
+		else:
+			inputs(GAME.player.player_stats, GAME.player.energy_max, GAME.player.used_energy, GAME.player.used_energy_temp)
+
+
+func inputs(dict: Dictionary, energy_max: int, energy_used: int, energy_used_temp: int):
+	if Input.is_action_just_pressed("go_left"):
+		if energy_used_temp <= energy_max:
 			var upgrade_boxes = grid_container.get_children()
 			for u in upgrade_boxes:
 				u.apply()
-			GAME.player.apply_changes()
-			change_labels(GAME.player.player_stats, GAME.player.energy_max, GAME.player.used_energy)
-			print("Changes applied")
+			if type == "weapon":
+				GAME.player.apply_weapon_changes()
+			else:
+				GAME.player.apply_player_changes()
+			change_labels(dict, energy_max, energy_used)
 			warning_confirm.start()
 		else:
 			warning_energy.start()
 	
-	if Input.is_action_just_pressed("inventory_reset") and GAME.player.upgrade.visible == true:
+	if Input.is_action_just_pressed("inventory_reset"):
 		var upgrade_boxes = grid_container.get_children()
 		for u in upgrade_boxes:
 				u.reset_changes()
-		change_new_labels(GAME.player.player_stats, GAME.player.player_stats, GAME.player.energy_max, GAME.player.used_energy, GAME.player.used_energy)
-		print("Changes reset")
+		change_new_labels(dict, dict, energy_max, energy_used, energy_used)
 		warning_reset.start()
+	
+	if Input.is_action_just_pressed("inventory_change"):
+		if type == "player":
+			type = "weapon"
+		else:
+			type = "player"
+		inventory_start()

@@ -10,18 +10,22 @@ extends Node2D
 
 @onready var ray: RayCast2D = $RayCast2D
 
+var damage: float
+var damage_multiplier: float
+var critical_rate: float
+var critical_multiplier: float
+var reload_speed: float
+var magazine_size: int
+var shooting_speed: float
+var puncture: int #TODO finish adding puncture
 
-var damage := 0
 
-var final_damage : float
 var reloading_time : float = 0
-var final_reload_time : float
 var is_reloading : bool = false
-var final_magazine_capacity : int
 var loaded_ammo : int = 20
 var last_use_time : float
 var aim_angle : float
-@export var player : Player
+var player : Player
 var can_use : bool = true
 var player_offset := Vector2(0,0)
 
@@ -33,17 +37,18 @@ signal change_bullets(bullets : int)
 
 
 func _ready() -> void:
-	loaded_ammo = base_magazine_capacity
-	final_magazine_capacity = base_magazine_capacity
-	final_reload_time = base_reload_time
-	final_damage = base_damage
+	GAME.weapon_changed.connect(start)
+
+func start():
 	player = GAME.player
+	player.weapon_stats_changed.connect(update_stats)
+	update_stats()
 	create_bullets()
 
 
 func create_bullets():
 	var time = bullet_scene.instantiate().get_meta("max_time")
-	for i in range((time-floor((time)/(final_magazine_capacity*(use_rate/1000)+final_reload_time))*final_reload_time)/(use_rate/1000)+1):
+	for i in range((time-floor((time)/(magazine_size*(use_rate/1000)+base_reload_time/reload_speed))*base_reload_time/reload_speed)/(use_rate/1000)+1):
 		var b : Projectile = bullet_scene.instantiate()
 		b.add_collision_exception_with(player)
 		b.visible = false
@@ -52,7 +57,6 @@ func create_bullets():
 		b.contact_monitor = true
 		b.max_contacts_reported = 1
 		
-
 		var a2 : Area2D = b.get_node("./Area2D")
 		a2.body_entered.connect(_on_body_entered.bind(b))
 		b.timeout.connect(_on_bullet_timeout)
@@ -62,14 +66,14 @@ func create_bullets():
 
 
 func reload(delta):
-	if Input.is_action_just_pressed("reload") and not is_reloading and not loaded_ammo >= final_magazine_capacity:
+	if Input.is_action_just_pressed("reload") and not is_reloading and not loaded_ammo >= magazine_size:
 		is_reloading = true
 		
 	if(is_reloading):
 		reloading_time += delta
-		player.reload_bar.value = reloading_time/final_reload_time*player.reload_bar.max_value
-	if reloading_time >= final_reload_time:
-		loaded_ammo = final_magazine_capacity
+		player.reload_bar.value = reloading_time/(base_reload_time/reload_speed)*player.reload_bar.max_value
+	if reloading_time >= base_reload_time/reload_speed:
+		loaded_ammo = magazine_size
 		is_reloading = false
 		reloading_time = 0
 		change_bullets.emit(loaded_ammo)
@@ -104,11 +108,12 @@ func set_aim_direction (aim_dir : Vector2):
 	else:
 		scale.y = 1
 
+
 func _try_use() -> bool: #Called in player when shoot action pressed
 	
 	if not can_use:
 		return false
-	if Time.get_ticks_msec() - last_use_time < use_rate and last_use_time != null:
+	if Time.get_ticks_msec() - last_use_time < use_rate/shooting_speed and last_use_time != null:
 		return false
 	if loaded_ammo == 0:
 		return false
@@ -118,6 +123,7 @@ func _try_use() -> bool: #Called in player when shoot action pressed
 
 	_use(available_bullets.pop_back())
 	return true
+
 
 func _use(b):
 	loaded_ammo -= 1
@@ -132,16 +138,22 @@ func _use(b):
 	used_bullets.append(b)
 	change_bullets.emit(loaded_ammo)
 
+
 func _on_body_entered(_body: Node, bullet: Projectile) -> void:
 	if not bullet.visible:
 		return
 	if _body is Enemy:
 		_body = _body as Enemy
+		var final_damage = damage * damage_multiplier
+		if randf() <= critical_rate:
+			final_damage *= critical_multiplier
 		_body.take_damage(final_damage)
 	call_deferred("_recycle_bullet", bullet)
 
+
 func _on_bullet_timeout(bullet : Projectile) -> void:
 	call_deferred("_recycle_bullet", bullet)
+
 
 func _recycle_bullet(bullet: Projectile) -> void:
 	bullet.freeze = true
@@ -151,3 +163,15 @@ func _recycle_bullet(bullet: Projectile) -> void:
 	bullet.global_position = global_position
 	used_bullets.erase(bullet)
 	available_bullets.append(bullet)
+
+
+func update_stats():
+	damage = GAME.player.weapon_stats["damage"]["value"]
+	damage_multiplier = player.weapon_stats["damage_multiplier"]["value"]
+	critical_rate = player.weapon_stats["critical_rate"]["value"]
+	critical_multiplier = player.weapon_stats["critical_multiplier"]["value"]
+	reload_speed = player.weapon_stats["reload_speed"]["value"]
+	magazine_size = player.weapon_stats["magazine_size"]["value"]
+	shooting_speed = player.weapon_stats["shooting_speed"]["value"]
+	puncture = player.weapon_stats["puncture"]["value"]
+	change_bullets.emit(loaded_ammo)
