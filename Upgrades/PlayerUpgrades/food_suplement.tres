@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PlayerUpgrade" format=3 uid="uid://cp4xi7q5741qh"]
+
+[ext_resource type="Script" uid="uid://c5ovvmf05xpaw" path="res://Upgrades/player_upgrade.gd" id="1_0vqr3"]
+
+[resource]
+script = ExtResource("1_0vqr3")
+health = 100.0
+healing_bonus = 0.5
+health_change = 100.0
+healing_bonus_change = 0.5
+speed_change = 10.0
+name = "Food_suplements"
+energy = 2
+metadata/_custom_type_script = "uid://c5ovvmf05xpaw"

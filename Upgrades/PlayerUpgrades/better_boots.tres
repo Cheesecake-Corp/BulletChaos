@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PlayerUpgrade" format=3 uid="uid://c0wecmihju8ha"]
+
+[ext_resource type="Script" uid="uid://c5ovvmf05xpaw" path="res://Upgrades/player_upgrade.gd" id="1_76ojs"]
+
+[resource]
+script = ExtResource("1_76ojs")
+speed = 10.0
+dash_delay = 0.5
+dash_speed = 0.5
+speed_change = 10.0
+dash_delay_change = 0.25
+dash_speed_change = 0.5
+name = "Better boots"
+energy = 1
+metadata/_custom_type_script = "uid://c5ovvmf05xpaw"

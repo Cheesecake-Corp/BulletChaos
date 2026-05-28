@@ -35,7 +35,8 @@ func death():
 		call_deferred("set_canister_pos", canister)
 		
 	if GAME.RANDOM_LOOT.randf() > 0.5:
-		var file = upgrade_resources.upgrades[GAME.RANDOM_LOOT.randi_range(0,upgrade_resources.upgrades.size()-1)] 
+		var file = upgrade_resources.upgrades[GAME.RANDOM_LOOT.randi_range(0,upgrade_resources.upgrades.size()-1)]
+		upgrade_resources.upgrades.erase(file)
 		var upgrade_item : Node2D = load("res://Upgrades/Upgrade_item.tscn").instantiate() #Creates instance of upgrade_item
 		upgrade_item.upgrade = file #Upgrade item is on ground it is a scene
 		get_parent().room.call_deferred("add_child", upgrade_item)

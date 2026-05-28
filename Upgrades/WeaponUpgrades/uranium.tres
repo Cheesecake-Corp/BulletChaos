@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" format=3 uid="uid://b2urojowcyymf"]
+
+[ext_resource type="Script" uid="uid://bjgum8ojui4ml" path="res://Upgrades/weapon_upgrade.gd" id="1_qocg0"]
+
+[resource]
+script = ExtResource("1_qocg0")
+damage = 50.0
+damage_multiplier = 0.2
+critical_multiplier = 0.2
+shooting_speed = -0.1
+damage_change = 20.0
+damage_multiplier_change = 0.1
+critical_multiplier_change = 0.05
+shooting_speed_change = -0.05
+name = "Uranium"
+energy = 4
+metadata/_custom_type_script = "uid://bjgum8ojui4ml"

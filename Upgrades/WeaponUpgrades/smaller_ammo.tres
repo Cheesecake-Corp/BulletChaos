@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" format=3 uid="uid://2k76iw8vpn3"]
+
+[ext_resource type="Script" uid="uid://bjgum8ojui4ml" path="res://Upgrades/weapon_upgrade.gd" id="1_h6g32"]
+
+[resource]
+script = ExtResource("1_h6g32")
+damage_multiplier = 0.1
+magazine_size = 5
+magazine_size_change = 5
+name = "Smaller ammo"
+energy = 2
+metadata/_custom_type_script = "uid://bjgum8ojui4ml"

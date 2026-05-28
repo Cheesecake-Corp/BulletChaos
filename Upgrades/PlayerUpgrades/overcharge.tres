@@ -4,8 +4,12 @@
 
 [resource]
 script = ExtResource("1_o37f4")
-shield = 20
+shield = 80.0
 shield_recharge = 2
+shield_delay = -0.1
+shield_change = 80.0
+shield_recharge_change = 2.0
+shield_delay_change = -0.1
 name = "Overcharge"
 description = "Increases shield by {shield}"
 energy = 6

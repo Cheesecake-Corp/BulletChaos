@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" format=3 uid="uid://byuqymvktoiah"]
+
+[ext_resource type="Script" uid="uid://bjgum8ojui4ml" path="res://Upgrades/weapon_upgrade.gd" id="1_2326j"]
+
+[resource]
+script = ExtResource("1_2326j")
+damage = 20.0
+damage_multiplier = 0.2
+magazine_size = 1
+damage_change = 20.0
+damage_multiplier_change = 0.1
+name = "Light Alloy"
+energy = 2
+metadata/_custom_type_script = "uid://bjgum8ojui4ml"

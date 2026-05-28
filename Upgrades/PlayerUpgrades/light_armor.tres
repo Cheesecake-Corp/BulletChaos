@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="PlayerUpgrade" format=3 uid="uid://7jwdfidke82i"]
+
+[ext_resource type="Script" uid="uid://c5ovvmf05xpaw" path="res://Upgrades/player_upgrade.gd" id="1_uiyxv"]
+
+[resource]
+script = ExtResource("1_uiyxv")
+health = 100.0
+shield = 100.0
+shield_recharge = 0.5
+shield_delay = 0.25
+speed = -10.0
+healing_bonus_change = 0.5
+shield_change = 50.0
+shield_recharge_change = 0.5
+shield_delay_change = 0.15
+speed_change = -10.0
+energy = 3
+metadata/_custom_type_script = "uid://c5ovvmf05xpaw"

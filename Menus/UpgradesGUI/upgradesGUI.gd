@@ -21,18 +21,18 @@ func _ready() -> void:
 
 func inventory_start() -> void:
 	if type == "weapon":
-		inv_load(GAME.player.weapon_stats, GAME.player.weapon_energy_max, GAME.player.weapon_used_energy)
+		inv_load(GAME.player.weapon_stats, GAME.player.weapon_upgrades, GAME.player.energy["weapon_energy_max"], GAME.player.energy["weapon_energy_used"])
 	else:
-		inv_load(GAME.player.player_stats, GAME.player.energy_max, GAME.player.used_energy)
+		inv_load(GAME.player.player_stats, GAME.player.upgrades, GAME.player.energy["player_energy_max"], GAME.player.energy["player_energy_used"])
 
 
-func inv_load(dict : Dictionary, energy_max: int, used_energy: int) -> void:
+func inv_load(dict : Dictionary, upgrades: Array, energy_max: int, used_energy: int) -> void:
 	
 	change_labels(dict, energy_max, used_energy)
 	
 	for a in grid_container.get_children(): #Removes all nodes under GridContainer
 		a.queue_free()
-	for n in GAME.player.upgrades: #Adds upgrades from Array in player
+	for n in upgrades: #Adds upgrades from Array in player
 		var upgrade_box = UPGRADE.instantiate()
 		upgrade_box.upgrade = n.data
 		upgrade_box.instance = n
@@ -87,9 +87,9 @@ func change_new_labels(dict_temp, dict, energy_max, used_energy_temp, used_energ
 func _process(_delta: float) -> void:
 	if GAME.player.upgrade.visible == true:
 		if type == "weapon":
-			inputs(GAME.player.weapon_stats, GAME.player.weapon_energy_max, GAME.player.weapon_used_energy, GAME.player.weapon_used_energy_temp)
+			inputs(GAME.player.weapon_stats, GAME.player.energy["weapon_energy_max"], GAME.player.energy["weapon_energy_used"], GAME.player.energy["weapon_energy_used_temp"])
 		else:
-			inputs(GAME.player.player_stats, GAME.player.energy_max, GAME.player.used_energy, GAME.player.used_energy_temp)
+			inputs(GAME.player.player_stats, GAME.player.energy["player_energy_max"], GAME.player.energy["player_energy_used"], GAME.player.energy["player_energy_used_temp"])
 
 
 func inputs(dict: Dictionary, energy_max: int, energy_used: int, energy_used_temp: int):
@@ -100,8 +100,12 @@ func inputs(dict: Dictionary, energy_max: int, energy_used: int, energy_used_tem
 				u.apply()
 			if type == "weapon":
 				GAME.player.apply_weapon_changes()
+				energy_max = GAME.player.energy["weapon_energy_max"]
+				energy_used = GAME.player.energy["weapon_energy_used"]
 			else:
 				GAME.player.apply_player_changes()
+				energy_max = GAME.player.energy["player_energy_max"]
+				energy_used = GAME.player.energy["player_energy_used"]
 			change_labels(dict, energy_max, energy_used)
 			warning_confirm.start()
 		else:

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" format=3 uid="uid://cjvlonaiesd8"]
+
+[ext_resource type="Script" uid="uid://bjgum8ojui4ml" path="res://Upgrades/weapon_upgrade.gd" id="1_nt601"]
+
+[resource]
+script = ExtResource("1_nt601")
+critical_rate = -0.1
+shooting_speed = 1.0
+critical_rate_change = -0.1
+shooting_speed_change = 0.5
+name = "Liquid_coolant"
+energy = 4
+metadata/_custom_type_script = "uid://bjgum8ojui4ml"

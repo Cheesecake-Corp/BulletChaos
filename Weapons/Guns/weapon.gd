@@ -146,7 +146,10 @@ func _on_body_entered(_body: Node, bullet: Projectile) -> void:
 		_body = _body as Enemy
 		var final_damage = damage * damage_multiplier
 		if randf() <= critical_rate:
-			final_damage *= critical_multiplier
+			if critical_rate >= 1:
+				final_damage *= critical_multiplier**critical_rate
+			else:
+				final_damage *= critical_multiplier
 		_body.take_damage(final_damage)
 	call_deferred("_recycle_bullet", bullet)
 

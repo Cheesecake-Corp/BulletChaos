@@ -76,6 +76,7 @@ var used_energy_temp := 0
 var weapon_used_energy_temp := 0
 var player_stats_temp: Dictionary
 var weapon_stats_temp: Dictionary
+var energy: Dictionary
 
 func _ready() -> void:
 	player_stats = {
@@ -97,6 +98,14 @@ func _ready() -> void:
 		"magazine_size": {"name": "Capacity", "value": BASE_MAGAZINE_SIZE},
 		"shooting_speed": {"name": "SH speed", "value": BASE_SHOOTING_SPEED}, 
 		"puncture": {"name": "Puncture", "value": BASE_PUNCTURE}, 
+	}
+	energy = {
+		"player_energy_max": energy_max,
+		"player_energy_used": used_energy,
+		"player_energy_used_temp": used_energy_temp,
+		"weapon_energy_max": weapon_energy_max,
+		"weapon_energy_used": weapon_used_energy,
+		"weapon_energy_used_temp": weapon_used_energy_temp,
 	}
 	GAME.register_player(self)
 
@@ -133,7 +142,7 @@ func character_movement(horizontal, vertical, delta):
 func dash():
 	is_dashing = true
 	dash_timer = dash_duration
-	cooldown_timer = dash_cooldown
+	cooldown_timer = 1/dash_cooldown
 	set_collision_layer_value(2, false)
 
 
@@ -201,7 +210,7 @@ func _physics_process(_delta: float) -> void:
 		camera_body.linear_velocity = -camera_body.position*5 #Camera stops when inventory is active
 		return
 	# gets movement input
-	dash_progress_bar.value = (dash_cooldown-cooldown_timer)/dash_cooldown*dash_progress_bar.max_value
+	dash_progress_bar.value = (1/dash_cooldown-cooldown_timer)/(1/dash_cooldown)*dash_progress_bar.max_value
 	var horizontal := Input.get_axis("go_left","go_right")
 	var vertical := Input.get_axis("go_up","go_down")
 	
@@ -276,6 +285,7 @@ func recalculate_player_stats():
 		"dash_speed": {"name": "Dash speed", "value": c_dash_speed},
 	}
 	used_energy_temp = c_used_energy
+	energy["player_energy_used_temp"] = c_used_energy
 	upgrade_script.change_new_labels(player_stats_temp, player_stats, energy_max, c_used_energy, used_energy)
 	
 
@@ -295,23 +305,23 @@ func apply_player_changes(): #Applying changes
 		used_energy += u.data.energy + u.level - 1
 		max_health += u.data.health + u.level * u.data.health_change
 		heal_bonus += u.data.healing_bonus + u.level * u.data.healing_bonus_change
-		shield += u.data.shield + u.level * u.data.shield_change
+		max_shield += u.data.shield + u.level * u.data.shield_change
 		shield_delay += u.data.shield_delay + u.level * u.data.shield_delay_change
 		shield_regen += u.data.shield_recharge + u.level * u.data.shield_recharge_change
 		speed += u.data.speed + u.level * u.data.speed_change
 		dash_cooldown += u.data.dash_delay + u.level * u.data.dash_delay_change
 		dash_speed += u.data.dash_speed + u.level * u.data.dash_speed_change
 	
-	player_stats = {
-		"health": {"name": "Health", "value": max_health},
-		"healing_bonus": {"name": "Heal bonus", "value": heal_bonus}, 
-		"shield": {"name": "Shield", "value": max_shield}, 
-		"shield_regen": {"name": "Shield regen", "value": shield_regen}, 
-		"shield_delay": {"name": "Shield delay", "value": shield_delay},
-		"speed": {"name": "Speed", "value": speed}, 
-		"dash_delay": {"name": "Dash delay", "value": dash_cooldown}, 
-		"dash_speed": {"name": "Dash speed", "value": dash_speed},
-	}
+	energy["player_energy_used"] = used_energy
+	player_stats["health"]["value"] = max_health
+	player_stats["healing_bonus"]["value"] = heal_bonus
+	player_stats["shield"]["value"] = max_shield
+	player_stats["shield_regen"]["value"] = shield_regen
+	player_stats["shield_delay"]["value"] = shield_delay
+	player_stats["speed"]["value"] = speed
+	player_stats["dash_delay"]["value"] = dash_cooldown
+	player_stats["dash_speed"]["value"] = dash_speed
+	
 	health_change.emit(health)
 	shield_change.emit(shield)
 
@@ -350,6 +360,7 @@ func recalculate_weapon_stats():
 		"puncture": {"name": "Puncture", "value": temp_puncture}, 
 	}
 	weapon_used_energy_temp = temp_weapon_used_energy
+	energy["weapon_energy_used_temp"] = temp_weapon_used_energy
 	upgrade_script.change_new_labels(weapon_stats_temp, weapon_stats, weapon_energy_max, weapon_used_energy_temp, weapon_used_energy)
 
 
@@ -369,23 +380,23 @@ func apply_weapon_changes():
 		weapon_used_energy += u.data.energy + u.level - 1
 		damage += u.data.damage + u.level * u.data.damage_change
 		damage_multiplier += u.data.damage_multiplier + u.level * u.data.damage_multiplier_change
-		critical_rate += u.data.critical_rate + u.level * u.upgrade.critical_rate_change
+		critical_rate += u.data.critical_rate + u.level * u.data.critical_rate_change
 		critical_multiplier += u.data.critical_multiplier + u.level * u.data.critical_multiplier_change
 		reload_speed += u.data.reload_speed + u.level * u.data.reload_speed_change
 		magazine_size += u.data.magazine_size + u.level * u.data.magazine_size_change
 		shooting_speed += u.data.shooting_speed + u.level * u.data.shooting_speed_change
 		puncture += u.data.puncture + u.level * u.data.puncture_change
 	
-	weapon_stats = {
-		"damage": {"name": "Damage", "value": damage},
-		"damage_multiplier": {"name": "DMG mult", "value": damage_multiplier},
-		"critical_rate": {"name": "CRIT rate", "value": critical_rate}, 
-		"critical_multiplier": {"name": "CRIT mult", "value": critical_multiplier}, 
-		"reload_speed": {"name": "REL speed", "value": reload_speed}, 
-		"magazine_size": {"name": "Capacity", "value": magazine_size},
-		"shooting_speed": {"name": "SH speed", "value": shooting_speed}, 
-		"puncture": {"name": "Puncture", "value": puncture},
-	}
+	energy["weapon_energy_used"] = weapon_used_energy
+	weapon_stats["damage"]["value"] = damage
+	weapon_stats["damage_multiplier"]["value"] = damage_multiplier
+	weapon_stats["critical_rate"]["value"] = critical_rate
+	weapon_stats["critical_multiplier"]["value"] = critical_multiplier
+	weapon_stats["reload_speed"]["value"] = reload_speed
+	weapon_stats["magazine_size"]["value"] = magazine_size
+	weapon_stats["shooting_speed"]["value"] = shooting_speed
+	weapon_stats["puncture"]["value"] = puncture
+
 	weapon_stats_changed.emit()
 
 
