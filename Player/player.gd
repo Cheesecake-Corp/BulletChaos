@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-### BASE VALUES
+### BASE VALUES PLAYER
 @export var BASE_SPEED = 150
 @export var BASE_MAX_HEALTH = 100
 @export var BASE_DASH_SPEED := 4
@@ -20,6 +20,16 @@ var shield: float = BASE_MAX_SHIELD
 var shield_delay := BASE_SHIELD_DELAY
 var shield_regen := BASE_SHIELD_REGEN
 var heal_bonus := BASE_HEAL_BONUS
+
+###BASE VALUES WEAPON
+@export var BASE_DAMAGE := 0
+@export var BASE_DAMAGE_PERCENT := 0
+@export var BASE_CRITICAL_RATE := 0
+@export var BASE_CRITICAL_MULTIPLIER := 0
+@export var BASE_RELOAD_SPEED := 0
+@export var BASE_MAGAZINE_SIZE := 0
+@export var BASE_SHOOTING_SPEED := 0
+@export var BASE_PUNCTURE := 0
 
 @export var dash_duration := 0.15
 var health : float = max_health
@@ -48,19 +58,23 @@ var afterimage_cooldown := 0.0
 @export var afterimage_interval := 0.05
 @export var afterimage_scene := preload("res://Player/DashAfterImage/AfterImage.tscn")
 
-
 var map_mode = false
 signal health_change(health)
 signal shield_change(shield)
 
 var upgrade_resources : Array = []
-var weapon_upgrades : Array = []
+var weapon_upgrades : Array[WeaponModInstance] = []
 var upgrades : Array[PlayerModInstance] = []
 var energy_max : int = 20
+var weapon_energy_max : int = 20
 var player_stats: Dictionary
+var weapon_stats: Dictionary
 var used_energy := 0
+var weapon_used_energy := 0
 var used_energy_temp := 0
+var weapon_used_energy_temp := 0
 var player_stats_temp: Dictionary
+var weapon_stats_temp: Dictionary
 
 func _ready() -> void:
 	GAME.register_player(self)
@@ -73,6 +87,16 @@ func _ready() -> void:
 		"speed": {"name": "Speed", "value": speed}, 
 		"dash_delay": {"name": "Dash delay", "value": dash_cooldown}, 
 		"dash_speed": {"name": "Dash speed", "value": dash_speed},
+	}
+	weapon_stats = {
+		"damage": {"name": "Damage", "value": BASE_DAMAGE},
+		"damage_percent": {"name": "Damage percent", "value": BASE_DAMAGE_PERCENT},
+		"critical_rate": {"name": "Critical rate", "value": BASE_CRITICAL_RATE}, 
+		"critical_multiplier": {"name": "Critical mutiplier", "value": BASE_CRITICAL_MULTIPLIER}, 
+		"reload_speed": {"name": "Reload_speed", "value": BASE_RELOAD_SPEED}, 
+		"magazine_size": {"name": "Magazine size", "value": BASE_MAGAZINE_SIZE},
+		"shooting_speed": {"name": "Shooting speed", "value": BASE_SHOOTING_SPEED}, 
+		"puncture": {"name": "Puncture", "value": BASE_PUNCTURE}, 
 	}
 
 
@@ -210,7 +234,7 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 
-func recalculate_stats():
+func recalculate_player_stats():
 	var c_max_health = BASE_MAX_HEALTH
 	var c_heal_bonus = BASE_HEAL_BONUS
 	var c_shield = BASE_MAX_SHIELD
@@ -232,6 +256,7 @@ func recalculate_stats():
 		c_speed += u.upgrade.speed + u.changed_lvl * u.upgrade.speed_change
 		c_dash_cooldown += u.upgrade.dash_delay + u.changed_lvl * u.upgrade.dash_delay_change
 		c_dash_speed += u.upgrade.dash_speed + u.changed_lvl * u.upgrade.dash_speed_change
+	
 	player_stats_temp = {
 		"health": {"name": "Health", "value": c_max_health},
 		"healing_bonus": {"name": "Heal bonus", "value": c_heal_bonus}, 
@@ -246,7 +271,7 @@ func recalculate_stats():
 	upgrade_script.change_new_labels(player_stats_temp, player_stats, energy_max, c_used_energy, used_energy)
 	
 
-func apply_changes(): #Applying changes
+func apply_player_changes(): #Applying changes
 	max_health = BASE_MAX_HEALTH
 	heal_bonus = BASE_HEAL_BONUS
 	max_shield = BASE_MAX_SHIELD
@@ -255,10 +280,9 @@ func apply_changes(): #Applying changes
 	speed = BASE_SPEED
 	dash_cooldown = BASE_DASH_COOLDOWN
 	dash_speed = BASE_DASH_SPEED
-	
 	used_energy = 0
+	
 	for u in upgrades:
-		
 		if !u.enabled: continue
 		used_energy += u.data.energy + u.level - 1
 		max_health += u.data.health + u.level * u.data.health_change
@@ -282,6 +306,78 @@ func apply_changes(): #Applying changes
 	}
 	health_change.emit(health)
 	shield_change.emit(shield)
+
+
+func recalculate_weapon_stats():
+	var temp_damage = BASE_DAMAGE
+	var temp_damage_percent = BASE_DAMAGE_PERCENT
+	var temp_critical_rate = BASE_CRITICAL_RATE
+	var temp_critical_multiplier = BASE_CRITICAL_MULTIPLIER
+	var temp_reload_speed = BASE_RELOAD_SPEED
+	var temp_magazine_size = BASE_MAGAZINE_SIZE
+	var temp_shooting_speed = BASE_SHOOTING_SPEED
+	var temp_puncture = BASE_PUNCTURE
+	var temp_weapon_used_energy = 0
+	
+	for u in upgrade_grid.get_children(): #Upgrade_box
+		if !u.changed_enabled: continue
+		temp_weapon_used_energy += u.upgrade.energy + u.changed_lvl - 1
+		temp_damage += u.upgrade.damage + u.changed_lvl * u.upgrade.damage_change
+		temp_damage_percent += u.upgrade.damage_percent + u.changed_lvl * u.upgrade.damage_percent_change
+		temp_critical_rate += u.upgrade.critical_rate + u.changed_lvl * u.upgrade.critical_rate_change
+		temp_critical_multiplier += u.upgrade.critical_multiplier + u.changed_lvl * u.upgrade.critical_multiplier_change
+		temp_reload_speed += u.upgrade.reload_speed + u.changed_lvl * u.upgrade.reload_speed_change
+		temp_magazine_size += u.upgrade.magazine_size + u.changed_lvl * u.upgrade.magazine_size_change
+		temp_shooting_speed += u.upgrade.shooting_speed + u.changed_lvl * u.upgrade.shooting_speed_change
+		temp_puncture += u.upgrade.puncture + u.changed_lvl * u.upgrade.puncture_change
+	
+	weapon_stats_temp = {
+		"damage": {"name": "Damage", "value": temp_damage},
+		"damage_percent": {"name": "Damage percent", "value": temp_damage_percent},
+		"critical_rate": {"name": "Critical rate", "value": temp_critical_rate}, 
+		"critical_multiplier": {"name": "Critical mutiplier", "value": temp_critical_multiplier}, 
+		"reload_speed": {"name": "Reload_speed", "value": temp_reload_speed}, 
+		"magazine_size": {"name": "Magazine size", "value": temp_magazine_size},
+		"shooting_speed": {"name": "Shooting speed", "value": temp_shooting_speed}, 
+		"puncture": {"name": "Puncture", "value": temp_puncture}, 
+	}
+	weapon_used_energy_temp = temp_weapon_used_energy
+	upgrade_script.change_new_labels(weapon_stats_temp, weapon_stats, weapon_energy_max, weapon_used_energy_temp, weapon_used_energy)
+
+
+func apply_weapon_changes():
+	var damage = BASE_DAMAGE
+	var damage_percent = BASE_DAMAGE_PERCENT
+	var critical_rate = BASE_CRITICAL_RATE
+	var critical_multiplier = BASE_CRITICAL_MULTIPLIER
+	var reload_speed = BASE_RELOAD_SPEED
+	var magazine_size = BASE_MAGAZINE_SIZE
+	var shooting_speed = BASE_SHOOTING_SPEED
+	var puncture = BASE_PUNCTURE
+	weapon_used_energy = 0
+	
+	for u in weapon_upgrades:
+		if !u.enabled: continue
+		weapon_used_energy += u.data.energy + u.level - 1
+		damage += u.data.damage + u.level * u.data.damage_change
+		damage_percent += u.data.damage_percent + u.level * u.data.damage_percent_change
+		critical_rate += u.data.critical_rate + u.level * u.upgrade.critical_rate_change
+		critical_multiplier += u.data.critical_multiplier + u.level * u.data.critical_multiplier_change
+		reload_speed += u.data.reload_speed + u.level * u.data.reload_speed_change
+		magazine_size += u.data.magazine_size + u.level * u.data.magazine_size_change
+		shooting_speed += u.data.shooting_speed + u.level * u.data.shooting_speed_change
+		puncture += u.data.puncture + u.level * u.data.puncture_change
+	
+	weapon_stats = {
+		"damage": {"name": "Damage", "value": damage},
+		"damage_percent": {"name": "Damage percent", "value": damage_percent},
+		"critical_rate": {"name": "Critical rate", "value": critical_rate}, 
+		"critical_multiplier": {"name": "Critical mutiplier", "value": critical_multiplier}, 
+		"reload_speed": {"name": "Reload_speed", "value": reload_speed}, 
+		"magazine_size": {"name": "Magazine size", "value": magazine_size},
+		"shooting_speed": {"name": "Shooting speed", "value": shooting_speed}, 
+		"puncture": {"name": "Puncture", "value": puncture},
+	}
 
 
 func death() -> void:

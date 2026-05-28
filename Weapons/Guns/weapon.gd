@@ -7,7 +7,12 @@ extends Node2D
 @export var bullet_speed : float = .1
 @export var base_reload_time : float = 1.5 # s
 @export var rotation_distance := 30.0
+
 @onready var ray: RayCast2D = $RayCast2D
+
+
+var damage := 0
+
 var final_damage : float
 var reloading_time : float = 0
 var final_reload_time : float
@@ -25,6 +30,16 @@ var available_bullets: Array[Projectile] = []
 @export var bullet_scene: PackedScene
 
 signal change_bullets(bullets : int)
+
+
+func _ready() -> void:
+	loaded_ammo = base_magazine_capacity
+	final_magazine_capacity = base_magazine_capacity
+	final_reload_time = base_reload_time
+	final_damage = base_damage
+	player = GAME.player
+	create_bullets()
+
 
 func create_bullets():
 	var time = bullet_scene.instantiate().get_meta("max_time")
@@ -45,13 +60,6 @@ func create_bullets():
 		available_bullets.append(b)
 		get_tree().current_scene.call_deferred("add_child", b)
 
-func _ready() -> void:
-	loaded_ammo = base_magazine_capacity
-	final_magazine_capacity = base_magazine_capacity
-	final_reload_time = base_reload_time
-	final_damage = base_damage
-	player = GAME.player
-	create_bullets()
 
 func reload(delta):
 	if Input.is_action_just_pressed("reload") and not is_reloading and not loaded_ammo >= final_magazine_capacity:
