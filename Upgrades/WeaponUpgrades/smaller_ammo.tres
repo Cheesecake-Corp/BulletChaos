@@ -8,5 +8,9 @@ damage_multiplier = 0.1
 magazine_size = 5
 magazine_size_change = 5
 name = "Smaller ammo"
+description = "Makes your ammo smaller and harder to take out from wound.
+
+Magazine size +{mag}
+DMG Mult +{damage_mult}"
 energy = 2
 metadata/_custom_type_script = "uid://bjgum8ojui4ml"

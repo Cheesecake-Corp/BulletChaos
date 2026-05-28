@@ -7,4 +7,6 @@ script = ExtResource("1_6im2d")
 damage = 20.0
 critical_rate = 0.4
 name = "Carbon Fiber"
+description = "Makes your bullets more deadly by increasing damage by {damage} and critical rate by {crit_rate}"
+energy = 1
 metadata/_custom_type_script = "uid://bjgum8ojui4ml"

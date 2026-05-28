@@ -16,7 +16,7 @@ var changed_lvl : int = TYPE_NIL
 func _ready() -> void:
 	if upgrade:
 		name_.text = upgrade.name
-		energy.text = str(upgrade.energy + instance.level - 1)
+		energy.text = str(upgrade.energy + instance.level)
 		lvl.text = str(instance.level)
 		description.text = use_placeholders(upgrade.description)
 		set_pressed_no_signal(instance.enabled)
@@ -34,7 +34,6 @@ func use_placeholders(t : String) -> String:
 		.replace("{dash_delay}", str(upgrade.dash_delay + instance.level * upgrade.dash_delay_change)) \
 		.replace("{dash_speed}", str(upgrade.dash_speed + instance.level * upgrade.dash_speed_change))
 	else:
-		upgrade as WeaponUpgrade
 		return t \
 		.replace("{reload_speed}", str(upgrade.reload_speed + instance.level * upgrade.reload_speed_change)) \
 		.replace("{damage}", str(upgrade.damage + instance.level * upgrade.damage_change)) \

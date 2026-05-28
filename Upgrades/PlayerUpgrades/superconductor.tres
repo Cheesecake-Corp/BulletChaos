@@ -6,10 +6,15 @@
 script = ExtResource("1_gj8mw")
 shield = 100.0
 shield_recharge = 2.5
-shield_delay = 1.0
+shield_delay = -1.0
 shield_change = 100.0
 shield_recharge_change = 2.5
-shield_delay_change = 0.5
+shield_delay_change = -0.5
 name = "Super Cable"
+description = "Magnets propelling bullets away? Why not
+
+Shield +{shield}
+Shield Recharge +{shield_recharge}
+Shield Delay {shield_delay}"
 energy = 3
 metadata/_custom_type_script = "uid://c5ovvmf05xpaw"

@@ -40,6 +40,7 @@ func inv_load(dict : Dictionary, upgrades: Array, energy_max: int, used_energy: 
 		var upgrade_box = UPGRADE.instantiate()
 		upgrade_box.upgrade = n.data
 		upgrade_box.instance = n
+		upgrade_box.changed_enabled = n.enabled
 		grid_container.call_deferred("add_child",upgrade_box)
 
 
@@ -80,9 +81,9 @@ func change_new_labels(dict_temp, dict, energy_max, used_energy_temp, used_energ
 			stat_values_new_labels[m].text = str(int(dict_temp[n]["value"]))
 		else:
 			stat_values_new_labels[m].text = str(dict_temp[n]["value"])
-		if dict_temp[n]["value"] > dict[n]["value"]:
+		if (dict_temp[n]["value"] > dict[n]["value"] and dict[n]["positive"]) or (dict_temp[n]["value"] < dict[n]["value"] and not dict[n]["positive"]):
 			stat_values_new_labels[m].add_theme_color_override("font_color", Color(0.214, 0.786, 0.228, 1.0))
-		elif dict_temp[n]["value"] < dict[n]["value"]:
+		elif (dict_temp[n]["value"] < dict[n]["value"] and dict[n]["positive"]) or (dict_temp[n]["value"] > dict[n]["value"] and not dict[n]["positive"]):
 			stat_values_new_labels[m].add_theme_color_override("font_color", Color(0.569, 0.04, 0.173, 1.0))
 		else:
 			stat_values_new_labels[m].remove_theme_color_override("font_color")

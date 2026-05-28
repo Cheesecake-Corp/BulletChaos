@@ -4,20 +4,27 @@
 
 [resource]
 script = ExtResource("1_vqw0s")
-health = 100.0
-healing_bonus = 0.5
 shield = 100.0
 shield_recharge = 1.0
-shield_delay = 0.25
+shield_delay = -0.25
 speed = -40.0
-dash_delay = -0.2
+dash_delay = 0.2
 dash_speed = -2.0
-health_change = 50.0
-healing_bonus_change = 0.25
 shield_change = 50.0
 shield_recharge_change = 0.25
-shield_delay_change = 0.15
+shield_delay_change = -0.15
 speed_change = -20.0
+dash_delay_change = 0.1
+dash_speed_change = -0.1
 name = "Heavy Armor"
+description = "What is this armor and why is it so heavy!!!
+
+Shield +{shield}
+Shield Recharge +{shield_recharge}
+Shield Delay +{shield_delay}
+
+Speed {speed}
+Dash Delay +{dash_delay}
+Dash Speed {dash_speed}"
 energy = 4
 metadata/_custom_type_script = "uid://c5ovvmf05xpaw"

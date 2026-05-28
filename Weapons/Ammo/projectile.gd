@@ -4,7 +4,7 @@ extends RigidBody2D
 signal timeout(bullet : Projectile)
 @onready var timer: Timer = $Timer
 @onready var bullet: Projectile = $"."
-
+var puncture : int = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -4,11 +4,9 @@
 
 [resource]
 script = ExtResource("1_2326j")
-damage = 20.0
-damage_multiplier = 0.2
-magazine_size = 1
-damage_change = 20.0
-damage_multiplier_change = 0.1
+magazine_size = 5
+magazine_size_change = 2
 name = "Light Alloy"
+description = "Increases your magazine size by {mag}"
 energy = 2
 metadata/_custom_type_script = "uid://bjgum8ojui4ml"

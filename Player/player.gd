@@ -7,8 +7,8 @@ class_name Player
 @export var BASE_DASH_SPEED := 4.0
 @export var BASE_DASH_COOLDOWN := 1.5
 @export var BASE_MAX_SHIELD := 100.0
-@export var BASE_SHIELD_DELAY := 10.0
-@export var BASE_SHIELD_REGEN := 1.0
+@export var BASE_SHIELD_DELAY := 1.5
+@export var BASE_SHIELD_REGEN := 15.0
 @export var BASE_HEAL_BONUS := 0.0
 
 var speed = BASE_SPEED
@@ -25,7 +25,7 @@ var heal_bonus: float = BASE_HEAL_BONUS
 @export var BASE_DAMAGE := 10
 @export var BASE_DAMAGE_MULTIPLIER := 1
 @export var BASE_CRITICAL_RATE := 0.2
-@export var BASE_CRITICAL_MULTIPLIER := 2
+@export var BASE_CRITICAL_MULTIPLIER := 1
 @export var BASE_RELOAD_SPEED := 1
 @export var BASE_MAGAZINE_SIZE := 20
 @export var BASE_SHOOTING_SPEED := 1
@@ -81,24 +81,24 @@ var energy: Dictionary
 
 func _ready() -> void:
 	player_stats = {
-		"health": {"name": "Health", "value": max_health},
-		"healing_bonus": {"name": "Heal bonus", "value": heal_bonus}, 
-		"shield": {"name": "Shield", "value": max_shield}, 
-		"shield_regen": {"name": "Shield regen", "value": shield_regen}, 
-		"shield_delay": {"name": "Shield delay", "value": shield_delay},
-		"speed": {"name": "Speed", "value": speed}, 
-		"dash_delay": {"name": "Dash delay", "value": dash_cooldown}, 
-		"dash_speed": {"name": "Dash speed", "value": dash_speed},
+		"health": {"name": "Health", "value": max_health, "positive": true},
+		"healing_bonus": {"name": "Heal bonus", "value": heal_bonus, "positive": true}, 
+		"shield": {"name": "Shield", "value": max_shield, "positive": true}, 
+		"shield_regen": {"name": "Shield regen", "value": shield_regen, "positive": true}, 
+		"shield_delay": {"name": "Shield delay", "value": shield_delay, "positive": false},
+		"speed": {"name": "Speed", "value": speed, "positive": true}, 
+		"dash_delay": {"name": "Dash delay", "value": dash_cooldown, "positive": false}, 
+		"dash_speed": {"name": "Dash speed", "value": dash_speed, "positive": true},
 	}
 	weapon_stats = {
-		"damage": {"name": "Damage", "value": BASE_DAMAGE},
-		"damage_multiplier": {"name": "DMG mult", "value": BASE_DAMAGE_MULTIPLIER},
-		"critical_rate": {"name": "CRIT rate", "value": BASE_CRITICAL_RATE}, 
-		"critical_multiplier": {"name": "CRIT mult", "value": BASE_CRITICAL_MULTIPLIER}, 
-		"reload_speed": {"name": "REL speed", "value": BASE_RELOAD_SPEED}, 
-		"magazine_size": {"name": "Capacity", "value": BASE_MAGAZINE_SIZE},
-		"shooting_speed": {"name": "SH speed", "value": BASE_SHOOTING_SPEED}, 
-		"puncture": {"name": "Puncture", "value": BASE_PUNCTURE}, 
+		"damage": {"name": "Damage", "value": BASE_DAMAGE, "positive": true},
+		"damage_multiplier": {"name": "DMG mult", "value": BASE_DAMAGE_MULTIPLIER, "positive": true},
+		"critical_rate": {"name": "CRIT rate", "value": BASE_CRITICAL_RATE, "positive": true}, 
+		"critical_multiplier": {"name": "CRIT mult", "value": BASE_CRITICAL_MULTIPLIER, "positive": true}, 
+		"reload_speed": {"name": "REL speed", "value": BASE_RELOAD_SPEED, "positive": true}, 
+		"magazine_size": {"name": "Capacity", "value": BASE_MAGAZINE_SIZE, "positive": true},
+		"shooting_speed": {"name": "SH speed", "value": BASE_SHOOTING_SPEED, "positive": true}, 
+		"puncture": {"name": "Puncture", "value": BASE_PUNCTURE, "positive": true}, 
 	}
 	energy = {
 		"player_energy_max": energy_max,
@@ -179,8 +179,9 @@ func take_damage(damage : float):
 	last_damage = 0
 	shield -= damage
 	if shield < 0:
+		health +=  shield
 		shield = 0
-		health = health - (damage - shield)
+		
 	if health < 0:
 		health = 0
 		death()
@@ -218,10 +219,10 @@ func _physics_process(_delta: float) -> void:
 	if(Input.is_action_pressed("attack")):
 		current_weapon._try_use()
 	
-	last_damage = move_toward(last_damage, 1/shield_delay*5 , _delta) # Last damage timer
+	last_damage = move_toward(last_damage, shield_delay , _delta) # Last damage timer
 	cooldown_timer = move_toward(cooldown_timer, 0, _delta) # Dash timer
 	
-	if last_damage == 1/shield_delay*5: #Shield regeneration
+	if last_damage == shield_delay: #Shield regeneration
 		shield = move_toward(shield, max_shield, _delta * shield_regen)
 	
 	if(health != last_health): #Changes HUD bars
@@ -265,7 +266,7 @@ func recalculate_player_stats():
 	
 	for u in upgrade_grid.get_children():
 		if !u.changed_enabled: continue
-		c_used_energy += u.upgrade.energy + u.changed_lvl - 1
+		c_used_energy += u.upgrade.energy + u.changed_lvl
 		c_max_health += u.upgrade.health + u.changed_lvl * u.upgrade.health_change
 		c_heal_bonus += u.upgrade.healing_bonus + u.changed_lvl * u.upgrade.healing_bonus_change
 		c_shield += u.upgrade.shield + u.changed_lvl * u.upgrade.shield_change
@@ -303,7 +304,7 @@ func apply_player_changes(): #Applying changes
 	
 	for u in upgrades:
 		if !u.enabled: continue
-		used_energy += u.data.energy + u.level - 1
+		used_energy += u.data.energy + u.level 
 		max_health += u.data.health + u.level * u.data.health_change
 		heal_bonus += u.data.healing_bonus + u.level * u.data.healing_bonus_change
 		max_shield += u.data.shield + u.level * u.data.shield_change
@@ -340,7 +341,7 @@ func recalculate_weapon_stats():
 	
 	for u in upgrade_grid.get_children(): #Upgrade_box
 		if !u.changed_enabled: continue
-		temp_weapon_used_energy += u.upgrade.energy + u.changed_lvl - 1
+		temp_weapon_used_energy += u.upgrade.energy + u.changed_lvl
 		temp_damage += u.upgrade.damage + u.changed_lvl * u.upgrade.damage_change
 		temp_damage_multiplier += u.upgrade.damage_multiplier + u.changed_lvl * u.upgrade.damage_multiplier_change
 		temp_critical_rate += u.upgrade.critical_rate + u.changed_lvl * u.upgrade.critical_rate_change
@@ -376,9 +377,10 @@ func apply_weapon_changes():
 	var puncture = BASE_PUNCTURE
 	weapon_used_energy = 0
 	
+	
 	for u in weapon_upgrades:
 		if !u.enabled: continue
-		weapon_used_energy += u.data.energy + u.level - 1
+		weapon_used_energy += u.data.energy + u.level
 		damage += u.data.damage + u.level * u.data.damage_change
 		damage_multiplier += u.data.damage_multiplier + u.level * u.data.damage_multiplier_change
 		critical_rate += u.data.critical_rate + u.level * u.data.critical_rate_change
@@ -400,7 +402,8 @@ func apply_weapon_changes():
 	weapon_stats["puncture"]["value"] = puncture
 
 	weapon_stats_changed.emit()
+	GAME.current_weapon.add_bullets()
 
 
 func death() -> void:
-	pass
+	get_tree().change_scene_to_file("res://Menus/MainMenu/start_gui.tscn")

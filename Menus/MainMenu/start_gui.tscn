@@ -126,6 +126,7 @@ max_text_lines = 2
 item_count = 2
 item_0/text = "Revolver"
 item_1/text = "Laser"
+item_1/disabled = true
 script = ExtResource("8_xy4xq")
 
 [node name="ItemList2" type="ItemList" parent="." unique_id=132913110]

@@ -8,6 +8,11 @@ critical_rate = -0.1
 shooting_speed = 1.0
 critical_rate_change = -0.1
 shooting_speed_change = 0.5
-name = "Liquid_coolant"
+name = "Liquid coolant"
+description = "Makes your gun faster, but less deadly because it's too cold.
+
+Shooting speed +{shoot_speed}
+Critical rate {crit_rate}
+"
 energy = 4
 metadata/_custom_type_script = "uid://bjgum8ojui4ml"

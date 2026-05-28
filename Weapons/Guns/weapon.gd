@@ -32,6 +32,7 @@ var player_offset := Vector2(0,0)
 var used_bullets: Array[Projectile] = []
 var available_bullets: Array[Projectile] = []
 @export var bullet_scene: PackedScene
+var all_bullets : Array[Projectile] = []
 
 signal change_bullets(bullets : int)
 
@@ -45,10 +46,11 @@ func start():
 	update_stats()
 	create_bullets()
 
-
-func create_bullets():
+func add_bullets():
 	var time = bullet_scene.instantiate().get_meta("max_time")
-	for i in range((time-floor((time)/(magazine_size*(use_rate/1000)+base_reload_time/reload_speed))*base_reload_time/reload_speed)/(use_rate/1000)+1):
+	if all_bullets.size() >= (time-floor((time)/(magazine_size*(use_rate/1000)+base_reload_time/reload_speed))*base_reload_time/reload_speed)/(use_rate/shooting_speed/1000)+1:
+		return
+	for i in range((time-floor((time)/(magazine_size*(use_rate/1000)+base_reload_time/reload_speed))*base_reload_time/reload_speed)/(use_rate/shooting_speed/1000)+1):
 		var b : Projectile = bullet_scene.instantiate()
 		b.add_collision_exception_with(player)
 		b.visible = false
@@ -62,6 +64,26 @@ func create_bullets():
 		b.timeout.connect(_on_bullet_timeout)
 
 		available_bullets.append(b)
+		all_bullets.append(b)
+		get_tree().current_scene.call_deferred("add_child", b)
+
+func create_bullets():
+	var time = bullet_scene.instantiate().get_meta("max_time")
+	for i in range((time-floor((time)/(magazine_size*(use_rate/1000)+base_reload_time/reload_speed))*base_reload_time/reload_speed)/(use_rate/shooting_speed/1000)+1):
+		var b : Projectile = bullet_scene.instantiate()
+		b.add_collision_exception_with(player)
+		b.visible = false
+		b.global_position = global_position
+		b.freeze = true
+		b.contact_monitor = true
+		b.max_contacts_reported = 1
+		
+		var a2 : Area2D = b.get_node("./Area2D")
+		a2.body_entered.connect(_on_body_entered.bind(b))
+		b.timeout.connect(_on_bullet_timeout)
+
+		available_bullets.append(b)
+		all_bullets.append(b)
 		get_tree().current_scene.call_deferred("add_child", b)
 
 
@@ -135,6 +157,7 @@ func _use(b):
 	b.global_rotation = aim_angle
 	var dir = (get_global_mouse_position() - player.global_position).normalized()
 	b.linear_velocity = dir * bullet_speed * 1500
+	b.puncture += puncture
 	used_bullets.append(b)
 	change_bullets.emit(loaded_ammo)
 
@@ -145,12 +168,14 @@ func _on_body_entered(_body: Node, bullet: Projectile) -> void:
 	if _body is Enemy:
 		_body = _body as Enemy
 		var final_damage = damage * damage_multiplier
-		if randf() <= critical_rate:
-			if critical_rate >= 1:
-				final_damage *= critical_multiplier**critical_rate
-			else:
-				final_damage *= critical_multiplier
+		final_damage *= critical_multiplier**(floor(critical_rate))
+		if randf() <= critical_rate-floor(critical_rate):
+			
+			final_damage *= critical_multiplier
 		_body.take_damage(final_damage)
+		bullet.puncture -= 1
+		if bullet.puncture > 0:
+			return
 	call_deferred("_recycle_bullet", bullet)
 
 

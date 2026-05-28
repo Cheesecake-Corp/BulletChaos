@@ -11,6 +11,10 @@ shield_change = 80.0
 shield_recharge_change = 2.0
 shield_delay_change = -0.1
 name = "Overcharge"
-description = "Increases shield by {shield}"
+description = "WOW So much energy
+
+Shield +{shield}
+Shield Rechage +{shield_recharge}
+Shield Delay {shield_delay}"
 energy = 6
 metadata/_custom_type_script = "uid://c5ovvmf05xpaw"

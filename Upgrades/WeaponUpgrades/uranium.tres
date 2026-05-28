@@ -13,5 +13,11 @@ damage_multiplier_change = 0.1
 critical_multiplier_change = 0.05
 shooting_speed_change = -0.05
 name = "Uranium"
-energy = 4
+description = "Well it's uranium what did you expect
+
+DMG +{damage}
+DMG Mult +{damage_mult}
+CRIT Mult +{crit_mult}
+Shooting SPD {shoot_speed}"
+energy = 5
 metadata/_custom_type_script = "uid://bjgum8ojui4ml"

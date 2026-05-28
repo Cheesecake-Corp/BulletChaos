@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" format=3 uid="uid://bfep8kshny1je"]
+
+[ext_resource type="Script" uid="uid://bjgum8ojui4ml" path="res://Upgrades/weapon_upgrade.gd" id="1_oh35i"]
+
+[resource]
+script = ExtResource("1_oh35i")
+damage_multiplier = -0.04
+puncture = 2
+damage_multiplier_change = -0.04
+puncture_change = 1
+name = "Durable bullets"
+description = "Increases puncture by {puncture}"
+energy = 1
+metadata/_custom_type_script = "uid://bjgum8ojui4ml"
