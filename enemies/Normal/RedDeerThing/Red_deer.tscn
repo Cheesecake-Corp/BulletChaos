@@ -67,13 +67,13 @@ region = Rect2(0, 78, 126, 39)
 atlas = ExtResource("4_fbo78")
 region = Rect2(0, 117, 126, 39)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mbrx0"]
-atlas = ExtResource("5_p3rnc")
-region = Rect2(0, 0, 126, 39)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_jmweb"]
 atlas = ExtResource("5_p3rnc")
 region = Rect2(0, 39, 126, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbrx0"]
+atlas = ExtResource("5_p3rnc")
+region = Rect2(0, 0, 126, 39)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_awcuv"]
 atlas = ExtResource("6_mw076")
@@ -188,10 +188,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mbrx0")
+"texture": SubResource("AtlasTexture_jmweb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jmweb")
+"texture": SubResource("AtlasTexture_mbrx0")
 }],
 "loop": false,
 "name": &"damaged",
@@ -263,8 +263,7 @@ shape = SubResource("CapsuleShape2D_uimo1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=995999748]
 sprite_frames = SubResource("SpriteFrames_82mqu")
-animation = &"move"
-frame_progress = 0.7115988
+animation = &"damaged"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1938394312]
 

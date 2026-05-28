@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://c3tj3ph2e3mmy"]
+
+[ext_resource type="Script" uid="uid://c3a5xid0djkel" path="res://Upgrades/processor_item.gd" id="1_mi8el"]
+[ext_resource type="Texture2D" uid="uid://bjycnafrf5c4b" path="res://Assets/UI/processor.png" id="2_mi8el"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqkwr"]
+size = Vector2(13.5, 12.75)
+
+[node name="Node2D" type="Node2D" unique_id=333890846]
+script = ExtResource("1_mi8el")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=42218308]
+scale = Vector2(0.32656252, 0.32656252)
+texture = ExtResource("2_mi8el")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1191958171]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1741322648]
+shape = SubResource("RectangleShape2D_nqkwr")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

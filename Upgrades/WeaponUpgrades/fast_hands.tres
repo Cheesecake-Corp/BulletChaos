@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" format=3 uid="uid://kxlbtssi34lb"]
+
+[ext_resource type="Script" uid="uid://bjgum8ojui4ml" path="res://Upgrades/weapon_upgrade.gd" id="1_0xagk"]
+
+[resource]
+script = ExtResource("1_0xagk")
+reload_speed = 1.25
+name = "Fast Hands"
+description = "Increases the divider of reload time by {reload_speed}"
+energy = 3
+metadata/_custom_type_script = "uid://bjgum8ojui4ml"

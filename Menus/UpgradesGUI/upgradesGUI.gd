@@ -11,6 +11,8 @@ class_name Inventory
 @onready var warning_energy: NinePatchRect = $WarningEnergy
 @onready var warning_confirm: NinePatchRect = $WarningConfirm
 @onready var warning_reset: NinePatchRect = $WarningReset
+@onready var processors: Label = $Processors/ProcessorsAmt
+
 
 const UPGRADE = preload("uid://b33xc4skqictj") #Scene Upgrade_box
 
@@ -32,7 +34,9 @@ func inv_load(dict : Dictionary, upgrades: Array, energy_max: int, used_energy: 
 	
 	for a in grid_container.get_children(): #Removes all nodes under GridContainer
 		a.queue_free()
-	for n in upgrades: #Adds upgrades from Array in player
+
+	
+	for n in (GAME.player.upgrades if type != "weapon" else GAME.player.weapon_upgrades): #Adds upgrades from Array in player
 		var upgrade_box = UPGRADE.instantiate()
 		upgrade_box.upgrade = n.data
 		upgrade_box.instance = n
@@ -46,6 +50,7 @@ func change_labels(dict, energy_max, used_energy): #Changes all labels
 	var stat_names_labels = stat_names.get_children()
 	var stat_values_labels = stat_values.get_children()
 	var stat_values_new_labels = stat_new_values.get_children()
+	processors.text = str(GAME.player.processors)
 	var m = 0
 	for n in dict:
 		stat_names_labels[m].text = dict[n]["name"]
@@ -106,7 +111,7 @@ func inputs(dict: Dictionary, energy_max: int, energy_used: int, energy_used_tem
 				GAME.player.apply_player_changes()
 				energy_max = GAME.player.energy["player_energy_max"]
 				energy_used = GAME.player.energy["player_energy_used"]
-			change_labels(dict, energy_max, energy_used)
+			change_labels(GAME.player.weapon_stats if type == "weapon" else GAME.player.player_stats, energy_max, energy_used)
 			warning_confirm.start()
 		else:
 			warning_energy.start()

@@ -29,16 +29,26 @@ func death():
 	movement = false
 	alive = false
 	get_parent().enemy_dead += 1
-	if GAME.RANDOM_LOOT.randf() > 0.5:
+	
+	var rand = GAME.RANDOM_LOOT.randf()
+	
+	if rand > .5:
 		var canister : Node2D = load("res://InteractObjects/HealthContainer/Health_container.tscn").instantiate()
 		get_parent().room.call_deferred("add_child", canister)
 		call_deferred("set_canister_pos", canister)
 		
-	if GAME.RANDOM_LOOT.randf() > 0.5:
-		var file = upgrade_resources.upgrades[GAME.RANDOM_LOOT.randi_range(0,upgrade_resources.upgrades.size()-1)]
-		upgrade_resources.upgrades.erase(file)
-		var upgrade_item : Node2D = load("res://Upgrades/Upgrade_item.tscn").instantiate() #Creates instance of upgrade_item
-		upgrade_item.upgrade = file #Upgrade item is on ground it is a scene
+	elif rand > .25:
+		var upgrade = upgrade_resources.upgrades[GAME.RANDOM_LOOT.randi_range(0,upgrade_resources.upgrades.size()-1)]
+		var upgrade_item : Node2D
+		if not upgrade.name in GAME.player.upgrade_resources:
+			upgrade_item = load("res://Upgrades/Upgrade_item.tscn").instantiate() #Creates instance of upgrade_item
+			upgrade_item.upgrade = upgrade #Upgrade item is on ground it is a scene
+		
+			
+		else:
+			upgrade_item = load("res://Upgrades/processor_item.tscn").instantiate() #Creates instance of upgrade_item
+			upgrade_item.amount =  GAME.RANDOM_LOOT.randi_range(10,115) #Upgrade item is on ground it is a scene
+		
 		get_parent().room.call_deferred("add_child", upgrade_item)
 		call_deferred("set_canister_pos", upgrade_item)
 		

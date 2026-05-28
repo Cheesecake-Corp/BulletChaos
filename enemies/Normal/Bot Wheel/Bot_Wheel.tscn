@@ -12,13 +12,13 @@
 radius = 6.0
 height = 23.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_04cex"]
-atlas = ExtResource("3_wdsan")
-region = Rect2(0, 0, 117, 26)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_silwh"]
 atlas = ExtResource("3_wdsan")
 region = Rect2(0, 26, 117, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04cex"]
+atlas = ExtResource("3_wdsan")
+region = Rect2(0, 0, 117, 26)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7rdvb"]
 atlas = ExtResource("4_8ec22")
@@ -112,10 +112,10 @@ region = Rect2(13, 78, 104, 26)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_04cex")
+"texture": SubResource("AtlasTexture_silwh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_silwh")
+"texture": SubResource("AtlasTexture_04cex")
 }],
 "loop": false,
 "name": &"damaged",
@@ -222,9 +222,7 @@ shape = SubResource("CapsuleShape2D_e67qf")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1411636527]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_ttpii")
-animation = &"shoot"
-frame = 7
-frame_progress = 1.0
+animation = &"damaged"
 offset = Vector2(42.5, 0)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=913639559]

@@ -76,6 +76,7 @@ var used_energy_temp := 0
 var weapon_used_energy_temp := 0
 var player_stats_temp: Dictionary
 var weapon_stats_temp: Dictionary
+var processors : int = 1
 var energy: Dictionary
 
 func _ready() -> void:
@@ -380,6 +381,7 @@ func apply_weapon_changes():
 		weapon_used_energy += u.data.energy + u.level - 1
 		damage += u.data.damage + u.level * u.data.damage_change
 		damage_multiplier += u.data.damage_multiplier + u.level * u.data.damage_multiplier_change
+		critical_rate += u.data.critical_rate + u.level * u.data.critical_rate_change
 		critical_rate += u.data.critical_rate + u.level * u.data.critical_rate_change
 		critical_multiplier += u.data.critical_multiplier + u.level * u.data.critical_multiplier_change
 		reload_speed += u.data.reload_speed + u.level * u.data.reload_speed_change

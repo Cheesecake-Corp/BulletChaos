@@ -33,7 +33,17 @@ func use_placeholders(t : String) -> String:
 		.replace("{speed}", str(upgrade.speed + instance.level * upgrade.speed_change)) \
 		.replace("{dash_delay}", str(upgrade.dash_delay + instance.level * upgrade.dash_delay_change)) \
 		.replace("{dash_speed}", str(upgrade.dash_speed + instance.level * upgrade.dash_speed_change))
-	else: return t
+	else:
+		upgrade as WeaponUpgrade
+		return t \
+		.replace("{reload_speed}", str(upgrade.reload_speed + instance.level * upgrade.reload_speed_change)) \
+		.replace("{damage}", str(upgrade.damage + instance.level * upgrade.damage_change)) \
+		.replace("{damage_mult}", str(upgrade.damage_multiplier + instance.level * upgrade.damage_multiplier_change)) \
+		.replace("{crit_rate}", str(upgrade.critical_rate + instance.level * upgrade.critical_rate_change)) \
+		.replace("{crit_mult}", str(upgrade.critical_multiplier + instance.level * upgrade.critical_multiplier_change)) \
+		.replace("{mag}", str(upgrade.magazine_size + instance.level * upgrade.magazine_size_change)) \
+		.replace("{shoot_speed}", str(upgrade.shooting_speed + instance.level * upgrade.shooting_speed_change)) \
+		.replace("{puncture}", str(upgrade.puncture + instance.level * upgrade.puncture_change))
 
 func _process(_delta: float) -> void:
 	if is_hovered():
