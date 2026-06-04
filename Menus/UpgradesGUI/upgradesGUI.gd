@@ -12,6 +12,8 @@ class_name Inventory
 @onready var warning_confirm: NinePatchRect = $WarningConfirm
 @onready var warning_reset: NinePatchRect = $WarningReset
 @onready var processors: Label = $Processors/ProcessorsAmt
+@onready var upgrade_lvl: UpgradeLVLManager = $"../UpgradeLvl"
+@onready var weapon_upgrade: Label = $Keys/Label3
 
 
 const UPGRADE = preload("uid://b33xc4skqictj") #Scene Upgrade_box
@@ -19,13 +21,16 @@ const UPGRADE = preload("uid://b33xc4skqictj") #Scene Upgrade_box
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GAME.player_registered.connect(inventory_start.bind())
+	GAME.upgrade_menu = self
 
 
 func inventory_start() -> void:
 	if type == "weapon":
 		inv_load(GAME.player.weapon_stats, GAME.player.weapon_upgrades, GAME.player.energy["weapon_energy_max"], GAME.player.energy["weapon_energy_used"])
+		weapon_upgrade.text = "Y - Player upgrades"
 	else:
 		inv_load(GAME.player.player_stats, GAME.player.upgrades, GAME.player.energy["player_energy_max"], GAME.player.energy["player_energy_used"])
+		weapon_upgrade.text = "Y - Weapon upgrades"
 
 
 func inv_load(dict : Dictionary, upgrades: Array, energy_max: int, used_energy: int) -> void:
@@ -96,7 +101,13 @@ func _process(_delta: float) -> void:
 			inputs(GAME.player.weapon_stats, GAME.player.energy["weapon_energy_max"], GAME.player.energy["weapon_energy_used"], GAME.player.energy["weapon_energy_used_temp"])
 		else:
 			inputs(GAME.player.player_stats, GAME.player.energy["player_energy_max"], GAME.player.energy["player_energy_used"], GAME.player.energy["player_energy_used_temp"])
-
+	if Input.is_action_just_pressed("upgrade_upgrade") and GAME.upgrade_menu.upgrade_lvl.visible:
+		if GAME.upgrade_menu.upgrade_lvl.warning.visible:
+			GAME.upgrade_menu.upgrade_lvl.finish_upgrade_after_warning(true)
+		else:
+			GAME.upgrade_menu.upgrade_lvl.visible = false
+	if Input.is_action_just_pressed("reject_warning") and GAME.upgrade_menu.upgrade_lvl.visible and GAME.upgrade_menu.upgrade_lvl.warning.visible:
+		GAME.upgrade_menu.upgrade_lvl.finish_upgrade_after_warning(false)
 
 func inputs(dict: Dictionary, energy_max: int, energy_used: int, energy_used_temp: int):
 	if Input.is_action_just_pressed("go_left"):

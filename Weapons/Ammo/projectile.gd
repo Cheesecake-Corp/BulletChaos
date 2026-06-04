@@ -5,6 +5,7 @@ signal timeout(bullet : Projectile)
 @onready var timer: Timer = $Timer
 @onready var bullet: Projectile = $"."
 var puncture : int = 1
+var vel : Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,10 +14,12 @@ func _ready() -> void:
 
 func start():
 	timer.start(get_meta("max_time"))
-
+	vel = linear_velocity
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
-
+func _process(delta: float) -> void:
+	if visible and linear_velocity == Vector2.ZERO:
+		timeout.emit(self)
 
 func on_timeout() -> void:
 	timeout.emit(self)

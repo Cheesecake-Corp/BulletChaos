@@ -76,7 +76,7 @@ var used_energy_temp := 0
 var weapon_used_energy_temp := 0
 var player_stats_temp: Dictionary
 var weapon_stats_temp: Dictionary
-var processors : int = 1
+var processors : int = 0
 var energy: Dictionary
 
 func _ready() -> void:
@@ -176,6 +176,8 @@ func handle_zoom():
 
 
 func take_damage(damage : float):
+	if is_dashing:
+		return
 	last_damage = 0
 	shield -= damage
 	if shield < 0:
@@ -219,10 +221,10 @@ func _physics_process(_delta: float) -> void:
 	if(Input.is_action_pressed("attack")):
 		current_weapon._try_use()
 	
-	last_damage = move_toward(last_damage, shield_delay , _delta) # Last damage timer
+	last_damage = move_toward(last_damage, max(shield_delay,0) , _delta) # Last damage timer
 	cooldown_timer = move_toward(cooldown_timer, 0, _delta) # Dash timer
 	
-	if last_damage == shield_delay: #Shield regeneration
+	if last_damage == max(shield_delay,0): #Shield regeneration
 		shield = move_toward(shield, max_shield, _delta * shield_regen)
 	
 	if(health != last_health): #Changes HUD bars
@@ -383,7 +385,6 @@ func apply_weapon_changes():
 		weapon_used_energy += u.data.energy + u.level
 		damage += u.data.damage + u.level * u.data.damage_change
 		damage_multiplier += u.data.damage_multiplier + u.level * u.data.damage_multiplier_change
-		critical_rate += u.data.critical_rate + u.level * u.data.critical_rate_change
 		critical_rate += u.data.critical_rate + u.level * u.data.critical_rate_change
 		critical_multiplier += u.data.critical_multiplier + u.level * u.data.critical_multiplier_change
 		reload_speed += u.data.reload_speed + u.level * u.data.reload_speed_change

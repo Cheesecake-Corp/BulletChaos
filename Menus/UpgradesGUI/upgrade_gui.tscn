@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cpq05libleskg" path="res://Assets/GUI/gdp_styles.png" id="1_4vjet"]
 [ext_resource type="Script" uid="uid://bkbolrt3u8ju4" path="res://Menus/UpgradesGUI/upgradesGUI.gd" id="2_tranw"]
+[ext_resource type="PackedScene" uid="uid://30wxmhgw2l1r" path="res://Menus/UpgradesGUI/upgradeLvl.tscn" id="3_45ui6"]
 [ext_resource type="PackedScene" uid="uid://b33xc4skqictj" path="res://Menus/UpgradesGUI/Upgrade_box.tscn" id="3_acnka"]
 [ext_resource type="Texture2D" uid="uid://caqhp2b88srwd" path="res://Assets/SimpleKeys/SimpleKeys/Classic/Light/Spritesheets/A.png" id="3_tranw"]
 [ext_resource type="Script" uid="uid://c3dl15i8a5k5s" path="res://Menus/UpgradesGUI/warning_message.gd" id="5_sv7w8"]
@@ -652,20 +653,20 @@ patch_margin_bottom = 4
 
 [node name="Label1" type="Label" parent="Window/Keys" unique_id=1607982004]
 layout_mode = 0
-offset_left = 3.6971264
-offset_top = 4.396709
-offset_right = 971.69714
-offset_bottom = 92.396706
+offset_left = 2.9775922
+offset_top = 1.9640162
+offset_right = 970.9776
+offset_bottom = 89.96402
 scale = Vector2(0.04, 0.04)
 theme_override_font_sizes/font_size = 128
 text = "A - Confirm changes"
 
 [node name="Label2" type="Label" parent="Window/Keys" unique_id=2077309207]
 layout_mode = 0
-offset_left = 3.8187933
-offset_top = 7.670734
-offset_right = 1403.8188
-offset_bottom = 186.67073
+offset_left = 3.101681
+offset_top = 5.4384995
+offset_right = 1403.1017
+offset_bottom = 184.4385
 scale = Vector2(0.04, 0.04)
 theme_override_font_sizes/font_size = 128
 text = "T - Revert changes
@@ -673,23 +674,34 @@ text = "T - Revert changes
 
 [node name="Label3" type="Label" parent="Window/Keys" unique_id=112357391]
 layout_mode = 0
-offset_left = 3.8238454
-offset_top = 11.690235
-offset_right = 1259.8239
-offset_bottom = 99.69023
+offset_left = 3.1016803
+offset_top = 7.920275
+offset_right = 1259.1017
+offset_bottom = 95.92027
 scale = Vector2(0.04, 0.04)
 theme_override_font_sizes/font_size = 128
 text = "Y - Weapon upgrades"
 
 [node name="Label4" type="Label" parent="Window/Keys" unique_id=554097548]
 layout_mode = 0
-offset_left = 3.882841
-offset_top = 15.7632065
-offset_right = 715.8828
-offset_bottom = 103.76321
+offset_left = 3.101681
+offset_top = 10.650227
+offset_right = 715.1017
+offset_bottom = 98.65022
 scale = Vector2(0.04, 0.04)
 theme_override_font_sizes/font_size = 128
 text = "X - Exit"
+
+[node name="Label5" type="Label" parent="Window/Keys" unique_id=209337192]
+layout_mode = 0
+offset_left = 2.9775922
+offset_top = 13.504271
+offset_right = 1266.9775
+offset_bottom = 192.50427
+scale = Vector2(0.04, 0.04)
+theme_override_font_sizes/font_size = 128
+text = "Q - Upgrade upgrade 
+     (while hover)"
 
 [node name="Keys2" type="VBoxContainer" parent="Window" unique_id=1534586926]
 visible = false
@@ -843,5 +855,10 @@ size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
 texture = ExtResource("6_3gidn")
 stretch_mode = 3
+
+[node name="UpgradeLvl" parent="." unique_id=948491764 instance=ExtResource("3_45ui6")]
+visible = false
+layout_mode = 1
+scale = Vector2(5, 5)
 
 [connection signal="pressed" from="Window/Keys2/TextureButton" to="Window" method="_on_mod_changes_apply"]

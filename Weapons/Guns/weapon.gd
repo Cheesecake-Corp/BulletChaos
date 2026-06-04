@@ -149,7 +149,7 @@ func _try_use() -> bool: #Called in player when shoot action pressed
 
 func _use(b):
 	loaded_ammo -= 1
-	b.start()
+	
 	b.freeze=false
 	b.global_position = global_position
 
@@ -160,6 +160,7 @@ func _use(b):
 	b.puncture += puncture
 	used_bullets.append(b)
 	change_bullets.emit(loaded_ammo)
+	b.start()
 
 
 func _on_body_entered(_body: Node, bullet: Projectile) -> void:

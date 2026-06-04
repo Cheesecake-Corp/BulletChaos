@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dl3qw5yb1aaya" path="res://Menus/MainMenu/Menu.png" id="7_frnrg"]
 [ext_resource type="Script" uid="uid://bwvq77053cyqu" path="res://Menus/MainMenu/item_list.gd" id="8_xy4xq"]
 [ext_resource type="Script" uid="uid://boqst8a7fkjk0" path="res://Menus/MainMenu/item_list_2.gd" id="9_bg3c7"]
+[ext_resource type="Texture2D" uid="uid://bjycnafrf5c4b" path="res://Assets/UI/processor.png" id="10_wyg8b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f7tbs"]
 atlas = ExtResource("3_b2d4t")
@@ -150,5 +151,24 @@ item_0/text = "Normal"
 item_1/text = "Hard"
 script = ExtResource("9_bg3c7")
 
+[node name="LineEdit2" type="LineEdit" parent="." unique_id=633012813]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 593.0
+offset_right = 189.0
+offset_bottom = 645.0
+placeholder_text = "Money Amount"
+virtual_keyboard_type = 2
+
+[node name="Button" type="Button" parent="." unique_id=1256321148]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 552.0
+offset_right = 147.0
+offset_bottom = 592.0
+text = "Give Money"
+icon = ExtResource("10_wyg8b")
+
 [connection signal="activated" from="TextureButton" to="ItemList" method="_on_texture_button_activated"]
 [connection signal="activated" from="TextureButton" to="ItemList2" method="_on_texture_button_activated"]
+[connection signal="button_up" from="Button" to="TextureButton" method="_on_button_button_up"]

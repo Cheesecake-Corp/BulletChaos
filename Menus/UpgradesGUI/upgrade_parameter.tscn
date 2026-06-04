@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b8pawb34qe2mr"]
+
+[ext_resource type="Script" uid="uid://dlgawuc5uips8" path="res://Menus/UpgradesGUI/upgrade_parameter.gd" id="1_s8py2"]
+
+[node name="UpgradeParameter" type="HBoxContainer" unique_id=1372390437]
+script = ExtResource("1_s8py2")
+
+[node name="Label" type="Label" parent="." unique_id=568564127]
+layout_mode = 2
+text = "CRIT"
+
+[node name="Control" type="Control" parent="." unique_id=209851794]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="." unique_id=1259035621]
+layout_mode = 2
+text = "20"
+horizontal_alignment = 2

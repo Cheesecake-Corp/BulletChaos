@@ -10,12 +10,15 @@ var boss_room_pos : Vector2
 var outline: PackedVector2Array
 var difficulty := 1
 var weapon_menu := "Revolver"
+var upgrade_menu : Inventory
+var starter_money = 0
 
 signal weapon_changed
 signal player_registered
 
 func register_player(p):
 	player = p
+	player.processors = starter_money
 	var weap : Node2D
 	if weapon_menu == "Laser":
 		weap = load("res://Weapons/Guns/LaserGun/LaserGun.tscn").instantiate()

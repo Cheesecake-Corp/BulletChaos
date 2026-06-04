@@ -1,0 +1,329 @@
+[gd_scene format=3 uid="uid://30wxmhgw2l1r"]
+
+[ext_resource type="Script" uid="uid://bj7jxcu80n6vl" path="res://Menus/UpgradesGUI/upgrade_lvl_manager.gd" id="1_4xmi7"]
+[ext_resource type="Texture2D" uid="uid://cpq05libleskg" path="res://Assets/GUI/gdp_styles.png" id="1_e7vrc"]
+[ext_resource type="Texture2D" uid="uid://0ap1cfy4uws0" path="res://Assets/GUI/gdp_icons.png" id="2_u8oef"]
+[ext_resource type="Texture2D" uid="uid://bjycnafrf5c4b" path="res://Assets/UI/processor.png" id="3_281by"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8oef"]
+atlas = ExtResource("1_e7vrc")
+region = Rect2(87, 149, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otr4t"]
+atlas = ExtResource("2_u8oef")
+region = Rect2(205, 64, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6v43g"]
+atlas = ExtResource("1_e7vrc")
+region = Rect2(28, 146, 6, 10)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mudta"]
+texture = SubResource("AtlasTexture_6v43g")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofo0t"]
+atlas = ExtResource("1_e7vrc")
+region = Rect2(28, 134, 6, 10)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6p5de"]
+texture = SubResource("AtlasTexture_ofo0t")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4vps"]
+atlas = ExtResource("1_e7vrc")
+region = Rect2(28, 158, 6, 10)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_otr4t"]
+texture = SubResource("AtlasTexture_r4vps")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="Theme" id="Theme_qsqq2"]
+VScrollBar/styles/grabber = SubResource("StyleBoxTexture_mudta")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_6p5de")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_otr4t")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_281by"]
+atlas = ExtResource("2_u8oef")
+region = Rect2(26, 1, 9, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xmi7"]
+atlas = ExtResource("2_u8oef")
+region = Rect2(2, 1, 9, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tj4gw"]
+atlas = ExtResource("2_u8oef")
+region = Rect2(38, 1, 9, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cp2vh"]
+atlas = ExtResource("1_e7vrc")
+region = Rect2(86, 148, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6v43g"]
+texture = SubResource("AtlasTexture_cp2vh")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mudta"]
+atlas = ExtResource("1_e7vrc")
+region = Rect2(86, 165, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ofo0t"]
+texture = SubResource("AtlasTexture_mudta")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6p5de"]
+atlas = ExtResource("1_e7vrc")
+region = Rect2(86, 131, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r4vps"]
+texture = SubResource("AtlasTexture_6p5de")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7k7j"]
+atlas = ExtResource("3_281by")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsqq2"]
+atlas = ExtResource("2_u8oef")
+region = Rect2(26, 13, 8, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y241t"]
+atlas = ExtResource("2_u8oef")
+region = Rect2(2, 13, 8, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qbvu"]
+atlas = ExtResource("2_u8oef")
+region = Rect2(38, 13, 8, 10)
+
+[node name="UpgradeLvl" type="Control" unique_id=948491764]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -36.0
+offset_right = 54.0
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("1_4xmi7")
+
+[node name="StatTable" type="NinePatchRect" parent="." unique_id=746417520]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -44.5
+offset_right = 69.66669
+offset_bottom = 74.16669
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+texture = SubResource("AtlasTexture_u8oef")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StatTable" unique_id=460748791]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.333344
+offset_top = -56.666656
+offset_right = 151.33328
+offset_bottom = 164.66666
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="Name" type="Label" parent="StatTable/VBoxContainer" unique_id=1377234908]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_constants/line_spacing = -2
+theme_override_font_sizes/font_size = 32
+text = "Name ALALAL ALAL"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="StatTable/VBoxContainer" unique_id=403412008]
+layout_mode = 2
+columns = 7
+
+[node name="EnergyLabel" type="Label" parent="StatTable/VBoxContainer/GridContainer" unique_id=765888249]
+layout_mode = 2
+text = "Energy"
+
+[node name="Control" type="Control" parent="StatTable/VBoxContainer/GridContainer" unique_id=1710696386]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EnergyNumberOld" type="Label" parent="StatTable/VBoxContainer/GridContainer" unique_id=2077874689]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "12"
+horizontal_alignment = 2
+
+[node name="Control2" type="Control" parent="StatTable/VBoxContainer/GridContainer" unique_id=1572376698]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="StatTable/VBoxContainer/GridContainer" unique_id=1635572108]
+layout_mode = 2
+texture = SubResource("AtlasTexture_otr4t")
+stretch_mode = 5
+
+[node name="Control5" type="Control" parent="StatTable/VBoxContainer/GridContainer" unique_id=2014648094]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EnergyNumberNew" type="Label" parent="StatTable/VBoxContainer/GridContainer" unique_id=169354189]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "12"
+horizontal_alignment = 2
+
+[node name="LvlLabel" type="Label" parent="StatTable/VBoxContainer/GridContainer" unique_id=205556285]
+layout_mode = 2
+text = "Level"
+
+[node name="Control3" type="Control" parent="StatTable/VBoxContainer/GridContainer" unique_id=613271170]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LvlNumberOld" type="Label" parent="StatTable/VBoxContainer/GridContainer" unique_id=1430498288]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "1"
+horizontal_alignment = 2
+
+[node name="Control4" type="Control" parent="StatTable/VBoxContainer/GridContainer" unique_id=1589544752]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect2" type="TextureRect" parent="StatTable/VBoxContainer/GridContainer" unique_id=908076699]
+layout_mode = 2
+texture = SubResource("AtlasTexture_otr4t")
+stretch_mode = 5
+
+[node name="Control6" type="Control" parent="StatTable/VBoxContainer/GridContainer" unique_id=1948545022]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LvlNumberNew" type="Label" parent="StatTable/VBoxContainer/GridContainer" unique_id=860963202]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "1"
+horizontal_alignment = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="StatTable/VBoxContainer" unique_id=1951228534]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_qsqq2")
+horizontal_scroll_mode = 0
+
+[node name="Parameters" type="VBoxContainer" parent="StatTable/VBoxContainer/ScrollContainer" unique_id=1325882774]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="StatTable/VBoxContainer" unique_id=1210809515]
+layout_mode = 2
+alignment = 1
+
+[node name="Lower" type="TextureButton" parent="StatTable/VBoxContainer/HBoxContainer" unique_id=1244645937]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_281by")
+texture_pressed = SubResource("AtlasTexture_4xmi7")
+texture_hover = SubResource("AtlasTexture_tj4gw")
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="StatTable/VBoxContainer/HBoxContainer" unique_id=835758635]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_6v43g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ofo0t")
+theme_override_styles/hover = SubResource("StyleBoxTexture_r4vps")
+text = "UPGRADE
+12"
+icon = SubResource("AtlasTexture_q7k7j")
+
+[node name="Higher" type="TextureButton" parent="StatTable/VBoxContainer/HBoxContainer" unique_id=1121030588]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_qsqq2")
+texture_pressed = SubResource("AtlasTexture_y241t")
+texture_hover = SubResource("AtlasTexture_5qbvu")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="StatTable/VBoxContainer" unique_id=1155678440]
+layout_mode = 2
+text = "Press [Q] to exit"
+horizontal_alignment = 1
+
+[node name="StatTable2" type="NinePatchRect" parent="." unique_id=1122470158]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -19.5
+offset_right = 126.66669
+offset_bottom = 32.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+texture = SubResource("AtlasTexture_u8oef")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="StatTable2" unique_id=911924167]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -20.0
+offset_right = 90.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+text = "You don't have enough energy
+Your upgrade will be unequiped
+Continue? Yes (Q) - No (E)"
+horizontal_alignment = 1
+
+[connection signal="button_up" from="StatTable/VBoxContainer/HBoxContainer/Lower" to="." method="_on_lower_button_up"]
+[connection signal="button_up" from="StatTable/VBoxContainer/HBoxContainer/Button" to="." method="_on_confirm"]
+[connection signal="button_up" from="StatTable/VBoxContainer/HBoxContainer/Higher" to="." method="_on_higher_button_up"]
