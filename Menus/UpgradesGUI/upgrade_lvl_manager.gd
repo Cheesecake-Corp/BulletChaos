@@ -39,7 +39,8 @@ func open_upgrades(upgrade_name : String, base_energy : int, base_level : int, s
 func update_values(): 
 	energy_number_new.text = str(be + level_change)
 	lvl_number_new.text =str(bl + level_change)
-	cost = 0 if level_change <= 0 else 2**(bl + level_change)
+	cost = 0 if level_change <= 0 else (2**(bl+1))*(2**(level_change)-1)
+	
 	confirmation.text = "COST\n" + str(cost)
 
 	var children = parameters.get_children()

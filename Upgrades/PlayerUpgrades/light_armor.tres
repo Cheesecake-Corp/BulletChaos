@@ -12,6 +12,7 @@ shield_change = 50.0
 shield_recharge_change = 0.5
 shield_delay_change = -0.15
 speed_change = -2.0
+name = "Light armor"
 description = "This armor works....little heavy but nothing impossible
 
 Shield +{shield}
