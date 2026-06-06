@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://deudery3hx7lt"]
+
+[ext_resource type="Script" uid="uid://bum5w2ntfotnx" path="res://World/Room2/spawn_room_init.gd" id="1_bybmj"]
+
+[node name="SpawnRoom" type="Node2D" unique_id=672869362]
+script = ExtResource("1_bybmj")
+metadata/_custom_type_script = "uid://by11r3ox0ix37"
