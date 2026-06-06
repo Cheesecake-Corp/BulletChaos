@@ -90,7 +90,7 @@ func _on_confirm() -> void:
 		if GAME.player.energy["weapon_energy_max"] - GAME.player.energy["weapon_energy_used_temp"] - level_change < 0 and upgrade_instance is WeaponModInstance:
 			warning.visible = true
 			return
-			
+		GAME.player.apply_weapon_changes()
 			
 		self.visible = false
 		GAME.upgrade_menu.inventory_start()
