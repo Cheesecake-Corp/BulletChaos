@@ -368,7 +368,7 @@ func recalculate_weapon_stats():
 	upgrade_script.change_new_labels(weapon_stats_temp, weapon_stats, weapon_energy_max, weapon_used_energy_temp, weapon_used_energy)
 
 
-func apply_weapon_changes():
+func apply_weapon_changes(make_bullets : bool = true):
 	var damage = BASE_DAMAGE
 	var damage_multiplier = BASE_DAMAGE_MULTIPLIER
 	var critical_rate = BASE_CRITICAL_RATE
@@ -403,7 +403,7 @@ func apply_weapon_changes():
 	weapon_stats["puncture"]["value"] = puncture
 
 	weapon_stats_changed.emit()
-	GAME.current_weapon.add_bullets()
+	if make_bullets: GAME.current_weapon.add_bullets()
 
 
 func death() -> void:

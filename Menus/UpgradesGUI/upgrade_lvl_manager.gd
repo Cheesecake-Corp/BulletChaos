@@ -82,7 +82,7 @@ func _on_confirm() -> void:
 		upgrade_instance.level += level_change
 		
 		GAME.player.apply_player_changes()
-		GAME.player.apply_weapon_changes()
+		GAME.player.apply_weapon_changes(false)
 		GAME.player.recalculate_stats()
 		if GAME.player.energy["player_energy_max"] - GAME.player.energy["player_energy_used_temp"] - level_change < 0 and upgrade_instance is PlayerModInstance:	
 			warning.visible = true
