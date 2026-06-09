@@ -1,0 +1,333 @@
+[gd_scene format=3 uid="uid://piu0jen1j5xh"]
+
+[ext_resource type="Theme" uid="uid://cc74fbry147qh" path="res://Menus/StartGUI/Theme_1.tres" id="1_3nqev"]
+[ext_resource type="Script" uid="uid://bb6ugp3bhwd6s" path="res://Menus/StartGUI/newgame.gd" id="1_fman5"]
+[ext_resource type="Texture2D" uid="uid://cpq05libleskg" path="res://Assets/GUI/gdp_styles.png" id="1_ne5re"]
+[ext_resource type="Texture2D" uid="uid://dwh4jbx2u41ed" path="res://Assets/Micro Icon Pack/Paint/3. Color Picker.png" id="3_tl8ul"]
+[ext_resource type="Script" uid="uid://1vi1lcbcln6" path="res://Menus/MainMenu/cursor.gd" id="4_3nqev"]
+[ext_resource type="FontFile" uid="uid://b3fdd81q33fui" path="res://Assets/ByteBounce.ttf" id="4_4v3sb"]
+[ext_resource type="Script" uid="uid://d2qk37dr6lvbl" path="res://Menus/StartGUI/controls.gd" id="7_p5a1o"]
+[ext_resource type="Script" uid="uid://bfwtvans7yaa3" path="res://Menus/StartGUI/credits.gd" id="8_mr3ek"]
+[ext_resource type="Script" uid="uid://b7cdqmhs8wquv" path="res://Menus/StartGUI/quit.gd" id="9_ot5h0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kvj1"]
+atlas = ExtResource("1_ne5re")
+region = Rect2(87, 132, 14, 14)
+
+[node name="Start_GUI" type="Control" unique_id=840940527]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="." unique_id=2080196233]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -327.0
+offset_top = 17.0
+offset_right = 413.0
+offset_bottom = 127.0
+grow_horizontal = 2
+scale = Vector2(0.8865263, 0.8865263)
+theme_override_fonts/font = ExtResource("4_4v3sb")
+theme_override_font_sizes/font_size = 160
+text = "Bullet Chaos"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=980185587]
+z_index = 100
+position = Vector2(576, 352)
+scale = Vector2(2.263, 2.263)
+texture = ExtResource("3_tl8ul")
+flip_v = true
+script = ExtResource("4_3nqev")
+
+[node name="New_game" type="Button" parent="." unique_id=255147422]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 209.0
+offset_right = 676.0
+offset_bottom = 269.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3nqev")
+autowrap_trim_flags = 192
+script = ExtResource("1_fman5")
+metadata/_edit_use_anchors_ = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="New_game" unique_id=2125852989]
+z_index = -1
+layout_mode = 0
+offset_top = -1.335144e-05
+offset_right = 69.00001
+offset_bottom = 18.999987
+scale = Vector2(2.8928497, 3.16319)
+texture = SubResource("AtlasTexture_3kvj1")
+region_rect = Rect2(0, 0, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Label" type="Label" parent="New_game/NinePatchRect" unique_id=711276034]
+layout_mode = 0
+offset_left = 5.530875
+offset_top = 4.425911
+offset_right = 585.5309
+offset_bottom = 114.42591
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("4_4v3sb")
+theme_override_font_sizes/font_size = 160
+text = "New Game"
+horizontal_alignment = 1
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="New_game" unique_id=2121184080]
+visible = false
+z_index = -1
+layout_mode = 0
+offset_top = -1.335144e-05
+offset_right = 69.00001
+offset_bottom = 18.999987
+scale = Vector2(2.8983977, 3.1577687)
+texture = ExtResource("1_ne5re")
+region_rect = Rect2(87, 206, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="New_game/NinePatchRect2" unique_id=902093840]
+layout_mode = 0
+offset_left = 5.530875
+offset_top = 4.425911
+offset_right = 585.5309
+offset_bottom = 114.42591
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("4_4v3sb")
+theme_override_font_sizes/font_size = 160
+text = "New Game"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Controls" type="Button" parent="." unique_id=259620028]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 289.0
+offset_right = 676.0
+offset_bottom = 349.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3nqev")
+autowrap_trim_flags = 192
+script = ExtResource("7_p5a1o")
+metadata/_edit_use_anchors_ = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Controls" unique_id=750215715]
+z_index = -1
+layout_mode = 0
+offset_top = -1.335144e-05
+offset_right = 69.00001
+offset_bottom = 18.999987
+scale = Vector2(2.8928497, 3.16319)
+texture = SubResource("AtlasTexture_3kvj1")
+region_rect = Rect2(0, 0, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Label" type="Label" parent="Controls/NinePatchRect" unique_id=101227954]
+layout_mode = 0
+offset_left = 5.530875
+offset_top = 4.425911
+offset_right = 585.5309
+offset_bottom = 114.42591
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("4_4v3sb")
+theme_override_font_sizes/font_size = 160
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="Controls" unique_id=495282852]
+visible = false
+z_index = -1
+layout_mode = 0
+offset_top = -1.335144e-05
+offset_right = 69.00001
+offset_bottom = 18.999987
+scale = Vector2(2.8983977, 3.1577687)
+texture = ExtResource("1_ne5re")
+region_rect = Rect2(87, 206, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Controls/NinePatchRect2" unique_id=2123214230]
+layout_mode = 0
+offset_left = 5.530875
+offset_top = 4.425911
+offset_right = 585.5309
+offset_bottom = 114.42591
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("4_4v3sb")
+theme_override_font_sizes/font_size = 160
+text = "Controls"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Credits" type="Button" parent="." unique_id=1146703078]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 369.0
+offset_right = 676.0
+offset_bottom = 429.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3nqev")
+autowrap_trim_flags = 192
+script = ExtResource("8_mr3ek")
+metadata/_edit_use_anchors_ = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Credits" unique_id=854294182]
+z_index = -1
+layout_mode = 0
+offset_top = -1.335144e-05
+offset_right = 69.00001
+offset_bottom = 18.999987
+scale = Vector2(2.8928497, 3.16319)
+texture = SubResource("AtlasTexture_3kvj1")
+region_rect = Rect2(0, 0, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Label" type="Label" parent="Credits/NinePatchRect" unique_id=44059801]
+layout_mode = 0
+offset_left = 5.530875
+offset_top = 4.425911
+offset_right = 585.5309
+offset_bottom = 114.42591
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("4_4v3sb")
+theme_override_font_sizes/font_size = 160
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="Credits" unique_id=1150386817]
+visible = false
+z_index = -1
+layout_mode = 0
+offset_top = -1.335144e-05
+offset_right = 69.00001
+offset_bottom = 18.999987
+scale = Vector2(2.8983977, 3.1577687)
+texture = ExtResource("1_ne5re")
+region_rect = Rect2(87, 206, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Credits/NinePatchRect2" unique_id=682504836]
+layout_mode = 0
+offset_left = 5.530875
+offset_top = 4.425911
+offset_right = 585.5309
+offset_bottom = 114.42591
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("4_4v3sb")
+theme_override_font_sizes/font_size = 160
+text = "Credits"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Quit" type="Button" parent="." unique_id=1468237572]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 449.0
+offset_right = 676.0
+offset_bottom = 509.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3nqev")
+autowrap_trim_flags = 192
+script = ExtResource("9_ot5h0")
+metadata/_edit_use_anchors_ = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Quit" unique_id=199495080]
+z_index = -1
+layout_mode = 0
+offset_top = -1.335144e-05
+offset_right = 69.00001
+offset_bottom = 18.999987
+scale = Vector2(2.8928497, 3.16319)
+texture = SubResource("AtlasTexture_3kvj1")
+region_rect = Rect2(0, 0, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Label" type="Label" parent="Quit/NinePatchRect" unique_id=1773432104]
+layout_mode = 0
+offset_left = 5.530875
+offset_top = 4.425911
+offset_right = 585.5309
+offset_bottom = 114.42591
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("4_4v3sb")
+theme_override_font_sizes/font_size = 160
+text = "Quit"
+horizontal_alignment = 1
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="Quit" unique_id=1566443619]
+visible = false
+z_index = -1
+layout_mode = 0
+offset_top = -1.335144e-05
+offset_right = 69.00001
+offset_bottom = 18.999987
+scale = Vector2(2.8983977, 3.1577687)
+texture = ExtResource("1_ne5re")
+region_rect = Rect2(87, 206, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Quit/NinePatchRect2" unique_id=1336554478]
+layout_mode = 0
+offset_left = 5.530875
+offset_top = 4.425911
+offset_right = 585.5309
+offset_bottom = 114.42591
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("4_4v3sb")
+theme_override_font_sizes/font_size = 160
+text = "Quit"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="mouse_entered" from="New_game" to="New_game" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="New_game" to="New_game" method="_on_mouse_exited"]
+[connection signal="pressed" from="New_game" to="New_game" method="_on_pressed"]
+[connection signal="mouse_entered" from="Controls" to="Controls" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Controls" to="Controls" method="_on_mouse_exited"]
+[connection signal="pressed" from="Controls" to="Controls" method="_on_pressed"]
+[connection signal="mouse_entered" from="Credits" to="Credits" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Credits" to="Credits" method="_on_mouse_exited"]
+[connection signal="pressed" from="Credits" to="Credits" method="_on_pressed"]
+[connection signal="mouse_entered" from="Quit" to="Quit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Quit" to="Quit" method="_on_mouse_exited"]
+[connection signal="pressed" from="Quit" to="Quit" method="_on_pressed"]

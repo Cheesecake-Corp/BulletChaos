@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://bm2oik0fs5s80"]
+
+[ext_resource type="Theme" uid="uid://cc74fbry147qh" path="res://Menus/StartGUI/Theme_1.tres" id="1_h0tjj"]
+[ext_resource type="Texture2D" uid="uid://cpq05libleskg" path="res://Assets/GUI/gdp_styles.png" id="2_xgea5"]
+
+[node name="Advanced_settings" type="Control" unique_id=1502783195]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="." unique_id=1479447897]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -545.0
+offset_right = 545.0
+offset_bottom = 110.0
+grow_horizontal = 2
+theme = ExtResource("1_h0tjj")
+text = "Advanced settings"
+
+[node name="Player_base_stats" type="Control" parent="." unique_id=1979967216]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Player_base_stats" unique_id=973638308]
+layout_mode = 0
+offset_left = 227.0
+offset_top = 166.0
+offset_right = 1317.0
+offset_bottom = 276.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("1_h0tjj")
+text = "Player base stats:"
+
+[node name="Button" type="Button" parent="Player_base_stats" unique_id=1470475461]
+layout_mode = 0
+offset_left = 627.0
+offset_top = 163.0
+offset_right = 1427.0
+offset_bottom = 306.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("1_h0tjj")
+text = "Change"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Player_base_stats/Button" unique_id=1502511960]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 18.0
+scale = Vector2(8, 8)
+texture = ExtResource("2_xgea5")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Player_upgrades" type="Control" parent="." unique_id=1777475685]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Weapon_base_stats" type="Control" parent="." unique_id=566790268]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Weapon_upgrades" type="Control" parent="." unique_id=1610654745]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Currency_multiplier" type="Control" parent="." unique_id=914203583]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Upgrade_chance" type="Control" parent="." unique_id=1245237229]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Heal_chance" type="Control" parent="." unique_id=238688479]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Enemy_damage_multiplier" type="Control" parent="." unique_id=1048210910]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Enemy_health_multiplier" type="Control" parent="." unique_id=577404800]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

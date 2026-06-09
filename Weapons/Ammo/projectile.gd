@@ -17,7 +17,7 @@ func start():
 	vel = linear_velocity
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if visible and not linear_velocity.normalized().is_equal_approx(vel.normalized()):
 		timeout.emit(self)
 
