@@ -1,5 +1,5 @@
 extends Resource
-var upgrades : Array[Upgrade] = [
+var upgrades : Array = [
 	preload("res://Upgrades/PlayerUpgrades/vitality.tres"),
 	preload("res://Upgrades/PlayerUpgrades/overcharge.tres"),
 	preload("res://Upgrades/PlayerUpgrades/better_boots.tres"),

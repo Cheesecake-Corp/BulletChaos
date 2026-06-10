@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-### BASE VALUES PLAYER
+### BASE VALUES PLAYER #OUTDATED - UNUSED
 @export var BASE_SPEED: = 150.0
 @export var BASE_MAX_HEALTH: = 100.0
 @export var BASE_DASH_SPEED := 4.0
@@ -11,17 +11,19 @@ class_name Player
 @export var BASE_SHIELD_REGEN := 15.0
 @export var BASE_HEAL_BONUS := 0.0
 
-var speed = BASE_SPEED
-var max_health: float = BASE_MAX_HEALTH
-var dash_speed: float = BASE_DASH_SPEED
-var dash_cooldown: float = BASE_DASH_COOLDOWN
-var max_shield: float = BASE_MAX_SHIELD 
-var shield: float = BASE_MAX_SHIELD
-var shield_delay: float = BASE_SHIELD_DELAY
-var shield_regen: float = BASE_SHIELD_REGEN
-var heal_bonus: float = BASE_HEAL_BONUS
+var max_health: float = GAME.player_base_stats["BASE_HEALTH"]
+var heal_bonus: float = GAME.player_base_stats["BASE_HEALING_BONUS"]
+var max_shield: float = GAME.player_base_stats["BASE_SHIELD"]
+var shield_regen: float = GAME.player_base_stats["BASE_SHIELD_REGEN"]
+var shield_delay: float = GAME.player_base_stats["BASE_SHIELD_DELAY"]
+var speed : float = GAME.player_base_stats["BASE_SPEED"]
+var dash_speed: float = GAME.player_base_stats["BASE_DASH_SPEED"]
+var dash_cooldown: float = GAME.player_base_stats["BASE_DASH_DELAY"]
 
-###BASE VALUES WEAPON
+var shield: float = GAME.player_base_stats["BASE_SHIELD"]
+var health : float = GAME.player_base_stats["BASE_HEALTH"]
+
+###BASE VALUES WEAPON OUTDATED - UNUSED
 @export var BASE_DAMAGE := 10
 @export var BASE_DAMAGE_MULTIPLIER := 1
 @export var BASE_CRITICAL_RATE := 0.2
@@ -32,7 +34,7 @@ var heal_bonus: float = BASE_HEAL_BONUS
 @export var BASE_PUNCTURE := 0
 
 @export var dash_duration := 0.15
-var health : float = max_health
+
 var last = "down"
 var last_dir : Vector2 = Vector2(0,1)
 var last_health: float = 0.0
@@ -91,14 +93,14 @@ func _ready() -> void:
 		"dash_speed": {"name": "Dash speed", "value": dash_speed, "positive": true},
 	}
 	weapon_stats = {
-		"damage": {"name": "Damage", "value": BASE_DAMAGE, "positive": true},
-		"damage_multiplier": {"name": "DMG mult", "value": BASE_DAMAGE_MULTIPLIER, "positive": true},
-		"critical_rate": {"name": "CRIT rate", "value": BASE_CRITICAL_RATE, "positive": true}, 
-		"critical_multiplier": {"name": "CRIT mult", "value": BASE_CRITICAL_MULTIPLIER, "positive": true}, 
-		"reload_speed": {"name": "REL speed", "value": BASE_RELOAD_SPEED, "positive": true}, 
-		"magazine_size": {"name": "Capacity", "value": BASE_MAGAZINE_SIZE, "positive": true},
-		"shooting_speed": {"name": "SH speed", "value": BASE_SHOOTING_SPEED, "positive": true}, 
-		"puncture": {"name": "Puncture", "value": BASE_PUNCTURE, "positive": true}, 
+		"damage": {"name": "Damage", "value": GAME.weapon_base_stats["BASE_DAMAGE"], "positive": true},
+		"damage_multiplier": {"name": "DMG mult", "value": GAME.weapon_base_stats["BASE_DAMAGE_MULTIPLIER"], "positive": true},
+		"critical_rate": {"name": "CRIT rate", "value": GAME.weapon_base_stats["BASE_CRITICAL_RATE"], "positive": true}, 
+		"critical_multiplier": {"name": "CRIT mult", "value": GAME.weapon_base_stats["BASE_CRITICAL_MULTIPLIER"], "positive": true}, 
+		"reload_speed": {"name": "REL speed", "value": GAME.weapon_base_stats["BASE_RELOAD_SPEED"], "positive": true}, 
+		"magazine_size": {"name": "Capacity", "value": GAME.weapon_base_stats["BASE_MAGAZINE_SIZE"], "positive": true},
+		"shooting_speed": {"name": "SH speed", "value": GAME.weapon_base_stats["BASE_SHOOTING_SPEED"], "positive": true}, 
+		"puncture": {"name": "Puncture", "value": GAME.weapon_base_stats["BASE_PUNCTURE"], "positive": true}, 
 	}
 	energy = {
 		"player_energy_max": energy_max,
@@ -108,6 +110,10 @@ func _ready() -> void:
 		"weapon_energy_used": weapon_used_energy,
 		"weapon_energy_used_temp": weapon_used_energy_temp,
 	}
+	for n in GAME.player_upgrades_set:
+		upgrades.append(n)
+	for n in GAME.weapon_upgrades_set:
+		weapon_upgrades.append(n)
 	GAME.register_player(self)
 
 
@@ -256,14 +262,14 @@ func recalculate_stats():
 
 
 func recalculate_player_stats():
-	var c_max_health = BASE_MAX_HEALTH
-	var c_heal_bonus = BASE_HEAL_BONUS
-	var c_shield = BASE_MAX_SHIELD
-	var c_shield_delay = BASE_SHIELD_DELAY
-	var c_shield_regen = BASE_SHIELD_REGEN
-	var c_speed = BASE_SPEED
-	var c_dash_cooldown = BASE_DASH_COOLDOWN
-	var c_dash_speed = BASE_DASH_SPEED
+	var c_max_health = GAME.player_base_stats["BASE_HEALTH"]
+	var c_heal_bonus = GAME.player_base_stats["BASE_HEALING_BONUS"]
+	var c_shield =  GAME.player_base_stats["BASE_SHIELD"]
+	var c_shield_delay = GAME.player_base_stats["BASE_SHIELD_DELAY"]
+	var c_shield_regen = GAME.player_base_stats["BASE_SHIELD_REGEN"]
+	var c_speed = GAME.player_base_stats["BASE_SPEED"]
+	var c_dash_cooldown = GAME.player_base_stats["BASE_DASH_DELAY"]
+	var c_dash_speed = GAME.player_base_stats["BASE_DASH_SPEED"]
 	var c_used_energy = 0
 	
 	for u in upgrade_grid.get_children():
@@ -294,14 +300,14 @@ func recalculate_player_stats():
 	
 
 func apply_player_changes(): #Applying changes
-	max_health = BASE_MAX_HEALTH
-	heal_bonus = BASE_HEAL_BONUS
-	max_shield = BASE_MAX_SHIELD
-	shield_delay = BASE_SHIELD_DELAY
-	shield_regen = BASE_SHIELD_REGEN
-	speed = BASE_SPEED
-	dash_cooldown = BASE_DASH_COOLDOWN
-	dash_speed = BASE_DASH_SPEED
+	max_health = GAME.player_base_stats["BASE_HEALTH"]
+	heal_bonus = GAME.player_base_stats["BASE_HEALING_BONUS"]
+	max_shield = GAME.player_base_stats["BASE_SHIELD"]
+	shield_delay = GAME.player_base_stats["BASE_SHIELD_DELAY"]
+	shield_regen = GAME.player_base_stats["BASE_SHIELD_REGEN"]
+	speed = GAME.player_base_stats["BASE_SPEED"]
+	dash_cooldown = GAME.player_base_stats["BASE_DASH_DELAY"]
+	dash_speed = GAME.player_base_stats["BASE_DASH_SPEED"]
 	used_energy = 0
 	
 	for u in upgrades:
@@ -331,14 +337,14 @@ func apply_player_changes(): #Applying changes
 
 
 func recalculate_weapon_stats():
-	var temp_damage = BASE_DAMAGE
-	var temp_damage_multiplier = BASE_DAMAGE_MULTIPLIER
-	var temp_critical_rate = BASE_CRITICAL_RATE
-	var temp_critical_multiplier = BASE_CRITICAL_MULTIPLIER
-	var temp_reload_speed = BASE_RELOAD_SPEED
-	var temp_magazine_size = BASE_MAGAZINE_SIZE
-	var temp_shooting_speed = BASE_SHOOTING_SPEED
-	var temp_puncture = BASE_PUNCTURE
+	var temp_damage = GAME.weapon_base_stats["BASE_DAMAGE"]
+	var temp_damage_multiplier = GAME.weapon_base_stats["BASE_DAMAGE_MULTIPLIER"]
+	var temp_critical_rate = GAME.weapon_base_stats["BASE_CRITICAL_RATE"]
+	var temp_critical_multiplier = GAME.weapon_base_stats["BASE_CRITICAL_MULTIPLIER"]
+	var temp_reload_speed = GAME.weapon_base_stats["BASE_RELOAD_SPEED"]
+	var temp_magazine_size = GAME.weapon_base_stats["BASE_MAGAZINE_SIZE"]
+	var temp_shooting_speed = GAME.weapon_base_stats["BASE_SHOOTING_SPEED"]
+	var temp_puncture = GAME.weapon_base_stats["BASE_PUNCTURE"]
 	var temp_weapon_used_energy = 0
 	
 	for u in upgrade_grid.get_children(): #Upgrade_box
@@ -369,14 +375,14 @@ func recalculate_weapon_stats():
 
 
 func apply_weapon_changes(make_bullets : bool = true):
-	var damage = BASE_DAMAGE
-	var damage_multiplier = BASE_DAMAGE_MULTIPLIER
-	var critical_rate = BASE_CRITICAL_RATE
-	var critical_multiplier = BASE_CRITICAL_MULTIPLIER
-	var reload_speed = BASE_RELOAD_SPEED
-	var magazine_size = BASE_MAGAZINE_SIZE
-	var shooting_speed = BASE_SHOOTING_SPEED
-	var puncture = BASE_PUNCTURE
+	var damage = GAME.weapon_base_stats["BASE_DAMAGE"]
+	var damage_multiplier = GAME.weapon_base_stats["BASE_DAMAGE_MULTIPLIER"]
+	var critical_rate = GAME.weapon_base_stats["BASE_CRITICAL_RATE"]
+	var critical_multiplier = GAME.weapon_base_stats["BASE_CRITICAL_MULTIPLIER"]
+	var reload_speed = GAME.weapon_base_stats["BASE_RELOAD_SPEED"]
+	var magazine_size = GAME.weapon_base_stats["BASE_MAGAZINE_SIZE"]
+	var shooting_speed = GAME.weapon_base_stats["BASE_SHOOTING_SPEED"]
+	var puncture = GAME.weapon_base_stats["BASE_PUNCTURE"]
 	weapon_used_energy = 0
 	
 	

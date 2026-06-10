@@ -13,6 +13,15 @@ var weapon_menu := "Revolver"
 var upgrade_menu : Inventory
 var starter_money = 0
 
+###VALUES FROM NEW_GAME_GUI
+var player_base_stats : Dictionary = {}
+var weapon_base_stats : Dictionary = {}
+var player_upgrades_set : Array
+var weapon_upgrades_set : Array
+var currency_set : Dictionary
+var drop_chance_set : Dictionary
+var enemies_stats_set : Dictionary
+
 signal weapon_changed
 signal player_registered
 

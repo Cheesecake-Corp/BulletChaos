@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://blyy0xas2cf13"]
+
+[ext_resource type="Texture2D" uid="uid://cpq05libleskg" path="res://Assets/GUI/gdp_styles.png" id="1_l04f7"]
+[ext_resource type="Theme" uid="uid://cc74fbry147qh" path="res://Menus/StartGUI/Theme_1.tres" id="2_d7dwa"]
+[ext_resource type="Script" uid="uid://omfpv0k2fmvh" path="res://Menus/StartGUI/AdvancedSettingsGUI/player_upgrades_button_GUI.gd" id="2_xn8xy"]
+
+[node name="NinePatchRect" type="NinePatchRect" unique_id=974051681]
+custom_minimum_size = Vector2(200, 17)
+texture = ExtResource("1_l04f7")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+script = ExtResource("2_xn8xy")
+
+[node name="Button" type="Button" parent="." unique_id=1028393007]
+z_index = 1
+layout_mode = 0
+offset_left = 2.9999998
+offset_top = 2.6666665
+offset_right = 1943.0
+offset_bottom = 112.666664
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("2_d7dwa")
+toggle_mode = true
+text = "Change"

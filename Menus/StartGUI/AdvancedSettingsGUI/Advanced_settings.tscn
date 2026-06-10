@@ -1,0 +1,1446 @@
+[gd_scene format=3 uid="uid://bm2oik0fs5s80"]
+
+[ext_resource type="Theme" uid="uid://cc74fbry147qh" path="res://Menus/StartGUI/Theme_1.tres" id="1_awd6g"]
+[ext_resource type="Script" uid="uid://c5772m6o5qp0n" path="res://Menus/StartGUI/AdvancedSettingsGUI/advanced_settings_GUI.gd" id="1_ta127"]
+[ext_resource type="Script" uid="uid://b3368imefoh3c" path="res://Menus/StartGUI/AdvancedSettingsGUI/player_base_stats_GUI.gd" id="2_bh7uc"]
+[ext_resource type="Texture2D" uid="uid://cpq05libleskg" path="res://Assets/GUI/gdp_styles.png" id="2_da63c"]
+[ext_resource type="Theme" uid="uid://cc8jdtcmxra4m" path="res://Menus/scroll_theme.tres" id="2_ec5gr"]
+[ext_resource type="FontFile" uid="uid://b3fdd81q33fui" path="res://Assets/ByteBounce.ttf" id="3_bh7uc"]
+[ext_resource type="Script" uid="uid://b45ws5o0efihr" path="res://Menus/StartGUI/AdvancedSettingsGUI/player_upgrades_GUI.gd" id="5_bh7uc"]
+[ext_resource type="PackedScene" uid="uid://blyy0xas2cf13" path="res://Menus/StartGUI/AdvancedSettingsGUI/Upgrade_button.tscn" id="6_dn3ym"]
+[ext_resource type="Script" uid="uid://cyu6sqwday8xe" path="res://Menus/StartGUI/AdvancedSettingsGUI/weapon_base_stats_GUI.gd" id="7_7ljmn"]
+[ext_resource type="Script" uid="uid://bqocrq0luof22" path="res://Menus/StartGUI/AdvancedSettingsGUI/weapon_upgrades_GUI.gd" id="8_leebb"]
+
+[node name="Advanced_settings" type="Control" unique_id=1502783195]
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ta127")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=869556673]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1479447897]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -545.0
+offset_right = 545.0
+offset_bottom = 110.0
+grow_horizontal = 2
+theme = ExtResource("1_awd6g")
+text = "Advanced settings"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=2147368013]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 131.0
+offset_bottom = -97.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ec5gr")
+vertical_scroll_mode = 2
+
+[node name="Control" type="Control" parent="ScrollContainer" unique_id=1666988537]
+custom_minimum_size = Vector2(1152, 471.89)
+layout_mode = 2
+
+[node name="Player_base_stats" type="Control" parent="ScrollContainer/Control" unique_id=1979967216]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -155.0
+offset_right = 2.0
+offset_bottom = -155.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_bh7uc")
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/Player_base_stats" unique_id=973638308]
+layout_mode = 0
+offset_left = 227.0
+offset_top = 166.0
+offset_right = 1317.0
+offset_bottom = 276.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("1_awd6g")
+text = "Player base stats:"
+
+[node name="Button" type="Button" parent="ScrollContainer/Control/Player_base_stats" unique_id=1470475461]
+z_index = 1
+layout_mode = 0
+offset_left = 627.0
+offset_top = 163.0
+offset_right = 1427.0
+offset_bottom = 306.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("1_awd6g")
+text = "Change"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Player_base_stats/Button" unique_id=1502511960]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 18.0
+scale = Vector2(8, 8)
+texture = ExtResource("2_da63c")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Control" type="Control" parent="ScrollContainer/Control/Player_base_stats" unique_id=140550817]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 139.0
+offset_right = -1.0
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Player_base_stats/Control" unique_id=1851125391]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -375.0
+offset_top = -213.945
+offset_right = -230.0
+offset_bottom = -138.945
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+texture = ExtResource("2_da63c")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/Control/Player_base_stats/Control" unique_id=1263744161]
+layout_mode = 0
+offset_left = 215.0
+offset_top = 44.0
+offset_right = 1765.0
+offset_bottom = 980.0
+scale = Vector2(0.3, 0.3)
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/Player_base_stats/Control/VBoxContainer" unique_id=1834336380]
+layout_mode = 2
+theme = ExtResource("1_awd6g")
+text = "Player health hitpoints:"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="ScrollContainer/Control/Player_base_stats/Control/VBoxContainer" unique_id=1548547141]
+layout_mode = 2
+theme = ExtResource("1_awd6g")
+text = "Player healing bonus:"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="ScrollContainer/Control/Player_base_stats/Control/VBoxContainer" unique_id=276161898]
+layout_mode = 2
+theme = ExtResource("1_awd6g")
+text = "Player shield hitpoints:"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="ScrollContainer/Control/Player_base_stats/Control/VBoxContainer" unique_id=335231260]
+layout_mode = 2
+theme = ExtResource("1_awd6g")
+text = "Player shield regen:"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="ScrollContainer/Control/Player_base_stats/Control/VBoxContainer" unique_id=352495879]
+layout_mode = 2
+theme = ExtResource("1_awd6g")
+text = "Player shield delay:"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="ScrollContainer/Control/Player_base_stats/Control/VBoxContainer" unique_id=1076778203]
+layout_mode = 2
+theme = ExtResource("1_awd6g")
+text = "Player moving speed:"
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="ScrollContainer/Control/Player_base_stats/Control/VBoxContainer" unique_id=1659936968]
+layout_mode = 2
+theme = ExtResource("1_awd6g")
+text = "Player dash delay:"
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="ScrollContainer/Control/Player_base_stats/Control/VBoxContainer" unique_id=407370402]
+layout_mode = 2
+theme = ExtResource("1_awd6g")
+text = "Player dash speed:"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ScrollContainer/Control/Player_base_stats/Control" unique_id=159704918]
+layout_mode = 0
+offset_left = 729.0
+offset_top = 43.999985
+offset_right = 1229.0
+offset_bottom = 1016.0
+scale = Vector2(0.29, 0.29)
+
+[node name="TextEdit" type="LineEdit" parent="ScrollContainer/Control/Player_base_stats/Control/VBoxContainer2" unique_id=1346401304]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bh7uc")
+theme_override_font_sizes/font_size = 160
+alignment = 1
+
+[node name="TextEdit2" type="LineEdit" parent="ScrollContainer/Control/Player_base_stats/Control/VBoxContainer2" unique_id=1396970589]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bh7uc")
+theme_override_font_sizes/font_size = 160
+alignment = 1
+
+[node name="TextEdit3" type="LineEdit" parent="ScrollContainer/Control/Player_base_stats/Control/VBoxContainer2" unique_id=638371464]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bh7uc")
+theme_override_font_sizes/font_size = 160
+alignment = 1
+
+[node name="TextEdit4" type="LineEdit" parent="ScrollContainer/Control/Player_base_stats/Control/VBoxContainer2" unique_id=38602890]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bh7uc")
+theme_override_font_sizes/font_size = 160
+alignment = 1
+
+[node name="TextEdit5" type="LineEdit" parent="ScrollContainer/Control/Player_base_stats/Control/VBoxContainer2" unique_id=957887620]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bh7uc")
+theme_override_font_sizes/font_size = 160
+alignment = 1
+
+[node name="TextEdit6" type="LineEdit" parent="ScrollContainer/Control/Player_base_stats/Control/VBoxContainer2" unique_id=1800548993]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bh7uc")
+theme_override_font_sizes/font_size = 160
+alignment = 1
+
+[node name="TextEdit7" type="LineEdit" parent="ScrollContainer/Control/Player_base_stats/Control/VBoxContainer2" unique_id=418947998]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bh7uc")
+theme_override_font_sizes/font_size = 160
+alignment = 1
+
+[node name="TextEdit8" type="LineEdit" parent="ScrollContainer/Control/Player_base_stats/Control/VBoxContainer2" unique_id=363050796]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bh7uc")
+theme_override_font_sizes/font_size = 160
+alignment = 1
+
+[node name="Close" type="Button" parent="ScrollContainer/Control/Player_base_stats/Control" unique_id=801598219]
+z_index = 1
+layout_mode = 0
+offset_left = 324.0
+offset_top = 335.0
+offset_right = 1124.0
+offset_bottom = 478.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("1_awd6g")
+text = "Close"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Player_base_stats/Control/Close" unique_id=1818020741]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 18.0
+scale = Vector2(8, 8)
+texture = ExtResource("2_da63c")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Apply" type="Button" parent="ScrollContainer/Control/Player_base_stats/Control" unique_id=2011790128]
+z_index = 1
+layout_mode = 0
+offset_left = 583.0
+offset_top = 335.0
+offset_right = 1383.0
+offset_bottom = 478.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("1_awd6g")
+text = "Apply"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Player_base_stats/Control/Apply" unique_id=1047184250]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 18.0
+scale = Vector2(8, 8)
+texture = ExtResource("2_da63c")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Player_upgrades" type="Control" parent="ScrollContainer/Control" unique_id=1777475685]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -155.0
+offset_right = 2.0
+offset_bottom = -155.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("5_bh7uc")
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/Player_upgrades" unique_id=369727330]
+layout_mode = 0
+offset_left = 240.00002
+offset_top = 211.00002
+offset_right = 1230.0
+offset_bottom = 321.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("1_awd6g")
+text = "Player upgrades:"
+
+[node name="Button" type="Button" parent="ScrollContainer/Control/Player_upgrades" unique_id=753658813]
+z_index = 1
+layout_mode = 0
+offset_left = 627.0
+offset_top = 209.00002
+offset_right = 1427.0
+offset_bottom = 352.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("1_awd6g")
+text = "Change"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Player_upgrades/Button" unique_id=1275716728]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 18.0
+scale = Vector2(8, 8)
+texture = ExtResource("2_da63c")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Control" type="Control" parent="ScrollContainer/Control/Player_upgrades" unique_id=1933944361]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = 129.0
+offset_right = -3.0
+offset_bottom = 129.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VScrollBar" type="ScrollContainer" parent="ScrollContainer/Control/Player_upgrades/Control" unique_id=992788914]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = -175.0
+offset_right = 203.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.2, 2.2)
+pivot_offset_ratio = Vector2(0.5, 0)
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer/Control/Player_upgrades/Control/VScrollBar" unique_id=1847121418]
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="NinePatchRect" parent="ScrollContainer/Control/Player_upgrades/Control/VScrollBar/GridContainer" unique_id=974051681 instance=ExtResource("6_dn3ym")]
+layout_mode = 2
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="ScrollContainer/Control/Player_upgrades/Control/VScrollBar/GridContainer" unique_id=1280046302]
+custom_minimum_size = Vector2(200, 17)
+layout_mode = 2
+texture = ExtResource("2_da63c")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Button" type="Button" parent="ScrollContainer/Control/Player_upgrades/Control/VScrollBar/GridContainer/NinePatchRect2" unique_id=1584591953]
+z_index = 1
+layout_mode = 0
+offset_left = 2.9999998
+offset_top = 2.6666665
+offset_right = 1943.0
+offset_bottom = 112.666664
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("1_awd6g")
+text = "Change"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Player_upgrades/Control" unique_id=1083781065]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -473.0
+offset_top = -203.0
+offset_right = -283.0
+offset_bottom = -123.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+texture = ExtResource("2_da63c")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Close" type="Button" parent="ScrollContainer/Control/Player_upgrades/Control" unique_id=1325086858]
+z_index = 1
+layout_mode = 0
+offset_left = 324.0
+offset_top = 367.0
+offset_right = 1124.0
+offset_bottom = 510.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("1_awd6g")
+text = "Close"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Player_upgrades/Control/Close" unique_id=1502329709]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 18.0
+scale = Vector2(8, 8)
+texture = ExtResource("2_da63c")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Apply" type="Button" parent="ScrollContainer/Control/Player_upgrades/Control" unique_id=1051683442]
+z_index = 1
+layout_mode = 0
+offset_left = 583.0
+offset_top = 367.0
+offset_right = 1383.0
+offset_bottom = 510.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("1_awd6g")
+text = "Apply"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Player_upgrades/Control/Apply" unique_id=567131836]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 18.0
+scale = Vector2(8, 8)
+texture = ExtResource("2_da63c")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Weapon_base_stats" type="Control" parent="ScrollContainer/Control" unique_id=441655934]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -155.0
+offset_right = 2.0
+offset_bottom = -155.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("7_7ljmn")
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/Weapon_base_stats" unique_id=370340363]
+layout_mode = 0
+offset_left = 220.0
+offset_top = 260.0
+offset_right = 1380.0
+offset_bottom = 370.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("1_awd6g")
+text = "Weapon base stats:"
+
+[node name="Button" type="Button" parent="ScrollContainer/Control/Weapon_base_stats" unique_id=1446631708]
+z_index = 1
+layout_mode = 0
+offset_left = 627.0
+offset_top = 255.0
+offset_right = 1427.0
+offset_bottom = 398.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("1_awd6g")
+text = "Change"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Weapon_base_stats/Button" unique_id=848844735]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 18.0
+scale = Vector2(8, 8)
+texture = ExtResource("2_da63c")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Control" type="Control" parent="ScrollContainer/Control/Weapon_base_stats" unique_id=84180529]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 105.0
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Weapon_base_stats/Control" unique_id=1053876594]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -364.0
+offset_top = -179.99998
+offset_right = -219.0
+offset_bottom = -104.999985
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+texture = ExtResource("2_da63c")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/Control/Weapon_base_stats/Control" unique_id=1108033772]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 78.0
+offset_right = 1798.0
+offset_bottom = 1014.0
+scale = Vector2(0.3, 0.3)
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/Weapon_base_stats/Control/VBoxContainer" unique_id=787495886]
+layout_mode = 2
+theme = ExtResource("1_awd6g")
+text = "Weapon damage:"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="ScrollContainer/Control/Weapon_base_stats/Control/VBoxContainer" unique_id=592311299]
+layout_mode = 2
+theme = ExtResource("1_awd6g")
+text = "Weapon damage multiplier:"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="ScrollContainer/Control/Weapon_base_stats/Control/VBoxContainer" unique_id=1699672638]
+layout_mode = 2
+theme = ExtResource("1_awd6g")
+text = "Weapon critical rate:"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="ScrollContainer/Control/Weapon_base_stats/Control/VBoxContainer" unique_id=1928387789]
+layout_mode = 2
+theme = ExtResource("1_awd6g")
+text = "Weapon critical multiplier:"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="ScrollContainer/Control/Weapon_base_stats/Control/VBoxContainer" unique_id=1782685752]
+layout_mode = 2
+theme = ExtResource("1_awd6g")
+text = "Weapon reload speed:"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="ScrollContainer/Control/Weapon_base_stats/Control/VBoxContainer" unique_id=1756346734]
+layout_mode = 2
+theme = ExtResource("1_awd6g")
+text = "Weapon magazine size:"
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="ScrollContainer/Control/Weapon_base_stats/Control/VBoxContainer" unique_id=448907762]
+layout_mode = 2
+theme = ExtResource("1_awd6g")
+text = "Weapon shoting speed:"
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="ScrollContainer/Control/Weapon_base_stats/Control/VBoxContainer" unique_id=1667295635]
+layout_mode = 2
+theme = ExtResource("1_awd6g")
+text = "Weapon ammo puncture:"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ScrollContainer/Control/Weapon_base_stats/Control" unique_id=840233247]
+layout_mode = 0
+offset_left = 750.00006
+offset_top = 81.99999
+offset_right = 1250.0
+offset_bottom = 1054.0
+scale = Vector2(0.29, 0.29)
+
+[node name="TextEdit" type="LineEdit" parent="ScrollContainer/Control/Weapon_base_stats/Control/VBoxContainer2" unique_id=90993591]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bh7uc")
+theme_override_font_sizes/font_size = 160
+alignment = 1
+
+[node name="TextEdit2" type="LineEdit" parent="ScrollContainer/Control/Weapon_base_stats/Control/VBoxContainer2" unique_id=722245302]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bh7uc")
+theme_override_font_sizes/font_size = 160
+alignment = 1
+
+[node name="TextEdit3" type="LineEdit" parent="ScrollContainer/Control/Weapon_base_stats/Control/VBoxContainer2" unique_id=1058855367]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bh7uc")
+theme_override_font_sizes/font_size = 160
+alignment = 1
+
+[node name="TextEdit4" type="LineEdit" parent="ScrollContainer/Control/Weapon_base_stats/Control/VBoxContainer2" unique_id=23899194]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bh7uc")
+theme_override_font_sizes/font_size = 160
+alignment = 1
+
+[node name="TextEdit5" type="LineEdit" parent="ScrollContainer/Control/Weapon_base_stats/Control/VBoxContainer2" unique_id=1661306042]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bh7uc")
+theme_override_font_sizes/font_size = 160
+alignment = 1
+
+[node name="TextEdit6" type="LineEdit" parent="ScrollContainer/Control/Weapon_base_stats/Control/VBoxContainer2" unique_id=2078288485]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bh7uc")
+theme_override_font_sizes/font_size = 160
+alignment = 1
+
+[node name="TextEdit7" type="LineEdit" parent="ScrollContainer/Control/Weapon_base_stats/Control/VBoxContainer2" unique_id=1864634365]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bh7uc")
+theme_override_font_sizes/font_size = 160
+alignment = 1
+
+[node name="TextEdit8" type="LineEdit" parent="ScrollContainer/Control/Weapon_base_stats/Control/VBoxContainer2" unique_id=1895356854]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bh7uc")
+theme_override_font_sizes/font_size = 160
+alignment = 1
+
+[node name="Close" type="Button" parent="ScrollContainer/Control/Weapon_base_stats/Control" unique_id=193881791]
+z_index = 1
+layout_mode = 0
+offset_left = 327.0
+offset_top = 372.0
+offset_right = 1127.0
+offset_bottom = 515.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("1_awd6g")
+text = "Close"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Weapon_base_stats/Control/Close" unique_id=1920485635]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 18.0
+scale = Vector2(8, 8)
+texture = ExtResource("2_da63c")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Apply" type="Button" parent="ScrollContainer/Control/Weapon_base_stats/Control" unique_id=1589764352]
+z_index = 1
+layout_mode = 0
+offset_left = 586.0
+offset_top = 372.0
+offset_right = 1386.0
+offset_bottom = 515.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("1_awd6g")
+text = "Apply"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Weapon_base_stats/Control/Apply" unique_id=1914102563]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 18.0
+scale = Vector2(8, 8)
+texture = ExtResource("2_da63c")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Weapon_upgrades" type="Control" parent="ScrollContainer/Control" unique_id=396746299]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -155.0
+offset_right = 2.0
+offset_bottom = -155.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("8_leebb")
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/Weapon_upgrades" unique_id=179190249]
+layout_mode = 0
+offset_left = 233.0
+offset_top = 307.0
+offset_right = 1293.0
+offset_bottom = 417.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("1_awd6g")
+text = "Weapon upgrades:"
+
+[node name="Button" type="Button" parent="ScrollContainer/Control/Weapon_upgrades" unique_id=682301093]
+z_index = 1
+layout_mode = 0
+offset_left = 627.0
+offset_top = 301.0
+offset_right = 1427.0
+offset_bottom = 444.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("1_awd6g")
+text = "Change"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Weapon_upgrades/Button" unique_id=172827042]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 18.0
+scale = Vector2(8, 8)
+texture = ExtResource("2_da63c")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Control" type="Control" parent="ScrollContainer/Control/Weapon_upgrades" unique_id=842910769]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 126.0
+offset_right = -1.0
+offset_bottom = 126.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VScrollBar" type="ScrollContainer" parent="ScrollContainer/Control/Weapon_upgrades/Control" unique_id=1312871138]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = -175.0
+offset_right = 203.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.2, 2.2)
+pivot_offset_ratio = Vector2(0.5, 0)
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer/Control/Weapon_upgrades/Control/VScrollBar" unique_id=2084686711]
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="NinePatchRect" parent="ScrollContainer/Control/Weapon_upgrades/Control/VScrollBar/GridContainer" unique_id=2059061600 instance=ExtResource("6_dn3ym")]
+layout_mode = 2
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="ScrollContainer/Control/Weapon_upgrades/Control/VScrollBar/GridContainer" unique_id=1673606200]
+custom_minimum_size = Vector2(200, 17)
+layout_mode = 2
+texture = ExtResource("2_da63c")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Button" type="Button" parent="ScrollContainer/Control/Weapon_upgrades/Control/VScrollBar/GridContainer/NinePatchRect2" unique_id=1750473682]
+z_index = 1
+layout_mode = 0
+offset_left = 2.9999998
+offset_top = 2.6666665
+offset_right = 1943.0
+offset_bottom = 112.666664
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("1_awd6g")
+text = "Change"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Weapon_upgrades/Control" unique_id=445870622]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -473.0
+offset_top = -203.0
+offset_right = -283.0
+offset_bottom = -123.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+texture = ExtResource("2_da63c")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Close" type="Button" parent="ScrollContainer/Control/Weapon_upgrades/Control" unique_id=849896529]
+z_index = 1
+layout_mode = 0
+offset_left = 328.0
+offset_top = 366.0
+offset_right = 1128.0
+offset_bottom = 509.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("1_awd6g")
+text = "Close"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Weapon_upgrades/Control/Close" unique_id=66074128]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 18.0
+scale = Vector2(8, 8)
+texture = ExtResource("2_da63c")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Apply" type="Button" parent="ScrollContainer/Control/Weapon_upgrades/Control" unique_id=1052573231]
+z_index = 1
+layout_mode = 0
+offset_left = 587.0
+offset_top = 366.0
+offset_right = 1387.0
+offset_bottom = 509.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("1_awd6g")
+text = "Apply"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Weapon_upgrades/Control/Apply" unique_id=2076804763]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 18.0
+scale = Vector2(8, 8)
+texture = ExtResource("2_da63c")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Starting_currency" type="Control" parent="ScrollContainer/Control" unique_id=2106393495]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -155.0
+offset_right = 2.0
+offset_bottom = -155.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/Starting_currency" unique_id=1373540210]
+layout_mode = 0
+offset_left = 236.0
+offset_top = 352.0
+offset_right = 1296.0
+offset_bottom = 462.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("1_awd6g")
+text = "Starting currency:"
+
+[node name="LineEdit" type="LineEdit" parent="ScrollContainer/Control/Starting_currency" unique_id=345793430]
+z_index = 1
+layout_mode = 0
+offset_left = 634.0
+offset_top = 350.0
+offset_right = 1384.0
+offset_bottom = 468.0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("3_bh7uc")
+theme_override_font_sizes/font_size = 160
+text = "0"
+alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Starting_currency/LineEdit" unique_id=1323077957]
+z_index = -1
+layout_mode = 0
+offset_left = -23.333332
+offset_top = -13.333333
+offset_right = 76.66667
+offset_bottom = 4.666667
+scale = Vector2(8, 8)
+texture = ExtResource("2_da63c")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Currency_multiplier" type="Control" parent="ScrollContainer/Control" unique_id=60942086]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -155.0
+offset_right = 2.0
+offset_bottom = -155.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/Currency_multiplier" unique_id=1473245686]
+layout_mode = 0
+offset_left = 219.00002
+offset_top = 398.00003
+offset_right = 1359.0
+offset_bottom = 508.00003
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("1_awd6g")
+text = "Currency multiplier:"
+
+[node name="LineEdit" type="LineEdit" parent="ScrollContainer/Control/Currency_multiplier" unique_id=2139698272]
+z_index = 1
+layout_mode = 0
+offset_left = 634.0
+offset_top = 396.0
+offset_right = 1384.0
+offset_bottom = 514.0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("3_bh7uc")
+theme_override_font_sizes/font_size = 160
+text = "1"
+alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Currency_multiplier/LineEdit" unique_id=873202611]
+z_index = -1
+layout_mode = 0
+offset_left = -23.333332
+offset_top = -13.333333
+offset_right = 76.66667
+offset_bottom = 4.666667
+scale = Vector2(8, 8)
+texture = ExtResource("2_da63c")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Upgrade_chance" type="Control" parent="ScrollContainer/Control" unique_id=974013576]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -155.0
+offset_right = 2.0
+offset_bottom = -155.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/Upgrade_chance" unique_id=410516563]
+layout_mode = 0
+offset_left = 220.0
+offset_top = 444.0
+offset_right = 1360.0
+offset_bottom = 554.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("1_awd6g")
+text = "Upgrade chance:"
+horizontal_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="ScrollContainer/Control/Upgrade_chance" unique_id=1306821276]
+z_index = 1
+layout_mode = 0
+offset_left = 634.0
+offset_top = 442.0
+offset_right = 1384.0
+offset_bottom = 560.0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("3_bh7uc")
+theme_override_font_sizes/font_size = 160
+text = "0.5"
+alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Upgrade_chance/LineEdit" unique_id=2091180908]
+z_index = -1
+layout_mode = 0
+offset_left = -23.333332
+offset_top = -13.333333
+offset_right = 76.66667
+offset_bottom = 4.666667
+scale = Vector2(8, 8)
+texture = ExtResource("2_da63c")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Heal_chance" type="Control" parent="ScrollContainer/Control" unique_id=606654646]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -155.0
+offset_right = 2.0
+offset_bottom = -155.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/Heal_chance" unique_id=646881125]
+layout_mode = 0
+offset_left = 217.0
+offset_top = 491.00003
+offset_right = 1357.0
+offset_bottom = 601.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("1_awd6g")
+text = "Heal chance:"
+horizontal_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="ScrollContainer/Control/Heal_chance" unique_id=1425730223]
+z_index = 1
+layout_mode = 0
+offset_left = 634.0
+offset_top = 488.0
+offset_right = 1384.0
+offset_bottom = 606.0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("3_bh7uc")
+theme_override_font_sizes/font_size = 160
+text = "0.5"
+alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Heal_chance/LineEdit" unique_id=763842140]
+z_index = -1
+layout_mode = 0
+offset_left = -23.333332
+offset_top = -13.333333
+offset_right = 76.66667
+offset_bottom = 4.666667
+scale = Vector2(8, 8)
+texture = ExtResource("2_da63c")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Enemy_damage_multiplier" type="Control" parent="ScrollContainer/Control" unique_id=1680143487]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -155.0
+offset_right = 2.0
+offset_bottom = -155.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/Enemy_damage_multiplier" unique_id=973567865]
+layout_mode = 0
+offset_left = 203.0
+offset_top = 535.0
+offset_right = 1473.0
+offset_bottom = 645.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("1_awd6g")
+text = "Enemy DMG multiplier:"
+horizontal_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="ScrollContainer/Control/Enemy_damage_multiplier" unique_id=1155649454]
+z_index = 1
+layout_mode = 0
+offset_left = 634.0
+offset_top = 534.0
+offset_right = 1384.0
+offset_bottom = 652.0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("3_bh7uc")
+theme_override_font_sizes/font_size = 160
+text = "1"
+alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Enemy_damage_multiplier/LineEdit" unique_id=1284491690]
+z_index = -1
+layout_mode = 0
+offset_left = -23.333332
+offset_top = -13.333333
+offset_right = 76.66667
+offset_bottom = 4.666667
+scale = Vector2(8, 8)
+texture = ExtResource("2_da63c")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Enemy_health_multiplier" type="Control" parent="ScrollContainer/Control" unique_id=513425043]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -155.0
+offset_right = 2.0
+offset_bottom = -155.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/Enemy_health_multiplier" unique_id=1663466406]
+layout_mode = 0
+offset_left = 202.0
+offset_top = 582.0
+offset_right = 1472.0
+offset_bottom = 692.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("1_awd6g")
+text = "Enemy HP multiplier:"
+horizontal_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="ScrollContainer/Control/Enemy_health_multiplier" unique_id=557125472]
+z_index = 1
+layout_mode = 0
+offset_left = 634.0
+offset_top = 580.0
+offset_right = 1384.0
+offset_bottom = 698.0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("3_bh7uc")
+theme_override_font_sizes/font_size = 160
+text = "1"
+alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Enemy_health_multiplier/LineEdit" unique_id=642000249]
+z_index = -1
+layout_mode = 0
+offset_left = -23.333332
+offset_top = -13.333333
+offset_right = 76.66667
+offset_bottom = 4.666667
+scale = Vector2(8, 8)
+texture = ExtResource("2_da63c")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Reset" type="Button" parent="." unique_id=227258996]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -364.0
+offset_top = 251.0
+offset_right = 436.0
+offset_bottom = 391.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("1_awd6g")
+theme_override_fonts/font = ExtResource("3_bh7uc")
+theme_override_font_sizes/font_size = 160
+text = "Reset"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Reset" unique_id=744032787]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 17.5
+scale = Vector2(8, 8)
+texture = ExtResource("2_da63c")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Apply" type="Button" parent="." unique_id=1091529994]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 124.0
+offset_top = 251.0
+offset_right = 924.0
+offset_bottom = 391.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("1_awd6g")
+theme_override_fonts/font = ExtResource("3_bh7uc")
+theme_override_font_sizes/font_size = 160
+text = "Apply"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Apply" unique_id=1720381519]
+z_index = -1
+layout_mode = 0
+offset_right = 99.99999
+offset_bottom = 17.5
+scale = Vector2(8, 8)
+texture = ExtResource("2_da63c")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Back" type="Button" parent="." unique_id=1072840223]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = 251.0
+offset_right = 680.0
+offset_bottom = 391.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("1_awd6g")
+theme_override_fonts/font = ExtResource("3_bh7uc")
+theme_override_font_sizes/font_size = 160
+text = "Back"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Back" unique_id=616310915]
+z_index = -1
+layout_mode = 0
+offset_right = 99.99999
+offset_bottom = 17.5
+scale = Vector2(8, 8)
+texture = ExtResource("2_da63c")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Reset_label" type="Label" parent="." unique_id=1353300431]
+visible = false
+z_index = 3
+layout_mode = 1
+offset_left = 180.0
+offset_top = 232.0
+offset_right = 2820.0
+offset_bottom = 568.0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("3_bh7uc")
+theme_override_font_sizes/font_size = 160
+text = "Resets all values set by advanced settings.
+All basic settings will take effect.
+Advanced settings are not in effect."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Reset_label" unique_id=2146566572]
+z_index = -1
+layout_mode = 0
+offset_left = -69.99999
+offset_top = -53.33333
+offset_right = 163.0
+offset_bottom = -15.833328
+scale = Vector2(12, 12)
+texture = ExtResource("2_da63c")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Apply_label" type="Label" parent="." unique_id=565361084]
+visible = false
+z_index = 3
+layout_mode = 1
+offset_left = 180.0
+offset_top = 232.0
+offset_right = 2820.0
+offset_bottom = 568.0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("3_bh7uc")
+theme_override_font_sizes/font_size = 160
+text = "Applies all values set by advanced settings.
+Basic settings will be overwritten.
+Advanced settings are in effect."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Apply_label" unique_id=294977606]
+z_index = -1
+layout_mode = 0
+offset_left = -69.99999
+offset_top = -53.33333
+offset_right = 163.0
+offset_bottom = -15.833328
+scale = Vector2(12, 12)
+texture = ExtResource("2_da63c")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Back_label" type="Label" parent="." unique_id=1146033439]
+visible = false
+z_index = 3
+layout_mode = 1
+offset_left = 180.0
+offset_top = 232.0
+offset_right = 2820.0
+offset_bottom = 568.0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("3_bh7uc")
+theme_override_font_sizes/font_size = 160
+text = "Hides advanced settings screen."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Back_label" unique_id=1747052823]
+z_index = -1
+layout_mode = 0
+offset_left = -69.99999
+offset_top = -53.33333
+offset_right = 163.0
+offset_bottom = -15.833328
+scale = Vector2(12, 12)
+texture = ExtResource("2_da63c")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[connection signal="pressed" from="ScrollContainer/Control/Player_base_stats/Button" to="ScrollContainer/Control/Player_base_stats" method="_on_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Player_base_stats/Control/Close" to="ScrollContainer/Control/Player_base_stats" method="_on_close_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Player_base_stats/Control/Apply" to="ScrollContainer/Control/Player_base_stats" method="_on_apply_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Player_upgrades/Button" to="ScrollContainer/Control/Player_upgrades" method="_on_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Player_upgrades/Control/Close" to="ScrollContainer/Control/Player_upgrades" method="_on_close_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Player_upgrades/Control/Apply" to="ScrollContainer/Control/Player_upgrades" method="_on_apply_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Weapon_base_stats/Button" to="ScrollContainer/Control/Weapon_base_stats" method="_on_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Weapon_base_stats/Control/Close" to="ScrollContainer/Control/Weapon_base_stats" method="_on_close_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Weapon_base_stats/Control/Apply" to="ScrollContainer/Control/Weapon_base_stats" method="_on_apply_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Weapon_upgrades/Button" to="ScrollContainer/Control/Weapon_upgrades" method="_on_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Weapon_upgrades/Control/Close" to="ScrollContainer/Control/Weapon_upgrades" method="_on_close_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Weapon_upgrades/Control/Apply" to="ScrollContainer/Control/Weapon_upgrades" method="_on_apply_pressed"]
+[connection signal="mouse_entered" from="Reset" to="." method="_on_reset_mouse_entered"]
+[connection signal="mouse_exited" from="Reset" to="." method="_on_reset_mouse_exited"]
+[connection signal="pressed" from="Reset" to="." method="_on_reset_pressed"]
+[connection signal="mouse_entered" from="Apply" to="." method="_on_apply_mouse_entered"]
+[connection signal="mouse_exited" from="Apply" to="." method="_on_apply_mouse_exited"]
+[connection signal="pressed" from="Apply" to="." method="_on_apply_pressed"]
+[connection signal="mouse_entered" from="Back" to="." method="_on_back_mouse_entered"]
+[connection signal="mouse_exited" from="Back" to="." method="_on_back_mouse_exited"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

@@ -1,19 +1,19 @@
 [gd_scene format=3 uid="uid://cu6mggfbcajbm"]
 
-[ext_resource type="Script" uid="uid://3hh5m0o55wgm" path="res://Menus/StartGUI/new_game_gui.gd" id="1_l8yfc"]
-[ext_resource type="FontFile" uid="uid://b3fdd81q33fui" path="res://Assets/ByteBounce.ttf" id="1_oba2n"]
-[ext_resource type="Texture2D" uid="uid://cpq05libleskg" path="res://Assets/GUI/gdp_styles.png" id="2_1nqjl"]
-[ext_resource type="Theme" uid="uid://cc74fbry147qh" path="res://Menus/StartGUI/Theme_1.tres" id="2_c7cfo"]
-[ext_resource type="Script" uid="uid://bj07h2q6ips63" path="res://Menus/StartGUI/game_mode.gd" id="2_jaght"]
-[ext_resource type="Texture2D" uid="uid://dwh4jbx2u41ed" path="res://Assets/Micro Icon Pack/Paint/3. Color Picker.png" id="4_c7cfo"]
-[ext_resource type="Script" uid="uid://1vi1lcbcln6" path="res://Menus/MainMenu/cursor.gd" id="5_jqvl3"]
-[ext_resource type="Script" uid="uid://bfinsrmbqiicw" path="res://Menus/StartGUI/difficulty.gd" id="5_kpvrn"]
-[ext_resource type="Script" uid="uid://bwj5b62ouj17h" path="res://Menus/StartGUI/commands.gd" id="8_kpvrn"]
-[ext_resource type="Script" uid="uid://bn1l5yufoo3ul" path="res://Menus/StartGUI/seed.gd" id="10_0acd5"]
-[ext_resource type="Script" uid="uid://ioc12ky3lwi2" path="res://Menus/StartGUI/adv.gd" id="11_ypdgl"]
+[ext_resource type="Script" uid="uid://3hh5m0o55wgm" path="res://Menus/StartGUI/NewGameGUI/new_game_gui.gd" id="1_jp1el"]
+[ext_resource type="Texture2D" uid="uid://dwh4jbx2u41ed" path="res://Assets/Micro Icon Pack/Paint/3. Color Picker.png" id="2_agpv5"]
+[ext_resource type="Script" uid="uid://1vi1lcbcln6" path="res://Menus/MainMenu/cursor.gd" id="3_qmbod"]
+[ext_resource type="FontFile" uid="uid://b3fdd81q33fui" path="res://Assets/ByteBounce.ttf" id="4_vqtly"]
+[ext_resource type="Script" uid="uid://bj07h2q6ips63" path="res://Menus/StartGUI/NewGameGUI/game_mode.gd" id="5_goiqj"]
+[ext_resource type="Theme" uid="uid://cc74fbry147qh" path="res://Menus/StartGUI/Theme_1.tres" id="6_oksxd"]
+[ext_resource type="Texture2D" uid="uid://cpq05libleskg" path="res://Assets/GUI/gdp_styles.png" id="7_vh3jy"]
+[ext_resource type="Script" uid="uid://bfinsrmbqiicw" path="res://Menus/StartGUI/NewGameGUI/difficulty.gd" id="8_a1n7v"]
+[ext_resource type="Script" uid="uid://bwj5b62ouj17h" path="res://Menus/StartGUI/NewGameGUI/commands.gd" id="9_du4rq"]
+[ext_resource type="Script" uid="uid://bn1l5yufoo3ul" path="res://Menus/StartGUI/NewGameGUI/seed.gd" id="10_is8ur"]
+[ext_resource type="PackedScene" uid="uid://bm2oik0fs5s80" path="res://Menus/StartGUI/AdvancedSettingsGUI/Advanced_settings.tscn" id="11_jp1el"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_snm0n"]
-atlas = ExtResource("2_1nqjl")
+atlas = ExtResource("7_vh3jy")
 region = Rect2(87, 132, 14, 14)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0acd5"]
@@ -25,15 +25,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_l8yfc")
+mouse_filter = 2
+script = ExtResource("1_jp1el")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=379816200]
 z_index = 100
 position = Vector2(576, 352)
 scale = Vector2(2.263, 2.263)
-texture = ExtResource("4_c7cfo")
+texture = ExtResource("2_agpv5")
 flip_v = true
-script = ExtResource("5_jqvl3")
+script = ExtResource("3_qmbod")
 
 [node name="Label" type="Label" parent="." unique_id=892875646]
 layout_mode = 1
@@ -44,7 +45,7 @@ offset_left = -415.0
 offset_right = 415.0
 offset_bottom = 110.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_oba2n")
+theme_override_fonts/font = ExtResource("4_vqtly")
 theme_override_font_sizes/font_size = 160
 text = "Game settings"
 
@@ -52,7 +53,7 @@ text = "Game settings"
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("2_jaght")
+script = ExtResource("5_goiqj")
 
 [node name="Game_mode_label" type="Label" parent="Game_mode" unique_id=1658702376]
 layout_mode = 0
@@ -61,7 +62,7 @@ offset_top = 197.0
 offset_right = 1040.0
 offset_bottom = 307.0
 scale = Vector2(0.3, 0.3)
-theme_override_fonts/font = ExtResource("1_oba2n")
+theme_override_fonts/font = ExtResource("4_vqtly")
 theme_override_font_sizes/font_size = 160
 text = "Game mode:"
 horizontal_alignment = 1
@@ -73,8 +74,8 @@ offset_top = 192.0
 offset_right = 1386.0
 offset_bottom = 333.0
 scale = Vector2(0.2997877, 0.30507243)
-theme = ExtResource("2_c7cfo")
-theme_override_fonts/font = ExtResource("1_oba2n")
+theme = ExtResource("6_oksxd")
+theme_override_fonts/font = ExtResource("4_vqtly")
 theme_override_font_sizes/font_size = 160
 text = "Select"
 
@@ -118,23 +119,23 @@ scale = Vector2(0.3, 0.3)
 
 [node name="Survival" type="Button" parent="Game_mode/VBoxContainer" unique_id=1764851834]
 layout_mode = 2
-theme = ExtResource("2_c7cfo")
-theme_override_fonts/font = ExtResource("1_oba2n")
+theme = ExtResource("6_oksxd")
+theme_override_fonts/font = ExtResource("4_vqtly")
 theme_override_font_sizes/font_size = 160
 text = "Survival"
 
 [node name="Endless" type="Button" parent="Game_mode/VBoxContainer" unique_id=370679795]
 layout_mode = 2
-theme = ExtResource("2_c7cfo")
-theme_override_fonts/font = ExtResource("1_oba2n")
+theme = ExtResource("6_oksxd")
+theme_override_fonts/font = ExtResource("4_vqtly")
 theme_override_font_sizes/font_size = 160
 text = "Endless"
 
 [node name="Immortal" type="Button" parent="Game_mode/VBoxContainer" unique_id=675059608]
 custom_minimum_size = Vector2(0, 125)
 layout_mode = 2
-theme = ExtResource("2_c7cfo")
-theme_override_fonts/font = ExtResource("1_oba2n")
+theme = ExtResource("6_oksxd")
+theme_override_fonts/font = ExtResource("4_vqtly")
 theme_override_font_sizes/font_size = 160
 text = "Immortal"
 
@@ -142,7 +143,7 @@ text = "Immortal"
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("5_kpvrn")
+script = ExtResource("8_a1n7v")
 
 [node name="Difficulty_label" type="Label" parent="Difficulty" unique_id=492004640]
 layout_mode = 0
@@ -151,7 +152,7 @@ offset_top = 249.0
 offset_right = 1039.0
 offset_bottom = 359.0
 scale = Vector2(0.3, 0.3)
-theme_override_fonts/font = ExtResource("1_oba2n")
+theme_override_fonts/font = ExtResource("4_vqtly")
 theme_override_font_sizes/font_size = 160
 text = "Difficulty:"
 horizontal_alignment = 1
@@ -163,8 +164,8 @@ offset_top = 247.0
 offset_right = 1386.0
 offset_bottom = 388.0
 scale = Vector2(0.2997877, 0.30507243)
-theme = ExtResource("2_c7cfo")
-theme_override_fonts/font = ExtResource("1_oba2n")
+theme = ExtResource("6_oksxd")
+theme_override_fonts/font = ExtResource("4_vqtly")
 theme_override_font_sizes/font_size = 160
 text = "Select"
 
@@ -210,36 +211,36 @@ alignment = 1
 
 [node name="Very_easy" type="Button" parent="Difficulty/VBoxContainer" unique_id=2097746855]
 layout_mode = 2
-theme = ExtResource("2_c7cfo")
-theme_override_fonts/font = ExtResource("1_oba2n")
+theme = ExtResource("6_oksxd")
+theme_override_fonts/font = ExtResource("4_vqtly")
 theme_override_font_sizes/font_size = 160
 text = "Peaceful"
 
 [node name="Easy" type="Button" parent="Difficulty/VBoxContainer" unique_id=606949396]
 layout_mode = 2
-theme = ExtResource("2_c7cfo")
-theme_override_fonts/font = ExtResource("1_oba2n")
+theme = ExtResource("6_oksxd")
+theme_override_fonts/font = ExtResource("4_vqtly")
 theme_override_font_sizes/font_size = 160
 text = "Easy"
 
 [node name="Normal" type="Button" parent="Difficulty/VBoxContainer" unique_id=744690236]
 layout_mode = 2
-theme = ExtResource("2_c7cfo")
-theme_override_fonts/font = ExtResource("1_oba2n")
+theme = ExtResource("6_oksxd")
+theme_override_fonts/font = ExtResource("4_vqtly")
 theme_override_font_sizes/font_size = 160
 text = "Normal"
 
 [node name="Hard" type="Button" parent="Difficulty/VBoxContainer" unique_id=951629969]
 layout_mode = 2
-theme = ExtResource("2_c7cfo")
-theme_override_fonts/font = ExtResource("1_oba2n")
+theme = ExtResource("6_oksxd")
+theme_override_fonts/font = ExtResource("4_vqtly")
 theme_override_font_sizes/font_size = 160
 text = "Hard"
 
 [node name="Insane" type="Button" parent="Difficulty/VBoxContainer" unique_id=1042397266]
 layout_mode = 2
-theme = ExtResource("2_c7cfo")
-theme_override_fonts/font = ExtResource("1_oba2n")
+theme = ExtResource("6_oksxd")
+theme_override_fonts/font = ExtResource("4_vqtly")
 theme_override_font_sizes/font_size = 160
 text = "Insane"
 
@@ -247,7 +248,7 @@ text = "Insane"
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("8_kpvrn")
+script = ExtResource("9_du4rq")
 
 [node name="Label" type="Label" parent="Commands" unique_id=1430012478]
 layout_mode = 0
@@ -256,7 +257,7 @@ offset_top = 305.0
 offset_right = 995.0
 offset_bottom = 415.0
 scale = Vector2(0.3, 0.3)
-theme_override_fonts/font = ExtResource("1_oba2n")
+theme_override_fonts/font = ExtResource("4_vqtly")
 theme_override_font_sizes/font_size = 160
 text = "Commands:"
 
@@ -267,8 +268,8 @@ offset_top = 303.00003
 offset_right = 1386.0
 offset_bottom = 444.00003
 scale = Vector2(0.2997877, 0.30507243)
-theme = ExtResource("2_c7cfo")
-theme_override_fonts/font = ExtResource("1_oba2n")
+theme = ExtResource("6_oksxd")
+theme_override_fonts/font = ExtResource("4_vqtly")
 theme_override_font_sizes/font_size = 160
 text = "Select"
 
@@ -314,15 +315,15 @@ alignment = 1
 
 [node name="Enable" type="Button" parent="Commands/VBoxContainer" unique_id=1578137686]
 layout_mode = 2
-theme = ExtResource("2_c7cfo")
-theme_override_fonts/font = ExtResource("1_oba2n")
+theme = ExtResource("6_oksxd")
+theme_override_fonts/font = ExtResource("4_vqtly")
 theme_override_font_sizes/font_size = 160
 text = "Enable"
 
 [node name="Disable" type="Button" parent="Commands/VBoxContainer" unique_id=686842268]
 layout_mode = 2
-theme = ExtResource("2_c7cfo")
-theme_override_fonts/font = ExtResource("1_oba2n")
+theme = ExtResource("6_oksxd")
+theme_override_fonts/font = ExtResource("4_vqtly")
 theme_override_font_sizes/font_size = 160
 text = "Disable"
 
@@ -330,7 +331,7 @@ text = "Disable"
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("10_0acd5")
+script = ExtResource("10_is8ur")
 
 [node name="Label" type="Label" parent="Seed" unique_id=595847230]
 layout_mode = 0
@@ -339,21 +340,22 @@ offset_top = 360.0
 offset_right = 714.0
 offset_bottom = 470.0
 scale = Vector2(0.3, 0.3)
-theme_override_fonts/font = ExtResource("1_oba2n")
+theme_override_fonts/font = ExtResource("4_vqtly")
 theme_override_font_sizes/font_size = 160
 text = "Seed:"
 
-[node name="TextEdit" type="TextEdit" parent="Seed" unique_id=1379524905]
+[node name="TextEdit" type="LineEdit" parent="Seed" unique_id=947084699]
 layout_mode = 0
 offset_left = 589.0
 offset_top = 360.0
 offset_right = 1369.0
 offset_bottom = 490.0
 scale = Vector2(0.3, 0.3)
-theme_override_fonts/font = ExtResource("1_oba2n")
+theme_override_fonts/font = ExtResource("4_vqtly")
 theme_override_font_sizes/font_size = 160
 theme_override_styles/normal = SubResource("StyleBoxEmpty_0acd5")
 placeholder_text = "  Type here"
+alignment = 1
 emoji_menu_enabled = false
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Seed/TextEdit" unique_id=1334100353]
@@ -364,7 +366,7 @@ offset_top = -6.6666665
 offset_right = 90.0
 offset_bottom = 11.333334
 scale = Vector2(8, 8)
-texture = ExtResource("2_1nqjl")
+texture = ExtResource("7_vh3jy")
 region_rect = Rect2(87, 132, 14, 14)
 patch_margin_left = 4
 patch_margin_top = 5
@@ -378,8 +380,8 @@ offset_top = 358.0
 offset_right = 1637.0
 offset_bottom = 501.0
 scale = Vector2(0.3, 0.3)
-theme = ExtResource("2_c7cfo")
-theme_override_fonts/font = ExtResource("1_oba2n")
+theme = ExtResource("6_oksxd")
+theme_override_fonts/font = ExtResource("4_vqtly")
 theme_override_font_sizes/font_size = 160
 text = "Random"
 
@@ -389,7 +391,7 @@ layout_mode = 0
 offset_right = 100.0
 offset_bottom = 17.9
 scale = Vector2(8, 8)
-texture = ExtResource("2_1nqjl")
+texture = ExtResource("7_vh3jy")
 region_rect = Rect2(87, 132, 14, 14)
 patch_margin_left = 4
 patch_margin_top = 5
@@ -400,7 +402,6 @@ patch_margin_bottom = 4
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("11_ypdgl")
 
 [node name="Label" type="Label" parent="Advanced" unique_id=344780804]
 layout_mode = 0
@@ -409,7 +410,7 @@ offset_top = 414.00003
 offset_right = 949.0
 offset_bottom = 524.0
 scale = Vector2(0.3, 0.3)
-theme_override_fonts/font = ExtResource("1_oba2n")
+theme_override_fonts/font = ExtResource("4_vqtly")
 theme_override_font_sizes/font_size = 160
 text = "Advanced:"
 horizontal_alignment = 1
@@ -421,7 +422,7 @@ offset_top = 413.0
 offset_right = 1386.0
 offset_bottom = 556.0
 scale = Vector2(0.3, 0.3)
-theme = ExtResource("2_c7cfo")
+theme = ExtResource("6_oksxd")
 text = "Select"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Advanced/Button" unique_id=910728804]
@@ -430,7 +431,7 @@ layout_mode = 0
 offset_right = 100.0
 offset_bottom = 17.9
 scale = Vector2(8, 8)
-texture = ExtResource("2_1nqjl")
+texture = ExtResource("7_vh3jy")
 region_rect = Rect2(87, 132, 14, 14)
 patch_margin_left = 4
 patch_margin_top = 5
@@ -444,7 +445,7 @@ offset_top = 515.0
 offset_right = 1216.0
 offset_bottom = 652.0
 scale = Vector2(0.4, 0.4)
-theme = ExtResource("2_c7cfo")
+theme = ExtResource("6_oksxd")
 text = "Start game"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Start_game" unique_id=1695962382]
@@ -453,12 +454,16 @@ layout_mode = 0
 offset_right = 100.0
 offset_bottom = 17.0
 scale = Vector2(8, 8)
-texture = ExtResource("2_1nqjl")
+texture = ExtResource("7_vh3jy")
 region_rect = Rect2(87, 132, 14, 14)
 patch_margin_left = 4
 patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 4
+
+[node name="Advanced_settings" parent="." unique_id=1502783195 instance=ExtResource("11_jp1el")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="Game_mode/Button" to="Game_mode" method="_on_button_pressed"]
 [connection signal="pressed" from="Game_mode/VBoxContainer/Survival" to="Game_mode" method="_on_survival_pressed"]
@@ -474,5 +479,5 @@ patch_margin_bottom = 4
 [connection signal="pressed" from="Commands/VBoxContainer/Enable" to="Commands" method="_on_enable_pressed"]
 [connection signal="pressed" from="Commands/VBoxContainer/Disable" to="Commands" method="_on_disable_pressed"]
 [connection signal="pressed" from="Seed/Button" to="Seed" method="_on_button_pressed"]
-[connection signal="pressed" from="Advanced/Button" to="Advanced" method="_on_button_pressed"]
+[connection signal="pressed" from="Advanced/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Start_game" to="." method="_on_start_game_pressed"]
