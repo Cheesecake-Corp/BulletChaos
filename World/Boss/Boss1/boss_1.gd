@@ -3,6 +3,7 @@ extends Room
 @onready var timer: Timer = $Timer
 var spawned = false
 func _init() -> void:
+	has_stuff = false
 	size = {}
 	navsq = Vector2(48,28)
 	size[0] = {}

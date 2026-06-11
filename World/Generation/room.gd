@@ -6,9 +6,10 @@ var exits = []
 var size = {}
 var navsq = Vector2()
 var complete := false
+var has_stuff := true
 
 func spawn():
 	var dir = scene_file_path.get_base_dir()
 	var path = dir.path_join("Stuff.tscn")
-	if FileAccess.file_exists(path):
+	if has_stuff:
 		add_child(load(path).instantiate())
