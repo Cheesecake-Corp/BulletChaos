@@ -41,24 +41,23 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -206.255
-offset_right = 300.0
-offset_bottom = 243.74481
+offset_left = -1084.7917
+offset_top = -677.1152
+offset_right = 1084.7917
+offset_bottom = 677.1152
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.3, 0.3)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme = ExtResource("2_trk23")
+vertical_scroll_mode = 2
 
-[node name="Control" type="Control" parent="ScrollContainer" unique_id=732027598]
+[node name="Control" type="MarginContainer" parent="ScrollContainer" unique_id=1685036837]
 layout_mode = 2
 
 [node name="Grid" type="GridContainer" parent="ScrollContainer/Control" unique_id=648962672]
 layout_direction = 2
-layout_mode = 0
-offset_right = 2400.0
-offset_bottom = 2642.0
-scale = Vector2(0.3, 0.3)
+layout_mode = 2
 theme_override_constants/h_separation = 100
 theme_override_constants/v_separation = 12
 columns = 2

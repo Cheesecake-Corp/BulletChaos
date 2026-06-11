@@ -13,10 +13,6 @@ var room_manager : EnemySpawner
 func _ready() -> void:
 	health = MAX_HEALTH * GAME.enemies_stats_set["health_multiplier"]
 	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
 	
 func take_damage(damage : float):
 	health -= damage

@@ -27,7 +27,7 @@ func _on_timer_timeout() -> void:
 	if enemies:
 		return
 	var n = 0
-	var parent = get_parent()
+	var parent = get_parent().get_parent()
 	while n < enemy_count * GAME.difficulty:
 		var enemy : Enemy
 		if randf() < chance_bot:

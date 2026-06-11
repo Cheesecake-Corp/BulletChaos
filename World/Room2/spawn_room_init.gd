@@ -1,7 +1,7 @@
 extends Room
 
 func _init() -> void:
-	navsq = Vector2(33,20)
+	navsq = Vector2(32,19)
 	size = {}
 	size[0] = {}
 	size[0]["position"] = Vector2i(0,2)
