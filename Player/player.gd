@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-### BASE VALUES PLAYER #OUTDATED - UNUSED
+### BASE VALUES PLAYER OUTDATED - UNUSED
 @export var BASE_SPEED: = 150.0
 @export var BASE_MAX_HEALTH: = 100.0
 @export var BASE_DASH_SPEED := 4.0
@@ -51,6 +51,7 @@ var last_shield: float = 0.0
 @onready var upgrade: CanvasLayer = $Upgrade
 @onready var upgrade_script = $Upgrade/UpgradeGUI/Window
 @onready var upgrade_grid = $Upgrade/UpgradeGUI/Window/UpgradesScroll/MarginContainer/GridContainer
+@onready var pause: CanvasLayer = $Pause
 
 var dash_timer := 0.0
 var cooldown_timer := 0.0
@@ -121,6 +122,7 @@ func _ready() -> void:
 		var u = WeaponModInstance.new()
 		u.data = n
 		weapon_upgrades.append(u)
+	pause.visible = false
 	GAME.register_player(self)
 
 
@@ -227,22 +229,34 @@ func level_completed():
 func _physics_process(_delta: float) -> void:
 	if not is_inside_tree():
 		return
+	
 	if(Input.is_action_just_pressed("next_level")):
 		level_completed()
+	
 	if(Input.is_action_just_pressed("restart")):
 		
 		GAME.GAME_LEVEL = -1
 		get_tree().change_scene_to_file("uid://piu0jen1j5xh")
 		
 		return
+	
+	if Input.is_action_just_pressed("pause"):
+		pause.visible = !pause.visible
+		if pause.visible:
+			Engine.time_scale = 0
+		else:
+			Engine.time_scale = 1
+	
 	if(Input.is_action_just_pressed("inventory")):
 		if upgrade.visible:
 			hide_upgrade()
 		else:
 			show_upgrade()
-	if upgrade.visible:
+	
+	if upgrade.visible or pause.visible:
 		camera_body.linear_velocity = -camera_body.position*5 #Camera stops when inventory is active
-		return
+		return #Stops rest of code - no movement, shooting, dashing
+	
 	# gets movement input
 	dash_progress_bar.value = (1/dash_cooldown-cooldown_timer)/(1/dash_cooldown)*dash_progress_bar.max_value
 	var horizontal := Input.get_axis("go_left","go_right")

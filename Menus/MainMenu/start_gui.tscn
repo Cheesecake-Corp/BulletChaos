@@ -1,7 +1,5 @@
 [gd_scene format=3 uid="uid://df1rk5tdnla65"]
 
-[ext_resource type="Texture2D" uid="uid://dwh4jbx2u41ed" path="res://Assets/Micro Icon Pack/Paint/3. Color Picker.png" id="1_gujj0"]
-[ext_resource type="Script" uid="uid://1vi1lcbcln6" path="res://Menus/MainMenu/cursor.gd" id="2_b2d4t"]
 [ext_resource type="Texture2D" uid="uid://dm5rtkc7osw4" path="res://Assets/Borders/Default/Transparent center/panel-transparent-center-000.png" id="3_b2d4t"]
 [ext_resource type="Script" uid="uid://b1q7dfosv57od" path="res://Menus/MainMenu/StartGame.gd" id="4_f7tbs"]
 [ext_resource type="Texture2D" uid="uid://dh6vror533ec8" path="res://Assets/Borders/Default/Transparent border/panel-transparent-border-002.png" id="4_hdl0b"]
@@ -31,14 +29,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_frnrg")
 expand_mode = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=456404264]
-z_index = 100
-position = Vector2(576, 352)
-scale = Vector2(7.4166665, 7.4166665)
-texture = ExtResource("1_gujj0")
-flip_v = true
-script = ExtResource("2_b2d4t")
 
 [node name="TextureButton" type="TextureButton" parent="." unique_id=873207185]
 layout_mode = 1

@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bw58q6f1eqm4u"]
 
+[ext_resource type="Script" uid="uid://ctcpxkaooi8vp" path="res://Menus/StartGUI/Controls_GUI/controls_gui.gd" id="1_71r5x"]
 [ext_resource type="FontFile" uid="uid://b3fdd81q33fui" path="res://Assets/ByteBounce.ttf" id="1_btlm3"]
 [ext_resource type="PackedScene" uid="uid://bihu3v4jiawj7" path="res://Menus/cursor.tscn" id="1_trk23"]
 [ext_resource type="Theme" uid="uid://cc8jdtcmxra4m" path="res://Menus/scroll_theme.tres" id="2_trk23"]
@@ -17,6 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_71r5x")
 
 [node name="Sprite2D" parent="." unique_id=662005755 instance=ExtResource("1_trk23")]
 
@@ -565,3 +567,110 @@ patch_margin_left = 4
 patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 4
+
+[node name="Reset" type="Button" parent="." unique_id=775556727]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -544.0
+offset_top = 188.0
+offset_right = 256.0
+offset_bottom = 328.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme = ExtResource("3_71r5x")
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "Reset"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Reset" unique_id=22745473]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -8.800003
+offset_right = 50.0
+offset_bottom = 8.800003
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(8, 8)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("4_4sulv")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Apply" type="Button" parent="." unique_id=683999258]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = 188.0
+offset_right = 544.0
+offset_bottom = 328.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme = ExtResource("3_71r5x")
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "Apply"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Apply" unique_id=1470713897]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -8.800003
+offset_right = 50.0
+offset_bottom = 8.800003
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(8, 8)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("4_4sulv")
+region_rect = Rect2(87, 132, 14, 14)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[connection signal="pressed" from="ScrollContainer/Control/Grid/Move_up" to="." method="_on_move_up_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Grid/Move_down" to="." method="_on_move_down_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Grid/Move_left" to="." method="_on_move_left_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Grid/Move_right" to="." method="_on_move_right_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Grid/Shoot" to="." method="_on_shoot_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Grid/Reload" to="." method="_on_reload_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Grid/Dash" to="." method="_on_dash_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Grid/Inventory" to="." method="_on_inventory_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Grid/Inventory_switch" to="." method="_on_inventory_switch_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Grid/Inventory_upgrade" to="." method="_on_inventory_upgrade_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Grid/Inventory_apply" to="." method="_on_inventory_apply_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Grid/Inventory_reset" to="." method="_on_inventory_reset_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Grid/Pet" to="." method="_on_pet_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Grid/Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Grid/Hide_warning" to="." method="_on_hide_warning_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Grid/Enter" to="." method="_on_enter_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Grid/Main_menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Grid/Next_level" to="." method="_on_next_level_pressed"]
+[connection signal="pressed" from="Reset" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="Apply" to="." method="_on_apply_pressed"]

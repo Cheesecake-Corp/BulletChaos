@@ -5,6 +5,7 @@ extends Control
 @onready var commands: Control = $Commands
 @onready var advanced: Control = $Advanced
 @onready var advanced_settings: Control = $Advanced_settings
+@onready var seed_control: Control = $Seed
 
 var player_stats_set : Dictionary = {}
 
@@ -48,18 +49,21 @@ func apply(): #collects all data in this node (advanced stay stored in advanced 
 
 
 func apply_basic():
+	game_mode_value = game_mode.mode
+	difficulty_value = difficulty.diff
+	commands_value = commands.commands
+	seed_value = seed_control.seed
+	
 	match game_mode_value:
 		"Survival": #Will be used for enabling story mode, starting cutscene
 			pass
 		"Endless": #Will be used for engless amount of levels, without ending
 			pass
 		"Immortal":
-			GAME.player_base_stats = {
-				"BASE_HEALTH": INF,
-				"BASE_SHIELD": INF,
-				"BASE_SHIELD_REGEN": INF,
-				"BASE_DASH_DELAY": 0,
-			}
+			GAME.player_base_stats["BASE_HEALTH"] = 9999999
+			GAME.player_base_stats["BASE_SHIELD"] = 9999999
+			GAME.player_base_stats["BASE_SHIELD_REGEN"] = 9999999
+			GAME.player_base_stats["BASE_DASH_DELAY"] = INF
 	
 	match difficulty_value:
 		"Peaceful":

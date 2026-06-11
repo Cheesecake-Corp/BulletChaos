@@ -472,6 +472,7 @@ layout_mode = 1
 [connection signal="pressed" from="Commands/Button" to="Commands" method="_on_button_pressed"]
 [connection signal="pressed" from="Commands/VBoxContainer/Enable" to="Commands" method="_on_enable_pressed"]
 [connection signal="pressed" from="Commands/VBoxContainer/Disable" to="Commands" method="_on_disable_pressed"]
+[connection signal="text_changed" from="Seed/TextEdit" to="Seed" method="_on_text_edit_text_changed"]
 [connection signal="pressed" from="Seed/Button" to="Seed" method="_on_button_pressed"]
 [connection signal="pressed" from="Advanced/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Start_game" to="." method="_on_start_game_pressed"]

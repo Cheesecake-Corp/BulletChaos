@@ -88,7 +88,7 @@ func start_gen(maxcount: int):
 	else: 
 		var p : PackedScene = load("res://Player/player.tscn")
 		var player : Player = p.instantiate() #Creates player
-		GAME.entities_node.call_deferred("add_child", player)
+		GAME.entities_node.add_child(player)
 		player.global_position = Vector2(spawn.size[0]["size"].x,spawn.size[0]["size"].y+2)*8
 		GAME.GAME_LEVEL = 0
 	maxx = spawn.navsq.x

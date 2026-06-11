@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cqsc7551txqpp" path="res://HUD/crosshair.gd" id="10_apopc"]
 [ext_resource type="PackedScene" uid="uid://i0o0ku0gbxsd" path="res://Menus/UpgradesGUI/upgrade_gui.tscn" id="10_x3vf3"]
 [ext_resource type="Texture2D" uid="uid://7ihui1eeqfpr" path="res://Assets/UI/crosshair.png" id="11_5htga"]
+[ext_resource type="PackedScene" uid="uid://cqt1s11ec6ief" path="res://Menus/PauseMenu/Pause_menu.tscn" id="12_5htga"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5grkg"]
 radius = 5.0
@@ -705,6 +706,10 @@ script = ExtResource("10_apopc")
 z_index = 1
 scale = Vector2(2, 2)
 texture = ExtResource("11_5htga")
+
+[node name="Pause" type="CanvasLayer" parent="." unique_id=193728747]
+
+[node name="PauseMenu" parent="Pause" unique_id=1966887987 instance=ExtResource("12_5htga")]
 
 [connection signal="health_change" from="." to="Hud" method="_on_player_health_change"]
 [connection signal="shield_change" from="." to="Hud" method="_on_player_shield_change"]

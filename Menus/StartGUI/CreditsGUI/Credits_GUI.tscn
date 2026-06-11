@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://blqre4s8hgo02"]
+
+[ext_resource type="Script" uid="uid://ctwskueohsktr" path="res://Menus/StartGUI/CreditsGUI/credits_gui.gd" id="1_sfk1m"]
+
+[node name="CreditsGui" type="Control" unique_id=1345167571]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sfk1m")
+
+[node name="Label" type="Label" parent="." unique_id=987662418]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -205.0
+offset_right = 205.0
+offset_bottom = 110.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 160
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=993191169]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1500.0
+offset_top = -722.01
+offset_right = 1500.0
+offset_bottom = 777.99
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_font_sizes/normal_font_size = 160
+theme_override_font_sizes/bold_font_size = 160
+theme_override_font_sizes/bold_italics_font_size = 160
+theme_override_font_sizes/italics_font_size = 160
+theme_override_font_sizes/mono_font_size = 160
+bbcode_enabled = true
+text = "[color=red]Developed by:[/color]
+[color=cyan]Hogofogo0
+Cube[/color]
+
+[color=red]Assets:[/color]
+Catacombs - Szadi art
+Moon Mage - RusKom
+Ramses - David G
+Enemies - Penusbmic
+Weapon - VladPenn
+
+[color=green]Thanks for playing![/color]"
+horizontal_alignment = 1
+vertical_alignment = 1
