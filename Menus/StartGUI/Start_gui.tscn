@@ -315,8 +315,14 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Version" type="Label" parent="." unique_id=1275797235]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 11.0
+offset_left = 477.0
+offset_top = 592.0
+offset_right = 1137.0
+offset_bottom = 702.0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("4_4v3sb")
+theme_override_font_sizes/font_size = 160
+text = "Version: 0.1"
 
 [connection signal="mouse_entered" from="New_game" to="New_game" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="New_game" to="New_game" method="_on_mouse_exited"]

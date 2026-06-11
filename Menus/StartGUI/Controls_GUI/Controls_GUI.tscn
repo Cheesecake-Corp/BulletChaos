@@ -1,0 +1,568 @@
+[gd_scene format=3 uid="uid://bw58q6f1eqm4u"]
+
+[ext_resource type="FontFile" uid="uid://b3fdd81q33fui" path="res://Assets/ByteBounce.ttf" id="1_btlm3"]
+[ext_resource type="PackedScene" uid="uid://bihu3v4jiawj7" path="res://Menus/cursor.tscn" id="1_trk23"]
+[ext_resource type="Theme" uid="uid://cc8jdtcmxra4m" path="res://Menus/scroll_theme.tres" id="2_trk23"]
+[ext_resource type="Theme" uid="uid://cc74fbry147qh" path="res://Menus/StartGUI/Theme_1.tres" id="3_71r5x"]
+[ext_resource type="Texture2D" uid="uid://cpq05libleskg" path="res://Assets/GUI/gdp_styles.png" id="4_4sulv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j63de"]
+atlas = ExtResource("4_4sulv")
+region = Rect2(87, 132, 14, 14)
+
+[node name="Controls_GUI" type="Control" unique_id=1868854212]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" parent="." unique_id=662005755 instance=ExtResource("1_trk23")]
+
+[node name="Label" type="Label" parent="." unique_id=397348360]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -245.0
+offset_right = 245.0
+offset_bottom = 110.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1916268926]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -206.255
+offset_right = 300.0
+offset_bottom = 243.74481
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme = ExtResource("2_trk23")
+
+[node name="Control" type="Control" parent="ScrollContainer" unique_id=732027598]
+layout_mode = 2
+
+[node name="Grid" type="GridContainer" parent="ScrollContainer/Control" unique_id=648962672]
+layout_direction = 2
+layout_mode = 0
+offset_right = 2400.0
+offset_bottom = 2642.0
+scale = Vector2(0.3, 0.3)
+theme_override_constants/h_separation = 100
+theme_override_constants/v_separation = 12
+columns = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/Grid" unique_id=209982548]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "Move Up"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Move_up" type="Button" parent="ScrollContainer/Control/Grid" unique_id=551117767]
+custom_minimum_size = Vector2(800, 143.5)
+layout_mode = 2
+theme = ExtResource("3_71r5x")
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "W"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Grid/Move_up" unique_id=483503362]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 17.92
+scale = Vector2(8, 8)
+texture = SubResource("AtlasTexture_j63de")
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Label2" type="Label" parent="ScrollContainer/Control/Grid" unique_id=950190037]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "Move Down"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Move_down" type="Button" parent="ScrollContainer/Control/Grid" unique_id=1251208392]
+custom_minimum_size = Vector2(800, 143.5)
+layout_mode = 2
+theme = ExtResource("3_71r5x")
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "S"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Grid/Move_down" unique_id=920652739]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 17.92
+scale = Vector2(8, 8)
+texture = SubResource("AtlasTexture_j63de")
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Label3" type="Label" parent="ScrollContainer/Control/Grid" unique_id=536579284]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "Move Left"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Move_left" type="Button" parent="ScrollContainer/Control/Grid" unique_id=1687387212]
+custom_minimum_size = Vector2(800, 143.5)
+layout_mode = 2
+theme = ExtResource("3_71r5x")
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "A"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Grid/Move_left" unique_id=1021878407]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 17.92
+scale = Vector2(8, 8)
+texture = SubResource("AtlasTexture_j63de")
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Label4" type="Label" parent="ScrollContainer/Control/Grid" unique_id=1859707099]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "Move Right"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Move_right" type="Button" parent="ScrollContainer/Control/Grid" unique_id=1449309489]
+custom_minimum_size = Vector2(800, 143.5)
+layout_mode = 2
+theme = ExtResource("3_71r5x")
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "D"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Grid/Move_right" unique_id=606815109]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 17.92
+scale = Vector2(8, 8)
+texture = SubResource("AtlasTexture_j63de")
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Label5" type="Label" parent="ScrollContainer/Control/Grid" unique_id=1815439662]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "Shoot"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shoot" type="Button" parent="ScrollContainer/Control/Grid" unique_id=1867174100]
+custom_minimum_size = Vector2(800, 143.5)
+layout_mode = 2
+theme = ExtResource("3_71r5x")
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "RMB"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Grid/Shoot" unique_id=1791410068]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 17.92
+scale = Vector2(8, 8)
+texture = SubResource("AtlasTexture_j63de")
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Label6" type="Label" parent="ScrollContainer/Control/Grid" unique_id=518500286]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "Reload"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Reload" type="Button" parent="ScrollContainer/Control/Grid" unique_id=1005367732]
+custom_minimum_size = Vector2(800, 143.5)
+layout_mode = 2
+theme = ExtResource("3_71r5x")
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "R"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Grid/Reload" unique_id=1533080785]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 17.92
+scale = Vector2(8, 8)
+texture = SubResource("AtlasTexture_j63de")
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Label7" type="Label" parent="ScrollContainer/Control/Grid" unique_id=1538228965]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "Dash"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dash" type="Button" parent="ScrollContainer/Control/Grid" unique_id=1730483855]
+custom_minimum_size = Vector2(800, 143.5)
+layout_mode = 2
+theme = ExtResource("3_71r5x")
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "Shift"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Grid/Dash" unique_id=11270712]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 17.92
+scale = Vector2(8, 8)
+texture = SubResource("AtlasTexture_j63de")
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Label8" type="Label" parent="ScrollContainer/Control/Grid" unique_id=982301517]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "Inventory"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Inventory" type="Button" parent="ScrollContainer/Control/Grid" unique_id=1348617814]
+custom_minimum_size = Vector2(800, 143.5)
+layout_mode = 2
+theme = ExtResource("3_71r5x")
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "I and X"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Grid/Inventory" unique_id=1944306096]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 17.92
+scale = Vector2(8, 8)
+texture = SubResource("AtlasTexture_j63de")
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Label9" type="Label" parent="ScrollContainer/Control/Grid" unique_id=678271609]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "Inventory switch"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Inventory_switch" type="Button" parent="ScrollContainer/Control/Grid" unique_id=1938561728]
+custom_minimum_size = Vector2(800, 143.5)
+layout_mode = 2
+theme = ExtResource("3_71r5x")
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "Y"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Grid/Inventory_switch" unique_id=1495644635]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 17.92
+scale = Vector2(8, 8)
+texture = SubResource("AtlasTexture_j63de")
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Label10" type="Label" parent="ScrollContainer/Control/Grid" unique_id=1017576715]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "Inventory upgrade"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Inventory_upgrade" type="Button" parent="ScrollContainer/Control/Grid" unique_id=1837181689]
+custom_minimum_size = Vector2(800, 143.5)
+layout_mode = 2
+theme = ExtResource("3_71r5x")
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "Q"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Grid/Inventory_upgrade" unique_id=552844367]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 17.92
+scale = Vector2(8, 8)
+texture = SubResource("AtlasTexture_j63de")
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Label11" type="Label" parent="ScrollContainer/Control/Grid" unique_id=573720664]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "Inventory apply"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Inventory_apply" type="Button" parent="ScrollContainer/Control/Grid" unique_id=883430701]
+custom_minimum_size = Vector2(800, 143.5)
+layout_mode = 2
+theme = ExtResource("3_71r5x")
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "A"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Grid/Inventory_apply" unique_id=1084781828]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 17.92
+scale = Vector2(8, 8)
+texture = SubResource("AtlasTexture_j63de")
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Label12" type="Label" parent="ScrollContainer/Control/Grid" unique_id=264791295]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "Inventory reset"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Inventory_reset" type="Button" parent="ScrollContainer/Control/Grid" unique_id=1434953804]
+custom_minimum_size = Vector2(800, 143.5)
+layout_mode = 2
+theme = ExtResource("3_71r5x")
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "T"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Grid/Inventory_reset" unique_id=1263143864]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 17.92
+scale = Vector2(8, 8)
+texture = SubResource("AtlasTexture_j63de")
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Label13" type="Label" parent="ScrollContainer/Control/Grid" unique_id=437071567]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "Pet"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pet" type="Button" parent="ScrollContainer/Control/Grid" unique_id=372956822]
+custom_minimum_size = Vector2(800, 143.5)
+layout_mode = 2
+theme = ExtResource("3_71r5x")
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "B"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Grid/Pet" unique_id=735864267]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 17.92
+scale = Vector2(8, 8)
+texture = SubResource("AtlasTexture_j63de")
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Label14" type="Label" parent="ScrollContainer/Control/Grid" unique_id=1196774783]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "Pause"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pause" type="Button" parent="ScrollContainer/Control/Grid" unique_id=1585221178]
+custom_minimum_size = Vector2(800, 143.5)
+layout_mode = 2
+theme = ExtResource("3_71r5x")
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "Esc"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Grid/Pause" unique_id=755581291]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 17.92
+scale = Vector2(8, 8)
+texture = SubResource("AtlasTexture_j63de")
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Label15" type="Label" parent="ScrollContainer/Control/Grid" unique_id=902528130]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "Hide warning"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hide_warning" type="Button" parent="ScrollContainer/Control/Grid" unique_id=1498167537]
+custom_minimum_size = Vector2(800, 143.5)
+layout_mode = 2
+theme = ExtResource("3_71r5x")
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "E"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Grid/Hide_warning" unique_id=1086312784]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 17.92
+scale = Vector2(8, 8)
+texture = SubResource("AtlasTexture_j63de")
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Label16" type="Label" parent="ScrollContainer/Control/Grid" unique_id=102791013]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "Enter"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Enter" type="Button" parent="ScrollContainer/Control/Grid" unique_id=1115082400]
+custom_minimum_size = Vector2(800, 143.5)
+layout_mode = 2
+theme = ExtResource("3_71r5x")
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "Enter"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Grid/Enter" unique_id=431549912]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 17.92
+scale = Vector2(8, 8)
+texture = SubResource("AtlasTexture_j63de")
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Label17" type="Label" parent="ScrollContainer/Control/Grid" unique_id=717563750]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "Main menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Main_menu" type="Button" parent="ScrollContainer/Control/Grid" unique_id=277372469]
+custom_minimum_size = Vector2(800, 143.5)
+layout_mode = 2
+theme = ExtResource("3_71r5x")
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "L"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Grid/Main_menu" unique_id=1295682355]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 17.92
+scale = Vector2(8, 8)
+texture = SubResource("AtlasTexture_j63de")
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="Label18" type="Label" parent="ScrollContainer/Control/Grid" unique_id=1926132459]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "Next level"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Next_level" type="Button" parent="ScrollContainer/Control/Grid" unique_id=2124082075]
+custom_minimum_size = Vector2(800, 143.5)
+layout_mode = 2
+theme = ExtResource("3_71r5x")
+theme_override_fonts/font = ExtResource("1_btlm3")
+theme_override_font_sizes/font_size = 160
+text = "N"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/Control/Grid/Next_level" unique_id=1539518022]
+z_index = -1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 17.92
+scale = Vector2(8, 8)
+texture = SubResource("AtlasTexture_j63de")
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4

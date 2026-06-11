@@ -347,7 +347,7 @@ scale = Vector2(0.3, 0.3)
 theme_override_fonts/font = ExtResource("4_vqtly")
 theme_override_font_sizes/font_size = 160
 theme_override_styles/normal = SubResource("StyleBoxEmpty_0acd5")
-placeholder_text = "  Type here"
+placeholder_text = "Type here"
 alignment = 1
 emoji_menu_enabled = false
 
