@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://453t4ja41tb4"]
+
+[ext_resource type="Script" uid="uid://y75ljed1kfim" path="res://Menus/next_level.gd" id="1_3vg3l"]
+
+[node name="NextLevel" type="Node" unique_id=2044558787]
+script = ExtResource("1_3vg3l")

@@ -13,6 +13,7 @@ var weapon_menu := "Revolver"
 var upgrade_menu : Inventory
 var starter_money = 0
 var entities_node : Node2D
+var GAME_LEVEL = 0
 
 ###VALUES FROM NEW_GAME_GUI
 var player_base_stats : Dictionary = {} # WORKS
@@ -25,6 +26,7 @@ var enemies_stats_set : Dictionary # {"damage_multiplier", "health_multiplier"}
 
 signal weapon_changed
 signal player_registered
+
 
 func register_player(p):
 	player = p

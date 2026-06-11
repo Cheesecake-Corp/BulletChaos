@@ -216,8 +216,23 @@ func show_upgrade():
 	Engine.time_scale = 0
 	upgrade_script.inventory_start()
 
+func level_completed():
+	reparent(get_tree().root)
+	GAME.GAME_LEVEL += 1
+	
+	get_tree().change_scene_to_file("uid://453t4ja41tb4")
 
 func _physics_process(_delta: float) -> void:
+	if not is_inside_tree():
+		return
+	if(Input.is_action_just_pressed("next_level")):
+		level_completed()
+	if(Input.is_action_just_pressed("restart")):
+		
+		GAME.GAME_LEVEL = -1
+		get_tree().change_scene_to_file("uid://piu0jen1j5xh")
+		
+		return
 	if(Input.is_action_just_pressed("inventory")):
 		if upgrade.visible:
 			hide_upgrade()
@@ -420,4 +435,5 @@ func apply_weapon_changes(make_bullets : bool = true):
 
 
 func death() -> void:
-	get_tree().change_scene_to_file("res://Menus/MainMenu/start_gui.tscn")
+	GAME.GAME_LEVEL = -1
+	get_tree().change_scene_to_file("uid://piu0jen1j5xh")

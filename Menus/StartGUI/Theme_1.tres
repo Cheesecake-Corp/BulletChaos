@@ -7,10 +7,14 @@ bg_color = Color(0.93333334, 0.93333334, 0.93333334, 0.2509804)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2lkqh"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wuest"]
+bg_color = Color(0.12835406, 0.12835406, 0.12835406, 0.651)
+
 [resource]
 Button/font_sizes/font_size = 160
 Button/fonts/font = ExtResource("1_wuest")
 Button/styles/hover = SubResource("StyleBoxFlat_2lkqh")
 Button/styles/normal = SubResource("StyleBoxEmpty_2lkqh")
+Button/styles/pressed = SubResource("StyleBoxFlat_wuest")
 Label/font_sizes/font_size = 160
 Label/fonts/font = ExtResource("1_wuest")

@@ -456,6 +456,7 @@ patch_margin_bottom = 4
 
 [node name="Advanced_settings" parent="." unique_id=1502783195 instance=ExtResource("11_jp1el")]
 visible = false
+z_index = 20
 layout_mode = 1
 
 [connection signal="pressed" from="Game_mode/Button" to="Game_mode" method="_on_button_pressed"]

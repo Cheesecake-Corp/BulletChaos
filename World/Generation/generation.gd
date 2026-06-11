@@ -60,11 +60,13 @@ func start(maxcount: int):
 	finish_exits()
 	GAME.boss_room_pos = boss_room.global_position + Vector2(boss_room.size[0]["size"]*8)
 	GAME.outline = [Vector2(minx,miny),Vector2(maxx,miny),Vector2(maxx,maxy),Vector2(minx,maxy)]
+	call_deferred("spawn_pet")
+
+func spawn_pet():
 	var pe : PackedScene = load("res://Pet/Pet.tscn")
 	var pet : Pet = pe.instantiate() #Creates pet
 	get_parent().add_child(pet)
 	pet.global_position = GAME.player.global_position
-	
 
 func start_gen(maxcount: int):
 	var spawn: Room = spawn_scene[GAME.RANDOM_GENERATION.randi_range(0,spawn_scene.size()-1)].instantiate()
@@ -72,11 +74,15 @@ func start_gen(maxcount: int):
 	#get_tree().current_scene.call_deferred("add_child", spawn)
 	spawn.global_position = Vector2i(0,0)
 	write(spawn, spawn.global_position, null, null)
-	
-	var p : PackedScene = load("res://Player/player.tscn")
-	var player : Player = p.instantiate() #Creates player
-	GAME.entities_node.add_child(player)
-	player.global_position = Vector2(spawn.size[0]["size"].x,spawn.size[0]["size"].y+2)*8
+	if GAME.GAME_LEVEL > 0:
+		GAME.player.reparent(GAME.entities_node)
+		GAME.current_weapon.level_completed()
+	else: 
+		var p : PackedScene = load("res://Player/player.tscn")
+		var player : Player = p.instantiate() #Creates player
+		GAME.entities_node.call_deferred("add_child", player)
+		player.global_position = Vector2(spawn.size[0]["size"].x,spawn.size[0]["size"].y+2)*8
+		GAME.GAME_LEVEL = 0
 	maxx = spawn.navsq.x
 	maxy = spawn.navsq.y
 	

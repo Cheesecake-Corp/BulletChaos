@@ -313,6 +313,11 @@ text = "Quit"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="Version" type="Label" parent="." unique_id=1275797235]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 11.0
+
 [connection signal="mouse_entered" from="New_game" to="New_game" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="New_game" to="New_game" method="_on_mouse_exited"]
 [connection signal="pressed" from="New_game" to="New_game" method="_on_pressed"]

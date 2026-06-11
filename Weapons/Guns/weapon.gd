@@ -44,7 +44,13 @@ func start():
 	player = GAME.player
 	player.weapon_stats_changed.connect(update_stats)
 	update_stats()
-	create_bullets()
+	add_bullets()
+
+func level_completed():
+	all_bullets.clear()
+	available_bullets.clear()
+	used_bullets.clear()
+	call_deferred("add_bullets")
 
 func add_bullets():
 	var time = bullet_scene.instantiate().get_meta("max_time")
@@ -67,24 +73,6 @@ func add_bullets():
 		all_bullets.append(b)
 		get_tree().current_scene.call_deferred("add_child", b)
 
-func create_bullets():
-	var time = bullet_scene.instantiate().get_meta("max_time")
-	for i in range((time-floor((time)/(magazine_size*(use_rate/1000)+base_reload_time/reload_speed))*base_reload_time/reload_speed)/(use_rate/shooting_speed/1000)+1):
-		var b : Projectile = bullet_scene.instantiate()
-		b.add_collision_exception_with(player)
-		b.visible = false
-		b.global_position = global_position
-		b.freeze = true
-		b.contact_monitor = true
-		b.max_contacts_reported = 1
-		
-		var a2 : Area2D = b.get_node("./Area2D")
-		a2.body_entered.connect(_on_body_entered.bind(b))
-		b.timeout.connect(_on_bullet_timeout)
-
-		available_bullets.append(b)
-		all_bullets.append(b)
-		get_tree().current_scene.call_deferred("add_child", b)
 
 
 func reload(delta):
