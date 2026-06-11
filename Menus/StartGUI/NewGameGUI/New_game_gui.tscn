@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://cu6mggfbcajbm"]
 
 [ext_resource type="Script" uid="uid://3hh5m0o55wgm" path="res://Menus/StartGUI/NewGameGUI/new_game_gui.gd" id="1_jp1el"]
-[ext_resource type="Texture2D" uid="uid://dwh4jbx2u41ed" path="res://Assets/Micro Icon Pack/Paint/3. Color Picker.png" id="2_agpv5"]
-[ext_resource type="Script" uid="uid://1vi1lcbcln6" path="res://Menus/MainMenu/cursor.gd" id="3_qmbod"]
+[ext_resource type="PackedScene" uid="uid://bihu3v4jiawj7" path="res://Menus/cursor.tscn" id="2_4konr"]
 [ext_resource type="FontFile" uid="uid://b3fdd81q33fui" path="res://Assets/ByteBounce.ttf" id="4_vqtly"]
 [ext_resource type="Script" uid="uid://bj07h2q6ips63" path="res://Menus/StartGUI/NewGameGUI/game_mode.gd" id="5_goiqj"]
 [ext_resource type="Theme" uid="uid://cc74fbry147qh" path="res://Menus/StartGUI/Theme_1.tres" id="6_oksxd"]
@@ -28,13 +27,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_jp1el")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=379816200]
-z_index = 100
-position = Vector2(576, 352)
-scale = Vector2(2.263, 2.263)
-texture = ExtResource("2_agpv5")
-flip_v = true
-script = ExtResource("3_qmbod")
+[node name="Sprite2D" parent="." unique_id=662005755 instance=ExtResource("2_4konr")]
 
 [node name="Label" type="Label" parent="." unique_id=892875646]
 layout_mode = 1

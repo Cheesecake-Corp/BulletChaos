@@ -15,8 +15,9 @@ var TIMER_MAX : float= 0.3
 var sprite_name := ""
 var enemies_node : EnemySpawner
 
-func _on_ready() -> void:
+func _ready() -> void:
 	attack_cooldown = ATTACK_COOLDOWN_MAX
+	super()
 
 func _physics_process(delta: float) -> void:
 	attack_cooldown = move_toward(attack_cooldown, 0.0, delta)

@@ -17,7 +17,7 @@ var critical_multiplier: float
 var reload_speed: float
 var magazine_size: int
 var shooting_speed: float
-var puncture: int #TODO finish adding puncture
+var puncture: int 
 
 
 var reloading_time : float = 0
@@ -157,7 +157,7 @@ func _use(b):
 	b.global_rotation = aim_angle
 	var dir = (get_global_mouse_position() - player.global_position).normalized()
 	b.linear_velocity = dir * bullet_speed * 1500
-	b.puncture += puncture
+	b.puncture = puncture + 1
 	used_bullets.append(b)
 	change_bullets.emit(loaded_ammo)
 	b.start()
@@ -174,6 +174,7 @@ func _on_body_entered(_body: Node, bullet: Projectile) -> void:
 			
 			final_damage *= critical_multiplier
 		_body.take_damage(final_damage)
+		
 		bullet.puncture -= 1
 		if bullet.puncture > 0:
 			return

@@ -12,15 +12,16 @@ var difficulty := 1
 var weapon_menu := "Revolver"
 var upgrade_menu : Inventory
 var starter_money = 0
+var entities_node : Node2D
 
 ###VALUES FROM NEW_GAME_GUI
-var player_base_stats : Dictionary = {}
-var weapon_base_stats : Dictionary = {}
-var player_upgrades_set : Array
-var weapon_upgrades_set : Array
-var currency_set : Dictionary
-var drop_chance_set : Dictionary
-var enemies_stats_set : Dictionary
+var player_base_stats : Dictionary = {} # WORKS
+var weapon_base_stats : Dictionary = {} # WORKS
+var player_upgrades_set : Array # WORKS
+var weapon_upgrades_set : Array # WORKS
+var currency_set : Dictionary # {"amount" : 0, "multiplier" : 1}
+var drop_chance_set : Dictionary # {"upgrade": 0.5, "heal": 0.5}
+var enemies_stats_set : Dictionary # {"damage_multiplier", "health_multiplier"}
 
 signal weapon_changed
 signal player_registered
@@ -34,6 +35,7 @@ func register_player(p):
 	else:
 		weap = load("res://Weapons/Guns/BasicGuns/revolver.tscn").instantiate()
 	change_weapon(weap)
+	player.processors = currency_set["amount"]
 	player_registered.emit()
 
 

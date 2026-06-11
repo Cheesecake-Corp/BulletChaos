@@ -8,9 +8,10 @@ var upgrade_resources = preload("res://Upgrades/ALLUPGRADES.tres")
 var health : float
 var alive := true
 var movement := true
+var room_manager : EnemySpawner
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	health = MAX_HEALTH
+	health = MAX_HEALTH * GAME.enemies_stats_set["health_multiplier"]
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,16 +29,16 @@ func death():
 	linear_velocity = Vector2.ZERO
 	movement = false
 	alive = false
-	get_parent().enemy_dead += 1
+	room_manager.enemy_dead += 1
 	
 	var rand = GAME.RANDOM_LOOT.randf()
 	
-	if rand > .5:
+	if rand > GAME.drop_chance_set["heal"]:
 		var canister : Node2D = load("res://InteractObjects/HealthContainer/Health_container.tscn").instantiate()
-		get_parent().room.call_deferred("add_child", canister)
+		room_manager.room.call_deferred("add_child", canister)
 		call_deferred("set_canister_pos", canister)
 		
-	elif rand > .25:
+	elif rand > 1-GAME.drop_chance_set["heal"]-GAME.drop_chance_set["upgrade"]:
 		var upgrade = upgrade_resources.upgrades[GAME.RANDOM_LOOT.randi_range(0,upgrade_resources.upgrades.size()-1)]
 		var upgrade_item : Node2D
 		if not upgrade.name in GAME.player.upgrade_resources:
@@ -47,9 +48,10 @@ func death():
 			
 		else:
 			upgrade_item = load("res://Upgrades/processor_item.tscn").instantiate() #Creates instance of upgrade_item
-			upgrade_item.amount =  GAME.RANDOM_LOOT.randi_range(10,115) #Upgrade item is on ground it is a scene
+			
+			upgrade_item.amount =  GAME.RANDOM_LOOT.randi_range(10,115) * GAME.currency_set["multiplier"]#Upgrade item is on ground it is a scene
 		
-		get_parent().room.call_deferred("add_child", upgrade_item)
+		room_manager.room.call_deferred("add_child", upgrade_item)
 		call_deferred("set_canister_pos", upgrade_item)
 		
 

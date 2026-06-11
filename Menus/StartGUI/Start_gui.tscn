@@ -3,8 +3,7 @@
 [ext_resource type="Theme" uid="uid://cc74fbry147qh" path="res://Menus/StartGUI/Theme_1.tres" id="1_3nqev"]
 [ext_resource type="Script" uid="uid://bb6ugp3bhwd6s" path="res://Menus/StartGUI/newgame.gd" id="1_fman5"]
 [ext_resource type="Texture2D" uid="uid://cpq05libleskg" path="res://Assets/GUI/gdp_styles.png" id="1_ne5re"]
-[ext_resource type="Texture2D" uid="uid://dwh4jbx2u41ed" path="res://Assets/Micro Icon Pack/Paint/3. Color Picker.png" id="3_tl8ul"]
-[ext_resource type="Script" uid="uid://1vi1lcbcln6" path="res://Menus/MainMenu/cursor.gd" id="4_3nqev"]
+[ext_resource type="PackedScene" uid="uid://bihu3v4jiawj7" path="res://Menus/cursor.tscn" id="2_nxeah"]
 [ext_resource type="FontFile" uid="uid://b3fdd81q33fui" path="res://Assets/ByteBounce.ttf" id="4_4v3sb"]
 [ext_resource type="Script" uid="uid://d2qk37dr6lvbl" path="res://Menus/StartGUI/controls.gd" id="7_p5a1o"]
 [ext_resource type="Script" uid="uid://bfwtvans7yaa3" path="res://Menus/StartGUI/credits.gd" id="8_mr3ek"]
@@ -39,13 +38,8 @@ theme_override_font_sizes/font_size = 160
 text = "Bullet Chaos"
 horizontal_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=980185587]
-z_index = 100
+[node name="Sprite2D" parent="." unique_id=662005755 instance=ExtResource("2_nxeah")]
 position = Vector2(576, 352)
-scale = Vector2(2.263, 2.263)
-texture = ExtResource("3_tl8ul")
-flip_v = true
-script = ExtResource("4_3nqev")
 
 [node name="New_game" type="Button" parent="." unique_id=255147422]
 layout_mode = 0

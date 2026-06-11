@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c6ol38wehuog1"]
 
 [ext_resource type="PackedScene" uid="uid://bpmeoyikylkwr" path="res://World/GenerationNode.tscn" id="1_ntj1k"]
+[ext_resource type="Script" uid="uid://cggebb5hutn2v" path="res://World/entities.gd" id="2_3o3iq"]
 
 [sub_resource type="Environment" id="Environment_xme8o"]
 background_mode = 3
@@ -20,3 +21,7 @@ y_sort_enabled = true
 environment = SubResource("Environment_xme8o")
 
 [node name="Generation" parent="." unique_id=1741890309 instance=ExtResource("1_ntj1k")]
+
+[node name="Entities" type="Node2D" parent="." unique_id=2115694930]
+y_sort_enabled = true
+script = ExtResource("2_3o3iq")

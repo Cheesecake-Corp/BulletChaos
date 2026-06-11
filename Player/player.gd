@@ -81,6 +81,7 @@ var weapon_stats_temp: Dictionary
 var processors : int = 0
 var energy: Dictionary
 
+
 func _ready() -> void:
 	player_stats = {
 		"health": {"name": "Health", "value": max_health, "positive": true},
@@ -111,9 +112,15 @@ func _ready() -> void:
 		"weapon_energy_used_temp": weapon_used_energy_temp,
 	}
 	for n in GAME.player_upgrades_set:
-		upgrades.append(n)
+		upgrade_resources.append(n)
+		var u = PlayerModInstance.new()
+		u.data = n
+		upgrades.append(u)
 	for n in GAME.weapon_upgrades_set:
-		weapon_upgrades.append(n)
+		upgrade_resources.append(n)
+		var u = WeaponModInstance.new()
+		u.data = n
+		weapon_upgrades.append(u)
 	GAME.register_player(self)
 
 

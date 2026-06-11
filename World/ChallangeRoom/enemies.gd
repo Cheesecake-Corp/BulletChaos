@@ -34,8 +34,9 @@ func _on_timer_timeout() -> void:
 			enemy = bot.instantiate()
 		else:
 			enemy = deer.instantiate()
+		enemy.room_manager = self
 		enemies.append(enemy)
-		add_child(enemy)
+		GAME.entities_node.add_child(enemy)
 		enemy.global_position = parent.global_position + parent.navsq*8 + Vector2(GAME.RANDOM_GENERATION.randf_range(-5,5),GAME.RANDOM_GENERATION.randf_range(-5,5))*16
 		enemy.visible = true
 		enemy.nav.target_position = enemies[n].global_position

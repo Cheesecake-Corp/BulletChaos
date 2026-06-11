@@ -17,7 +17,7 @@ var bot : Enemy
 
 func _ready() -> void:
 	speed = default_speed * speed_mult
-	damage = default_damage * damage_mult
+	damage = default_damage * damage_mult * GAME.enemies_stats_set["damage_multiplier"]
 	visible = false
 	max_contacts_reported = 1
 

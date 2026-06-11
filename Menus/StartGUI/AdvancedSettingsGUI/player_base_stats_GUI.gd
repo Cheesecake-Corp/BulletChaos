@@ -27,7 +27,7 @@ func _on_button_pressed() -> void:
 		texts[n].text = str(player_stats_set[n])
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if active:
 		if Input.is_action_just_pressed("escape"):
 			hide_control()

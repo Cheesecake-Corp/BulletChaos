@@ -18,7 +18,7 @@ func _ready() -> void:
 	for n in weapon_stats_set.size():
 		texts[n].text = str(weapon_stats_set[n])
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if active:
 		if Input.is_action_just_pressed("enter"):
 			apply()

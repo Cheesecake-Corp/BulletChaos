@@ -43,6 +43,7 @@ one_shot = true
 script = ExtResource("2_4tu7b")
 
 [node name="Enemies" type="Node2D" parent="." unique_id=1984751916]
+y_sort_enabled = true
 script = ExtResource("3_a0a5e")
 bot = ExtResource("4_u7t8g")
 deer = ExtResource("6_a0a5e")

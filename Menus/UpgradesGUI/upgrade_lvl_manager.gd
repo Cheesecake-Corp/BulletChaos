@@ -18,7 +18,7 @@ var bl : int
 var cost := 0
 var upgrade_instance : ModInstance
 
-func open_upgrades(upgrade_name : String, base_energy : int, base_level : int, stats : Array[Dictionary], upgrade : ModInstance):
+func open_upgrades(upgrade_name : String, base_energy : int, base_level : int, _stats : Array[Dictionary], upgrade : ModInstance):
 	visible=true
 	for child in parameters.get_children():
 		child.free()
@@ -31,7 +31,7 @@ func open_upgrades(upgrade_name : String, base_energy : int, base_level : int, s
 	lvl_number_old.text = str(base_level)
 	lvl_number_new.text = str(base_level)
 	upgrade_instance = upgrade
-	self.stats = stats
+	self.stats = _stats
 	for s in stats:
 		parameters.call_deferred("add_child",UPGRADE_PARAMETER.instantiate())
 	call_deferred("update_values")

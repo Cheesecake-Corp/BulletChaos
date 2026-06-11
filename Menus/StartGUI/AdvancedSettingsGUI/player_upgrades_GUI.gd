@@ -30,7 +30,7 @@ func _on_button_pressed() -> void:
 	get_parent().get_parent().get_parent().hide_buttons_and_lines(true)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if active:
 		if Input.is_action_just_pressed("escape"):
 			hide_control()
