@@ -56,12 +56,12 @@ func attack():
 	movement = true
 
 
-func take_damage(damage : float):
+func take_damage(damage : float, crit : bool):
 	if alive == true:
 		sprite.stop()
 		sprite.play("damaged")
 		sprite_name = "damaged"
-	super(damage)
+	super(damage, crit)
 
 
 func death():

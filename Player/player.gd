@@ -182,10 +182,12 @@ func spawn_afterimage():
 
 
 func handle_zoom():
+	
 	if Input.is_action_just_pressed("scroll_down"):
-		camera_2d.zoom -= Vector2(.1,.1) if camera_2d.zoom != Vector2(.1,.1) else Vector2(.2,.2)
+		var new_zoom = camera_2d.zoom - Vector2(0.1, 0.1)
+		camera_2d.zoom = Vector2(max(new_zoom.x, 0.1), max(new_zoom.y, 0.1))
 	if Input.is_action_just_pressed("scroll_up"):
-		camera_2d.zoom += Vector2(.1,.1) if camera_2d.zoom != -Vector2(.1,.1) else Vector2(.2,.2)
+		camera_2d.zoom += Vector2(0.1, 0.1)
 
 
 func take_damage(damage : float):

@@ -27,6 +27,7 @@ tile_map_data = PackedByteArray("AAABAA0AAAA6AA0AAAABAA4AAAA6AA4AAAABAA8AAAA6AA8
 tile_set = ExtResource("1_v2a4v")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=61371962]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -47,6 +48,32 @@ y_sort_enabled = true
 script = ExtResource("3_a0a5e")
 bot = ExtResource("4_u7t8g")
 deer = ExtResource("6_a0a5e")
+
+[node name="Node" type="Node" parent="." unique_id=2040665744]
+
+[node name="Marker2D" type="Marker2D" parent="Node" unique_id=1971394735]
+position = Vector2(427, 239)
+
+[node name="Marker2D2" type="Marker2D" parent="Node" unique_id=161452409]
+position = Vector2(312, 136)
+
+[node name="Marker2D3" type="Marker2D" parent="Node" unique_id=1713638414]
+position = Vector2(191, 153)
+
+[node name="Marker2D4" type="Marker2D" parent="Node" unique_id=1812162231]
+position = Vector2(279, 206)
+
+[node name="Marker2D5" type="Marker2D" parent="Node" unique_id=1171218122]
+position = Vector2(423, 151)
+
+[node name="Marker2D6" type="Marker2D" parent="Node" unique_id=1958573757]
+position = Vector2(132, 233)
+
+[node name="Marker2D7" type="Marker2D" parent="Node" unique_id=1589823671]
+position = Vector2(373, 175)
+
+[node name="Marker2D8" type="Marker2D" parent="Node" unique_id=1886035902]
+position = Vector2(83, 168)
 
 [connection signal="body_entered" from="Area2D" to="Timer" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="Timer" method="_on_area_2d_body_exited"]

@@ -5,9 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://deudery3hx7lt" path="res://World/Room2/SpawnRoom.tscn" id="3_5ny1u"]
 [ext_resource type="PackedScene" uid="uid://dj0h88ur32gk0" path="res://World/ChallangeRoom/ChallangeRoom.tscn" id="4_mla53"]
 [ext_resource type="PackedScene" uid="uid://cc4xkjbpc6p6g" path="res://World/Boss/Boss1/Boss1.tscn" id="5_28dhl"]
+[ext_resource type="PackedScene" uid="uid://gwmlfb2k73mk" path="res://World/Hallways/hallway_h.tscn" id="5_mla53"]
+[ext_resource type="PackedScene" uid="uid://c4xt1qtgftny4" path="res://World/Hallways/hallway_v.tscn" id="6_28dhl"]
 
 [node name="Generation" type="Node2D" unique_id=1741890309]
 script = ExtResource("1_iqkay")
 spawn_scene = Array[PackedScene]([ExtResource("2_d5weo")])
-challenge_scene = Array[PackedScene]([ExtResource("3_5ny1u"), ExtResource("4_mla53")])
+challenge_scene = Array[PackedScene]([ExtResource("3_5ny1u"), ExtResource("4_mla53"), ExtResource("5_mla53"), ExtResource("6_28dhl")])
 boss_scene = Array[PackedScene]([ExtResource("5_28dhl")])

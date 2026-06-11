@@ -157,11 +157,14 @@ func _on_body_entered(_body: Node, bullet: Projectile) -> void:
 	if _body is Enemy:
 		_body = _body as Enemy
 		var final_damage = damage * damage_multiplier
+		var crit = false
 		final_damage *= critical_multiplier**(floor(critical_rate))
+		if critical_rate >= 1: crit = true
 		if randf() <= critical_rate-floor(critical_rate):
 			
 			final_damage *= critical_multiplier
-		_body.take_damage(final_damage)
+			crit = true
+		_body.take_damage(final_damage, crit)
 		
 		bullet.puncture -= 1
 		if bullet.puncture > 0:

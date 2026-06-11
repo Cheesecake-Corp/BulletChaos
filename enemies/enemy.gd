@@ -14,10 +14,12 @@ func _ready() -> void:
 	health = MAX_HEALTH * GAME.enemies_stats_set["health_multiplier"]
 	
 	
-func take_damage(damage : float):
+func take_damage(damage : float, crit : bool):
 	health -= damage
 	
 	movement = false
+	if crit: DamageManager.spawn_crit(global_position,damage)
+	else: DamageManager.spawn(global_position,damage)
 	if alive == true and health < 0:
 		death()
 

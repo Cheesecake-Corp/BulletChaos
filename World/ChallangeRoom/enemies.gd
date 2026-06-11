@@ -7,6 +7,7 @@ class_name EnemySpawner
 @export var chance_bot := 0.5 #Value between 0 and 1
 
 @onready var challange_room: Node2D = $".."
+@onready var spawner_node: Node = $"../Node"
 
 signal room_complete(enemies_killed : int)
 
@@ -37,7 +38,7 @@ func _on_timer_timeout() -> void:
 		enemy.room_manager = self
 		enemies.append(enemy)
 		GAME.entities_node.add_child(enemy)
-		enemy.global_position = parent.global_position + parent.navsq*8 + Vector2(GAME.RANDOM_GENERATION.randf_range(-5,5),GAME.RANDOM_GENERATION.randf_range(-5,5))*16
+		enemy.global_position = parent.global_position + spawner_node.get_children()[randi_range(0,spawner_node.get_children().size()-1)].global_position
 		enemy.visible = true
 		enemy.nav.target_position = enemies[n].global_position
 		n += 1

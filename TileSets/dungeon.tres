@@ -1197,6 +1197,7 @@ texture = ExtResource("1_wu4tj")
 41:14/0 = 0
 41:14/0/z_index = -1
 46:14/0 = 0
+46:14/0/z_index = -1
 46:14/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_186l4")
 47:14/0 = 0
 47:14/0/z_index = -1

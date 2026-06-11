@@ -92,11 +92,11 @@ func shoot() -> void:
 	movement = true
 	
 
-func take_damage(damage: float) -> void:
+func take_damage(damage: float, crit : bool) -> void:
 	if alive:
 		sprite.stop()
 		sprite.play("damaged")
-	super(damage)
+	super(damage, crit)
 
 func death() -> void:
 	sprite.play("death")

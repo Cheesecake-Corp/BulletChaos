@@ -3,8 +3,9 @@
 [ext_resource type="TileSet" uid="uid://cg5q7oaxgfn6j" path="res://TileSets/dungeon.tres" id="1_30blj"]
 [ext_resource type="Texture2D" uid="uid://coaoxbmnyredd" path="res://World/Assets/Catacombs/torch_1.png" id="2_grfmo"]
 [ext_resource type="Script" uid="uid://ctn43f2bucgp3" path="res://World/ChallangeRoom/enemies.gd" id="3_l8k5h"]
-[ext_resource type="PackedScene" uid="uid://5cc0ei0pmkxl" path="res://Enemies/Normal/Stormhead/Stormhead.tscn" id="4_76pnb"]
+[ext_resource type="PackedScene" uid="uid://bsjirrkmwhv8m" path="res://Enemies/Normal/Bot Wheel/Bot_Wheel.tscn" id="4_hymto"]
 [ext_resource type="Script" uid="uid://bo2t72xccj1ua" path="res://World/ChallangeRoom/timer.gd" id="5_76pnb"]
+[ext_resource type="PackedScene" uid="uid://cbkx1sxjuefk7" path="res://Enemies/Normal/RedDeerThing/Red_deer.tscn" id="5_tgxn0"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_hymto"]
 vertices = PackedVector2Array(134, 198, 90, 198, 90, 170, 134, 170, 510, 286, 490, 286, 490, 282, 510, 282, 507.85938, 82, 526, 82, 526, 102, 490, 102, 490, 74, 499.85938, 74, 288.28906, 97.10156, 288.28125, 97.09375, 308.09375, 96.75, 449.04688, 254.72656, 446.7422, 282, 426, 257.28125, 426, 150, 395.90625, 256.75, 448, 286, 318, 286, 170, 273.28125, 388.09375, 256.9297, 454, 246, 454, 255.17969, 447.53906, 177.57813, 32, 206, 31.851563, 193.5625, 32.460938, 193.57813, 34, 206, 454, 177.39063, 454, 177.46094, 447.8672, 154, 448.04688, 154, 447.97656, 159.75, 32.023438, 175.75, 31.953125, 170, 32.132813, 170, 208.02344, 79.75, 207.95313, 74, 272.04688, 74, 271.97656, 79.75, 271.53906, 97.578125, 208.46094, 97.578125, 448.04688, 282, 447.97656, 122, 448.04688, 122, 447.8672, 138, 448.04688, 138, 31.953125, 154, 32.132813, 154, 31.953125, 138, 32.132813, 138, 31.953125, 122, 32.023438, 122, 54, 134, 404.09375, 96.92969, 404.27344, 90, 447.97656, 90, 484.27344, 170, 526, 170, 526, 206, 510, 206, 484.09375, 176.92969, 510, 246, 318, 318, 226, 318, 226, 286, 139.90625, 272.75, 34, 286, 132.09375, 272.9297, 32.023438, 90, 75.72656, 90, 75.90625, 96.92969, 171.90625, 96.75, 191.71094, 97.09375, 191.71094, 97.10156, 170, 134, 308.27344, 90, 363.72656, 90, 363.90625, 96.92969, 310, 150, 340.09375, 256.9297, 340.27344, 250, 347.72656, 250, 347.90625, 256.9297, 388.27344, 250, 395.72656, 250, 368, 257.28125, 310, 257.46094, 84.09375, 272.9297, 84.27344, 266, 91.72656, 266, 91.90625, 272.9297, 132.27344, 266, 139.72656, 266, 112, 273.28125, 54, 273.46094, 96, 97.28125, 116.09375, 96.92969, 116.27344, 90, 171.72656, 90, 384, 97.28125)
@@ -32,10 +33,11 @@ texture = ExtResource("2_grfmo")
 [node name="Enemies" type="Node2D" parent="." unique_id=1520971477]
 y_sort_enabled = true
 script = ExtResource("3_l8k5h")
-bot = ExtResource("4_76pnb")
-deer = ExtResource("4_76pnb")
+bot = ExtResource("4_hymto")
+deer = ExtResource("5_tgxn0")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2087192505]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -50,6 +52,32 @@ polygon = PackedVector2Array(32, 8, 536, 8, 536, 328, 8, 328, 8, 8)
 process_callback = 0
 one_shot = true
 script = ExtResource("5_76pnb")
+
+[node name="Node" type="Node" parent="." unique_id=1142956273]
+
+[node name="Marker2D" type="Marker2D" parent="Node" unique_id=664051422]
+position = Vector2(240, 217)
+
+[node name="Marker2D2" type="Marker2D" parent="Node" unique_id=2062654181]
+position = Vector2(312, 136)
+
+[node name="Marker2D3" type="Marker2D" parent="Node" unique_id=467448252]
+position = Vector2(194, 204)
+
+[node name="Marker2D4" type="Marker2D" parent="Node" unique_id=615156884]
+position = Vector2(279, 206)
+
+[node name="Marker2D5" type="Marker2D" parent="Node" unique_id=1953189845]
+position = Vector2(250, 273)
+
+[node name="Marker2D6" type="Marker2D" parent="Node" unique_id=1997607986]
+position = Vector2(138, 312)
+
+[node name="Marker2D7" type="Marker2D" parent="Node" unique_id=842330398]
+position = Vector2(386, 303)
+
+[node name="Marker2D8" type="Marker2D" parent="Node" unique_id=642318524]
+position = Vector2(39, 180)
 
 [connection signal="body_entered" from="Area2D" to="Timer" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="Timer" method="_on_area_2d_body_exited"]

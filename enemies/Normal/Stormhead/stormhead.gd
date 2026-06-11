@@ -9,7 +9,7 @@ signal phase_changed(new_phase: int)                    # 1 / 2 / 3
 # ─── Node refs ─────────────────────────────────────────────────────────────────
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer: Timer = $Timer
-
+var room : Room
 # ─── Tunable stats (Phase 1 baseline) ─────────────────────────────────────────
 
 
@@ -186,6 +186,7 @@ func _on_animation_finished() -> void:
 			pass   # hurt_timer handles the exit
 
 		State.DEAD:
+			room.timer.start()
 			queue_free()
 
 
@@ -200,12 +201,10 @@ func _do_lightning_burst() -> void:
 	timer.start()
 
 # ─── OVERRIDE: take_damage ────────────────────────────────────────────────────
-func take_damage(damage: float) -> void:
+func take_damage(damage: float, crit : bool) -> void:
 	if not alive or state == State.DEAD:
 		return
-
-	health -= damage
-	health  = maxf(health, 0.0)
+	super(damage,crit)
 
 	var max_hp : float = MAX_HEALTH * GAME.enemies_stats_set["health_multiplier"]
 	emit_signal("health_changed", health, max_hp)
@@ -253,11 +252,12 @@ func death() -> void:
 	if state == State.DEAD:
 		return
 	_set_state(State.DEAD)
-	room_manager.enemy_dead += 1
+
+	var rand := GAME.RANDOM_LOOT.randf()
 
 	
 	var canister : Node2D = load("res://InteractObjects/HealthContainer/Health_container.tscn").instantiate()
-	room_manager.room.call_deferred("add_child", canister)
+	room.call_deferred("add_child", canister)
 	call_deferred("set_canister_pos", canister)
 
 	var i = upgrade_resources.upgrades.duplicate()
@@ -269,7 +269,7 @@ func death() -> void:
 		if not upgrade.name in GAME.player.upgrade_resources:
 			upgrade_item = load("res://Upgrades/Upgrade_item.tscn").instantiate()
 			upgrade_item.upgrade = upgrade
-			room_manager.room.call_deferred("add_child", upgrade_item)
+			room.call_deferred("add_child", upgrade_item)
 			call_deferred("set_canister_pos", upgrade_item)
 			break
 		else:
@@ -279,7 +279,7 @@ func death() -> void:
 			
 		upgrade_item.amount =  GAME.RANDOM_LOOT.randi_range(10,115) * GAME.currency_set["multiplier"]#Upgrade item is on ground it is a scene
 		
-		room_manager.room.call_deferred("add_child", upgrade_item)
+		room.call_deferred("add_child", upgrade_item)
 		call_deferred("set_canister_pos", upgrade_item)
 		
 
