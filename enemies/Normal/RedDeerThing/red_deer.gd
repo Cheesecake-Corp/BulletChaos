@@ -51,7 +51,7 @@ func move(delta: float):
 	
 func attack():
 	if area.overlaps_body(GAME.player) == true:
-		GAME.player.take_damage(DAMAGE)
+		GAME.player.take_damage(DAMAGE * GAME.enemies_stats_set["damage_multiplier"])
 	attack_cooldown = ATTACK_COOLDOWN_MAX
 	movement = true
 

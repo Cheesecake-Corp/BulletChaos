@@ -112,12 +112,12 @@ func _ready() -> void:
 		"weapon_energy_used_temp": weapon_used_energy_temp,
 	}
 	for n in GAME.player_upgrades_set:
-		upgrade_resources.append(n)
+		upgrade_resources.append(n.name)
 		var u = PlayerModInstance.new()
 		u.data = n
 		upgrades.append(u)
 	for n in GAME.weapon_upgrades_set:
-		upgrade_resources.append(n)
+		upgrade_resources.append(n.name)
 		var u = WeaponModInstance.new()
 		u.data = n
 		weapon_upgrades.append(u)

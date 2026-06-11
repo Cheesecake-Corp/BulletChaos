@@ -5,15 +5,16 @@ signal health_changed(current: float, maximum: float)   # wire to boss health ba
 signal phase_changed(new_phase: int)                    # 1 / 2 / 3
 
 
+
 # ─── Node refs ─────────────────────────────────────────────────────────────────
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
-
+@onready var timer: Timer = $Timer
 
 # ─── Tunable stats (Phase 1 baseline) ─────────────────────────────────────────
 
 
 @export var LIGHTNING_RANGE  : float = 130.0   # AoE radius when attack lands
-@export var LIGHTNING_DAMAGE : float = 5.0
+@export var LIGHTNING_DAMAGE : float = 20.0
 @export var ATTACK_COOLDOWN  : float = 2.4     # seconds between attacks
 
 # Phase multipliers applied on top of the base values
@@ -195,10 +196,8 @@ func _on_animation_finished() -> void:
 func _do_lightning_burst() -> void:
 	if not _player_valid():
 		return
-	if global_position.distance_to(player.global_position) <= _lightning_range:
-		var dmg_mult : float = GAME.enemies_stats_set.get("damage_multiplier", 1.0)
-		player.take_damage(_lightning_damage * dmg_mult)
-
+	
+	timer.start()
 
 # ─── OVERRIDE: take_damage ────────────────────────────────────────────────────
 func take_damage(damage: float) -> void:
@@ -256,26 +255,33 @@ func death() -> void:
 	_set_state(State.DEAD)
 	room_manager.enemy_dead += 1
 
-	var rand := GAME.RANDOM_LOOT.randf()
+	
+	var canister : Node2D = load("res://InteractObjects/HealthContainer/Health_container.tscn").instantiate()
+	room_manager.room.call_deferred("add_child", canister)
+	call_deferred("set_canister_pos", canister)
 
-	if rand > GAME.drop_chance_set["heal"]:
-		var canister : Node2D = load("res://InteractObjects/HealthContainer/Health_container.tscn").instantiate()
-		room_manager.room.call_deferred("add_child", canister)
-		call_deferred("set_canister_pos", canister)
-
-	elif rand > 1.0 - GAME.drop_chance_set["heal"] - GAME.drop_chance_set["upgrade"]:
-		var upgrade = upgrade_resources.upgrades[
-			GAME.RANDOM_LOOT.randi_range(0, upgrade_resources.upgrades.size() - 1)
+	var i = upgrade_resources.upgrades.duplicate()
+	while i:
+		var upgrade = i[
+			GAME.RANDOM_LOOT.randi_range(0, i.size() - 1)
 		]
 		var upgrade_item : Node2D
 		if not upgrade.name in GAME.player.upgrade_resources:
 			upgrade_item = load("res://Upgrades/Upgrade_item.tscn").instantiate()
 			upgrade_item.upgrade = upgrade
+			room_manager.room.call_deferred("add_child", upgrade_item)
+			call_deferred("set_canister_pos", upgrade_item)
+			break
 		else:
-			upgrade_item = load("res://Upgrades/processor_item.tscn").instantiate()
-			upgrade_item.amount = GAME.RANDOM_LOOT.randi_range(10, 115) * GAME.currency_set["multiplier"]
+			i.erase(upgrade)
+	if not i:
+		var upgrade_item = load("res://Upgrades/processor_item.tscn").instantiate() #Creates instance of upgrade_item
+			
+		upgrade_item.amount =  GAME.RANDOM_LOOT.randi_range(10,115) * GAME.currency_set["multiplier"]#Upgrade item is on ground it is a scene
+		
 		room_manager.room.call_deferred("add_child", upgrade_item)
 		call_deferred("set_canister_pos", upgrade_item)
+		
 
 
 # ─── UTILITIES ────────────────────────────────────────────────────────────────
@@ -285,3 +291,9 @@ func _find_player() -> Player:
 
 func _player_valid() -> bool:
 	return player != null and is_instance_valid(player)
+
+
+func _on_timer_timeout() -> void:
+	if global_position.distance_to(player.global_position) <= _lightning_range:
+		var dmg_mult : float = GAME.enemies_stats_set.get("damage_multiplier", 1.0)
+		player.take_damage(_lightning_damage * dmg_mult)
